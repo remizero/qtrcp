@@ -1,0 +1,4 @@
+-Hacer una clase modelo Section
+-Ver los siguientes videos:
+  https://www.youtube.com/watch?v=BI5TQ_NPp1s
+  https://www.youtube.com/watch?v=AZytZ4vIcds

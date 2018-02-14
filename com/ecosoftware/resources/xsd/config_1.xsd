@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:complexType name="ecoSoftwareSettingsType">
+    <xs:sequence>
+      <xs:element ref="app"/>
+      <xs:element ref="splashscreen"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="app" type="xs:string"/>
+  <xs:element name="splashscreen" type="xs:string"/>
+  <xs:element name="settings" type="ecoSoftwareSettingsType" maxOccurs="1"/>
+</xs:schema>

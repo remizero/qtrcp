@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<settings xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/home/remizero/Proyectos/Desarrollo/Qt/qtrcp/com/ecosoftware/resources/xsd/config.xsd">
+  <app>
+    <applicationdisplayname>Ecomoditor</applicationdisplayname>
+    <applicationhashkey>a9cd0d49e19637c0fea893d12ac87f64</applicationhashkey>
+    <applicationname>ecomoditor</applicationname>
+    <applicationversion>1.0</applicationversion>
+    <organizationname>Eco Software, C.A.</organizationname>
+    <organizationdomain>https://www.ecosoftware.com.ve</organizationdomain>
+    <showsplash>1</showsplash>
+    <iconimage>icono.png</iconimage>
+    <mayorversion>5</mayorversion>
+    <minorversion>0</minorversion>
+    <pathversion>0</pathversion>
+  </app>
+  <splashscreen>
+    <imagesplash>splash.png</imagesplash><!--Aquí coloque el nombre de la imagen que usará para este lanzador de aplicaciones. Puede utilizar imagenes de tipo GIF, JPG, BMP, PNG.-->
+    <messagebox>
+      <x>10</x>
+      <y>253</y>
+      <w>800</w>
+      <h>14</h>
+      <alignment>1</alignment>
+    </messagebox>
+    <font>
+      <family>monospace</family>
+      <bold>1</bold>
+      <size>9</size>
+      <stretch>125</stretch>
+      <color>000000</color>
+    </font>
+    <progressbar>
+      <textvisible>0</textvisible><!-- Indica si el texto interno de la barra de progreso será visible -->
+      <textalignment>center</textalignment><!-- Puede ser top | bottom | left | right | center -->
+      <invertedappearance>0</invertedappearance><!-- This property holds whether or not a progress bar shows its progress inverted (e.g. from right to left). -->
+      <x>0</x><!-- Pocisión en el eje X de la barra de progreso -->
+      <y>270</y><!-- Pocisión en el eje Y de la barra de progreso -->
+      <w>800</w><!-- Ancho de la barra de progreso -->
+      <h>3</h><!-- Altura de la barra de progreso -->
+      <orientation>H</orientation><!-- This property holds the orientation of the progress bar. The orientation must be Qt::Horizontal (the default) or Qt::Vertical. -->
+      <textdirection>0</textdirection><!-- This property holds the reading direction of the text for vertical progress bars. -->
+      <format>%p%</format><!-- %p% - is replaced by the percentage completed. %v% - is replaced by the current value. %m% - is replaced by the total number of steps. -->
+      <max>100</max><!-- Valor máximo que puede aceptar la barra de progreso -->
+      <min>0</min><!-- Valor mínimo que puede aceptar la barra de progreso -->
+      <backgroundcolor>FF0000</backgroundcolor><!-- Color a ser mostrado en la barra de progreso -->
+    </progressbar>
+  </splashscreen>
+</settings>

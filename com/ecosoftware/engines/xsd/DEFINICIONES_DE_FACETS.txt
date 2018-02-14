@@ -1,0 +1,112 @@
+<assertion
+  id = ID
+  test = an XPath expression
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</assertion>
+
+<enumeration
+  id = ID
+  value = anySimpleType
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</enumeration>
+
+<explicitTimezone
+  fixed = boolean : false
+  id = ID
+  value = NCName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</explicitTimezone>
+
+<fractionDigits
+  fixed = boolean : false
+  id = ID
+  value = nonNegativeInteger
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</fractionDigits>
+
+<length
+  fixed = boolean : false
+  id = ID
+  value = nonNegativeInteger
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</length>
+
+<maxExclusive
+  fixed = boolean : false
+  id = ID
+  value = anySimpleType
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</maxExclusive>
+
+<maxInclusive
+  fixed = boolean : false
+  id = ID
+  value = anySimpleType
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</maxInclusive>
+
+<maxLength
+  fixed = boolean : false
+  id = ID
+  value = nonNegativeInteger
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</maxLength>
+
+<minExclusive
+  fixed = boolean : false
+  id = ID
+  value = anySimpleType
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</minExclusive>
+
+<minInclusive
+  fixed = boolean : false
+  id = ID
+  value = anySimpleType
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</minInclusive>
+
+<minLength
+  fixed = boolean : false
+  id = ID
+  value = nonNegativeInteger
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</minLength>
+
+<pattern
+  id = ID
+  value = string
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</pattern>
+
+<totalDigits
+  fixed = boolean : false
+  id = ID
+  value = positiveInteger
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</totalDigits>
+
+<whiteSpace
+  fixed = boolean : false
+  id = ID
+  value = (collapse | preserve | replace)
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</whiteSpace>
+
+
+

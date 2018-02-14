@@ -1,0 +1,325 @@
+PENDIENTE CON ESTE TIPO DE DEFINICION
+PARA QUE SIRVE, COMO USARLA Y COMO ANALIZARLA
+<xs:element name="message" type="messageType">
+  <xs:alternative test="@kind='string'" type="messageTypeString"/>
+  <xs:alternative test="@kind='base64'" type="messageTypeBase64"/>
+  <xs:alternative test="@kind='binary'" type="messageTypeBase64"/>
+  <xs:alternative test="@kind='xml'"    type="messageTypeXML"/>
+  <xs:alternative test="@kind='XML'"    type="messageTypeXML"/>
+  <xs:alternative                       type="messageType"/>
+</xs:element>
+
+
+<all
+  id = ID
+  maxOccurs = (0 | 1) : 1
+  minOccurs = (0 | 1) : 1
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (element | any | group)*)
+</all>
+
+<alternative
+  id = ID
+  test = an XPath expression
+  type = QName
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (simpleType | complexType)?)
+</alternative>
+
+<annotation
+  id = ID
+  {any attributes with non-schema namespace . . .}>
+  Content: (appinfo | documentation)*
+</annotation>
+
+<any
+  id = ID
+  maxOccurs = (nonNegativeInteger | unbounded)  : 1
+  minOccurs = nonNegativeInteger : 1
+  namespace = ((##any | ##other) | List of (anyURI | (##targetNamespace | ##local)) )
+  notNamespace = List of (anyURI | (##targetNamespace | ##local))
+  notQName = List of (QName | (##defined | ##definedSibling))
+  processContents = (lax | skip | strict) : strict
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</any>
+
+<anyAttribute
+  id = ID
+  namespace = ((##any | ##other) | List of (anyURI | (##targetNamespace | ##local)) )
+  notNamespace = List of (anyURI | (##targetNamespace | ##local))
+  notQName = List of (QName | ##defined)
+  processContents = (lax | skip | strict) : strict
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</anyAttribute>
+
+<appinfo
+  source = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: ({any})*
+</appinfo>
+
+<assert
+  id = ID
+  test = an XPath expression
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</assert>
+
+<attribute
+  default = string
+  fixed = string
+  form = (qualified | unqualified)
+  id = ID
+  name = NCName
+  ref = QName
+  targetNamespace = anyURI
+  type = QName
+  use = (optional | prohibited | required) : optional
+  inheritable = boolean
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, simpleType?)
+</attribute>
+
+// Mapping Rule for Attribute Uses Property
+<attributeGroup
+  id = ID
+  ref = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</attributeGroup>
+
+// XML Mapping Rule for Named Attribute Groups
+<attributeGroup
+  id = ID
+  name = NCName
+  ref = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, ((attribute | attributeGroup)*, anyAttribute?))
+</attributeGroup>
+
+<choice
+  id = ID
+  maxOccurs = (nonNegativeInteger | unbounded)  : 1
+  minOccurs = nonNegativeInteger : 1
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (element | group | choice | sequence | any)*)
+</choice>
+
+<complexContent
+  id = ID
+  mixed = boolean
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (restriction | extension))
+</complexContent>
+
+<complexType
+  abstract = boolean : false
+  block = (#all | List of (extension | restriction))
+  final = (#all | List of (extension | restriction))
+  id = ID
+  mixed = boolean
+  name = NCName
+  defaultAttributesApply = boolean : true
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (simpleContent | complexContent | (openContent?, (group | all | choice | sequence)?, ((attribute | attributeGroup)*, anyAttribute?), assert*)))
+</complexType>
+
+<defaultOpenContent
+  appliesToEmpty = boolean : false
+  id = ID
+  mode = (interleave | suffix) : interleave
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, any)
+</defaultOpenContent>
+
+<documentation
+  source = anyURI
+  xml:lang = language
+  {any attributes with non-schema namespace . . .}>
+  Content: ({any})*
+</documentation>
+
+<element
+  abstract = boolean : false
+  block = (#all | List of (extension | restriction | substitution))
+  default = string
+  final = (#all | List of (extension | restriction))
+  fixed = string
+  form = (qualified | unqualified)
+  id = ID
+  maxOccurs = (nonNegativeInteger | unbounded)  : 1
+  minOccurs = nonNegativeInteger : 1
+  name = NCName
+  nillable = boolean : false
+  ref = QName
+  substitutionGroup = List of QName
+  targetNamespace = anyURI
+  type = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, ((simpleType | complexType)?, alternative*, (unique | key | keyref)*))
+</element>
+
+<extension
+  base = QName
+  id = ID
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, ((attribute | attributeGroup)*, anyAttribute?), assert*)
+</extension>
+
+<field
+  id = ID
+  xpath = a subset of XPath expression, see below
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</field>
+
+<group
+  id = ID
+  maxOccurs = (nonNegativeInteger | unbounded)  : 1
+  minOccurs = nonNegativeInteger : 1
+  name = NCName
+  ref = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (all | choice | sequence)?)
+</group>
+
+<import
+  id = ID
+  namespace = anyURI
+  schemaLocation = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</import>
+
+<include
+  id = ID
+  schemaLocation = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</include>
+
+<key
+  id = ID
+  name = NCName
+  ref = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (selector, field+)?)
+</key>
+
+<keyref
+  id = ID
+  name = NCName
+  ref = QName
+  refer = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (selector, field+)?)
+</keyref>
+
+<list
+  id = ID
+  itemType = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, simpleType?)
+</list>
+
+<notation
+  id = ID
+  name = NCName
+  public = token
+  system = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</notation>
+
+<openContent
+  id = ID
+  mode = (none | interleave | suffix) : interleave
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, any?)
+</openContent>
+
+<override
+  id = ID
+  schemaLocation = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation | (simpleType | complexType | group | attributeGroup | element | attribute | notation))*
+</override>
+
+<redefine
+  id = ID
+  schemaLocation = anyURI
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation | (simpleType | complexType | group | attributeGroup))*
+</redefine>
+
+<restriction
+  base = QName
+  id = ID
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (simpleType?, (minExclusive | minInclusive | maxExclusive | maxInclusive | totalDigits | fractionDigits | length | minLength | maxLength | enumeration | whiteSpace | pattern | assertion | explicitTimezone | {any with namespace: ##other})*))
+</restriction>
+
+<schema
+  attributeFormDefault = (qualified | unqualified) : unqualified
+  blockDefault = (#all | List of (extension | restriction | substitution))  : ''
+  defaultAttributes = QName
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))  : ##local
+  elementFormDefault = (qualified | unqualified) : unqualified
+  finalDefault = (#all | List of (extension | restriction | list | union))  : ''
+  id = ID
+  targetNamespace = anyURI
+  version = token
+  xml:lang = language
+  {any attributes with non-schema namespace . . .}>
+  Content: ((include | import | redefine | override | annotation)*, (defaultOpenContent, annotation*)?, ((simpleType | complexType | group | attributeGroup | element | attribute | notation), annotation*)*)
+</schema>
+
+<selector
+  id = ID
+  xpath = a subset of XPath expression, see below
+  xpathDefaultNamespace = (anyURI | (##defaultNamespace | ##targetNamespace | ##local))
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?)
+</selector>
+
+<sequence
+  id = ID
+  maxOccurs = (nonNegativeInteger | unbounded)  : 1
+  minOccurs = nonNegativeInteger : 1
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (element | group | choice | sequence | any)*)
+</sequence>
+
+<simpleContent
+  id = ID
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (restriction | extension))
+</simpleContent>
+
+<simpleType
+  final = (#all | List of (list | union | restriction | extension))
+  id = ID
+  name = NCName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (restriction | list | union))
+</simpleType>
+
+<union
+  id = ID
+  memberTypes = List of QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, simpleType*)
+</union>
+
+<unique
+  id = ID
+  name = NCName
+  ref = QName
+  {any attributes with non-schema namespace . . .}>
+  Content: (annotation?, (selector, field+)?)
+</unique>

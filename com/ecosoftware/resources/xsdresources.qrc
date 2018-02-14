@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/xsdresources">
+        <file>xsd/config.xsd</file>
+        <file>xsd/config_1.xsd</file>
+    </qresource>
+</RCC>

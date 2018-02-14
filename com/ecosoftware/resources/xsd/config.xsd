@@ -1,0 +1,251 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="app"/>
+        <xs:element ref="splashscreen"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="app">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="applicationdisplayname"/>
+        <xs:element ref="applicationhashkey"/>
+        <xs:element ref="applicationname"/>
+        <xs:element ref="applicationversion"/>
+        <xs:element ref="organizationname"/>
+        <xs:element ref="organizationdomain"/>
+        <xs:element ref="showsplash"/>
+        <xs:element ref="iconimage"/>
+        <xs:element ref="mayorversion"/>
+        <xs:element ref="minorversion"/>
+        <xs:element ref="pathversion"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="applicationdisplayname" type="xs:string"/>
+  <xs:element name="applicationhashkey" type="xs:string"/>
+  <xs:element name="applicationname" type="xs:string"/>
+  <xs:element name="applicationversion" type="xs:string"/>
+  <xs:element name="organizationname" type="xs:string"/>
+  <xs:element name="organizationdomain" type="xs:string"/>
+  <xs:element name="showsplash">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="iconimage" type="xs:string"/>
+  <xs:element name="mayorversion">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+     </xs:simpleType>
+   </xs:element>
+  <xs:element name="minorversion">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="pathversion">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="splashscreen">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="imagesplash"/>
+        <xs:element ref="messagebox"/>
+        <xs:element ref="font"/>
+        <xs:element ref="progressbar"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="imagesplash" type="xs:string"/>
+  <xs:element name="messagebox">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="x"/>
+        <xs:element ref="y"/>
+        <xs:element ref="w"/>
+        <xs:element ref="h"/>
+        <xs:element ref="alignment"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="font">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="family"/>
+        <xs:element ref="bold"/>
+        <xs:element ref="size"/>
+        <xs:element ref="stretch"/>
+        <xs:element ref="color"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="progressbar">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="textvisible"/>
+        <xs:element ref="textalignment"/>
+        <xs:element ref="invertedappearance"/>
+        <xs:element ref="x"/>
+        <xs:element ref="y"/>
+        <xs:element ref="w"/>
+        <xs:element ref="h"/>
+        <xs:element ref="orientation"/>
+        <xs:element ref="textdirection"/>
+        <xs:element ref="format"/>
+        <xs:element ref="max"/>
+        <xs:element ref="min"/>
+        <xs:element ref="backgroundcolor"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="x">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="y">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="w">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="h">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="alignment">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="1"/>
+        <xs:enumeration value="2"/>
+        <xs:enumeration value="4"/>
+        <xs:enumeration value="8"/>
+        <xs:enumeration value="20"/>
+        <xs:enumeration value="40"/>
+        <xs:enumeration value="80"/>
+        <xs:enumeration value="100"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="family" type="xs:string"/>
+  <xs:element name="bold">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="size">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="stretch">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="color" type="xs:hexBinary"/>
+  <xs:element name="textvisible">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="textalignment">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="top"/>
+        <xs:enumeration value="bottom"/>
+        <xs:enumeration value="left"/>
+        <xs:enumeration value="right"/>
+        <xs:enumeration value="center"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="invertedappearance">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="orientation">
+    <xs:simpleType>
+      <xs:restriction base='xs:string'>
+        <xs:enumeration value="V"/>
+        <xs:enumeration value="v"/>
+        <xs:enumeration value="H"/>
+        <xs:enumeration value="h"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="textdirection">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="format">
+    <xs:simpleType>
+      <xs:restriction base='xs:string'>
+        <xs:enumeration value="%p%"/>
+        <xs:enumeration value="%v%"/>
+        <xs:enumeration value="%m%"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="max">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='1'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="min">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="backgroundcolor" type="xs:hexBinary"/>
+</xs:schema>

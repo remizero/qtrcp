@@ -1,0 +1,557 @@
+DATATYPE
+  STRING
+
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  BOOLEAN
+
+FACETAS PERMITIDAS
+  pattern
+  assertions
+
+
+DATATYPE
+  DECIMAL
+
+FACETAS PERMITIDAS
+  totalDigits
+  fractionDigits
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  FLOAT
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DOUBLE
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DURATION
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DATETIME
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  TIME
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DATE
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  GYEARMONTH
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  GYEAR
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  GMONTHDAY
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  GDAY
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  GMONTH
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  HEXBINARY
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  BASE64BINARY
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  ANYURI
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  QNAME
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  NOTATION
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  NORMALIZEDSTRING
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  TOKEN
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  pattern
+  enumeration
+  assertions
+
+
+DATATYPE
+  LANGUAGE
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  NMTOKEN
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  NMTOKENS
+
+FACETAS PERMITIDAS
+  length
+  maxLength
+  enumeration
+  pattern
+  assertions
+
+
+DATATYPE
+  NAME
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  NCNAME
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  ID
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  IDREF
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  IDREFS
+
+FACETAS PERMITIDAS
+  length
+  maxLength
+  enumeration
+  pattern
+  assertions
+
+
+DATATYPE
+  ENTITY
+
+FACETAS PERMITIDAS
+  length
+  minLength
+  maxLength
+  enumeration
+  assertions
+
+
+DATATYPE
+  ENTITIES
+
+FACETAS PERMITIDAS
+  length
+  maxLength
+  enumeration
+  pattern
+  assertions
+
+
+DATATYPE
+  INTEGER
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  NONPOSITIVEINTEGER
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  NEGATIVEINTEGER
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  LONG
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  INT
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  SHORT
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  BYTE
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  NONNEGATIVEINTEGER
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxInclusive
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  UNSIGNEDLONG
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  UNSIGNEDINT
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  UNSIGNEDSHORT
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  UNSIGNEDBYTE
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  POSITIVEINTEGER
+
+FACETAS PERMITIDAS
+  totalDigits
+  enumeration
+  maxInclusive
+  maxExclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  YEARMONTHDURATION
+
+FACETAS PERMITIDAS
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DAYTIMEDURATION
+
+FACETAS PERMITIDAS
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
+
+
+DATATYPE
+  DATETIMESTAMP
+
+FACETAS PERMITIDAS
+  pattern
+  enumeration
+  maxInclusive
+  maxExclusive
+  minInclusive
+  minExclusive
+  assertions
