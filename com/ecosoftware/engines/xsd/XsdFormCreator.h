@@ -60,7 +60,6 @@ namespace Com {
             void createType ( QWidget *widget, XsdElement *xsdElement );
             void createTypes ( QWidget *widget, QList<XsdElement *> xsdElementList );
             QTabWidget *getForm () const;
-            void nuevaEstrategia ( XsdElement *xsdElement, QWidget *parent );
 
           private:
             QTabWidget *tabsDialog;

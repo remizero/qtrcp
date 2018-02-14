@@ -1756,12 +1756,7 @@ void XsdEngine::processProperties ( QDomElement docElement, XsdElement *xsdEleme
 
           case PropertyAbs::properties::BASE:
 
-            qDebug () << "Entrando por la propiedad BASE " << nodeMap.item ( i ).nodeValue ().toUtf8 ();
-            //( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->setValue ( Utils::Enumeration::normalizeEnumValue ( nodeMap.item ( i ).nodeValue ().toUtf8 () ) );
             xsdElement->setProperty ( new TypeProperty ( Utils::Enumeration::normalizeEnumValue ( nodeMap.item ( i ).nodeValue ().toUtf8 () ) ) );
-            //xsdElement->setProperty ( new BaseProperty ( nodeMap.item ( i ).nodeValue ().toInt () ) );
-            qDebug () << "El valor del type guardado en la LÍNEA 1763 es " << ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue ();
-            qDebug () << "El valor casteado con qobject del type guardado en la LÍNEA 1764 es " << qobject_cast<TypeProperty *> ( xsdElement->getProperty ( "TypeProperty" ) )->getValue ();
             break;
 
           case PropertyAbs::properties::BLOCK:
@@ -1937,16 +1932,11 @@ void XsdEngine::processProperties ( QDomElement docElement, XsdElement *xsdEleme
             if ( this->currentElement == ElementAbs::RESTRICTION ) {
 
               XsdElement *xsdElementParent = xsdElement->getParent ();
-              qDebug () << "El valor del type que se guarda " << Utils::Enumeration::normalizeEnumValue ( nodeMap.item ( i ).nodeValue ().toUtf8 () );
               xsdElementParent->setProperty ( new TypeProperty ( Utils::Enumeration::normalizeEnumValue ( nodeMap.item ( i ).nodeValue ().toUtf8 () ) ) );
-              qDebug () << "El valor del type guardado en la LÍNEA 1942 es " << ( ( TypeProperty * ) xsdElementParent->getProperty ( "TypeProperty" ) )->getValue ();
-              qDebug () << "El valor casteado con qobject del type guardado en la LÍNEA 1943 es " << qobject_cast<TypeProperty *> ( xsdElement->getProperty ( "TypeProperty" ) )->getValue ();
 
             } else {
 
               xsdElement->setProperty ( new TypeProperty ( Utils::Enumeration::normalizeEnumValue ( nodeMap.item ( i ).nodeValue ().toUtf8 () ) ) );
-              qDebug () << "El valor del type guardado en la LÍNEA 1948 es " << ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue ();
-              qDebug () << "El valor casteado con qobject del type guardado en la LÍNEA 1949 es " << qobject_cast<TypeProperty *> ( xsdElement->getProperty ( "TypeProperty" ) )->getValue ();
             }
             break;
 

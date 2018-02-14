@@ -21,11 +21,7 @@ void TypeProperty::setValue ( const QString value ) {
 
   if ( TypeAbs::inEmun ( value ) ) {
 
-    qDebug () << "El valor STRING que trae es: " << value;
-    qDebug () << "El valor ENTERO que trae es: " << TypeAbs::indexOfEnum ( value );
-    qDebug () << "El valor CONVERTIDO que trae es: " << static_cast<TypeAbs::types> ( TypeAbs::indexOfEnum ( value ) );
     this->value = static_cast<TypeAbs::types> ( TypeAbs::indexOfEnum ( value ) );
-    qDebug () << "El valor directo del TypeProperty: " << this->value;
 
   } else {
 

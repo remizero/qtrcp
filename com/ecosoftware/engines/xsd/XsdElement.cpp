@@ -45,12 +45,12 @@ QList<PropertyAbs *> XsdElement::getProperties () const {
 
 PropertyAbs *XsdElement::getProperty ( QString property ) const {
 
-  PropertyAbs *propertyObj = new PropertyAbs ();
+  PropertyAbs *propertyObj = nullptr;
   const int propertiesCount = this->properties.count ();
   for ( int i = 0; i < propertiesCount; i++ ) {
 
-    property = "Com::Ecosoftware::Engines::Xsd::" + property;
-    if ( property.compare ( this->properties.at ( i )->metaObject ()->className () ) == 0 ) {
+    QString propertyNameAux = "Com::Ecosoftware::Engines::Xsd::" + property;
+    if ( propertyNameAux.compare ( this->properties.at ( i )->metaObject ()->className () ) == 0 ) {
 
       propertyObj = this->properties.at ( i );
       break;
