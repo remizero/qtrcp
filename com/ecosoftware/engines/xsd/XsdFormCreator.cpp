@@ -51,11 +51,13 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   qDebug () << "Pero debería buscar los FACETS del elemento, y tiene: " << facetsCount << " FACETAS";
+
+  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
+
   if ( facetsCount > 0 ) {
 
     for ( int i = 0; i < facetsCount; i++ ) {
 
-      TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
       if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
 
         qDebug () << "El tipo es un TypeAbs::INTEGER";
@@ -74,7 +76,6 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
     }
   } else {
 
-    TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
     if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
 
       //qDebug () << xsdElement->getFacets ().at ( i )->metaObject ()->className ();
@@ -153,13 +154,10 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
 void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElementList ) {
 
-  qDebug () << "Si entra en el método XsdFormCreator::createParams ";
-
   const int paramsCount = xsdElementList.count ();
   for ( int i = 0; i < paramsCount; i++ ) {
 
     XsdElement *xsdElement = xsdElementList.at ( i );
-    qDebug () << "------------------" << Xsd::levelEnumToString ( xsdElement->getElementLevel () );
     if ( xsdElement->getElementLevel () == Xsd::GROUPFORM ) {
 
       this->createGroup ( widget, xsdElement );
@@ -170,23 +168,6 @@ void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElem
       ( ( QGridLayout * ) widget->layout () )->setColumnStretch ( ( ( QGridLayout * ) widget->layout () )->columnCount (), 1 );
     }
   }
-
-/*
-  QListIterator<XsdElement *> paramsIterator ( xsdElementList );
-  while ( paramsIterator.hasNext () ) {
-
-    XsdElement *xsdElement = paramsIterator.next ();
-    qDebug () << "------------------" << Xsd::levelEnumToString ( xsdElement->getElementLevel () );
-    if ( xsdElement->getElementLevel () == Xsd::GROUPFORM ) {
-
-      this->createGroup ( widget, xsdElement );
-
-    } else {
-
-      this->createParam ( widget, xsdElement );
-      ( ( QGridLayout * ) widget->layout () )->setColumnStretch ( ( ( QGridLayout * ) widget->layout () )->columnCount (), 1 );
-    }
-  }*/
 }
 
 void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
@@ -203,8 +184,6 @@ void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
   QGridLayout *internalTabWidgetLayout = new QGridLayout ( internalTabWidget );
   internalTabWidget->setLayout ( internalTabWidgetLayout );
   scrollArea->setWidget ( internalTabWidget );
-  // TODO: Como obtener el nombre del elemento
-  //qDebug () << "Creando la pestaña: " << ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ();
   this->tabsDialog->addTab ( tabWidget, ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   const int tabsCount = xsdElement->getElementsList ().count ();
   if ( tabsCount > 0 ) {
@@ -216,19 +195,11 @@ void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
 
 void XsdFormCreator::createTabs ( QList<XsdElement *> xsdElementList ) {
 
-  qDebug () << "Creando las pestañas -------------------------------------------";
   const int tabsCount = xsdElementList.count ();
   for ( int i = 0; i < tabsCount; i++ ) {
 
     this->createTab ( xsdElementList.at ( i ) );
   }
-
-
-  /*QListIterator<XsdElement *> tabsIterator ( xsdElementList );
-  while ( tabsIterator.hasNext () ) {
-
-    this->createTab ( tabsIterator.next () );
-  }*/
 }
 
 void XsdFormCreator::createType ( QWidget *widget, XsdElement *xsdElement ) {
