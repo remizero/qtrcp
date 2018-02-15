@@ -49,6 +49,73 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
   paramLabel->setText ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   ( ( QGridLayout * ) widget->layout () )->addWidget ( paramLabel, ( ( QGridLayout * ) widget->layout () )->rowCount (), 0, 1, 1, Qt::AlignRight );
 
+
+  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
+  if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
+
+    if ( xsdElement->hasRestriction () ) {
+
+      const int facetsCount = xsdElement->getFacets ().count ();
+      for ( int i = 0; i < facetsCount; i++ ) {
+
+        if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::EnumerationFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::maxInclusiveFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
+
+
+
+        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
+
+
+
+        }
+      }
+    } else {
+
+      QSpinBox *spinBox = new QSpinBox ( widget );
+      spinBox->setMaximumHeight ( 18 );
+      ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+    }
+
+
+  } else if ( objTypeProperty->getValue () == TypeAbs::STRING ) {
+
+    QLineEdit *lineEdit = new QLineEdit ();
+    lineEdit->setMaximumHeight ( 18 );
+    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+
+  } else if ( objTypeProperty->getValue () == TypeAbs::HEXBINARY ) {
+
+    QLineEdit *lineEdit = new QLineEdit ();
+    lineEdit->setMaximumHeight ( 18 );
+    //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
+    // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
+    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+  }
+
+
+
+
+
+/*
   const int facetsCount = xsdElement->getFacets ().count ();
   qDebug () << "Pero debería buscar los FACETS del elemento, y tiene: " << facetsCount << " FACETAS";
 
@@ -97,7 +164,7 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
       // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
       ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
     }
-  }
+  }*/
 /*
   if ( paramsCount > 0 ) {
 
