@@ -7,18 +7,7 @@ XsdFormCreator::XsdFormCreator () {}
 
 void XsdFormCreator::createForm ( XsdElement *xsdElement, QWidget *parent ) {
 
-  //this->formDialog = new QDialog ( parent );
-  //this->formDialog->setMinimumSize ( 800, 600 );
-  //this->formDialog->setWindowTitle ( ( ( NameProperty * ) xsdElement->getProperty ( "name" ) )->getValue () );
-  //QVBoxLayout *formDialogLayout = new QVBoxLayout ( this->formDialog );
-  //this->formDialog->setLayout ( formDialogLayout );
   this->tabsDialog = new QTabWidget ( parent );
-  //QDialogButtonBox *buttonBox = new QDialogButtonBox ( this->formDialog );
-  //buttonBox->setStandardButtons ( QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel );
-  //formDialogLayout->addWidget ( this->tabsDialog );
-  //formDialogLayout->addWidget ( buttonBox );
-  //this->formDialog->connect ( buttonBox, SIGNAL ( rejected () ), this->formDialog, SLOT ( reject () ) );
-
   const int tabsCount = xsdElement->getElementsList ().count ();
   if ( tabsCount > 0 ) {
 
@@ -43,180 +32,370 @@ void XsdFormCreator::createGroup ( QWidget *widget, XsdElement *xsdElement ) {
   }
 }
 
+void XsdFormCreator::createHexbinaryInput ( QWidget *widget, XsdElement *xsdElement ) {
+
+  const int facetsCount = xsdElement->getFacets ().count ();
+  for ( int i = 0; i < facetsCount; i++ ) {
+
+    if ( xsdElement->isEnumerate () ) {
+
+      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+
+    } else {
+
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QSpinBox * ) widget )->
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setInputMask ( ( ( PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
+
+      }
+    }
+  }
+}
+
+void XsdFormCreator::createInputType ( QWidget *widget, XsdElement *xsdElement ) {
+
+  // https://www.softzone.es/2015/11/26/como-aumentar-la-velocidad-de-arranque-de-windows-10-con-esta-configuracion/
+  // https://www.softzone.es/2017/08/20/como-evitar-que-nos-cambien-la-imagen-de-usuario-en-windows-10/
+  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
+  switch ( objTypeProperty->getValue () ) {
+
+    case TypeAbs::ANYURI:
+
+
+      break;
+
+    case TypeAbs::BASE64BINARY:
+
+
+      break;
+
+    case TypeAbs::BOOLEAN:
+
+
+      break;
+
+    case TypeAbs::BYTE:
+
+
+      break;
+
+    case TypeAbs::DATETIMESTAMP:
+
+
+      break;
+
+    case TypeAbs::DATETIME:
+
+
+      break;
+
+    case TypeAbs::DATE:
+
+
+      break;
+
+    case TypeAbs::DAYTIMEDURATION:
+
+
+      break;
+
+    case TypeAbs::DECIMAL:
+
+
+      break;
+
+    case TypeAbs::DOUBLE:
+
+
+      break;
+
+    case TypeAbs::DURATION:
+
+
+      break;
+
+    case TypeAbs::ENTITIES:
+
+
+      break;
+
+    case TypeAbs::ENTITY:
+
+
+      break;
+
+    case TypeAbs::FLOAT:
+
+
+      break;
+
+    case TypeAbs::GDAY:
+
+
+      break;
+
+    case TypeAbs::GMONTHDAY:
+
+
+      break;
+
+    case TypeAbs::GMONTH:
+
+
+      break;
+
+    case TypeAbs::GYEARMONTH:
+
+
+      break;
+
+    case TypeAbs::GYEAR:
+
+
+      break;
+
+    case TypeAbs::HEXBINARY:
+
+      this->createHexbinaryInput ( widget, xsdElement );
+      break;
+
+    case TypeAbs::IDREFS:
+
+
+      break;
+
+    case TypeAbs::IDREF:
+
+
+      break;
+
+    case TypeAbs::ID:
+
+
+      break;
+
+    case TypeAbs::INTEGER:
+
+      this->createIntegerInput ( widget, xsdElement );
+      break;
+
+    case TypeAbs::INT:
+
+      this->createIntegerInput ( widget, xsdElement );
+      break;
+
+    case TypeAbs::LANGUAGE:
+
+
+      break;
+
+    case TypeAbs::LONG:
+
+
+      break;
+
+    case TypeAbs::NAME:
+
+
+      break;
+
+    case TypeAbs::NCNAME:
+
+
+      break;
+
+    case TypeAbs::NEGATIVEINTEGER:
+
+
+      break;
+
+    case TypeAbs::NMTOKENS:
+
+
+      break;
+
+    case TypeAbs::NMTOKEN:
+
+
+      break;
+
+    case TypeAbs::NONNEGATIVEINTEGER:
+
+
+      break;
+
+    case TypeAbs::NONPOSITIVEINTEGER:
+
+
+      break;
+
+    case TypeAbs::NORMALIZEDSTRING:
+
+
+      break;
+
+    case TypeAbs::NOTATION:
+
+
+      break;
+
+    case TypeAbs::POSITIVEINTEGER:
+
+
+      break;
+
+    case TypeAbs::QNAME:
+
+
+      break;
+
+    case TypeAbs::SHORT:
+
+
+      break;
+
+    case TypeAbs::STRING:
+
+      this->createStringInput ( widget, xsdElement );
+      break;
+
+    case TypeAbs::TIME:
+
+
+      break;
+
+    case TypeAbs::TOKEN:
+
+
+      break;
+
+    case TypeAbs::UNSIGNEDBYTE:
+
+
+      break;
+
+    case TypeAbs::UNSIGNEDINT:
+
+
+      break;
+
+    case TypeAbs::UNSIGNEDLONG:
+
+
+      break;
+
+    case TypeAbs::UNSIGNEDSHORT:
+
+
+      break;
+
+    case TypeAbs::YEARMONTHDURATION:
+
+
+      break;
+
+    default:
+
+      break;
+  }
+}
+
+void XsdFormCreator::createIntegerInput ( QWidget *widget, XsdElement *xsdElement ) {
+
+  const int facetsCount = xsdElement->getFacets ().count ();
+  for ( int i = 0; i < facetsCount; i++ ) {
+
+    if ( xsdElement->isEnumerate () ) {
+
+      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+
+    } else {
+
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QSpinBox * ) widget )->
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
+
+        ( ( QSpinBox * ) widget )->setMaximum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () - 1 );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxInclusiveFacet" ) == 0 ) {
+
+        ( ( QSpinBox * ) widget )->setMaximum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
+
+        ( ( QSpinBox * ) widget )->setMinimum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () + 1 );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
+
+        ( ( QSpinBox * ) widget )->setMinimum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt ()  );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QSpinBox * ) widget )->
+      }
+    }
+  }
+}
+
 void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
   QLabel *paramLabel = new QLabel ( widget );
   paramLabel->setText ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   ( ( QGridLayout * ) widget->layout () )->addWidget ( paramLabel, ( ( QGridLayout * ) widget->layout () )->rowCount (), 0, 1, 1, Qt::AlignRight );
 
+  if ( xsdElement->isEnumerate () ) {
 
-  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
-  if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
+    QComboBox *comboBox = new QComboBox ( widget );
+    comboBox->setMaximumHeight ( 18 );
+    comboBox->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+    ( ( QGridLayout * ) widget->layout () )->addWidget ( comboBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+    this->createInputType ( comboBox, xsdElement );
 
-    if ( xsdElement->hasRestriction () ) {
-
-      const int facetsCount = xsdElement->getFacets ().count ();
-      for ( int i = 0; i < facetsCount; i++ ) {
-
-        if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::EnumerationFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::maxInclusiveFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
-
-
-
-        } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
-
-
-
-        }
-      }
-    } else {
-
-      QSpinBox *spinBox = new QSpinBox ( widget );
-      spinBox->setMaximumHeight ( 18 );
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-    }
-
-
-  } else if ( objTypeProperty->getValue () == TypeAbs::STRING ) {
-
-    QLineEdit *lineEdit = new QLineEdit ();
-    lineEdit->setMaximumHeight ( 18 );
-    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-  } else if ( objTypeProperty->getValue () == TypeAbs::HEXBINARY ) {
-
-    QLineEdit *lineEdit = new QLineEdit ();
-    lineEdit->setMaximumHeight ( 18 );
-    //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
-    // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
-    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-  }
-
-
-
-
-
-/*
-  const int facetsCount = xsdElement->getFacets ().count ();
-  qDebug () << "Pero debería buscar los FACETS del elemento, y tiene: " << facetsCount << " FACETAS";
-
-  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
-
-  if ( facetsCount > 0 ) {
-
-    for ( int i = 0; i < facetsCount; i++ ) {
-
-      if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
-
-        qDebug () << "El tipo es un TypeAbs::INTEGER";
-        qDebug () << xsdElement->getFacets ().at ( i )->metaObject ()->className ();
-        if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::EnumerationFacet" ) == 0 ) {
-
-        }
-      } else if ( objTypeProperty->getValue () == TypeAbs::STRING ) {
-
-        qDebug () << "El tipo es un TypeAbs::STRING";
-
-      } else if ( objTypeProperty->getValue () == TypeAbs::HEXBINARY ) {
-
-        qDebug () << "El tipo es un TypeAbs::HEXBINARY";
-      }
-    }
   } else {
 
+    TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
     if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
 
-      //qDebug () << xsdElement->getFacets ().at ( i )->metaObject ()->className ();
       QSpinBox *spinBox = new QSpinBox ( widget );
       spinBox->setMaximumHeight ( 18 );
+      spinBox->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+      this->createInputType ( spinBox, xsdElement );
       ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
 
-    } else if ( objTypeProperty->getValue () == TypeAbs::STRING ) {
+    } else {
 
       QLineEdit *lineEdit = new QLineEdit ();
       lineEdit->setMaximumHeight ( 18 );
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-    } else if ( objTypeProperty->getValue () == TypeAbs::HEXBINARY ) {
-
-      QLineEdit *lineEdit = new QLineEdit ();
-      lineEdit->setMaximumHeight ( 18 );
+      lineEdit->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+      this->createInputType ( lineEdit, xsdElement );
       //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
       // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
+      // TODO: Como saber cuando es hexbinary y cuando string para saber cuando colocar el color picker
       ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
     }
-  }*/
-/*
-  if ( paramsCount > 0 ) {
-
-    if ( ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue () == TypeAbs::INTEGER ) {
-
-      if ( xsdElement->getElementsList ().at ( 0 )->getElementType () == "xs:enumeration" ) {
-
-        QComboBox *comboBox = new QComboBox ( widget );
-        comboBox->setMaximumHeight ( 18 );
-        ( ( QGridLayout * ) widget->layout () )->addWidget ( comboBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-        this->createTypes ( comboBox, xsdElement->getElementsList () );
-
-      } else if ( xsdElement->getElementsList ().at ( 0 )->getElementType () == "xs:minInclusive" ) {
-
-        QSpinBox *spinBox = new QSpinBox ( widget );
-        spinBox->setMaximumHeight ( 18 );
-        ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-        this->createTypes ( spinBox, xsdElement->getElementsList () );
-      }
-    } else if ( ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue () == TypeAbs::STRING ) {
-
-      if ( xsdElement->getElementsList ().at ( 0 )->getElementType () == "xs:enumeration" ) {
-
-        QComboBox *comboBox = new QComboBox ( widget );
-        comboBox->setMaximumHeight ( 18 );
-        ( ( QGridLayout * ) widget->layout () )->addWidget ( comboBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-        this->createTypes ( comboBox, xsdElement->getElementsList () );
-      }
-    }
-  } else {
-
-    if ( ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue () == TypeAbs::STRING ) {
-
-      QLineEdit *lineEdit = new QLineEdit ();
-      lineEdit->setMaximumHeight ( 18 );
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-    } else if ( ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue () == TypeAbs::HEXBINARY ) {
-
-      QLineEdit *lineEdit = new QLineEdit ();
-      lineEdit->setMaximumHeight ( 18 );
-      //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
-      // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-    } else if ( ( ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" ) )->getValue () == TypeAbs::INTEGER ) {
-
-      QSpinBox *spinBox = new QSpinBox ( widget );
-      spinBox->setMaximumHeight ( 18 );
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-    }
-  }*/
+  }
 }
 
 void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElementList ) {
@@ -233,6 +412,44 @@ void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElem
 
       this->createParam ( widget, xsdElement );
       ( ( QGridLayout * ) widget->layout () )->setColumnStretch ( ( ( QGridLayout * ) widget->layout () )->columnCount (), 1 );
+    }
+  }
+}
+
+void XsdFormCreator::createStringInput ( QWidget *widget, XsdElement *xsdElement ) {
+
+  const int facetsCount = xsdElement->getFacets ().count ();
+  for ( int i = 0; i < facetsCount; i++ ) {
+
+    if ( xsdElement->isEnumerate () ) {
+
+      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+
+    } else {
+
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QSpinBox * ) widget )->
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
+
+        // TODO: No implementado aun
+        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
+
+        ( ( QLineEdit * ) widget )->setInputMask ( ( ( PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
+
+      }
     }
   }
 }
@@ -269,43 +486,7 @@ void XsdFormCreator::createTabs ( QList<XsdElement *> xsdElementList ) {
   }
 }
 
-void XsdFormCreator::createType ( QWidget *widget, XsdElement *xsdElement ) {
-
-  /*if ( xsdElement->getElementType () == "xs:string" ) {
-
-    QLineEdit *lineEdit = new QLineEdit ();
-    lineEdit->setMaximumHeight ( 14 );
-    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-  } else if ( xsdElement->getElementType () == "xs:integer" ) {
-
-    QSpinBox *spinBox = new QSpinBox ( widget );
-    spinBox->setMaximumHeight ( 18 );
-    ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-  } else if ( xsdElement->getElementType () == "xs:hexBinary" ) {
-
-    QLineEdit *lineEdit = new QLineEdit ();
-    lineEdit->setMaximumHeight ( 18 );
-    ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
-
-  } else if ( xsdElement->getElementType () == "xs:enumeration" ) {
-
-    ( ( QComboBox * ) widget )->addItem ( xsdElement->getElementValue () );
-  }*/
-}
-
-void XsdFormCreator::createTypes ( QWidget *widget, QList<XsdElement *> xsdElementList ) {
-
-  /*QListIterator<XsdElement *> typesIterator ( xsdElementList );
-  while ( typesIterator.hasNext () ) {
-
-    this->createType ( widget, typesIterator.next () );
-  }*/
-}
-
 QTabWidget *XsdFormCreator::getForm () const {
 
   return this->tabsDialog;
 }
-

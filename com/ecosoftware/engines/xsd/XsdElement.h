@@ -54,6 +54,7 @@ namespace Com {
             QList<PropertyAbs *> getProperties () const;
             PropertyAbs *getProperty ( QString property ) const;
             bool hasRestriction () const;
+            bool isEnumerate () const;
             bool isSimpleType () const;
             //void setAttribute ( XsdAttribute *value );
             //void setAttributes ( const QList<XsdAttribute *> &value );
@@ -61,6 +62,7 @@ namespace Com {
             void setElementLevel ( const Xsd::levelEnum &value );
             void setElement ( XsdElement *value );
             void setElementsList ( const QList<XsdElement *> &value );
+            void setEnumerate ( bool value );
             void setFacet ( FacetAbs *value );
             void setFacets ( const QList<FacetAbs *> &value );
             void setParent ( XsdElement *value );
@@ -74,6 +76,7 @@ namespace Com {
             Xsd::indicatorEnum elementIndicator; // DEFINITIVO // Representa la forma como seran creados, el orden y la cantidad de elementos que contendrá un elemento XML.
             QList<XsdElement *> elementsList;
             Xsd::levelEnum elementLevel; // DEFINITIVO
+            bool enumerate = false; // DEFINITIVO
             QList<FacetAbs *> facets; // Son las restricciones de los tipos de los elementos.
             XsdElement *parent; // DEFINITIVO
             QList<PropertyAbs *> properties; // DEFINITIVO

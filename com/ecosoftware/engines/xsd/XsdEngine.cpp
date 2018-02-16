@@ -677,8 +677,6 @@ void XsdEngine::load ( QString xsdFile ) {
 
 void XsdEngine::parse () {
 
-  //this->parseXsd ( this->doc->documentElement ().firstChildElement (), this->xsdFormElementModel, "settings" );
-  //this->parseXsd ( this->doc->documentElement ().firstChildElement (), "settings" );
   this->parse ( this->doc->documentElement ().firstChildElement (), this->xsdElementModel, "settings" );
 }
 
@@ -691,8 +689,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ALL:
 
-        // TODO: QUE HACER CON ESTE ELEMENTO QUE ADEMÁS ES UN INDICADOR
-        /*
+/*
 <all
   id = ID
   maxOccurs = (0 | 1) : 1
@@ -706,7 +703,6 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
           xsdElement->setElementIndicator ( Xsd::indicatorEnum::ALL );
           this->processElement ( docElement, xsdElement );
-          //this->processProperties ( docElement, xsdElement );
           if ( docElement.hasChildNodes () ) {
 
             this->parse ( docElement.firstChildElement (), xsdElement );
@@ -719,7 +715,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ALTERNATIVE:
 
-        /*
+/*
 <alternative
   id = ID
   test = an XPath expression
@@ -741,7 +737,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ANNOTATION:
 
-        /*
+/*
 <annotation
   id = ID
   {any attributes with non-schema namespace . . .}>
@@ -765,7 +761,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ANY:
 
-        /*
+/*
 <any
   id = ID
   maxOccurs = (nonNegativeInteger | unbounded)  : 1
@@ -790,7 +786,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ANYATTRIBUTE:
 
-        /*
+/*
 <anyAttribute
   id = ID
   namespace = ((##any | ##other) | List of (anyURI | (##targetNamespace | ##local)) )
@@ -813,7 +809,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::APPINFO:
 
-        /*
+/*
 <appinfo
   source = anyURI
   {any attributes with non-schema namespace . . .}>
@@ -832,7 +828,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ASSERT:
 
-        /*
+/*
 <assert
   id = ID
   test = an XPath expression
@@ -853,7 +849,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ATTRIBUTE:
 
-        /*
+/*
 <attribute
   default = string
   fixed = string
@@ -881,8 +877,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ATTRIBUTEGROUP:
 
-        // TODO: QUE HACER CON ESTE ELEMENTO QUE ADEMÁS ES UN INDICADOR
-        /*
+/*
 <attributeGroup
   id = ID
   name = NCName
@@ -904,8 +899,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::CHOICE:
 
-        // TODO: QUE HACER CON ESTE ELEMENTO QUE ADEMÁS ES UN INDICADOR
-        /*
+/*
 <choice
   id = ID
   maxOccurs = (nonNegativeInteger | unbounded)  : 1
@@ -933,7 +927,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::COMPLEXCONTENT:
 
-        /*
+/*
 <complexContent
   id = ID
   mixed = boolean
@@ -959,7 +953,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::COMPLEXTYPE:
 
-        /*
+/*
 <complexType
   abstract = boolean : false
   block = (#all | List of (extension | restriction))
@@ -972,10 +966,8 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   Content: (annotation?, (simpleContent | complexContent | (openContent?, (group | all | choice | sequence)?, ((attribute | attributeGroup)*, anyAttribute?), assert*)))
 </complexType>
 */
-        //qDebug () << "Es un elemento tipo xs:complextype";
         if ( nodeName.isEmpty () ^ this->isElementToFind ( docElement, nodeName ) ) {
 
-          //qDebug () << "Si cumple la condición";
           xsdElement->setSimpleType ( false );
           this->processProperties ( docElement, xsdElement );
           if ( docElement.hasChildNodes () ) {
@@ -984,23 +976,13 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
           }
         } else {
 
-          //qDebug () << "No cumple la condición";
           this->parse ( docElement.nextSiblingElement (), xsdElement, nodeName );
         }
-
-        // TODO: Las propiedades de un complextype afectan directamente al elemento
-        // así que hay que buscar una estrategia para asignar esos valores al
-        // elemento
-        /*this->processProperties ( docElement, xsdElement );
-        if ( docElement.hasChildNodes () ) {
-
-          this->parse ( docElement.firstChildElement (), xsdElement );
-        }*/
         break;
 
       case ElementAbs::elements::DEFAULTOPENCONTENT:
 
-        /*
+/*
 <defaultOpenContent
   appliesToEmpty = boolean : false
   id = ID
@@ -1021,7 +1003,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::DOCUMENTATION:
 
-        /*
+/*
 <documentation
   source = anyURI
   xml:lang = language
@@ -1041,7 +1023,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::ELEMENT:
 
-        /*
+/*
 <element
   abstract = boolean : false
   block = (#all | List of (extension | restriction | substitution))
@@ -1062,67 +1044,40 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   Content: (annotation?, ((simpleType | complexType)?, alternative*, (unique | key | keyref)*))
 </element>
 */
-        //qDebug () << "Es un elemento tipo xs:element";
         if ( docElement.hasAttribute ( "name" ) ) {
 
-          if ( docElement.attribute ( "name" ) == "showsplash" ) {
-
-            qDebug () << "Es el primer restriction";
-          }
-          //qDebug () << "Tiene la propiedad NAME";
-          //qDebug () << "El nombre del elemento xs:element es: " << docElement.attribute ( "name" );
           if ( this->isElementToFind ( docElement, nodeName ) ) {
 
-            //qDebug () << "Si es el elemento a buscar";
-            qDebug () << "El nombre del elemento xs:element es: " << docElement.attribute ( "name" );
             this->processElement ( docElement, xsdElement );
             if ( docElement.hasAttribute ( "type" ) ) {
 
-              //qDebug () << "Si tiene la propiedad TYPE";
-              //qDebug () << docElement.attribute ( "type" );
               if ( !TypeAbs::inEmun ( docElement.attribute ( "type" ) ) ) {
 
-                //qDebug () << "No está dentro del enumerado de tipos";
                 xsdElement->setSimpleType ( false );
                 this->parse ( this->doc->firstChildElement (), xsdElement, docElement.attribute ( "type" ) );
-              } else {
-
-                // TODO: Eliminar luego de realizar las pruebas
-                //qDebug () << "Si está dentro del enumerado de tipos";
               }
             }
             if ( docElement.hasChildNodes () ) {
 
-              qDebug () << "Si tiene hijos";
               this->parse ( docElement.firstChildElement (), xsdElement );
-            } else {
-
-              // TODO: Eliminar luego de realizar las pruebas
-              qDebug () << "No tiene hijos";
             }
           } else {
 
-            //qDebug () << "No es el elemento a buscar";
             this->parse ( docElement.nextSiblingElement (), xsdElement, nodeName );
           }
         } else if ( docElement.hasAttribute ( "ref" ) ) {
 
-          //qDebug () << "Tiene la propiedad REF";
-          //qDebug () << docElement.attribute ( "ref" );
           XsdElement *newXsdElement = new XsdElement ();
           xsdElement->setElement ( newXsdElement );
           newXsdElement->setParent ( xsdElement );
-          //qDebug () << "Asignó el padre al elemento";
           this->parse ( this->doc->documentElement ().firstChildElement (), newXsdElement, docElement.attribute ( "ref" ) );
-          //qDebug () << "Salió del parse interno";
-          //qDebug () << "Y pasa al siguiente elemento";
           this->parse ( docElement.nextSiblingElement (), xsdElement, nodeName );
         }
         break;
 
       case ElementAbs::elements::EXTENSION:
 
-        /*
+/*
 <extension
   base = QName
   id = ID
@@ -1150,7 +1105,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::FIELD:
 
-        /*
+/*
 <field
   id = ID
   xpath = a subset of XPath expression, see below
@@ -1171,8 +1126,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::GROUP:
 
-        // TODO: QUE HACER CON ESTE ELEMENTO QUE ADEMÁS ES UN INDICADOR
-        /*
+/*
 <group
   id = ID
   maxOccurs = (nonNegativeInteger | unbounded)  : 1
@@ -1196,7 +1150,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::IMPORT:
 
-        /*
+/*
 <import
   id = ID
   namespace = anyURI
@@ -1217,7 +1171,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::INCLUDE:
 
-        /*
+/*
 <include
   id = ID
   schemaLocation = anyURI
@@ -1237,7 +1191,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::KEY:
 
-        /*
+/*
 <key
   id = ID
   name = NCName
@@ -1258,7 +1212,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::KEYREF:
 
-        /*
+/*
 <keyref
   id = ID
   name = NCName
@@ -1280,7 +1234,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::LIST:
 
-        /*
+/*
 <list
   id = ID
   itemType = QName
@@ -1300,7 +1254,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::NOTATION:
 
-        /*
+/*
 <notation
   id = ID
   name = NCName
@@ -1322,7 +1276,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::OPENCONTENT:
 
-        /*
+/*
 <openContent
   id = ID
   mode = (none | interleave | suffix) : interleave
@@ -1342,7 +1296,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::OVERRIDE:
 
-        /*
+/*
 <override
   id = ID
   schemaLocation = anyURI
@@ -1362,7 +1316,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::REDEFINE:
 
-        /*
+/*
 <redefine
   id = ID
   schemaLocation = anyURI
@@ -1382,7 +1336,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::RESTRICTION:
 
-        /*
+/*
 <restriction
   base = QName
   id = ID
@@ -1395,44 +1349,22 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
           xsdElement->setRestriction ( true );
           this->processProperties ( docElement, xsdElement );
-          //this->parse ( docElement.firstChildElement (), xsdElement, nodeName );
           this->parseFacets ( docElement.firstChildElement (), xsdElement );
           this->parse ( docElement.nextSiblingElement (), xsdElement, nodeName );
-          //TODO: Creo que aquí hay que asignar el tipo del elemento nodo actual
           // TODO: Las propiedades de un extension afectan directamente al elemento
           // o al tipo del elemento así que hay que buscar una estrategia para
           // asignar esos valores al elemento o al tipo del elemento
-          //this->processProperties ( docElement, xsdElement );
-          /*if ( docElement.hasChildNodes () ) {
-
-            this->parse ( docElement.firstChildElement (), xsdElement );
-
-          } else {
-
-            // TODO: ¿Qué hacer en este caso que solo ajusta la base del tipo del elemento?
-          }*/
+          // TODO: Como procesar los elementos annotation y simpleType
 
         } else {
 
           this->parse ( docElement.nextSiblingElement (), xsdElement, nodeName );
         }
-        // TODO: Las propiedades de un extension afectan directamente al elemento
-        // o al tipo del elemento así que hay que buscar una estrategia para
-        // asignar esos valores al elemento o al tipo del elemento
-        /*this->processProperties ( docElement, xsdElement );
-        if ( docElement.hasChildNodes () ) {
-
-          this->parse ( docElement.firstChildElement (), xsdElement );
-
-        } else {
-
-          // TODO: ¿Qué hacer en este caso que solo ajusta la base del tipo del elemento?
-        }*/
         break;
 
       case ElementAbs::elements::SCHEMA:
 
-        /*
+/*
 <schema
   attributeFormDefault = (qualified | unqualified) : unqualified
   blockDefault = (#all | List of (extension | restriction | substitution))  : ''
@@ -1460,7 +1392,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::SELECTOR:
 
-        /*
+/*
 <selector
   id = ID
   xpath = a subset of XPath expression, see below
@@ -1481,8 +1413,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::SEQUENCE:
 
-        // TODO: QUE HACER CON ESTE ELEMENTO QUE ADEMÁS ES UN INDICADOR
-        /*
+/*
 <sequence
   id = ID
   maxOccurs = (nonNegativeInteger | unbounded)  : 1
@@ -1491,13 +1422,10 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   Content: (annotation?, (element | group | choice | sequence | any)*)
 </sequence>
 */
-        //qDebug () << "Es un elemento tipo xs:sequence";
         if ( nodeName.isEmpty () ^ this->isElementToFind ( docElement, nodeName ) ) {
 
-          //qDebug () << "Si cumple la condición";
           xsdElement->setElementIndicator ( Xsd::indicatorEnum::SEQUENCE );
           this->processElement ( docElement, xsdElement );
-          //this->processProperties ( docElement, xsdElement );
           if ( docElement.hasChildNodes () ) {
 
             this->parse ( docElement.firstChildElement (), xsdElement );
@@ -1510,7 +1438,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::SIMPLECONTENT:
 
-        /*
+/*
 <simpleContent
   id = ID
   {any attributes with non-schema namespace . . .}>
@@ -1529,7 +1457,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::SIMPLETYPE:
 
-        /*
+/*
 <simpleType
   final = (#all | List of (list | union | restriction | extension))
   id = ID
@@ -1556,7 +1484,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
       case ElementAbs::elements::UNION:
 
-        /*
+/*
 <union
   id = ID
   memberTypes = List of QName
@@ -1581,14 +1509,13 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
           // TODO: Si no tiene hijos, separar la lista de memberTypes por espacios
           // y buscar cada unos de los simpleType
-          xsdElement;
           this->parse ( this->doc->firstChildElement (), xsdElement );
         }
         break;
 
       case ElementAbs::elements::UNIQUE:
 
-        /*
+/*
 <unique
   id = ID
   name = NCName
@@ -1615,7 +1542,6 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
 
 void XsdEngine::parseFacets ( QDomElement docElement, XsdElement *xsdElement ) {
 
-  // TODO: ¿Qué hacer aquí?
   if ( !docElement.isNull () ) {
 
     switch ( FacetAbs::indexOfFacetsEnum ( docElement.nodeName () ) ) {
@@ -1628,8 +1554,8 @@ void XsdEngine::parseFacets ( QDomElement docElement, XsdElement *xsdElement ) {
 
       case FacetAbs::facets::ENUMERATION:
 
-        qDebug () << "Es un elemento tipo xs:enumeration con valor: " << docElement.attribute ( "value" );
         xsdElement->setFacet ( new EnumerationFacet ( docElement.attribute ( "value" ) ) );
+        xsdElement->setEnumerate ( true );
         break;
 
       case FacetAbs::facets::EXPLICITTIMEZONE:
@@ -1646,43 +1572,36 @@ void XsdEngine::parseFacets ( QDomElement docElement, XsdElement *xsdElement ) {
 
       case FacetAbs::facets::LENGTH:
 
-        qDebug () << "Es un elemento tipo xs:length";
         xsdElement->setFacet ( new LengthFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MAXEXCLUSIVE:
 
-        qDebug () << "Es un elemento tipo xs:maxexclusive";
         xsdElement->setFacet ( new MaxExclusiveFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MAXINCLUSIVE:
 
-        qDebug () << "Es un elemento tipo xs:maxinclusive";
         xsdElement->setFacet ( new MaxInclusiveFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MAXLENGTH:
 
-        qDebug () << "Es un elemento tipo xs:maxlength";
         xsdElement->setFacet ( new MaxLengthFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MINEXCLUSIVE:
 
-        qDebug () << "Es un elemento tipo xs:minexclusive";
         xsdElement->setFacet ( new MinExclusiveFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MININCLUSIVE:
 
-        qDebug () << "Es un elemento tipo xs:mininclusive";
         xsdElement->setFacet ( new MinInclusiveFacet ( docElement.nodeValue () ) );
         break;
 
       case FacetAbs::facets::MINLENGTH:
 
-        qDebug () << "Es un elemento tipo xs:minlength";
         xsdElement->setFacet ( new MinLengthFacet ( docElement.nodeValue () ) );
         break;
 
@@ -1712,10 +1631,6 @@ void XsdEngine::parseFacets ( QDomElement docElement, XsdElement *xsdElement ) {
 }
 
 void XsdEngine::processElement ( QDomElement docElement, XsdElement *xsdElement ) {
-
-  // TODO: Aquí hay un problema, pues el elemento puede tener tanto
-  // la propiedad name como type al mismo momento.
-  // ¿Qué hacer en ese caso?
 
   this->defineElementLevel ( xsdElement );
   this->processProperties ( docElement, xsdElement );
@@ -1928,7 +1843,6 @@ void XsdEngine::processProperties ( QDomElement docElement, XsdElement *xsdEleme
 
           case PropertyAbs::properties::TYPE:
 
-            qDebug () << this->currentElement;
             if ( this->currentElement == ElementAbs::RESTRICTION ) {
 
               XsdElement *xsdElementParent = xsdElement->getParent ();
@@ -2034,10 +1948,12 @@ QDomDocument *XsdEngine::toDomDocument () {
   return this->doc;
 }
 
-QWidget *XsdEngine::toForm () {
+QWidget *XsdEngine::toForm ( QWidget *parent ) {
 
   // TODO: Como devolver solamente el formulario.
-  return new QWidget ();
+  XsdFormCreator *xsdFormCreator = new XsdFormCreator ();
+  xsdFormCreator->createForm ( this->xsdElementModel, parent );
+  return xsdFormCreator->getForm ();
 }
 
 QDialog *XsdEngine::toFormDialog ( QWidget *parent ) {

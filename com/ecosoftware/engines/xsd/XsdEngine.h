@@ -187,7 +187,7 @@ namespace Com {
             void parse ( QDomElement docElement, XsdElement *xsdElement = nullptr, QString nodeName = "" );
             void registerTypes ();
             QDomDocument *toDomDocument ();
-            QWidget *toForm ();
+            QWidget *toForm ( QWidget *parent = 0 );
             QDialog *toFormDialog ( QWidget *parent = 0 );
             QString toString ();
             QString toXml ();

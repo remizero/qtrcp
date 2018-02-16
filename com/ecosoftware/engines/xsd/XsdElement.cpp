@@ -64,6 +64,11 @@ bool XsdElement::hasRestriction () const {
   return this->restriction;
 }
 
+bool XsdElement::isEnumerate () const {
+
+  return this->enumerate;
+}
+
 bool XsdElement::isSimpleType () const {
 
   return this->simpleType;
@@ -97,6 +102,11 @@ void XsdElement::setElement ( XsdElement *value ) {
 void XsdElement::setElementsList ( const QList<XsdElement *> &value ) {
 
   this->elementsList = value;
+}
+
+void XsdElement::setEnumerate ( bool value ) {
+
+  this->enumerate = value;
 }
 
 void XsdElement::setFacet ( FacetAbs *value ) {

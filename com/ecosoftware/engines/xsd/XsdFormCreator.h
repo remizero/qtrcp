@@ -52,19 +52,20 @@ namespace Com {
             XsdFormCreator ();
             // TODO: Como cargar el archivo config.xml y asignar los valores al formulario.
             void createForm ( XsdElement *xsdElement, QWidget *parent );
-            void createGroup ( QWidget *widget, XsdElement *xsdElement );
-            void createParam ( QWidget *widget, XsdElement *xsdElement );
-            void createParams ( QWidget *widget, QList<XsdElement *> xsdElementList );
-            void createTab ( XsdElement *tabElement );
-            void createTabs ( QList<XsdElement *> xsdElementList );
-            void createType ( QWidget *widget, XsdElement *xsdElement );
-            void createTypes ( QWidget *widget, QList<XsdElement *> xsdElementList );
             QTabWidget *getForm () const;
 
           private:
             QTabWidget *tabsDialog;
-            //QDialog *formDialog;
-            //QGridLayout *mainLayout;
+
+            void createGroup ( QWidget *widget, XsdElement *xsdElement );
+            void createHexbinaryInput ( QWidget *widget, XsdElement *xsdElement );
+            void createInputType ( QWidget *widget, XsdElement *xsdElement );
+            void createIntegerInput ( QWidget *widget, XsdElement *xsdElement );
+            void createParam ( QWidget *widget, XsdElement *xsdElement );
+            void createParams ( QWidget *widget, QList<XsdElement *> xsdElementList );
+            void createStringInput ( QWidget *widget, XsdElement *xsdElement );
+            void createTab ( XsdElement *tabElement );
+            void createTabs ( QList<XsdElement *> xsdElementList );
         };
       }
     }
