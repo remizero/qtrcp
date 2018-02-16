@@ -369,7 +369,7 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
     QComboBox *comboBox = new QComboBox ( widget );
     comboBox->setMaximumHeight ( 18 );
-    comboBox->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+    comboBox->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
     ( ( QGridLayout * ) widget->layout () )->addWidget ( comboBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
     this->createInputType ( comboBox, xsdElement );
 
@@ -380,7 +380,7 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
       QSpinBox *spinBox = new QSpinBox ( widget );
       spinBox->setMaximumHeight ( 18 );
-      spinBox->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+      spinBox->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
       this->createInputType ( spinBox, xsdElement );
       ( ( QGridLayout * ) widget->layout () )->addWidget ( spinBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
 
@@ -388,7 +388,7 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
       QLineEdit *lineEdit = new QLineEdit ();
       lineEdit->setMaximumHeight ( 18 );
-      lineEdit->setObjectName ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () + "Input" );
+      lineEdit->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
       this->createInputType ( lineEdit, xsdElement );
       //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
       // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
@@ -489,4 +489,14 @@ void XsdFormCreator::createTabs ( QList<XsdElement *> xsdElementList ) {
 QTabWidget *XsdFormCreator::getForm () const {
 
   return this->tabsDialog;
+}
+
+QString XsdFormCreator::getNameInput ( XsdElement *xsdElement ) {
+
+  QString nameInputAux = "";
+  if ( xsdElement->getParent () != nullptr ) {
+
+    nameInputAux = this->getNameInput ( xsdElement->getParent () );
+  }
+  return nameInputAux + ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ();
 }

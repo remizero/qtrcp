@@ -66,6 +66,7 @@ namespace Com {
             void createStringInput ( QWidget *widget, XsdElement *xsdElement );
             void createTab ( XsdElement *tabElement );
             void createTabs ( QList<XsdElement *> xsdElementList );
+            QString getNameInput ( XsdElement *xsdElement );
         };
       }
     }

@@ -1344,7 +1344,6 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   Content: (annotation?, (simpleType?, (minExclusive | minInclusive | maxExclusive | maxInclusive | totalDigits | fractionDigits | length | minLength | maxLength | enumeration | whiteSpace | pattern | assertion | explicitTimezone | {any with namespace: ##other})*))
 </restriction>
 */
-        qDebug () << "Es un elemento tipo xs:restriction";
         if ( nodeName.isEmpty () ^ this->isElementToFind ( docElement, nodeName ) ) {
 
           xsdElement->setRestriction ( true );
@@ -1466,7 +1465,6 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   Content: (annotation?, (restriction | list | union))
 </simpleType>
 */
-        qDebug () << "Es un elemento tipo xs:simpletype";
         if ( nodeName.isEmpty () ^ this->isElementToFind ( docElement, nodeName ) ) {
 
           xsdElement->setSimpleType ( true );
@@ -1566,7 +1564,7 @@ void XsdEngine::parseFacets ( QDomElement docElement, XsdElement *xsdElement ) {
 
       case FacetAbs::facets::FRACTIONDIGITS:
 
-        qDebug () << "Es un elemento tipo xs:explicitimezone";
+        qDebug () << "Es un elemento tipo xs:fractiondigits";
         xsdElement->setFacet ( new FractionDigitsFacet ( docElement.nodeValue () ) );
         break;
 
