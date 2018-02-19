@@ -8,6 +8,7 @@ XsdFormCreator::XsdFormCreator () {}
 void XsdFormCreator::createForm ( XsdElement *xsdElement, QWidget *parent ) {
 
   this->tabsDialog = new QTabWidget ( parent );
+  this->tabsDialog->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
   const int tabsCount = xsdElement->getElementsList ().count ();
   if ( tabsCount > 0 ) {
 
@@ -18,6 +19,7 @@ void XsdFormCreator::createForm ( XsdElement *xsdElement, QWidget *parent ) {
 void XsdFormCreator::createGroup ( QWidget *widget, XsdElement *xsdElement ) {
 
   QGroupBox *groupBoxElement = new QGroupBox ( widget );
+  groupBoxElement->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
   groupBoxElement->setTitle ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   QGridLayout *groupBoxElementLayout = new QGridLayout ( groupBoxElement );
   groupBoxElement->setLayout ( groupBoxElementLayout );
@@ -457,6 +459,7 @@ void XsdFormCreator::createStringInput ( QWidget *widget, XsdElement *xsdElement
 void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
 
   QWidget *tabWidget = new QWidget ( this->tabsDialog );
+  tabWidget->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
   tabWidget->setSizePolicy ( QSizePolicy::Expanding, QSizePolicy::Expanding );
   QVBoxLayout *tabWidgetLayout = new QVBoxLayout ( tabWidget );
   tabWidget->setLayout ( tabWidgetLayout );

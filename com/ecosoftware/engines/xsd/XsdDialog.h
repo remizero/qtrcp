@@ -14,6 +14,10 @@
 #include <QObject>
 #include <QVBoxLayout>
 
+#include <QDomDocument>
+#include <QDomElement>
+#include <QFile>
+
 namespace Com {
 
   namespace Ecosoftware {
@@ -27,6 +31,7 @@ namespace Com {
           public:
             XsdDialog ( XsdElement *xsdElement, QWidget *parent );
             QDialog *getFormDialog () const;
+            void cargarDatos ( QDomElement element, QObjectList objectList );
 
           private:
             QDialog *formDialog;
