@@ -41,7 +41,10 @@ XsdDialog::XsdDialog ( XsdElement *xsdElement, QWidget *parent ) {
   doc.setContent ( &file );
   file.close ();
 
-  this->cargarDatos ( doc.firstChildElement (), this->formDialog->children () );
+  //this->cargarDatos ( doc.firstChildElement (), this->formDialog->children () );
+  //this->cargarDatos ( doc.firstChildElement (), this->formDialog );
+  this->cargarDatos ( doc.firstChildElement (), xsdFormCreator->getForm () );
+
 }
 
 QDialog *XsdDialog::getFormDialog () const {
@@ -52,7 +55,6 @@ QDialog *XsdDialog::getFormDialog () const {
 void XsdDialog::cargarDatos ( QDomElement element, QObjectList objectList ) {
 
   if ( !element.isNull () ) {
-
 
     if ( element.nodeValue ().isEmpty () ) {
 
@@ -84,4 +86,67 @@ void XsdDialog::cargarDatos ( QDomElement element, QObjectList objectList ) {
 
     qDebug () << "El elemento es nulo";
   }
+}
+
+void XsdDialog::cargarDatos ( QDomElement element, QWidget *widget ) {
+
+  if ( !element.isNull () ) {
+
+    if ( widget->objectName ().compare ( this->getNameInput ( element ) + "Input" ) == 0 ) {
+
+      qDebug () << "Si lo conseguí ;p";
+      if ( element.nodeValue ().isEmpty () ) {
+
+        this->cargarDatos ( element.firstChildElement () );
+
+
+
+        this->cargarDatos ( element.nextSiblingElement () );
+
+      } else {
+
+        // TODO: Asignar el valor al input, pero como conseguir el tipo de dato
+        // para saber cual es el tipo de input a castear.
+      }
+
+    } else {
+
+      qDebug () << "No lo conseguí :(";
+    }
+  }
+
+
+
+  /*QList<QWidget*> widgets = widget->findChildren<QWidget*> ();
+  foreach ( QWidget *widgetChild, widgets ) {
+
+    if ( !widgetChild->objectName ().isEmpty () ) {
+
+      //if ( element. )
+      qDebug () << "Nombre del objeto: " << widgetChild->objectName ();
+      qDebug () << "Nombre del elemento: " << element.nodeName ();
+      //this->cargarDatos ( widgetChild );
+      if ( widgetChild->objectName ().compare ( this->getNameInput ( element ) + "Input" ) == 0 ) {
+
+        qDebug () << "Si lo conseguí ;p";
+        qDebug () << element.nodeName ();
+        qDebug () << this->getNameInput ( element );
+        this->cargarDatos ( element.firstChildElement (), widgetChild );
+        //break;
+      } else {
+
+        element = element.nextSiblingElement ();
+      }
+    }
+  }*/
+}
+
+QString XsdDialog::getNameInput ( QDomElement element ) {
+
+  QString nameInputAux = "";
+  if ( !element.parentNode ().isNull () ) {
+
+    nameInputAux = this->getNameInput ( element.parentNode ().toElement () );
+  }
+  return nameInputAux + element.nodeName ();
 }

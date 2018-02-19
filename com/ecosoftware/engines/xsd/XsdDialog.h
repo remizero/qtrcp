@@ -32,6 +32,8 @@ namespace Com {
             XsdDialog ( XsdElement *xsdElement, QWidget *parent );
             QDialog *getFormDialog () const;
             void cargarDatos ( QDomElement element, QObjectList objectList );
+            void cargarDatos ( QDomElement element, QWidget *widget );
+            QString getNameInput ( QDomElement element );
 
           private:
             QDialog *formDialog;
