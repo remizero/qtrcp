@@ -6,6 +6,7 @@ using namespace Com::Ecosoftware::Engines::Xsd;
 XsdDialog::XsdDialog ( XsdElement *xsdElement, QWidget *parent ) {
 
   this->formDialog = new QDialog ( parent );
+  this->formDialog->setObjectName ( "settingsDialog" );
   this->formDialog->setMinimumSize ( 800, 600 );
   this->formDialog->setWindowTitle ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   QVBoxLayout *formDialogLayout = new QVBoxLayout ( this->formDialog );
@@ -42,14 +43,51 @@ XsdDialog::XsdDialog ( XsdElement *xsdElement, QWidget *parent ) {
   file.close ();
 
   //this->cargarDatos ( doc.firstChildElement (), this->formDialog->children () );
-  this->cargarDatos ( doc.firstChildElement (), this->formDialog );
-  //this->cargarDatos ( doc.firstChildElement (), xsdFormCreator->getForm () );
+  //this->cargarDatos ( doc.firstChildElement (), this->formDialog );
+  this->cargarDatos ( doc.firstChildElement (), xsdFormCreator->getForm () );
 
 }
 
 QDialog *XsdDialog::getFormDialog () const {
 
   return this->formDialog;
+}
+
+QWidget *XsdDialog::getWidget ( QString objectName, QWidget *widget ) {
+
+  QWidget *objectReturn;
+  QObjectList childrenList = widget->children ();
+  const int childrensCount = childrenList.count ();
+  for ( int i = 0; i < childrensCount; i++ ) {
+
+    if ( childrenList.at ( i )->objectName ().compare ( objectName ) == 0  ) {
+
+      objectReturn = ( QWidget * ) childrenList.at ( i );
+      break;
+
+    } else {
+
+      objectReturn = this->getWidget ( objectName, widget );
+    }
+    //if ( !childrenList.at ( i )->objectName ().isEmpty () ) {
+
+      /*qDebug () << childrenList.at ( i )->objectName ();
+      QObjectList subChildrenList = childrenList.at ( i )->children ();
+      const int subChildrensCount = subChildrenList.count ();
+      if ( subChildrensCount > 0 ) {
+
+        qDebug () << "El hijo tiene hijos";
+        qDebug () << "entró al cargar datos ------------------------------------";
+        this->cargarDatos ( element, ( QWidget * ) childrenList.at ( i ) );
+        qDebug () << "Salió del cargar datos -----------------------------------";
+
+      } else {
+
+        qDebug () << "El hijo no tiene hijos";
+      }*/
+    //}
+  }
+  return objectReturn;
 }
 
 void XsdDialog::cargarDatos ( QDomElement element, QObject *object ) {
@@ -119,7 +157,35 @@ void XsdDialog::cargarDatos ( QDomElement element, QObjectList objectList ) {
 
 void XsdDialog::cargarDatos ( QDomElement element, QWidget *widget ) {
 
+  // TODO: El objetivo aquí es recorrer el QDomElement y cuando el nodo o elemento
+  // tenga un valor correcto, buscar el widget con el método getWidget
+  // TODO: Todavía falta como obtener el tipo de dato o tipo de widget para saber
+  // como asignar el valor que trae el elemento en el widget.
   if ( !element.isNull () ) {
+
+    qDebug () << "Nombre del elemento: " << this->getNameInput ( element );
+    qDebug () << "Valor del elemento:  " << element.text ();
+    qDebug () << "Tipo del elemento:   " << element.nodeType ();
+    if ( element.nodeValue ().isEmpty () ) {
+
+      if ( element.hasChildNodes () ) {
+
+        this->cargarDatos ( element.firstChildElement (), widget );
+
+      } else {
+
+
+      }
+    } else {
+
+      // TODO: Aquí buscar el objeto
+      //this->getWidget ( this->getNameInput ( element ), widget );
+      qDebug () << this->getNameInput ( element );
+    }
+    this->cargarDatos ( element.nextSiblingElement (), widget );
+  }
+
+  /*if ( !element.isNull () ) {
 
     qDebug () << "El elemento no es nulo";
     QObjectList childrenList = widget->children ();
@@ -151,7 +217,7 @@ void XsdDialog::cargarDatos ( QDomElement element, QWidget *widget ) {
   } else {
 
     qDebug () << "El elemento es nulo";
-  }
+  }*/
 
   /*if ( !element.isNull () ) {
 
