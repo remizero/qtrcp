@@ -42,14 +42,43 @@ XsdDialog::XsdDialog ( XsdElement *xsdElement, QWidget *parent ) {
   file.close ();
 
   //this->cargarDatos ( doc.firstChildElement (), this->formDialog->children () );
-  //this->cargarDatos ( doc.firstChildElement (), this->formDialog );
-  this->cargarDatos ( doc.firstChildElement (), xsdFormCreator->getForm () );
+  this->cargarDatos ( doc.firstChildElement (), this->formDialog );
+  //this->cargarDatos ( doc.firstChildElement (), xsdFormCreator->getForm () );
 
 }
 
 QDialog *XsdDialog::getFormDialog () const {
 
   return this->formDialog;
+}
+
+void XsdDialog::cargarDatos ( QDomElement element, QObject *object ) {
+
+  if ( !element.isNull () ) {
+
+    QObjectList childrenList = object->children ();
+    const int childrensCount = childrenList.count ();
+    for ( int i = 0; i < childrensCount; i++ ) {
+
+      if ( element.nodeValue ().isEmpty () ) {
+
+        if ( childrenList.at ( i )->objectName ().compare ( element.nodeName () + "Input" ) == 0 ) {
+
+          this->cargarDatos ( element.firstChildElement (), childrenList.at ( i ) );
+        }
+      } else {
+
+        qDebug () << "El valor del elemento es vacío";
+        // TODO: Asignar el valor al input, pero como conseguir el tipo de dato
+        // para saber cual es el tipo de input a castear, es decir, QLineEdit, QSpinBox, QComboBox
+        qDebug () << "Nombre del elemento " << element.nodeName () + "Input";
+        qDebug () << "Nombre del objeto   " << childrenList.at ( i )->objectName ();
+      }
+    }
+  } else {
+
+    qDebug () << "El elemento es nulo";
+  }
 }
 
 void XsdDialog::cargarDatos ( QDomElement element, QObjectList objectList ) {
@@ -92,16 +121,50 @@ void XsdDialog::cargarDatos ( QDomElement element, QWidget *widget ) {
 
   if ( !element.isNull () ) {
 
+    qDebug () << "El elemento no es nulo";
+    QObjectList childrenList = widget->children ();
+    const int childrensCount = childrenList.count ();
+    for ( int i = 0; i < childrensCount; i++ ) {
+
+      qDebug () << "Entró al for";
+      if ( element.nodeValue ().isEmpty () ) {
+
+        qDebug () << "El valor del elemento no es vacío";
+        qDebug () << "El nombre del objeto " << childrenList.at ( i )->objectName ();
+        qDebug () << "El nombre del elemento " << this->getNameInput ( element ) + "Input";
+        if ( childrenList.at ( i )->objectName ().compare ( this->getNameInput ( element ) + "Input" ) == 0 ) {
+
+          this->cargarDatos ( element.firstChildElement (), ( QWidget * ) childrenList.at ( i ) );
+        } else {
+
+          qDebug () << "El nombre del elemento no coincide con el nombre del objeto";
+        }
+      } else {
+
+        qDebug () << "El valor del elemento es vacío";
+        // TODO: Asignar el valor al input, pero como conseguir el tipo de dato
+        // para saber cual es el tipo de input a castear, es decir, QLineEdit, QSpinBox, QComboBox
+        qDebug () << "Nombre del elemento " << element.nodeName () + "Input";
+        qDebug () << "Nombre del objeto   " << childrenList.at ( i )->objectName ();
+      }
+    }
+  } else {
+
+    qDebug () << "El elemento es nulo";
+  }
+
+  /*if ( !element.isNull () ) {
+
     if ( widget->objectName ().compare ( this->getNameInput ( element ) + "Input" ) == 0 ) {
 
       qDebug () << "Si lo conseguí ;p";
       if ( element.nodeValue ().isEmpty () ) {
 
-        this->cargarDatos ( element.firstChildElement () );
+        //this->cargarDatos ( element.firstChildElement (),  );
 
 
 
-        this->cargarDatos ( element.nextSiblingElement () );
+        //this->cargarDatos ( element.nextSiblingElement () );
 
       } else {
 
@@ -113,7 +176,7 @@ void XsdDialog::cargarDatos ( QDomElement element, QWidget *widget ) {
 
       qDebug () << "No lo conseguí :(";
     }
-  }
+  }*/
 
 
 

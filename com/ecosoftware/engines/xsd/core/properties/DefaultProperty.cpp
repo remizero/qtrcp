@@ -7,7 +7,7 @@ DefaultProperty::DefaultProperty ( QString value ) {
   this->value = value;
 }
 
-DefaultProperty::DefaultProperty ( const DefaultProperty &defaultProperty ) {
+DefaultProperty::DefaultProperty ( const DefaultProperty &defaultProperty ) : PropertyAbs () {
 
   this->value = defaultProperty.getValue ();
 }
