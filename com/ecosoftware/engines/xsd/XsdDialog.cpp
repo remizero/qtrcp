@@ -94,11 +94,265 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
         qDebug () << "Nombre del elemento padre:  " << this->getNameInput ( element.parentNode ().toElement () );
         qDebug () << "Valor del elemento padre:  " << element.parentNode ().toElement ().text ();
         QWidget *inputWidget = this->getWidget ( this->getNameInput ( element.parentNode ().toElement () ) + "Input", widget );
-
+        XsdElement *xsdElementType = nullptr;
         if ( inputWidget != nullptr ) {
 
           qDebug () << "Nombre del inputWidget:  " << inputWidget->objectName ();
-          this->getXsdElement ( element.parentNode ().toElement () );
+          xsdElementType = this->getXsdElement ( element.parentNode ().toElement (), this->xsdElement );
+          if ( xsdElementType != nullptr ) {
+
+            TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
+            switch ( objTypeProperty->getValue () ) {
+
+              case TypeAbs::ANYURI:
+
+
+                break;
+
+              case TypeAbs::BASE64BINARY:
+
+
+                break;
+
+              case TypeAbs::BOOLEAN:
+
+
+                break;
+
+              case TypeAbs::BYTE:
+
+
+                break;
+
+              case TypeAbs::DATETIMESTAMP:
+
+
+                break;
+
+              case TypeAbs::DATETIME:
+
+
+                break;
+
+              case TypeAbs::DATE:
+
+
+                break;
+
+              case TypeAbs::DAYTIMEDURATION:
+
+
+                break;
+
+              case TypeAbs::DECIMAL:
+
+
+                break;
+
+              case TypeAbs::DOUBLE:
+
+
+                break;
+
+              case TypeAbs::DURATION:
+
+
+                break;
+
+              case TypeAbs::ENTITIES:
+
+
+                break;
+
+              case TypeAbs::ENTITY:
+
+
+                break;
+
+              case TypeAbs::FLOAT:
+
+
+                break;
+
+              case TypeAbs::GDAY:
+
+
+                break;
+
+              case TypeAbs::GMONTHDAY:
+
+
+                break;
+
+              case TypeAbs::GMONTH:
+
+
+                break;
+
+              case TypeAbs::GYEARMONTH:
+
+
+                break;
+
+              case TypeAbs::GYEAR:
+
+
+                break;
+
+              case TypeAbs::HEXBINARY: {
+
+                //this->createHexbinaryInput ( widget, xsdElement );
+                QLineEdit *lineEditHex = ( QLineEdit * ) inputWidget;
+                lineEditHex->setText ( element.parentNode ().toElement ().text () );
+                break;
+              }
+              case TypeAbs::IDREFS:
+
+
+
+                break;
+
+              case TypeAbs::IDREF:
+
+
+                break;
+
+              case TypeAbs::ID:
+
+
+                break;
+
+              case TypeAbs::INTEGER: {
+
+                //this->createIntegerInput ( widget, xsdElement );
+                QSpinBox *spinBoxInteger = ( QSpinBox * ) inputWidget;
+                spinBoxInteger->setValue ( element.parentNode ().toElement ().text ().toInt () );
+                break;
+              }
+              case TypeAbs::INT: {
+
+                //this->createIntegerInput ( widget, xsdElement );
+                QSpinBox *spinBox = ( QSpinBox * ) inputWidget;
+                spinBox->setValue ( element.parentNode ().toElement ().text ().toInt () );
+                break;
+              }
+              case TypeAbs::LANGUAGE:
+
+
+                break;
+
+              case TypeAbs::LONG:
+
+
+                break;
+
+              case TypeAbs::NAME:
+
+
+                break;
+
+              case TypeAbs::NCNAME:
+
+
+                break;
+
+              case TypeAbs::NEGATIVEINTEGER:
+
+
+                break;
+
+              case TypeAbs::NMTOKENS:
+
+
+                break;
+
+              case TypeAbs::NMTOKEN:
+
+
+                break;
+
+              case TypeAbs::NONNEGATIVEINTEGER:
+
+
+                break;
+
+              case TypeAbs::NONPOSITIVEINTEGER:
+
+
+                break;
+
+              case TypeAbs::NORMALIZEDSTRING:
+
+
+                break;
+
+              case TypeAbs::NOTATION:
+
+
+                break;
+
+              case TypeAbs::POSITIVEINTEGER:
+
+
+                break;
+
+              case TypeAbs::QNAME:
+
+
+                break;
+
+              case TypeAbs::SHORT:
+
+
+                break;
+
+              case TypeAbs::STRING: {
+
+                //this->createStringInput ( widget, xsdElement );
+                QLineEdit *lineEdit = ( QLineEdit * ) inputWidget;
+                lineEdit->setText ( element.parentNode ().toElement ().text () );
+                break;
+              }
+              case TypeAbs::TIME:
+
+
+                break;
+
+              case TypeAbs::TOKEN:
+
+
+                break;
+
+              case TypeAbs::UNSIGNEDBYTE:
+
+
+                break;
+
+              case TypeAbs::UNSIGNEDINT:
+
+
+                break;
+
+              case TypeAbs::UNSIGNEDLONG:
+
+
+                break;
+
+              case TypeAbs::UNSIGNEDSHORT:
+
+
+                break;
+
+              case TypeAbs::YEARMONTHDURATION:
+
+
+                break;
+
+              default:
+
+                break;
+            }
+          }
 
         } else {
 
@@ -135,25 +389,25 @@ QString XsdDialog::getNameInput ( QDomElement element ) {
 
 XsdElement *XsdDialog::getXsdElement ( QDomElement element, XsdElement *xsdElement ) const {
 
-  //element.nodeName ();
-  //this->xsdElement->getProperty ( "NameProperty" );
-
+  XsdElement *xsdElementReturn = nullptr;
   if ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ().compare ( element.nodeName () ) == 0 ) {
 
-    // TODO: Aquí retorno el xsdElement
-    xsdElement
+    xsdElementReturn = xsdElement;
 
   } else {
 
-    if ( xsdElement->getElementsList ().count () > 0 ) {
+    const int xsdElementCount = xsdElement->getElementsList ().count ();
+    if ( xsdElementCount > 0 ) {
 
-      // TODO: Aquí busco desde el primer hijo del xsdElement
-      this->getXsdElement ( element, xsdElement->getElementsList ().at ( 0 ) );
+      for ( int i = 0; i < xsdElementCount; i++ ) {
 
-    } else {
+        xsdElementReturn = this->getXsdElement ( element, xsdElement->getElementsList ().at ( i ) );
+        if ( xsdElementReturn != nullptr ) {
 
-      // TODO: Aquí busco desde el siguiente xsdElement
-      //this->getXsdElement ( element, xsdElement-> );
+          break;
+        }
+      }
     }
   }
+  return xsdElementReturn;
 }

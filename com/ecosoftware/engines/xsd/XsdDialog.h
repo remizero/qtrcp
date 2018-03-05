@@ -4,6 +4,8 @@
 // Librerías Internas
 #include "xsd_global.h"
 #include "XsdFormCreator.h"
+#include "core/TypeAbs.h"
+#include "XsdElement.h"
 
 // Librerías Externas
 
@@ -18,6 +20,8 @@
 #include <QDomElement>
 #include <QDomNode>
 #include <QFile>
+#include <QLineEdit>
+#include <QSpinBox>
 
 namespace Com {
 
