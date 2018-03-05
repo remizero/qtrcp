@@ -16,6 +16,7 @@
 
 #include <QDomDocument>
 #include <QDomElement>
+#include <QDomNode>
 #include <QFile>
 
 namespace Com {
@@ -32,14 +33,14 @@ namespace Com {
             XsdDialog ( XsdElement *xsdElement, QWidget *parent );
             QDialog *getFormDialog () const;
             QWidget *getWidget ( QString objectName, QWidget *widget );
-            void cargarDatos ( QDomElement element, QObject *object );
-            void cargarDatos ( QDomElement element, QObjectList objectList );
-            void cargarDatos ( QDomElement element, QWidget *widget );
+            void cargarDatos ( QDomNode element, QWidget *widget );
             QString getNameInput ( QDomElement element );
+            XsdElement *getXsdElement ( QDomElement element , XsdElement *xsdElement ) const;
 
           private:
             QDialog *formDialog;
             QGridLayout *mainLayout;
+            XsdElement *xsdElement;
         };
       }
     }
