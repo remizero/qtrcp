@@ -43,7 +43,6 @@ XsdDialog::XsdDialog ( XsdElement *xsdElement, QWidget *parent ) {
   doc.setContent ( &file );
   file.close ();
   this->cargarDatos ( doc.firstChild (), xsdFormCreator->getForm () );
-
 }
 
 QDialog *XsdDialog::getFormDialog () const {
@@ -89,16 +88,12 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
 
       if ( !element.parentNode ().toElement ().isNull () && ( element.nodeType () == QDomNode::TextNode ) ) {
 
-        qDebug () << "El padre no es un elemento nulo #######################################";
-        qDebug () << "Nombre del elemento padre:  " << element.parentNode ().toElement ().nodeName ();
-        qDebug () << "Nombre del elemento padre:  " << this->getNameInput ( element.parentNode ().toElement () );
-        qDebug () << "Valor del elemento padre:  " << element.parentNode ().toElement ().text ();
-        QWidget *inputWidget = this->getWidget ( this->getNameInput ( element.parentNode ().toElement () ) + "Input", widget );
+        QDomElement nodeElement = element.parentNode ().toElement ();
+        QWidget *inputWidget = this->getWidget ( this->getNameInput ( nodeElement ) + "Input", widget );
         XsdElement *xsdElementType = nullptr;
         if ( inputWidget != nullptr ) {
 
-          qDebug () << "Nombre del inputWidget:  " << inputWidget->objectName ();
-          xsdElementType = this->getXsdElement ( element.parentNode ().toElement (), this->xsdElement );
+          xsdElementType = this->getXsdElement ( nodeElement, this->xsdElement );
           if ( xsdElementType != nullptr ) {
 
             TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
@@ -201,9 +196,8 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
 
               case TypeAbs::HEXBINARY: {
 
-                //this->createHexbinaryInput ( widget, xsdElement );
                 QLineEdit *lineEditHex = ( QLineEdit * ) inputWidget;
-                lineEditHex->setText ( element.parentNode ().toElement ().text () );
+                lineEditHex->setText ( nodeElement.text () );
                 break;
               }
               case TypeAbs::IDREFS:
@@ -224,16 +218,30 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
 
               case TypeAbs::INTEGER: {
 
-                //this->createIntegerInput ( widget, xsdElement );
-                QSpinBox *spinBoxInteger = ( QSpinBox * ) inputWidget;
-                spinBoxInteger->setValue ( element.parentNode ().toElement ().text ().toInt () );
+                if ( xsdElementType->isEnumerate () ) {
+
+                  QComboBox *comboBoxInteger = ( QComboBox * ) inputWidget;
+                  comboBoxInteger->setCurrentText ( nodeElement.text () );
+
+                } else {
+
+                  QSpinBox *spinBoxInteger = ( QSpinBox * ) inputWidget;
+                  spinBoxInteger->setValue ( nodeElement.text ().toInt () );
+                }
                 break;
               }
               case TypeAbs::INT: {
 
-                //this->createIntegerInput ( widget, xsdElement );
-                QSpinBox *spinBox = ( QSpinBox * ) inputWidget;
-                spinBox->setValue ( element.parentNode ().toElement ().text ().toInt () );
+                if ( xsdElementType->isEnumerate () ) {
+
+                  QComboBox *comboBoxInt = ( QComboBox * ) inputWidget;
+                  comboBoxInt->setCurrentText ( nodeElement.text () );
+
+                } else {
+
+                  QSpinBox *spinBox = ( QSpinBox * ) inputWidget;
+                  spinBox->setValue ( nodeElement.text ().toInt () );
+                }
                 break;
               }
               case TypeAbs::LANGUAGE:
@@ -308,9 +316,16 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
 
               case TypeAbs::STRING: {
 
-                //this->createStringInput ( widget, xsdElement );
-                QLineEdit *lineEdit = ( QLineEdit * ) inputWidget;
-                lineEdit->setText ( element.parentNode ().toElement ().text () );
+                if ( xsdElementType->isEnumerate () ) {
+
+                  QComboBox *comboBox = ( QComboBox * ) inputWidget;
+                  comboBox->setCurrentText ( nodeElement.text () );
+
+                } else {
+
+                  QLineEdit *lineEdit = ( QLineEdit * ) inputWidget;
+                  lineEdit->setText ( nodeElement.text () );
+                }
                 break;
               }
               case TypeAbs::TIME:
@@ -353,25 +368,8 @@ void XsdDialog::cargarDatos ( QDomNode element, QWidget *widget ) {
                 break;
             }
           }
-
-        } else {
-
-
         }
-
-
-
-        //inputWidget
-
-      } else {
-
-        qDebug () << "El padre es un elemento nulo ##########################################";
       }
-
-      // TODO: Aquí buscar el objeto
-      //this->getWidget ( this->getNameInput ( element ), widget );
-      //qDebug () << this->getNameInput ( element );
-      //qDebug () << "No está vacío";
     }
     this->cargarDatos ( element.nextSibling (), widget );
   }
@@ -387,7 +385,7 @@ QString XsdDialog::getNameInput ( QDomElement element ) {
   return nameInputAux + element.nodeName ();
 }
 
-XsdElement *XsdDialog::getXsdElement ( QDomElement element, XsdElement *xsdElement ) const {
+XsdElement *XsdDialog::getXsdElement ( QDomElement element, XsdElement *xsdElement ) {
 
   XsdElement *xsdElementReturn = nullptr;
   if ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ().compare ( element.nodeName () ) == 0 ) {

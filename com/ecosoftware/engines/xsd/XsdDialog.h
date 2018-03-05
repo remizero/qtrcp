@@ -3,9 +3,12 @@
 
 // Librerías Internas
 #include "xsd_global.h"
-#include "XsdFormCreator.h"
-#include "core/TypeAbs.h"
 #include "XsdElement.h"
+#include "XsdFormCreator.h"
+#include "core/PropertyAbs.h"
+#include "core/TypeAbs.h"
+#include "core/properties/NameProperty.h"
+#include "core/properties/TypeProperty.h"
 
 // Librerías Externas
 
@@ -16,6 +19,7 @@
 #include <QObject>
 #include <QVBoxLayout>
 
+#include <QComboBox>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QDomNode>
@@ -39,7 +43,7 @@ namespace Com {
             QWidget *getWidget ( QString objectName, QWidget *widget );
             void cargarDatos ( QDomNode element, QWidget *widget );
             QString getNameInput ( QDomElement element );
-            XsdElement *getXsdElement ( QDomElement element , XsdElement *xsdElement ) const;
+            XsdElement *getXsdElement ( QDomElement element , XsdElement *xsdElement );
 
           private:
             QDialog *formDialog;
