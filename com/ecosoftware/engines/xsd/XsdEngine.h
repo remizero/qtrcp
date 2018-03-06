@@ -3,7 +3,6 @@
 
 // Librerías Internas
 #include "xsd_global.h"
-#include "XsdDialog.h"
 #include "XsdEngine.h"
 #include "XsdElement.h"
 #include "core/ElementAbs.h"
@@ -187,8 +186,6 @@ namespace Com {
             void parse ( QDomElement docElement, XsdElement *xsdElement = nullptr, QString nodeName = "" );
             void registerTypes ();
             QDomDocument *toDomDocument ();
-            QWidget *toForm ( QWidget *parent = 0 );
-            QDialog *toFormDialog ( QWidget *parent = 0 );
             QString toString ();
             QString toXml ();
             void listarElementos ( XsdElement *XsdElement = nullptr );

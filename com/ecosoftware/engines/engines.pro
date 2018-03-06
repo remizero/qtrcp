@@ -1,8 +1,8 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    xsdengine \
-    xsd
+    xsd \
+    xsdform
 
 CONFIG += ordered
 

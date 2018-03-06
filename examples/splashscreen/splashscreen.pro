@@ -41,7 +41,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsplashscreen \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdengine \
+  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
@@ -53,7 +53,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsplashscreen \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdengine \
+  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
@@ -65,7 +65,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsplashscreen \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdengine \
+  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
@@ -78,7 +78,7 @@ INCLUDEPATH += \
   $$PWD/../../com/ecosoftware/splashscreen \
   $$PWD/../../com/ecosoftware/resources \
   $$PWD/../../com/ecosoftware/engines/xsd \
-  $$PWD/../../com/ecosoftware/engines/xsdengine \
+  $$PWD/../../com/ecosoftware/engines/xsdform \
   $$PWD/../../com/ecosoftware/window/components/actions \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \
@@ -91,7 +91,7 @@ DEPENDPATH += \
   $$PWD/../../com/ecosoftware/splashscreen \
   $$PWD/../../com/ecosoftware/resources \
   $$PWD/../../com/ecosoftware/engines/xsd \
-  $$PWD/../../com/ecosoftware/engines/xsdengine \
+  $$PWD/../../com/ecosoftware/engines/xsdform \
   $$PWD/../../com/ecosoftware/window/components/actions \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \

@@ -6,10 +6,7 @@
 #include "ActionAbs.h"
 
 // Librerías Externas
-//#include "XsdFormCreator.h"
-//#include "XsdFormEngine.h"
-#include "XsdEngine.h"
-#include "Element.h"
+#include "XsdDialog.h"
 
 // Librerías Qt
 #include <QMainWindow>

@@ -1946,22 +1946,6 @@ QDomDocument *XsdEngine::toDomDocument () {
   return this->doc;
 }
 
-QWidget *XsdEngine::toForm ( QWidget *parent ) {
-
-  // TODO: Como devolver solamente el formulario.
-  XsdFormCreator *xsdFormCreator = new XsdFormCreator ();
-  xsdFormCreator->createForm ( this->xsdElementModel, parent );
-  return xsdFormCreator->getForm ();
-}
-
-QDialog *XsdEngine::toFormDialog ( QWidget *parent ) {
-
-  // TODO: Como devolver la ventana de dialogo generada.
-  XsdDialog *xsdDialog = new XsdDialog ( this->xsdElementModel, parent );
-  xsdDialog->getFormDialog ()->show ();
-  return xsdDialog->getFormDialog ();
-}
-
 QString XsdEngine::toString () {
 
   return this->doc->toString ();

@@ -162,9 +162,7 @@ SOURCES += \
   core/types/UnsignedShortType.cpp \
   core/types/YearMonthDurationType.cpp \
     core/properties/DefaultProperty.cpp \
-    XsdElement.cpp \
-    XsdFormCreator.cpp \
-    XsdDialog.cpp
+    XsdElement.cpp
 
 HEADERS += \
   xsd_global.h \
@@ -314,29 +312,32 @@ HEADERS += \
   core/types/YearMonthDurationType.h \
     core/properties/DefaultProperty.h \
     XsdAttribute.h \
-    XsdElement.h \
-    XsdFormCreator.h \
-    XsdDialog.h
+    XsdElement.h
 
 DESTDIR = ../
 
 UI_DIR = ../../../../ui
 
 win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils
 else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils
 else:unix: LIBS += \
+  -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils
 
 INCLUDEPATH += \
+  $$PWD/../../app \
   $$PWD/../../resources \
   $$PWD/../../utils
 
 DEPENDPATH += \
+  $$PWD/../../app \
   $$PWD/../../resources \
   $$PWD/../../utils
 

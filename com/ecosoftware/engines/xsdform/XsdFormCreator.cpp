@@ -1,11 +1,11 @@
 #include "XsdFormCreator.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace Com::Ecosoftware::Engines::XsdForm;
 
 XsdFormCreator::XsdFormCreator () {}
 
-void XsdFormCreator::createForm ( XsdElement *xsdElement, QWidget *parent ) {
+void XsdFormCreator::createForm ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement, QWidget *parent ) {
 
   this->tabsDialog = new QTabWidget ( parent );
   this->tabsDialog->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
@@ -16,11 +16,11 @@ void XsdFormCreator::createForm ( XsdElement *xsdElement, QWidget *parent ) {
   }
 }
 
-void XsdFormCreator::createGroup ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createGroup ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   QGroupBox *groupBoxElement = new QGroupBox ( widget );
   groupBoxElement->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
-  groupBoxElement->setTitle ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
+  groupBoxElement->setTitle ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   QGridLayout *groupBoxElementLayout = new QGridLayout ( groupBoxElement );
   groupBoxElement->setLayout ( groupBoxElementLayout );
   ( ( QGridLayout * ) widget->layout () )->addWidget ( groupBoxElement, ( ( QGridLayout * ) widget->layout () )->rowCount (), 0, 6, 6, Qt::AlignBaseline );
@@ -34,14 +34,14 @@ void XsdFormCreator::createGroup ( QWidget *widget, XsdElement *xsdElement ) {
   }
 }
 
-void XsdFormCreator::createHexbinaryInput ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
 
     if ( xsdElement->isEnumerate () ) {
 
-      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+      ( ( QComboBox * ) widget )->addItem ( ( ( Xsd::EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
 
     } else {
 
@@ -52,264 +52,264 @@ void XsdFormCreator::createHexbinaryInput ( QWidget *widget, XsdElement *xsdElem
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
 
         // TODO: No implementado aun
-        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setInputMask ( ( ( PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
+        ( ( QLineEdit * ) widget )->setInputMask ( ( ( Xsd::PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
 
       }
     }
   }
 }
 
-void XsdFormCreator::createInputType ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createInputType ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   // https://www.softzone.es/2015/11/26/como-aumentar-la-velocidad-de-arranque-de-windows-10-con-esta-configuracion/
   // https://www.softzone.es/2017/08/20/como-evitar-que-nos-cambien-la-imagen-de-usuario-en-windows-10/
-  TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
+  Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
   switch ( objTypeProperty->getValue () ) {
 
-    case TypeAbs::ANYURI:
+    case Xsd::TypeAbs::ANYURI:
 
 
       break;
 
-    case TypeAbs::BASE64BINARY:
+    case Xsd::TypeAbs::BASE64BINARY:
 
 
       break;
 
-    case TypeAbs::BOOLEAN:
+    case Xsd::TypeAbs::BOOLEAN:
 
 
       break;
 
-    case TypeAbs::BYTE:
+    case Xsd::TypeAbs::BYTE:
 
 
       break;
 
-    case TypeAbs::DATETIMESTAMP:
+    case Xsd::TypeAbs::DATETIMESTAMP:
 
 
       break;
 
-    case TypeAbs::DATETIME:
+    case Xsd::TypeAbs::DATETIME:
 
 
       break;
 
-    case TypeAbs::DATE:
+    case Xsd::TypeAbs::DATE:
 
 
       break;
 
-    case TypeAbs::DAYTIMEDURATION:
+    case Xsd::TypeAbs::DAYTIMEDURATION:
 
 
       break;
 
-    case TypeAbs::DECIMAL:
+    case Xsd::TypeAbs::DECIMAL:
 
 
       break;
 
-    case TypeAbs::DOUBLE:
+    case Xsd::TypeAbs::DOUBLE:
 
 
       break;
 
-    case TypeAbs::DURATION:
+    case Xsd::TypeAbs::DURATION:
 
 
       break;
 
-    case TypeAbs::ENTITIES:
+    case Xsd::TypeAbs::ENTITIES:
 
 
       break;
 
-    case TypeAbs::ENTITY:
+    case Xsd::TypeAbs::ENTITY:
 
 
       break;
 
-    case TypeAbs::FLOAT:
+    case Xsd::TypeAbs::FLOAT:
 
 
       break;
 
-    case TypeAbs::GDAY:
+    case Xsd::TypeAbs::GDAY:
 
 
       break;
 
-    case TypeAbs::GMONTHDAY:
+    case Xsd::TypeAbs::GMONTHDAY:
 
 
       break;
 
-    case TypeAbs::GMONTH:
+    case Xsd::TypeAbs::GMONTH:
 
 
       break;
 
-    case TypeAbs::GYEARMONTH:
+    case Xsd::TypeAbs::GYEARMONTH:
 
 
       break;
 
-    case TypeAbs::GYEAR:
+    case Xsd::TypeAbs::GYEAR:
 
 
       break;
 
-    case TypeAbs::HEXBINARY:
+    case Xsd::TypeAbs::HEXBINARY:
 
       this->createHexbinaryInput ( widget, xsdElement );
       break;
 
-    case TypeAbs::IDREFS:
+    case Xsd::TypeAbs::IDREFS:
 
 
       break;
 
-    case TypeAbs::IDREF:
+    case Xsd::TypeAbs::IDREF:
 
 
       break;
 
-    case TypeAbs::ID:
+    case Xsd::TypeAbs::ID:
 
 
       break;
 
-    case TypeAbs::INTEGER:
+    case Xsd::TypeAbs::INTEGER:
 
       this->createIntegerInput ( widget, xsdElement );
       break;
 
-    case TypeAbs::INT:
+    case Xsd::TypeAbs::INT:
 
       this->createIntegerInput ( widget, xsdElement );
       break;
 
-    case TypeAbs::LANGUAGE:
+    case Xsd::TypeAbs::LANGUAGE:
 
 
       break;
 
-    case TypeAbs::LONG:
+    case Xsd::TypeAbs::LONG:
 
 
       break;
 
-    case TypeAbs::NAME:
+    case Xsd::TypeAbs::NAME:
 
 
       break;
 
-    case TypeAbs::NCNAME:
+    case Xsd::TypeAbs::NCNAME:
 
 
       break;
 
-    case TypeAbs::NEGATIVEINTEGER:
+    case Xsd::TypeAbs::NEGATIVEINTEGER:
 
 
       break;
 
-    case TypeAbs::NMTOKENS:
+    case Xsd::TypeAbs::NMTOKENS:
 
 
       break;
 
-    case TypeAbs::NMTOKEN:
+    case Xsd::TypeAbs::NMTOKEN:
 
 
       break;
 
-    case TypeAbs::NONNEGATIVEINTEGER:
+    case Xsd::TypeAbs::NONNEGATIVEINTEGER:
 
 
       break;
 
-    case TypeAbs::NONPOSITIVEINTEGER:
+    case Xsd::TypeAbs::NONPOSITIVEINTEGER:
 
 
       break;
 
-    case TypeAbs::NORMALIZEDSTRING:
+    case Xsd::TypeAbs::NORMALIZEDSTRING:
 
 
       break;
 
-    case TypeAbs::NOTATION:
+    case Xsd::TypeAbs::NOTATION:
 
 
       break;
 
-    case TypeAbs::POSITIVEINTEGER:
+    case Xsd::TypeAbs::POSITIVEINTEGER:
 
 
       break;
 
-    case TypeAbs::QNAME:
+    case Xsd::TypeAbs::QNAME:
 
 
       break;
 
-    case TypeAbs::SHORT:
+    case Xsd::TypeAbs::SHORT:
 
 
       break;
 
-    case TypeAbs::STRING:
+    case Xsd::TypeAbs::STRING:
 
       this->createStringInput ( widget, xsdElement );
       break;
 
-    case TypeAbs::TIME:
+    case Xsd::TypeAbs::TIME:
 
 
       break;
 
-    case TypeAbs::TOKEN:
+    case Xsd::TypeAbs::TOKEN:
 
 
       break;
 
-    case TypeAbs::UNSIGNEDBYTE:
+    case Xsd::TypeAbs::UNSIGNEDBYTE:
 
 
       break;
 
-    case TypeAbs::UNSIGNEDINT:
+    case Xsd::TypeAbs::UNSIGNEDINT:
 
 
       break;
 
-    case TypeAbs::UNSIGNEDLONG:
+    case Xsd::TypeAbs::UNSIGNEDLONG:
 
 
       break;
 
-    case TypeAbs::UNSIGNEDSHORT:
+    case Xsd::TypeAbs::UNSIGNEDSHORT:
 
 
       break;
 
-    case TypeAbs::YEARMONTHDURATION:
+    case Xsd::TypeAbs::YEARMONTHDURATION:
 
 
       break;
@@ -320,14 +320,14 @@ void XsdFormCreator::createInputType ( QWidget *widget, XsdElement *xsdElement )
   }
 }
 
-void XsdFormCreator::createIntegerInput ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createIntegerInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
 
     if ( xsdElement->isEnumerate () ) {
 
-      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+      ( ( QComboBox * ) widget )->addItem ( ( ( Xsd::EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
 
     } else {
 
@@ -338,19 +338,19 @@ void XsdFormCreator::createIntegerInput ( QWidget *widget, XsdElement *xsdElemen
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
 
-        ( ( QSpinBox * ) widget )->setMaximum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () - 1 );
+        ( ( QSpinBox * ) widget )->setMaximum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () - 1 );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxInclusiveFacet" ) == 0 ) {
 
-        ( ( QSpinBox * ) widget )->setMaximum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        ( ( QSpinBox * ) widget )->setMaximum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
 
-        ( ( QSpinBox * ) widget )->setMinimum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () + 1 );
+        ( ( QSpinBox * ) widget )->setMinimum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () + 1 );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
 
-        ( ( QSpinBox * ) widget )->setMinimum ( ( ( MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt ()  );
+        ( ( QSpinBox * ) widget )->setMinimum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt ()  );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
 
@@ -361,10 +361,10 @@ void XsdFormCreator::createIntegerInput ( QWidget *widget, XsdElement *xsdElemen
   }
 }
 
-void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createParam ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   QLabel *paramLabel = new QLabel ( widget );
-  paramLabel->setText ( ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
+  paramLabel->setText ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   ( ( QGridLayout * ) widget->layout () )->addWidget ( paramLabel, ( ( QGridLayout * ) widget->layout () )->rowCount (), 0, 1, 1, Qt::AlignRight );
 
   if ( xsdElement->isEnumerate () ) {
@@ -377,8 +377,8 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
 
   } else {
 
-    TypeProperty *objTypeProperty = ( TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
-    if ( objTypeProperty->getValue () == TypeAbs::INTEGER ) {
+    Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
+    if ( objTypeProperty->getValue () == Xsd::TypeAbs::INTEGER ) {
 
       QSpinBox *spinBox = new QSpinBox ( widget );
       spinBox->setMaximumHeight ( 18 );
@@ -400,13 +400,13 @@ void XsdFormCreator::createParam ( QWidget *widget, XsdElement *xsdElement ) {
   }
 }
 
-void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElementList ) {
+void XsdFormCreator::createParams ( QWidget *widget, QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList ) {
 
   const int paramsCount = xsdElementList.count ();
   for ( int i = 0; i < paramsCount; i++ ) {
 
-    XsdElement *xsdElement = xsdElementList.at ( i );
-    if ( xsdElement->getElementLevel () == Xsd::GROUPFORM ) {
+    Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement = xsdElementList.at ( i );
+    if ( xsdElement->getElementLevel () == Xsd::Xsd::GROUPFORM ) {
 
       this->createGroup ( widget, xsdElement );
 
@@ -418,14 +418,14 @@ void XsdFormCreator::createParams ( QWidget *widget, QList<XsdElement *> xsdElem
   }
 }
 
-void XsdFormCreator::createStringInput ( QWidget *widget, XsdElement *xsdElement ) {
+void XsdFormCreator::createStringInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
 
     if ( xsdElement->isEnumerate () ) {
 
-      ( ( QComboBox * ) widget )->addItem ( ( ( EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
+      ( ( QComboBox * ) widget )->addItem ( ( ( Xsd::EnumerationFacet * ) xsdElement->getFacets ().at ( i ) )->getValue () );
 
     } else {
 
@@ -436,27 +436,27 @@ void XsdFormCreator::createStringInput ( QWidget *widget, XsdElement *xsdElement
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
 
         // TODO: No implementado aun
-        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
+        //( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
       } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
 
-        ( ( QLineEdit * ) widget )->setInputMask ( ( ( PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
+        ( ( QLineEdit * ) widget )->setInputMask ( ( ( Xsd::PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
 
       }
     }
   }
 }
 
-void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
+void XsdFormCreator::createTab ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   QWidget *tabWidget = new QWidget ( this->tabsDialog );
   tabWidget->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
@@ -471,7 +471,7 @@ void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
   QGridLayout *internalTabWidgetLayout = new QGridLayout ( internalTabWidget );
   internalTabWidget->setLayout ( internalTabWidgetLayout );
   scrollArea->setWidget ( internalTabWidget );
-  this->tabsDialog->addTab ( tabWidget, ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
+  this->tabsDialog->addTab ( tabWidget, ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   const int tabsCount = xsdElement->getElementsList ().count ();
   if ( tabsCount > 0 ) {
 
@@ -480,7 +480,7 @@ void XsdFormCreator::createTab ( XsdElement *xsdElement ) {
   }
 }
 
-void XsdFormCreator::createTabs ( QList<XsdElement *> xsdElementList ) {
+void XsdFormCreator::createTabs ( QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList ) {
 
   const int tabsCount = xsdElementList.count ();
   for ( int i = 0; i < tabsCount; i++ ) {
@@ -494,12 +494,12 @@ QTabWidget *XsdFormCreator::getForm () const {
   return this->tabsDialog;
 }
 
-QString XsdFormCreator::getNameInput ( XsdElement *xsdElement ) {
+QString XsdFormCreator::getNameInput ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
 
   QString nameInputAux = "";
   if ( xsdElement->getParent () != nullptr ) {
 
     nameInputAux = this->getNameInput ( xsdElement->getParent () );
   }
-  return nameInputAux + ( ( NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ();
+  return nameInputAux + ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ();
 }

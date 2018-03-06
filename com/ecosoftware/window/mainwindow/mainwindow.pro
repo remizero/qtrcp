@@ -49,7 +49,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
-  -L$$OUT_PWD/../../engines/ -lxsdengine \
+  -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
   -L$$OUT_PWD/../components/ -lstatusbar
@@ -57,7 +57,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
-  -L$$OUT_PWD/../../engines/ -lxsdengine \
+  -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
   -L$$OUT_PWD/../components/ -lstatusbar
@@ -65,7 +65,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
-  -L$$OUT_PWD/../../engines/ -lxsdengine \
+  -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
   -L$$OUT_PWD/../components/ -lstatusbar
@@ -74,7 +74,7 @@ INCLUDEPATH += \
   $$PWD/../../app \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
-  $$PWD/../../engines/xsdengine \
+  $$PWD/../../engines/xsdform \
   $$PWD/../components/actions \
   $$PWD/../components/menubar \
   $$PWD/../components/statusbar
@@ -83,7 +83,7 @@ DEPENDPATH += \
   $$PWD/../../app \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
-  $$PWD/../../engines/xsdengine \
+  $$PWD/../../engines/xsdform \
   $$PWD/../components/actions \
   $$PWD/../components/menubar \
   $$PWD/../components/statusbar

@@ -18,9 +18,14 @@ void SettingsAct::execAct () {
   xsdFormCreator->createForm ( xsdFormEngine->getXsdFormElementModel (), this->myParent );
   xsdFormCreator->showForm ();
   */
-  Com::Ecosoftware::Engines::Xsd::XsdEngine *xsdEngine = new Com::Ecosoftware::Engines::Xsd::XsdEngine ();
+  Com::Ecosoftware::Engines::XsdForm::XsdDialog *xsdDialog = new Com::Ecosoftware::Engines::XsdForm::XsdDialog ( this->myParent );
+  xsdDialog->createForm ();
+  xsdDialog->getFormDialog ()->show ();
+
+
+  /*Com::Ecosoftware::Engines::Xsd::XsdEngine *xsdEngine = new Com::Ecosoftware::Engines::Xsd::XsdEngine ();
   xsdEngine->load ( ":/xsdresources/xsd/config.xsd" );
   xsdEngine->parse ();
-  xsdEngine->toFormDialog ( this->myParent );
-  xsdEngine->listarElementos ();
+  xsdEngine->toFormDialog ( this->myParent )->show ();
+  xsdEngine->listarElementos ();*/
 }
