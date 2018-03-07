@@ -1,8 +1,12 @@
 #ifndef MAINWINDOWSLOTS_H
 #define MAINWINDOWSLOTS_H
 
+// Librerías Internas
 #include "mainwindow_global.h"
+#include "MainWindow.h"
 
+// Librerías Qt
+#include <QApplication>
 #include <QMainWindow>
 
 namespace Com {
@@ -17,6 +21,8 @@ namespace Com {
 
           public:
             MainWindowSlots ( QMainWindow *parent );
+
+            void slotReboot ();
 
           private:
             QMainWindow *parent;

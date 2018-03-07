@@ -24,6 +24,8 @@ namespace Com {
 
       namespace MainWindow {
 
+        class MainWindowSlots;
+
         class MAINWINDOWSHARED_EXPORT MainWindow : public QMainWindow {
 
             Q_OBJECT
@@ -32,8 +34,12 @@ namespace Com {
             explicit MainWindow ( QSettings *settings, QWidget *parent = 0 );
             ~MainWindow ();
 
+            static int const EXIT_CODE_REBOOT = -123456789;
+
+            MainWindowSlots *getMainWindowSlots () const;
+
           protected:
-              void centerWindow ();
+            void centerWindow ();
               virtual void changeEvent( QEvent *event );
               void closeEvent ( QCloseEvent *event );
               void createMenuBar ();

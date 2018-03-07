@@ -46,8 +46,14 @@ void MainWindow::createStatusBar () {
   this->setStatusBar ( new Components::Statusbar::StatusBar ( this ) );
 }
 
+MainWindowSlots *MainWindow::getMainWindowSlots () const {
+
+  return this->mainWindowSlots;
+}
+
 void MainWindow::init ( QSettings *settings ) {
 
+  //int const MainWindow::EXIT_CODE_REBOOT = -123456789;
   this->mainWindowEvents = new MainWindowEvents ( this );
   this->mainWindowSignals = new MainWindowSignals ( this );
   this->mainWindowSlots = new MainWindowSlots ( this );

@@ -45,18 +45,21 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../../engines/ -lxsd \
   -L$$OUT_PWD/../../../engines/ -lxsdform \
   -L$$OUT_PWD/../ -lactions
+  #-L$$OUT_PWD/../../ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../../ -lapp \
   -L$$OUT_PWD/../../../ -lutils \
   -L$$OUT_PWD/../../../engines/ -lxsd \
   -L$$OUT_PWD/../../../engines/ -lxsdform \
   -L$$OUT_PWD/../ -lactions
+  #-L$$OUT_PWD/../../ -lmainwindow
 else:unix: LIBS += \
   -L$$OUT_PWD/../../../ -lapp \
   -L$$OUT_PWD/../../../ -lutils \
   -L$$OUT_PWD/../../../engines/ -lxsd \
   -L$$OUT_PWD/../../../engines/ -lxsdform \
   -L$$OUT_PWD/../ -lactions
+  #-L$$OUT_PWD/../../ -lmainwindow
 
 INCLUDEPATH += \
   $$PWD/../../../app \
@@ -64,6 +67,7 @@ INCLUDEPATH += \
   $$PWD/../../../engines/xsd \
   $$PWD/../../../engines/xsdform \
   $$PWD/../actions
+  #$$PWD/../../mainwindow
 
 DEPENDPATH += \
   $$PWD/../../../app \
@@ -71,6 +75,7 @@ DEPENDPATH += \
   $$PWD/../../../engines/xsd \
   $$PWD/../../../engines/xsdform \
   $$PWD/../actions
+  #$$PWD/../../mainwindow
 
 unix {
     target.path = /usr/lib

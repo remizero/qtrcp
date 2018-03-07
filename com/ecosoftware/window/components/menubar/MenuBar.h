@@ -8,6 +8,7 @@
 #include "ExitAct.h"
 #include "HelpTopicsAct.h"
 #include "OnlineHelpAct.h"
+#include "RestartAct.h"
 #include "SettingsAct.h"
 
 // Librerías Qt

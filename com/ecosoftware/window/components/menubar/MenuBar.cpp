@@ -30,6 +30,9 @@ MenuBar::MenuBar ( QWidget *parent ) : QMenuBar ( parent ) {
   fileMenu->addAction ( tr ( "Version Control" ) );
   fileMenu->addSeparator ();*/
 
+  Actions::RestartAct *restartAct = new Actions::RestartAct ( "Reiniciar Aplicación", parent );
+  fileMenu->addAction ( restartAct );
+  fileMenu->addSeparator ();
   Actions::ExitAct *exitAct = new Actions::ExitAct ( "Exit", parent );
   fileMenu->addAction ( exitAct );
 

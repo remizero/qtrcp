@@ -14,29 +14,39 @@
 
 int main ( int argc, char *argv [] ) {
 
-  QApplication appInstance ( argc, argv );
+  int currentExitCode = 0;
 
-  if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
+  do {
 
-    return 0;
-  }
+    QApplication appInstance ( argc, argv );
 
-  Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationhashkey" ).toString () );
+    if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
 
-  appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationname" ).toString () );
-  appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationdomain" ).toString () );
-  appInstance.setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationname" ).toString () );
-  appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationdisplayname" ).toString () );
-  appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationversion" ).toString () );
+      return 0;
+    }
 
-  if ( !singleInstance.tryToRun () ) {
+    Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationhashkey" ).toString () );
 
-    QMessageBox msgBox ( QMessageBox::Warning, appInstance.applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", 0 );
-    msgBox.exec ();
-    return 0;
-  }
-  VentanaPrincipal mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
-  mainWindow.show ();
+    appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationname" ).toString () );
+    appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationdomain" ).toString () );
+    appInstance.setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationname" ).toString () );
+    appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationdisplayname" ).toString () );
+    appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationversion" ).toString () );
 
-  return appInstance.exec ();
+    if ( !singleInstance.tryToRun () ) {
+
+      QMessageBox msgBox ( QMessageBox::Warning, appInstance.applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", 0 );
+      msgBox.exec ();
+      return 0;
+    }
+    VentanaPrincipal mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
+    mainWindow.show ();
+
+    //return appInstance.exec ();
+
+    currentExitCode = appInstance.exec ();
+
+  } while( currentExitCode == VentanaPrincipal::EXIT_CODE_REBOOT );
+
+  return currentExitCode;
 }
