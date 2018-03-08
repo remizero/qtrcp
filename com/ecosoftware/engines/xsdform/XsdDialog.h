@@ -7,6 +7,8 @@
 
 // Librerías Externas
 #include "AppPaths.h"
+#include "Files.h"
+#include "Xml.h"
 #include "XsdElement.h"
 #include "XsdEngine.h"
 #include "core/PropertyAbs.h"
@@ -45,6 +47,7 @@ namespace Com {
             QDialog *getFormDialog () const;
             void loadData ( QDomNode element, QWidget *widget );
             QDomDocument loadXml ();
+            void saveData ();
 
           private:
             QDialogButtonBox *buttonBox;

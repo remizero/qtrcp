@@ -27,7 +27,8 @@ void XsdDialog::createForm () {
   this->formDialogLayout->addWidget ( this->buttonBox );
   this->formDialog->connect ( this->buttonBox, SIGNAL ( rejected () ), this->formDialog, SLOT ( reject () ) );
 
-  QDomDocument domDocument = this->loadXml ();
+  //QDomDocument domDocument = this->loadXml ();
+  QDomDocument domDocument = Utils::Xml::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", true );
   this->loadData ( domDocument.firstChild (), this->xsdFormCreator->getForm () );
 }
 
@@ -398,19 +399,18 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
 
 QDomDocument XsdDialog::loadXml () {
 
-  QFile file ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml" );
+  QFile *file = Utils::Files::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml" );
   QDomDocument doc;
-  if ( !file.open ( QIODevice::ReadOnly | QIODevice::Text ) ) {
+  if ( file == nullptr ) {
 
-    // TODO: Aquí guardar el error de apertura del archivo y mostrar error
     return doc;
   }
-  if ( !doc.setContent ( &file ) ) {
+  if ( !doc.setContent ( file ) ) {
 
     // TODO: Aquí guardar el error de asignación del archivo al objeto QDomDocument y mostrar error
-    file.close ();
+    file->close ();
     return doc;
   }
-  file.close ();
+  file->close ();
   return doc;
 }

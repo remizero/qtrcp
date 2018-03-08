@@ -8,7 +8,8 @@ SUBDIRS += \
   singleinstance \
   splashscreen \
   engines \
-  window
+  window \
+    logger
 
 CONFIG += ordered
 
