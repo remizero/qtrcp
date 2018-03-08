@@ -40,6 +40,19 @@ MOC_DIR = ../../../moc
 OBJECTS_DIR = ../../../obj
 RCC_DIR = ../../../rcc
 
+win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lapp
+else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lapp
+else:unix: LIBS += \
+  -L$$OUT_PWD/../ -lapp
+
+INCLUDEPATH += \
+  $$PWD/../app
+
+DEPENDPATH += \
+  $$PWD/../app
+
 unix {
   target.path = /usr/lib
   INSTALLS += target

@@ -14,6 +14,7 @@ AppPaths::AppPaths () {
   this->applicationDataPath = QDir::toNativeSeparators ( userPathApp + "data" + QDir::separator() );
   this->applicationImagePath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "images" + QDir::separator() );
   this->applicationLanguagePath = QDir::toNativeSeparators ( userPathApp + "language" + QDir::separator() );
+  this->applicationLogPath =  QDir::toNativeSeparators ( userPathApp + "log" + QDir::separator() );
   this->applicationResourcesPath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "resources" + QDir::separator() );
   this->applicationTempPath = QDir::toNativeSeparators ( userPathApp + "temp" + QDir::separator() );
   // TODO: Como hacer que esta ruta pueda ser modificada por el usuario.
@@ -43,6 +44,11 @@ QString AppPaths::getApplicationImagePath () const {
 QString AppPaths::getApplicationLanguagePath () const {
 
   return this->applicationLanguagePath;
+}
+
+QString AppPaths::getApplicationLogPath () const {
+
+  return this->applicationLogPath;
 }
 
 QString AppPaths::getApplicationPath () const {

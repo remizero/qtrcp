@@ -10,7 +10,7 @@ Logger::Logger () {
   // TODO: Verificar el tamaño del archivo que no sea mayor a 1MB, sino,
   // renombrar con el nombre del archivo y la fecha del día, y crear uno nuevo
   // y comenzar a escribir en el archivo nuevo.
-  this->logFile.reset ( new QFile ( "C:/example/logFile.txt" ) );
+  this->logFile.reset ( new QFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" ) );
   // Open the file logging
   this->logFile.data ()->open ( QFile::Append | QFile::Text );
 

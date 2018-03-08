@@ -24,6 +24,7 @@ namespace Com {
           QString getApplicationDataPath () const;
           QString getApplicationImagePath () const;
           QString getApplicationLanguagePath () const;
+          QString getApplicationLogPath () const;
           QString getApplicationPath () const;
           QString getApplicationPathRoot () const;
           QString getApplicationResourcesPath () const;
@@ -40,6 +41,7 @@ namespace Com {
                      QDir *applicationDirPath;
                   QString applicationImagePath;
                   QString applicationLanguagePath;
+                  QString applicationLogPath;
                   QString applicationPath;
                   QString applicationPathRoot;
                   QString applicationResourcesPath;

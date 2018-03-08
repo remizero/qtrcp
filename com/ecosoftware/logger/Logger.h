@@ -4,6 +4,9 @@
 // Librerías Internas
 #include "logger_global.h"
 
+// Librerías Externas
+#include "AppPaths.h"
+
 // Librerías Qt
 #include <QDateTime>
 #include <QFile>

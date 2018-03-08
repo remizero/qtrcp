@@ -15,6 +15,18 @@ XsdDialog::XsdDialog ( QWidget *parent ) {
   this->formDialog->setWindowTitle ( ( ( Xsd::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   this->formDialogLayout = new QVBoxLayout ( this->formDialog );
   this->formDialog->setLayout ( this->formDialogLayout );
+  this->createForm ();
+}
+
+void XsdDialog::acceptSlot () {
+
+  this->applySlot ();
+  this->formDialog->close ();
+}
+
+void XsdDialog::applySlot () {
+
+  Utils::Xml::save ( this->domDocument, App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml" );
 }
 
 void XsdDialog::createForm () {
@@ -25,11 +37,13 @@ void XsdDialog::createForm () {
   this->xsdFormCreator->createForm ( this->xsdElement, this->formDialog );
   this->formDialogLayout->addWidget ( this->xsdFormCreator->getForm () );
   this->formDialogLayout->addWidget ( this->buttonBox );
+  this->formDialog->connect ( this->buttonBox, SIGNAL ( accepted () ), this, SLOT ( acceptSlot () ) );
   this->formDialog->connect ( this->buttonBox, SIGNAL ( rejected () ), this->formDialog, SLOT ( reject () ) );
+  this->formDialog->connect ( this->buttonBox, SIGNAL ( apply () ), this, SLOT ( applySlot () ) );
 
   //QDomDocument domDocument = this->loadXml ();
-  QDomDocument domDocument = Utils::Xml::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", true );
-  this->loadData ( domDocument.firstChild (), this->xsdFormCreator->getForm () );
+  this->domDocument = Utils::Xml::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", true );
+  this->loadData ( this->domDocument.firstChild (), this->xsdFormCreator->getForm () );
 }
 
 QDialog *XsdDialog::getFormDialog () const {

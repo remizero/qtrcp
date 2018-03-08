@@ -38,7 +38,9 @@ namespace Com {
 
       namespace XsdForm {
 
-        class XSDFORMSHARED_EXPORT XsdDialog {
+        class XSDFORMSHARED_EXPORT XsdDialog : public QObject {
+
+            Q_OBJECT
 
           public:
             XsdDialog ( QWidget *parent );
@@ -49,8 +51,13 @@ namespace Com {
             QDomDocument loadXml ();
             void saveData ();
 
+          public slots:
+            void acceptSlot ();
+            void applySlot ();
+
           private:
             QDialogButtonBox *buttonBox;
+                QDomDocument domDocument;
                      QDialog *formDialog;
                  QVBoxLayout *formDialogLayout;
                  QGridLayout *mainLayout;
