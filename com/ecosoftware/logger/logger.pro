@@ -33,7 +33,14 @@ HEADERS += \
   logger_global.h \
   Logger.h
 
+DESTDIR = ../
+
+UI_DIR = ../../../ui
+MOC_DIR = ../../../moc
+OBJECTS_DIR = ../../../obj
+RCC_DIR = ../../../rcc
+
 unix {
-    target.path = /usr/lib
-    INSTALLS += target
+  target.path = /usr/lib
+  INSTALLS += target
 }

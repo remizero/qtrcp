@@ -2,14 +2,14 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
   app \
+  logger \
   resources \
   utils \
   console \
   singleinstance \
   splashscreen \
   engines \
-  window \
-    logger
+  window
 
 CONFIG += ordered
 

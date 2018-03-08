@@ -28,7 +28,7 @@ void Xml::save ( QDomDocument domDocument, QString fileName ) {
   if( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
 
     qDebug( "Failed to open file for writing." );
-    return -1;
+    //return -1;
   }
   QTextStream stream ( &file );
   stream << domDocument.toString ();

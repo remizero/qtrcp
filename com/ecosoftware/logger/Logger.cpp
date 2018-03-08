@@ -15,6 +15,7 @@ Logger::Logger () {
   this->logFile.data ()->open ( QFile::Append | QFile::Text );
 
 #if QT_VERSION >= QT_VERSION_CHECK ( 5, 0, 0 )
+  //#pragma comment(lib, "logger.lib")
   qInstallMessageHandler ( logger->loggerOutput );
 #else
   qInstallMsgHandler ( logger->loggerOutput );
