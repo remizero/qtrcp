@@ -26,6 +26,7 @@ void XsdDialog::acceptSlot () {
 
 void XsdDialog::applySlot () {
 
+  // TODO: Como hacer para que se actualice toda la información que se haya modificado.
   Utils::Xml::save ( this->domDocument, App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml" );
 }
 
