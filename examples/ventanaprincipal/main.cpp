@@ -43,9 +43,6 @@ int main ( int argc, char *argv [] ) {
     }
     VentanaPrincipal mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
-
-    //return appInstance.exec ();
-
     currentExitCode = appInstance.exec ();
 
   } while( currentExitCode == VentanaPrincipal::EXIT_CODE_REBOOT );

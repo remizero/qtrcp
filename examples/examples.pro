@@ -4,6 +4,7 @@ SUBDIRS += \
   singleinstance \
   loadappsettings \
   splashscreen \
-  ventanaprincipal
+  ventanaprincipal \
+    newinstantiation
 
 CONFIG += ordered

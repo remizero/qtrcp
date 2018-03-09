@@ -3,29 +3,32 @@
 
 using namespace Com::Ecosoftware::Logger;
 
-Logger::Logger () {
+Logger::Logger ( QFile logFile ) {
 
-  logger = this;
+  //logger = this;
   // TODO: Cambiar la dirección del log de errores
   // TODO: Verificar el tamaño del archivo que no sea mayor a 1MB, sino,
   // renombrar con el nombre del archivo y la fecha del día, y crear uno nuevo
   // y comenzar a escribir en el archivo nuevo.
-  this->logFile.reset ( new QFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" ) );
+  //QFile logFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" );
+  //this->logFile = &logFile;
+  //this->logFile.reset ( new QFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" ) );
   // Open the file logging
-  this->logFile.data ()->open ( QFile::Append | QFile::Text );
-
+  //this->logFile.data ()->open ( QFile::Append | QFile::Text );
+/*
 #if QT_VERSION >= QT_VERSION_CHECK ( 5, 0, 0 )
   //#pragma comment(lib, "logger.lib")
-  qInstallMessageHandler ( logger->loggerOutput );
+  qInstallMessageHandler ( loggerOutput );
 #else
-  qInstallMsgHandler ( logger->loggerOutput );
-#endif
+  qInstallMsgHandler ( loggerOutput );
+#endif*/
 }
 
 void Logger::loggerOutput ( QtMsgType type, const QMessageLogContext &context, const QString &msg ) {
-
+/*
   // Open stream file writes
-  QTextStream out ( logger->logFile.data () );
+  //QTextStream out ( logFile.data () );
+  QTextStream out ( logFile );
   // Write the date of recording
   out << QDateTime::currentDateTime ().toString ( "yyyy-MM-dd hh:mm:ss.zzz " );
   // By type determine to what level belongs message
@@ -39,5 +42,5 @@ void Logger::loggerOutput ( QtMsgType type, const QMessageLogContext &context, c
   }
   // Write to the output category of the message and the message itself
   out << context.category << ": " << __FILE__ << " " << __LINE__ << " " << Q_FUNC_INFO << " " << msg << endl;
-  out.flush ();    // Clear the buffered data , ,
+  out.flush (); // Clear the buffered data , ,*/
 }

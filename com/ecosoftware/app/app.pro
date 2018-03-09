@@ -31,7 +31,8 @@ SOURCES += \
   AppInit.cpp \
   AppSettings.cpp \
   AppUtils.cpp \
-  AppPaths.cpp
+  AppPaths.cpp \
+    App.cpp
 
 HEADERS += \
   app_global.h \
@@ -39,7 +40,8 @@ HEADERS += \
   AppInit.h \
   AppSettings.h \
   AppUtils.h \
-  AppPaths.h
+  AppPaths.h \
+    App.h
 
 DESTDIR = ../
 

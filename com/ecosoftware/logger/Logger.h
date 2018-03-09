@@ -58,7 +58,7 @@ namespace Com {
       class LOGGERSHARED_EXPORT Logger {
 
         public:
-          Logger ();
+          Logger ( QFile logFile );
 
           static void loggerOutput ( QtMsgType type, const QMessageLogContext &context, const QString &msg );
 
