@@ -17,9 +17,6 @@ class VentanaPrincipal : public Com::Ecosoftware::Window::MainWindow::MainWindow
   public:
     explicit VentanaPrincipal ( QSettings *settings, QWidget *parent = 0 );
 
-    //void listarElementos ( Com::Ecosoftware::Engines::XsdEngine::XsdFormElement *xsdFormElement );
-    void listarNuevosElementos ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-
   signals:
 
   public slots:

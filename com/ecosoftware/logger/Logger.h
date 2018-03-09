@@ -32,6 +32,7 @@ Q_LOGGING_CATEGORY ( logCritical, "Critical" )
  * https://stackoverflow.com/questions/576185/logging-best-practices?rq=1
  * https://jpnaude.github.io/Qtilities/page_logging.html
  * https://evileg.com/en/post/154/
+ * https://github.com/Speedy37/QtLog/blob/master/qtlog.h
  *
  * ESTE ESTÁ INTERESANTE PARA MOSTRAR LA TRAZA DEL ERROR
  * https://woboq.com/blog/nice-debug-output-with-qt.html

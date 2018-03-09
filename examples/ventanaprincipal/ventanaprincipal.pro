@@ -35,6 +35,7 @@ DESTDIR = ../
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
+  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
@@ -46,6 +47,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
+  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
@@ -57,6 +59,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
+  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
@@ -69,6 +72,7 @@ else:unix: LIBS += \
 
 INCLUDEPATH += \
   $$PWD/../../com/ecosoftware/app \
+  #$$PWD/../../com/ecosoftware/logger \
   $$PWD/../../com/ecosoftware/utils \
   $$PWD/../../com/ecosoftware/singleinstance \
   $$PWD/../../com/ecosoftware/resources \
@@ -81,6 +85,7 @@ INCLUDEPATH += \
 
 DEPENDPATH += \
   $$PWD/../../com/ecosoftware/app \
+  #$$PWD/../../com/ecosoftware/logger \
   $$PWD/../../com/ecosoftware/utils \
   $$PWD/../../com/ecosoftware/singleinstance \
   $$PWD/../../com/ecosoftware/resources \

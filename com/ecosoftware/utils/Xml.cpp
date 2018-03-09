@@ -25,6 +25,10 @@ QDomDocument Xml::load ( QString fileName, bool readOnly ) {
 void Xml::save ( QDomDocument domDocument, QString fileName ) {
 
   QFile file ( fileName );
+  if ( !file.exists () ) {
+
+    qDebug( "El archivo no existe" );
+  }
   if( !file.open ( QIODevice::WriteOnly | QIODevice::Text ) ) {
 
     qDebug( "Failed to open file for writing." );

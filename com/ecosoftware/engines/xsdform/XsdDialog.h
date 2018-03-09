@@ -27,6 +27,7 @@
 #include <QGridLayout>
 #include <QLineEdit>
 #include <QObject>
+#include <QPushButton>
 #include <QSpinBox>
 #include <QVBoxLayout>
 
@@ -45,11 +46,7 @@ namespace Com {
           public:
             XsdDialog ( QWidget *parent );
 
-            void createForm ();
             QDialog *getFormDialog () const;
-            void loadData ( QDomNode element, QWidget *widget );
-            QDomDocument loadXml ();
-            void saveData ();
 
           public slots:
             void acceptSlot ();
@@ -67,6 +64,9 @@ namespace Com {
             QString getNameInput ( QDomElement element );
             QWidget *getWidget ( QString objectName, QWidget *widget );
             Com::Ecosoftware::Engines::Xsd::XsdElement *getXsdElement ( QDomElement element , Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
+            void loadData ( QDomNode element, QWidget *widget );
+            QDomDocument loadXml ();
+            void saveData ( QDomNode element, QWidget *widget );
         };
       }
     }

@@ -11,6 +11,5 @@ SettingsAct::SettingsAct ( QString title , QWidget *parent ) : ActionAbs ( title
 void SettingsAct::execAct () {
 
   Com::Ecosoftware::Engines::XsdForm::XsdDialog *xsdDialog = new Com::Ecosoftware::Engines::XsdForm::XsdDialog ( this->myParent );
-  xsdDialog->createForm ();
   xsdDialog->getFormDialog ()->show ();
 }

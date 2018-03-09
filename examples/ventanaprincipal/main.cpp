@@ -5,6 +5,7 @@
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
+//#include "Logger.h"
 #include "SingleInstance.h"
 
 // Librerías Qt
@@ -19,6 +20,7 @@ int main ( int argc, char *argv [] ) {
   do {
 
     QApplication appInstance ( argc, argv );
+    //Com::Ecosoftware::Logger::Logger *logger = new Com::Ecosoftware::Logger::Logger ();
 
     if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
 
