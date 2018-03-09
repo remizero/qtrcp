@@ -3,7 +3,10 @@
 
 using namespace Com::Ecosoftware::App;
 
-App::App ( int &argc, char **argv ) :  QApplication ( argc, argv ) {}
+App::App ( int &argc, char **argv ) :  QApplication ( argc, argv ) {
+
+  qDebug () << "Está entrando ..........";
+}
 
 App::~App () {}
 

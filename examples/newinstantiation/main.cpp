@@ -10,6 +10,7 @@
 
 // Librerías Qt
 //#include <QApplication>
+#include <QDebug>
 
 int main ( int argc, char *argv [] ) {
 
@@ -18,8 +19,11 @@ int main ( int argc, char *argv [] ) {
   do {
 //error: LNK2001: unresolved external symbol "private: static class
     Com::Ecosoftware::App::App *app = new Com::Ecosoftware::App::App ( argc, argv );
+    qDebug () << "Se creó el objeto app";
     QScopedPointer<QCoreApplication> appScopedPointer ( app->createApplication ( argc, argv ) );
+    qDebug () << "Se creó el puntero app";
     QApplication *appInstance = qobject_cast < QApplication *> ( appScopedPointer.data () );
+    qDebug () << "Se convirtió app en appInstance";
 
     if ( appInstance ) {
 // start GUI version...
