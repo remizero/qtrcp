@@ -1,11 +1,17 @@
 #ifndef MAINWINDOWEVENTS_H
 #define MAINWINDOWEVENTS_H
 
+// Librerías Internas
 #include "mainwindow_global.h"
 
+// Librerías Externas
+#include "AppInit.h"
+
+// Librerías Qt
 #include <QCloseEvent>
 #include <QEvent>
 #include <QMainWindow>
+#include <QMessageBox>
 #include <QResizeEvent>
 
 namespace Com {

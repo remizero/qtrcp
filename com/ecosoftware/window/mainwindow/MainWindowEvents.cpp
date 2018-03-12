@@ -88,6 +88,35 @@ void MainWindowEvents::changeEvent ( QEvent *event ) {
 }
 
 void MainWindowEvents::closeEvent ( QCloseEvent *event ) {
+
+#ifdef Q_OS_OSX
+  if ( !event->spontaneous () || !this->parent->isVisible () ) {
+
+    return;
+  }
+#endif
+  if ( sysTrayIcon->isVisible () ) {
+
+    if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Information" ) == 0 ) {
+
+      QMessageBox::information ( this->parent, tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () ),
+                                 tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () ) );
+
+    } else if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Warning" ) == 0 ) {
+
+      QMessageBox::warning ( this->parent, tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () ),
+                                 tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () ) );
+
+    } else if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Critical" ) == 0 ) {
+
+      QMessageBox::critical ( this->parent, tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () ),
+                                 tr ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () ) );
+    }
+
+    this->parent->hide ();
+    event->ignore ();
+  }
+
   /*
    * Aquí código para hacer lo que se vaya a hacer al cerrar la ventana
    * principal de la aplicación.

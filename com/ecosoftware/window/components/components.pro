@@ -3,7 +3,8 @@ TEMPLATE = subdirs
 SUBDIRS += \
   actions \
   menubar \
-  statusbar
+  statusbar \
+    systemtrayicon
 
 CONFIG += ordered
 

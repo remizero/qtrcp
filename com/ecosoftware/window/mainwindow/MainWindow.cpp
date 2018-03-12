@@ -46,9 +46,55 @@ void MainWindow::createStatusBar () {
   this->setStatusBar ( new Components::Statusbar::StatusBar ( this ) );
 }
 
+void MainWindow::createSysTrayIcon () {
+
+  if ( QSystemTrayIcon::isSystemTrayAvailable () ) {
+
+    this->sysTrayIcon = new QSystemTrayIcon ( this );
+  }
+}
+
 MainWindowSlots *MainWindow::getMainWindowSlots () const {
 
   return this->mainWindowSlots;
+}
+
+QSystemTrayIcon *MainWindow::getSysTrayIcon () const {
+
+  return this->sysTrayIcon;
+}
+
+void MainWindow::iconActivated ( QSystemTrayIcon::ActivationReason reason ) {
+
+  switch ( reason ) {
+
+    case QSystemTrayIcon::Context:
+      break;
+
+    case QSystemTrayIcon::DoubleClick:
+      break;
+
+    case QSystemTrayIcon::MiddleClick:
+      break;
+
+    case QSystemTrayIcon::Trigger:
+
+      if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool () ) {
+
+        if ( !this->isVisible () ) {
+
+          this->show ();
+
+        } else {
+
+          this->hide ();
+        }
+      }
+      break;
+
+    default:
+      break;
+  }
 }
 
 void MainWindow::init ( QSettings *settings ) {
@@ -123,4 +169,12 @@ void MainWindow::setMinimunWindowSize () {
 
 
   }
+}
+
+void MainWindow::setVisible ( bool visible ) {
+
+  this->minimizeAction->setEnabled ( visible );
+  this->maximizeAction->setEnabled ( !isMaximized () );
+  this->restoreAction->setEnabled ( isMaximized() || !visible );
+  QMainWindow::setVisible ( visible );
 }

@@ -1,5 +1,5 @@
 // Librerías Internas
-#include "VentanaPrincipal.h"
+#include "SysTrayIconMainWindow.h"
 
 // Librerías Externas
 #include "AppInit.h"
@@ -20,7 +20,6 @@ int main ( int argc, char *argv [] ) {
   do {
 
     QApplication appInstance ( argc, argv );
-    //Com::Ecosoftware::Logger::Logger *logger = new Com::Ecosoftware::Logger::Logger ();
 
     if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
 
@@ -41,11 +40,11 @@ int main ( int argc, char *argv [] ) {
       msgBox.exec ();
       return 0;
     }
-    VentanaPrincipal mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
+    SysTrayIconMainWindow mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
     currentExitCode = appInstance.exec ();
 
-  } while ( currentExitCode == VentanaPrincipal::EXIT_CODE_REBOOT );
+  } while ( currentExitCode == SysTrayIconMainWindow::EXIT_CODE_REBOOT );
 
   return currentExitCode;
 }

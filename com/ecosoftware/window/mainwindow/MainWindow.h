@@ -8,6 +8,7 @@
 #include "MainWindowSlots.h"
 
 // Librerías Externas
+#include "AppInit.h"
 #include "AppPaths.h"
 #include "MenuBar.h"
 #include "StatusBar.h"
@@ -15,6 +16,7 @@
 // Librerías Qt
 #include <QMainWindow>
 #include <QSettings>
+#include <QSystemTrayIcon>
 
 namespace Com {
 
@@ -37,23 +39,32 @@ namespace Com {
             static int const EXIT_CODE_REBOOT = -123456789;
 
             MainWindowSlots *getMainWindowSlots () const;
+            QSystemTrayIcon *getSysTrayIcon () const;
+            void setVisible ( bool visible ) override;
 
           protected:
             void centerWindow ();
-              virtual void changeEvent( QEvent *event );
-              void closeEvent ( QCloseEvent *event );
-              void createMenuBar ();
-              void createStatusBar ();
-              void init ( QSettings *settings );
-              void loadSettins ();
-              void resizeEvent ( QResizeEvent *event );
-              void saveSettings ();
-              void setMinimunWindowSize ();
+            virtual void changeEvent( QEvent *event ) override;
+            void closeEvent ( QCloseEvent *event ) override;
+            void createMenuBar ();
+            void createStatusBar ();
+            void init ( QSettings *settings );
+            void loadSettins ();
+            void resizeEvent ( QResizeEvent *event ) override;
+            void saveSettings ();
+            void setMinimunWindowSize ();
 
           private:
-              MainWindowEvents *mainWindowEvents;
-              MainWindowSignals *mainWindowSignals;
+             MainWindowEvents *mainWindowEvents;
+            MainWindowSignals *mainWindowSignals;
               MainWindowSlots *mainWindowSlots;
+
+              QSystemTrayIcon *sysTrayIcon;
+
+                void createSysTrayIcon ();
+
+          private slots:
+            void iconActivated ( QSystemTrayIcon::ActivationReason reason );
         };
       }
     }

@@ -4,6 +4,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="app"/>
+        <xs:element ref="systemtrayicon"/>
         <xs:element ref="splashscreen"/>
       </xs:sequence>
     </xs:complexType>
@@ -58,6 +59,48 @@
     <xs:simpleType>
       <xs:restriction base='xs:integer'>
         <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="systemtrayicon">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="systrayicon"/>
+        <xs:element ref="systraytooltip"/>
+        <xs:element ref="systrayduration"/>
+        <xs:element ref="systraydefaultmessagetype"/>
+        <xs:element ref="systraymessagetitle"/>
+        <xs:element ref="systraymessagebody"/>
+        <xs:element ref="showsystemtrayicon"/>
+        <xs:element ref="minimizetosystemtrayicon"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="systrayicon" type="xs:string"/>
+  <xs:element name="systraytooltip" type="xs:string"/>
+  <xs:element name="systrayduration">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='0'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="systraydefaultmessagetype" type="xs:string"/>
+  <xs:element name="systraymessagetitle" type="xs:string"/>
+  <xs:element name="systraymessagebody" type="xs:string"/>
+  <xs:element name="showsystemtrayicon">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="minimizetosystemtrayicon">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
       </xs:restriction>
     </xs:simpleType>
   </xs:element>

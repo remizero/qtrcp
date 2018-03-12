@@ -134,7 +134,16 @@ MenuBar::MenuBar ( QWidget *parent ) : QMenuBar ( parent ) {
   /*QMenu *scrumMenu = this->addMenu ( tr ( "&Scrum" ) );
   scrumMenu->addAction ( tr ( "Iteración." ) );*/
 
-  /*QMenu *windowMenu = this->addMenu ( tr ( "&Window" ) );
+  QMenu *windowMenu = this->addMenu ( tr ( "&Window" ) );
+  Actions::ToolBarShowHideAct *toolBarShowHideAct = new Actions::ToolBarShowHideAct ( "Show/Hide Tool Bar", parent );
+  windowMenu->addAction ( toolBarShowHideAct );
+  Actions::StatusBarShowHideAct *statusBarShowHideAct = new Actions::StatusBarShowHideAct ( "Show/Hide Status Bar", parent );
+  windowMenu->addAction ( statusBarShowHideAct );
+  windowMenu->addSeparator ();
+  Actions::FullScreenAct *fullScreenAct = new Actions::FullScreenAct ( "Activate/Deactivate Fullsreen", parent );
+  windowMenu->addAction ( fullScreenAct );
+  windowMenu->addAction ( tr ( "Maximizada." ) );
+  /*
   QMenu *menuViews = windowMenu->addMenu ( tr ( "Views." ) );
   menuViews->addAction ( tr ( "Explorador de Proyectos." ) );
   menuViews->addAction ( tr ( "Explorador de Clases." ) );

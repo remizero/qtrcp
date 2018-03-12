@@ -21,11 +21,6 @@ Q_DECLARE_LOGGING_CATEGORY ( logInfo )
 Q_DECLARE_LOGGING_CATEGORY ( logWarning )
 Q_DECLARE_LOGGING_CATEGORY ( logCritical )
 
-Q_LOGGING_CATEGORY ( logDebug,    "Debug" )
-Q_LOGGING_CATEGORY ( logInfo,     "Info" )
-Q_LOGGING_CATEGORY ( logWarning,  "Warning" )
-Q_LOGGING_CATEGORY ( logCritical, "Critical" )
-
 /**
  * ESTE ES MUY IMPORTANTE, EMPEZAR POR AHÍ
  * https://stackoverflow.com/questions/4661883/qt-c-error-handling

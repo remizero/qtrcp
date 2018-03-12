@@ -13,6 +13,16 @@
     <minorversion>0</minorversion>
     <pathversion>0</pathversion>
   </app>
+  <systemtrayicon>
+    <systrayicon>icono.png</systrayicon>
+    <systraytooltip>Ecomoditor</systraytooltip>
+    <systrayduration>10</systrayduration>
+    <systraydefaultmessagetype>Information</systraydefaultmessagetype>
+    <systraymessagetitle>Ecomoditor</systraymessagetitle>
+    <systraymessagebody>Aplicación con SystemTrayIcon</systraymessagebody>
+    <showsystemtrayicon>1</showsystemtrayicon>
+    <minimizetosystemtrayicon>1</minimizetosystemtrayicon>
+  </systemtrayicon>
   <splashscreen>
     <imagesplash>splash.png</imagesplash><!--Aquí coloque el nombre de la imagen que usará para este lanzador de aplicaciones. Puede utilizar imagenes de tipo GIF, JPG, BMP, PNG.-->
     <messagebox>

@@ -1,5 +1,8 @@
 #include "XsdDialog.h"
 #include <QDebug>
+#include <QApplication>
+#include <QMainWindow>
+#include <QStatusBar>
 
 using namespace Com::Ecosoftware::Engines::XsdForm;
 
@@ -39,7 +42,14 @@ void XsdDialog::applySlot () {
 
   this->saveData ( this->domDocument.firstChild (), this->xsdFormCreator->getForm () );
   // TODO: Como hacer para que se actualice toda la información que se haya modificado.
+  qDebug () << qApp->applicationDisplayName ();
+  qApp->setApplicationDisplayName ( "esta es una modificación por aplicación" );
+  qDebug () << qApp->applicationDisplayName ();
+  //( ( QWidget * ) this->formDialog->parent () )->setWindowTitle ( "Titulo modificado" );
   ( ( QWidget * ) this->formDialog->parent () )->update ();
+
+
+
   Utils::Xml::save ( this->domDocument, App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml" );
 }
 

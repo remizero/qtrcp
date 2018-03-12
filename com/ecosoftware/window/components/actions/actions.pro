@@ -32,7 +32,10 @@ SOURCES += \
   OnlineHelpAct.cpp \
   HelpTopicsAct.cpp \
   RestartAct.cpp \
-  SettingsAct.cpp
+  SettingsAct.cpp \
+    StatusBarShowHideAct.cpp \
+    ToolBarShowHideAct.cpp \
+    FullScreenAct.cpp
 
 HEADERS +=\
   actions_global.h \
@@ -41,7 +44,10 @@ HEADERS +=\
   OnlineHelpAct.h \
   HelpTopicsAct.h \
   RestartAct.h \
-  SettingsAct.h
+  SettingsAct.h \
+    StatusBarShowHideAct.h \
+    ToolBarShowHideAct.h \
+    FullScreenAct.h
 
 DESTDIR = ../
 

@@ -5,22 +5,25 @@ using namespace Com::Ecosoftware::App;
 
 App::App ( int &argc, char **argv ) :  QApplication ( argc, argv ) {
 
-  qDebug () << "Está entrando ..........";
+  for ( int i = 1; i < argc; ++i ) {
+
+    if ( qstrcmp ( argv [ i ], "-no-gui" ) ) {
+
+      this->application = new QCoreApplication ( argc, argv );
+      break;
+    }
+  }
+  if ( this->application == nullptr ) {
+
+    this->application = new QApplication ( argc, argv );
+  }
 }
 
 App::~App () {}
 
-QCoreApplication *App::createApplication ( int &argc, char *argv [] ) {
+QCoreApplication *App::getApplication () {
 
-  for ( int i = 1; i < argc; ++i ) {
-
-    if ( !qstrcmp ( argv [ i ], "-no-gui" ) ) {
-
-      qDebug () << "La aplicación es una QCoreApplication";
-      return new QCoreApplication ( argc, argv );
-    }
-  }
-  return new QApplication ( argc, argv );
+  return this->application;
 }
 
 bool App::notify ( QObject *receiver, QEvent *event ) {

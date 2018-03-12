@@ -21,9 +21,11 @@ namespace Com {
           App ( int &argc, char **argv );
           virtual ~App ();
 
+          QCoreApplication *getApplication ();
           bool notify ( QObject* receiver, QEvent* event ) Q_DECL_OVERRIDE;
 
-          QCoreApplication *createApplication ( int &argc, char *argv [] );
+        private:
+          QCoreApplication *application = nullptr;
       };
     }
   }

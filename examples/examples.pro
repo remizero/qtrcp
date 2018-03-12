@@ -5,6 +5,7 @@ SUBDIRS += \
   loadappsettings \
   splashscreen \
   ventanaprincipal \
-    newinstantiation
+    newinstantiation \
+    systrayicon
 
 CONFIG += ordered

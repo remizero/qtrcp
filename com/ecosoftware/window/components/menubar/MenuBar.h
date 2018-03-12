@@ -6,10 +6,13 @@
 
 // Librerías Externas
 #include "ExitAct.h"
+#include "FullScreenAct.h"
 #include "HelpTopicsAct.h"
 #include "OnlineHelpAct.h"
 #include "RestartAct.h"
 #include "SettingsAct.h"
+#include "StatusBarShowHideAct.h"
+#include "ToolBarShowHideAct.h"
 
 // Librerías Qt
 #include <QMenuBar>

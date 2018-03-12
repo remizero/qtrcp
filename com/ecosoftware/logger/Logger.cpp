@@ -1,6 +1,11 @@
 #include "Logger.h"
 #include <QDebug>
 
+Q_LOGGING_CATEGORY ( logDebug,    "Debug" )
+Q_LOGGING_CATEGORY ( logInfo,     "Info" )
+Q_LOGGING_CATEGORY ( logWarning,  "Warning" )
+Q_LOGGING_CATEGORY ( logCritical, "Critical" )
+
 using namespace Com::Ecosoftware::Logger;
 
 Logger::Logger ( QFile logFile ) {

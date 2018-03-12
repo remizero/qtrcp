@@ -17,45 +17,45 @@ int main ( int argc, char *argv [] ) {
   int currentExitCode = 0;
 
   do {
-//error: LNK2001: unresolved external symbol "private: static class
-    Com::Ecosoftware::App::App *app = new Com::Ecosoftware::App::App ( argc, argv );
-    qDebug () << "Se creó el objeto app";
-    QScopedPointer<QCoreApplication> appScopedPointer ( app->createApplication ( argc, argv ) );
-    qDebug () << "Se creó el puntero app";
-    QApplication *appInstance = qobject_cast < QApplication *> ( appScopedPointer.data () );
-    qDebug () << "Se convirtió app en appInstance";
 
-    if ( appInstance ) {
+    Com::Ecosoftware::App::App *app = new Com::Ecosoftware::App::App ( argc, argv );
+    QScopedPointer<QCoreApplication> appScopedPointer ( app->getApplication () );
+
+    if ( qobject_cast < QApplication *> ( appScopedPointer.data () ) ) {
 // start GUI version...
+
       if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
 
         return 0;
       }
 
-      Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationhashkey" ).toString () );
+      Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
-      appInstance->setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationname" ).toString () );
-      appInstance->setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/organizationdomain" ).toString () );
-      appInstance->setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationname" ).toString () );
-      appInstance->setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationdisplayname" ).toString () );
-      appInstance->setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "ecomoditor/applicationversion" ).toString () );
+      appScopedPointer->setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
+      appScopedPointer->setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
+      appScopedPointer->setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
+      qobject_cast < QApplication *> ( appScopedPointer.data () )->setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
+      appScopedPointer->setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
 
       if ( !singleInstance.tryToRun () ) {
 
-        QMessageBox msgBox ( QMessageBox::Warning, appInstance->applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", 0 );
+        QMessageBox msgBox ( QMessageBox::Warning, qobject_cast < QApplication *> ( appScopedPointer.data () )->applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", 0 );
         msgBox.exec ();
         return 0;
       }
+
       NewInstantiationMainWindow mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
       mainWindow.show ();
 
     } else {
 // start non-GUI version...
+      qDebug () << "Está entrando por la versión non-GUI";
 
     }
-    currentExitCode = appInstance->exec ();
+    currentExitCode = appScopedPointer->exec ();
+    qDebug () << "En teoría se ejecutó appInstance->exec ()";
 
-  } while( currentExitCode == NewInstantiationMainWindow::EXIT_CODE_REBOOT );
+  } while ( currentExitCode == NewInstantiationMainWindow::EXIT_CODE_REBOOT );
 
   return currentExitCode;
 }
