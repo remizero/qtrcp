@@ -52,7 +52,8 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
-  -L$$OUT_PWD/../components/ -lstatusbar
+  -L$$OUT_PWD/../components/ -lstatusbar \
+  -L$$OUT_PWD/../components/ -lsystemtrayicon
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
@@ -60,7 +61,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
-  -L$$OUT_PWD/../components/ -lstatusbar
+  -L$$OUT_PWD/../components/ -lstatusbar \
+  -L$$OUT_PWD/../components/ -lsystemtrayicon
 else:unix: LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
@@ -68,7 +70,8 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../engines/ -lxsdform \
   -L$$OUT_PWD/../components/ -lactions \
   -L$$OUT_PWD/../components/ -lmenubar \
-  -L$$OUT_PWD/../components/ -lstatusbar
+  -L$$OUT_PWD/../components/ -lstatusbar \
+  -L$$OUT_PWD/../components/ -lsystemtrayicon
 
 INCLUDEPATH += \
   $$PWD/../../app \
@@ -77,7 +80,8 @@ INCLUDEPATH += \
   $$PWD/../../engines/xsdform \
   $$PWD/../components/actions \
   $$PWD/../components/menubar \
-  $$PWD/../components/statusbar
+  $$PWD/../components/statusbar \
+  $$PWD/../components/systemtrayicon
 
 DEPENDPATH += \
   $$PWD/../../app \
@@ -86,7 +90,8 @@ DEPENDPATH += \
   $$PWD/../../engines/xsdform \
   $$PWD/../components/actions \
   $$PWD/../components/menubar \
-  $$PWD/../components/statusbar
+  $$PWD/../components/statusbar \
+  $$PWD/../components/systemtrayicon
 
 unix {
     target.path = /usr/lib

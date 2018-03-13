@@ -31,20 +31,20 @@ class SysTrayIconMainWindow : public Com::Ecosoftware::Window::MainWindow::MainW
        * Overridden to change the behavior of the application,
        * That it is minimized to tray when we want
        */
-      void closeEvent ( QCloseEvent *event );
+      //void closeEvent ( QCloseEvent *event );
 
   private slots:
     /**
      * The slot that will accept the signal from the event
      * Click on the application icon in the system tray
      */
-    void iconActivated ( QSystemTrayIcon::ActivationReason reason );
+    //void iconActivated ( QSystemTrayIcon::ActivationReason reason );
 
   private:
     /**
      * Declare the object of future applications for the tray icon
      */
-    QSystemTrayIcon *sysTrayIcon;
+    //QSystemTrayIcon *sysTrayIcon;
 };
 
 #endif // SYSTRAYICONMAINWINDOW_H

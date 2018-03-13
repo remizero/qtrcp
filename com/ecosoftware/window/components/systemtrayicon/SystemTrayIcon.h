@@ -6,6 +6,7 @@
 
 // Librerías Externas
 #include "AppInit.h"
+#include "AppPaths.h"
 
 // Librerías Qt
 #include <QAction>
@@ -31,6 +32,8 @@ namespace Com {
 
             public:
               explicit SystemTrayIcon ( QObject *parent = 0 );
+
+              void setVisible ( bool visible );
 
             private:
                   QAction *maximizeAction;

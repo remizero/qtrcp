@@ -6,6 +6,7 @@ SUBDIRS += \
   splashscreen \
   ventanaprincipal \
     newinstantiation \
-    systrayicon
+    systrayicon \
+    todo
 
 CONFIG += ordered

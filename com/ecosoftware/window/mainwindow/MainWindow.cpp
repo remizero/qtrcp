@@ -5,6 +5,8 @@
 #include <QEvent>
 #include <QResizeEvent>
 
+#include <QDebug>
+
 using namespace Com::Ecosoftware::Window::MainWindow;
 
 MainWindow::MainWindow ( QSettings *settings, QWidget *parent ) : QMainWindow ( parent ) {
@@ -50,7 +52,12 @@ void MainWindow::createSysTrayIcon () {
 
   if ( QSystemTrayIcon::isSystemTrayAvailable () ) {
 
-    this->sysTrayIcon = new QSystemTrayIcon ( this );
+    if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/showsystemtrayicon" ).toBool () ) {
+
+      this->sysTrayIcon = new Components::SystemTrayIcon::SystemTrayIcon ( this );
+      connect ( this->sysTrayIcon, SIGNAL ( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT ( iconActivated ( QSystemTrayIcon::ActivationReason ) ) );
+      this->sysTrayIcon->show ();
+    }
   }
 }
 
@@ -120,6 +127,7 @@ void MainWindow::init ( QSettings *settings ) {
    */
   this->createMenuBar ();
   this->createStatusBar ();
+  this->createSysTrayIcon ();
 
   //this->setStyleSheet ( "QMainWindow { background : rgb( 64, 66, 68 ) }" );
 }
@@ -173,8 +181,9 @@ void MainWindow::setMinimunWindowSize () {
 
 void MainWindow::setVisible ( bool visible ) {
 
-  this->minimizeAction->setEnabled ( visible );
+  /*this->minimizeAction->setEnabled ( visible );
   this->maximizeAction->setEnabled ( !isMaximized () );
-  this->restoreAction->setEnabled ( isMaximized() || !visible );
+  this->restoreAction->setEnabled ( isMaximized() || !visible );*/
+  this->sysTrayIcon->setVisible ( visible );
   QMainWindow::setVisible ( visible );
 }

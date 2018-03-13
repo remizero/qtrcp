@@ -3,6 +3,7 @@
 
 // Librerías Internas
 #include "mainwindow_global.h"
+#include "MainWindow.h"
 
 // Librerías Externas
 #include "AppInit.h"

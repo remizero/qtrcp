@@ -1,0 +1,22 @@
+1-. Falta activar el sistema logger.
+2-. Falta activar la accion de reinicio de la aplicación.
+3-. Falta completar la activación del código para el nuevo sistema de instanciación de la aplicación.
+4-. Falta agregar administración del espacio de trabajo de la ventana principal, es decir,
+    si la aplicación se va a enfocar en sistemas MDI, SDI, Perspectivas (workspace).
+5-. Falta agregar sistema de plugins.
+6-. Falta agregar el look and feel y/o estilos de la aplicación.
+    https://evileg.com/en/post/239/
+7-. Falta implementación de creación de menú dinámico.
+8-. Falta crear un sistema de excepciones.
+9-. Falta definir las opciones y acciones para la barra de estado.
+10-. Falta agregar una(s) barra(s) de herramienta(s), altamente configurable.
+11-. Falta definir código para agregar nuevas funcionalidades y/o acciones al menú
+     contextual del systray.
+12-.
+13-.
+14-.
+15-.
+16-.
+17-.
+18-.
+19-.

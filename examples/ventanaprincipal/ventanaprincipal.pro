@@ -44,6 +44,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
@@ -56,6 +57,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
@@ -68,6 +70,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 
 INCLUDEPATH += \
@@ -81,6 +84,7 @@ INCLUDEPATH += \
   $$PWD/../../com/ecosoftware/window/components/actions \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \
+  $$PWD/../../com/ecosoftware/window/components/systemtrayicon \
   $$PWD/../../com/ecosoftware/window/mainwindow
 
 DEPENDPATH += \
@@ -94,6 +98,7 @@ DEPENDPATH += \
   $$PWD/../../com/ecosoftware/window/components/actions \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \
+  $$PWD/../../com/ecosoftware/window/components/systemtrayicon \
   $$PWD/../../com/ecosoftware/window/mainwindow
 
 FORMS +=

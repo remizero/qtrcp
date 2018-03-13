@@ -12,6 +12,7 @@
 #include "AppPaths.h"
 #include "MenuBar.h"
 #include "StatusBar.h"
+#include "SystemTrayIcon.h"
 
 // Librerías Qt
 #include <QMainWindow>
@@ -26,6 +27,7 @@ namespace Com {
 
       namespace MainWindow {
 
+        class MainWindowEvents;
         class MainWindowSlots;
 
         class MAINWINDOWSHARED_EXPORT MainWindow : public QMainWindow {
@@ -41,6 +43,9 @@ namespace Com {
             MainWindowSlots *getMainWindowSlots () const;
             QSystemTrayIcon *getSysTrayIcon () const;
             void setVisible ( bool visible ) override;
+
+          public slots:
+            void iconActivated ( QSystemTrayIcon::ActivationReason reason );
 
           protected:
             void centerWindow ();
@@ -59,12 +64,9 @@ namespace Com {
             MainWindowSignals *mainWindowSignals;
               MainWindowSlots *mainWindowSlots;
 
-              QSystemTrayIcon *sysTrayIcon;
+              Components::SystemTrayIcon::SystemTrayIcon *sysTrayIcon;
 
                 void createSysTrayIcon ();
-
-          private slots:
-            void iconActivated ( QSystemTrayIcon::ActivationReason reason );
         };
       }
     }
