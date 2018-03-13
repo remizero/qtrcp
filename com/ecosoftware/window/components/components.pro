@@ -4,7 +4,7 @@ SUBDIRS += \
   actions \
   menubar \
   statusbar \
-    systemtrayicon
+  systemtrayicon
 
 CONFIG += ordered
 

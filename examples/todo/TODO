@@ -12,9 +12,44 @@
 10-. Falta agregar una(s) barra(s) de herramienta(s), altamente configurable.
 11-. Falta definir código para agregar nuevas funcionalidades y/o acciones al menú
      contextual del systray.
-12-.
-13-.
-14-.
+12-. Falta agregar mi implementación de workspace y revisarla primero a ver si
+     contiene las nuevas ideas y especificaciones a implementar y si el código
+     responde a las nuevas exigencias.
+     Revisar estas ideas y ejemplos:
+     http://www.fancyaddress.com/blog/qt-2/create-something-like-the-widget-box-as-in-the-qt-designer/
+     https://stackoverflow.com/questions/32476006/how-to-make-an-expandable-collapsable-section-widget-in-qt
+     https://wiki.qt.io/PySide_Collapsable_Dock_Windows
+     https://github.com/Elypson/qt-collapsible-section
+     https://stackoverflow.com/questions/19829383/getting-qdockwidget-layout-right
+     https://woboq.com/blog/qdockwidget-changes-in-56.html
+     https://forum.qt.io/topic/3055/mainwindow-layout-problem-with-qdockwidget/18
+     https://stackoverflow.com/questions/26276799/multiple-widgets-on-a-qdockwidget
+     http://www.qtcentre.org/threads/61403-SOLVED-Detachable-QDockWidget-tabs (MUY INTERESANTE)
+     https://stackoverflow.com/questions/1290194/show-hide-qdockwidget (REVISAR ESTE TAMBIEN)
+     https://stackoverflow.com/questions/34553069/prevent-qdockwidget-autosizing-behaviour?rq=1
+     https://stackoverflow.com/questions/14871085/how-to-capture-the-qdockwidget-close-button-click-event?rq=1
+     http://stackoverflow.com/questions/7091830/qt-destructor-call-for-closed-widget
+     http://www.qtcentre.org/threads/13336-Can-we-hide-amp-show-a-QDockWidget-with-a-button-or-indicator-on-top-of-that-widget
+
+     http://www.qtcentre.org/threads/54193-Dragable-QDockWidget-tabs-with-no-title-bar
+     http://www.qtcentre.org/threads/61898-A-way-to-have-QMainWindow-dockage-nicely
+     https://nathanw.net/2015/08/
+     https://ariya.io/2007/04/custom-toggle-action-for-qdockwidget
+     https://stackoverflow.com/questions/26286646/create-a-qdockwidget-that-resizes-to-its-contents
+     http://qaru.site/questions/329726/how-to-have-a-fixed-size-layout-that-also-keeps-the-window-from-resizing
+     https://www.youtube.com/watch?v=OcA8aUzYI4E
+13-. Para el editor HTML
+     http://www.poketcode.com/en/pyqt4/containers/index.html
+14-. Estos son unos ejemplos interesantes
+     https://www.science-emergence.com/Articles/Setup-a-python-workspace-to-start-working-with-satellite-data/
+     http://blog.csdn.net/liang19890820/article/details/51899025 (en chino)
+     https://github.com/ColinDuquesnoy/QDarkStyleSheet
+     https://github.com/ColinDuquesnoy/QRegexEditor
+     http://zetcode.com/gui/pysidetutorial/
+     https://www.pythoncentral.io/series/python-pyside-pyqt-tutorial/
+     http://thesmithfam.org/blog/2009/09/10/qt-stylesheets-tutorial/
+     https://stackoverflow.com/questions/34138948/centralize-a-frame-in-another-frame-in-qt-designer
+     https://stackoverflow.com/questions/23567802/python-pyqt-widget-positioning-in-grid
 15-.
 16-.
 17-.

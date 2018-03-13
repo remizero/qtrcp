@@ -7,6 +7,8 @@ SUBDIRS += \
   ventanaprincipal \
     newinstantiation \
     systrayicon \
-    todo
+    todo \
+    colapsiblesection \
+    collapsabledockwidget
 
 CONFIG += ordered
