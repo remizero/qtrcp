@@ -22,10 +22,105 @@
      https://github.com/Elypson/qt-collapsible-section
      https://stackoverflow.com/questions/19829383/getting-qdockwidget-layout-right
      https://woboq.com/blog/qdockwidget-changes-in-56.html
+
+TRABAJAR CON MI IDEA, SOLO LE FALTARÍA DRAG AND DROP PARA CAMBIAR LAS ACCIONES/VENTANAS
+A OTRA BARRA DE HERRAMIENTAS, FALTARÍA DEFINIR LOS DIFERENTES DISEÑOS A MOSTRAR DEL WORKSPACE
+Y DESMONTAR DE LA BARRA DE TAREAS(OPCIONAL)
+
+POSIBLES DISEÑOS DEL WORKSPACE
+
+DISEÑO 1
+-----------------
+| |           | |
+| |           | |
+| |           | |
+| |           | |
+| |           | |
+-----------------
+-----------------
+
+DISEÑO 2
+-----------------
+| |
+| |
+| |
+| |
+| |
+-----------------
+-----------------
+
+DISEÑO 3
+-----------------
+              | |
+              | |
+              | |
+              | |
+              | |
+-----------------
+-----------------
+
+DISEÑO 4
+-----------------
+
+
+
+
+
+-----------------
+-----------------
+
+DISEÑO 5
+-----------------
+| |
+| |
+| |
+| |
+| |
+-----------------
+
+DISEÑO 6
+-----------------
+              | |
+              | |
+              | |
+              | |
+              | |
+-----------------
+
+DISEÑO 7
+-----------------
+| |           | |
+| |           | |
+| |           | |
+| |           | |
+| |           | |
+-----------------
+TOMAR EN CUENTA ESTAS IDEAS
+http://www.qtcentre.org/threads/17555-drag-and-drop-QToolButton-in-QToolBar
+http://www.qtcentre.org/threads/25953-Hiding-a-QToolButton-in-a-QToolBar
+https://forum.qt.io/topic/14970/save-and-restore-qtoolbar-position/5
+http://www.qtcentre.org/threads/21512-Position-of-qActions-inside-a-QToolBar
+https://forum.qt.io/topic/4082/how-to-float-qtoolbar-on-creation/2
+https://stackoverflow.com/questions/35669784/simple-ribbon-how-to-use-qactions-within-qtabbar
+
+
+
+
+
+
      https://forum.qt.io/topic/3055/mainwindow-layout-problem-with-qdockwidget/18
      https://stackoverflow.com/questions/26276799/multiple-widgets-on-a-qdockwidget
      http://www.qtcentre.org/threads/61403-SOLVED-Detachable-QDockWidget-tabs (MUY INTERESANTE)
      https://stackoverflow.com/questions/1290194/show-hide-qdockwidget (REVISAR ESTE TAMBIEN)
+
+     http://qt-project.org/faq/answer/how_can_i_check_which_tab_is_the_current_one_in_a_tabbed_qdockwidget
+     http://www.qtcentre.org/threads/14282-how-to-hide-the-title-bar-when-a-QDockWidget-is-docked
+     http://www.qtcentre.org/wiki/index.php?title=Movable_Tabs
+     http://blog.qt.digia.com/blog/2009/03/20/moving-top-level-window-by-dragging/
+     https://stackoverflow.com/questions/10253574/how-can-i-change-the-width-height-of-all-qdockwidgets-in-a-qdockwidgetarea
+
+
+
      https://stackoverflow.com/questions/34553069/prevent-qdockwidget-autosizing-behaviour?rq=1
      https://stackoverflow.com/questions/14871085/how-to-capture-the-qdockwidget-close-button-click-event?rq=1
      http://stackoverflow.com/questions/7091830/qt-destructor-call-for-closed-widget
