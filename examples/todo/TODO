@@ -151,3 +151,19 @@ https://forum.qt.io/topic/23855/solved-showing-and-hiding-qdockwidget-problem/9
 17-.
 18-.
 19-.
+
+https://stackoverflow.com/questions/30380809/how-can-i-collapse-qdockwidget-by-dragging-the-resize-handle
+https://riverbankcomputing.com/pipermail/pyqt/2008-July/020042.html
+https://www.youtube.com/watch?v=OcA8aUzYI4E
+https://www.youtube.com/watch?v=mGpmnu0bxZ8
+https://github.com/x64dbg/x64dbg
+http://www.qtcentre.org/threads/27925-QDockWidget-Close-instead-of-Collapse
+http://www.scottenglert.com/2016/02/24/code-snippet-qt-dockwidget-tab-click-simulation/
+http://lists.qt-project.org/pipermail/interest/2016-January.txt
+http://wiki.icub.org/xperience/dox/html/classgui_1_1CollapsibleDockWidget.html
+http://wiki.icub.org/xperience/dox/html/CollapsibleDockWidget_8h_source.html
+http://wiki.icub.org/xperience/dox/html/gui_2CollapsibleDockWidget_8cpp_source.html
+https://kb.froglogic.com/display/KB/Testing+Qt+Applications
+
+SISTEMA DE ACTUALIZACION
+https://github.com/alex-spataru/QSimpleUpdater
