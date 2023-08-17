@@ -8,7 +8,7 @@ QT       += core gui
 
 CONFIG += c++14
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets #xmlpatterns
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = appsettings
 TEMPLATE = app

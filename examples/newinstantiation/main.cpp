@@ -39,7 +39,7 @@ int main ( int argc, char *argv [] ) {
 
       if ( !singleInstance.tryToRun () ) {
 
-        QMessageBox msgBox ( QMessageBox::Warning, qobject_cast < QApplication *> ( appScopedPointer.data () )->applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", 0 );
+        QMessageBox msgBox ( QMessageBox::Warning, qobject_cast < QApplication *> ( appScopedPointer.data () )->applicationDisplayName (), "Ya existe una instancia de esta aplicación ejecutándose.", QMessageBox::Ok );
         msgBox.exec ();
         return 0;
       }
