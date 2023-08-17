@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             DefaultAttributesApplyProperty ( bool value = false );
             DefaultAttributesApplyProperty ( const DefaultAttributesApplyProperty& );
             ~DefaultAttributesApplyProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

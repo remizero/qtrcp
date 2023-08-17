@@ -27,7 +27,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( properties )
 
-          public:
+          public :
             Q_INVOKABLE PropertyAbs ( QObject *parent = 0 );
             PropertyAbs ( const PropertyAbs& );
             ~PropertyAbs ();

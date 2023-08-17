@@ -8,7 +8,7 @@ QT       -= gui
 
 CONFIG += c++14
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets xml xmlpatterns
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets xml #xmlpatterns
 
 TARGET = xsd
 TEMPLATE = lib
@@ -310,9 +310,9 @@ HEADERS += \
   core/types/UnsignedLongType.h \
   core/types/UnsignedShortType.h \
   core/types/YearMonthDurationType.h \
-    core/properties/DefaultProperty.h \
-    XsdAttribute.h \
-    XsdElement.h
+  core/properties/DefaultProperty.h \
+  XsdAttribute.h \
+  XsdElement.h
 
 DESTDIR = ../
 
@@ -334,7 +334,8 @@ else:unix: LIBS += \
 INCLUDEPATH += \
   $$PWD/../../app \
   $$PWD/../../resources \
-  $$PWD/../../utils
+  $$PWD/../../utils \
+  /opt/xerces-c/include
 
 DEPENDPATH += \
   $$PWD/../../app \
@@ -350,3 +351,10 @@ DISTFILES += \
     DEFINICIONES_DE_ELEMENTOS.txt \
     DEFINICIONES_DE_DATATYPES.txt \
     DEFINICIONES_DE_FACETS.txt
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../../../../../../../../opt/xerces-c/lib/release/ -lxerces-c-3.2
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../../../../../../../../opt/xerces-c/lib/debug/ -lxerces-c-3.2
+else:unix: LIBS += -L$$PWD/../../../../../../../../../opt/xerces-c/lib/ -lxerces-c-3.2
+
+INCLUDEPATH += $$PWD/../../../../../../../../../opt/xerces-c/lib
+DEPENDPATH += $$PWD/../../../../../../../../../opt/xerces-c/lib

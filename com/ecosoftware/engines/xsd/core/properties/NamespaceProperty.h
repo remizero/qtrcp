@@ -30,7 +30,7 @@ namespace Com {
             // TODO: para import
             // namespace = anyURI
 
-          public:
+          public :
             NamespaceProperty ( QString value = "" );
             NamespaceProperty ( const NamespaceProperty& );
             ~NamespaceProperty ();
@@ -38,7 +38,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

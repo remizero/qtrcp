@@ -73,7 +73,7 @@ bool AppSettings::readXmlFile ( QIODevice &device, QSettings::SettingsMap &map )
   while ( !xmlReader.atEnd () && !xmlReader.hasError () ) {
 
     xmlReader.readNext ();
-    if ( xmlReader.isStartElement () && xmlReader.name () != "settings" ) {
+    if ( xmlReader.isStartElement () && xmlReader.name ().compare ( QString::fromUtf8 ( "settings" )  ) == 0 ) {
 
       elements.append ( xmlReader.name ().toString () );
 

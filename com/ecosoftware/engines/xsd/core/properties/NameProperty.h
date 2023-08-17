@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             Q_INVOKABLE NameProperty ( QString value = "" );
             Q_INVOKABLE NameProperty ( const NameProperty& );
             Q_INVOKABLE ~NameProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             Q_INVOKABLE QString getValue () const;
             Q_INVOKABLE void setValue ( const QString &value );
 
-          private:
+          private :
             Q_INVOKABLE QString value;
         };
       }

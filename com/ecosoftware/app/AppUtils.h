@@ -18,7 +18,7 @@ namespace Com {
 
           Q_OBJECT
 
-        public:
+        public :
           static QString normalizePath ( QString path );
           static QString pathTo ( QString path );
           static QString relativePath ( QString rootPath, QString path );

@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             SchemaLocationProperty ( bool value = false );
             SchemaLocationProperty ( const SchemaLocationProperty& );
             ~SchemaLocationProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

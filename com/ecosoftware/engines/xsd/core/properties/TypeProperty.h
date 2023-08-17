@@ -25,7 +25,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             Q_INVOKABLE TypeProperty ( QString value = "" );
             Q_INVOKABLE TypeProperty ( const TypeProperty& );
             Q_INVOKABLE ~TypeProperty ();
@@ -36,7 +36,7 @@ namespace Com {
             Q_INVOKABLE int toInt ();
             Q_INVOKABLE QString toString ();
 
-          private:
+          private :
             TypeAbs::types value;
         };
       }

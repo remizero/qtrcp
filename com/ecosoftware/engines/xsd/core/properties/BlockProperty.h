@@ -28,7 +28,7 @@ namespace Com {
             // TODO: Para ComplexType
             // block = (#all | List of (extension | restriction))
 
-          public:
+          public :
             BlockProperty ( QString value = "" );
             BlockProperty ( const BlockProperty& );
             ~BlockProperty ();
@@ -36,7 +36,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

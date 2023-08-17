@@ -26,7 +26,7 @@ namespace Com {
             // TODO: blockDefault = (#all | List of (extension | restriction | substitution))  : ''
             // Como manejar este tipo de valor.
 
-          public:
+          public :
             BlockDefaultProperty ( QString value = "" );
             BlockDefaultProperty ( const BlockDefaultProperty& );
             ~BlockDefaultProperty ();
@@ -34,7 +34,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

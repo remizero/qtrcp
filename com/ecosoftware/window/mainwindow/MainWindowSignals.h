@@ -15,10 +15,10 @@ namespace Com {
 
         class MAINWINDOWSHARED_EXPORT MainWindowSignals {
 
-          public:
+          public :
             MainWindowSignals ( QMainWindow *parent );
 
-          private:
+          private :
             QMainWindow *parent;
         };
       }

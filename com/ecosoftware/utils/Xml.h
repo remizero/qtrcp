@@ -18,7 +18,7 @@ namespace Com {
 
       class UTILSSHARED_EXPORT Xml {
 
-        public:
+        public :
           static QDomDocument load ( QString fileName, bool readOnly = false );
           static void save ( QDomDocument domDocument, QString fileName );
       };

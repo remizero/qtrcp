@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             NotNamespaceProperty ( bool value = false );
             NotNamespaceProperty ( const NotNamespaceProperty& );
             ~NotNamespaceProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

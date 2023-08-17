@@ -17,7 +17,7 @@ namespace Com {
 
               Q_OBJECT
 
-            public:
+            public :
               explicit Menu ( QWidget *parent = 0 );
 
               void createStyle ();

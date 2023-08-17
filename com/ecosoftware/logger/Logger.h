@@ -52,12 +52,12 @@ namespace Com {
 
       class LOGGERSHARED_EXPORT Logger {
 
-        public:
+        public :
           Logger ( QFile logFile );
 
           static void loggerOutput ( QtMsgType type, const QMessageLogContext &context, const QString &msg );
 
-        private:
+        private :
           QScopedPointer < QFile > logFile;
           static Logger *logger;
       };

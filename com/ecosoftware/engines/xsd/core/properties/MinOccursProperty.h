@@ -36,7 +36,7 @@ namespace Com {
             // TODO: para sequence
             // minOccurs = nonNegativeInteger : 1
 
-          public:
+          public :
             MinOccursProperty ( bool value = false );
             MinOccursProperty ( const MinOccursProperty& );
             ~MinOccursProperty ();
@@ -44,7 +44,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

@@ -28,19 +28,19 @@ namespace Com {
 
           Q_OBJECT
 
-        public:
+        public :
           explicit SplashScreen ( QSettings *settings );
           ~SplashScreen ();
 
           void showStatusMessage ( const QString &message );
 
-        public slots:
+        public slots :
           void updateProgressValue ( int value );
 
         signals:
           void updateProgressValueSignal ( int value );
 
-        private:
+        private :
                    int alignement;
                 QColor textColor;
                QString message;

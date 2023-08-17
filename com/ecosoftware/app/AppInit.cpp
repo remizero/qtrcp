@@ -24,7 +24,11 @@ bool AppInit::checkVersion () {
   bool checkVersion = false;
   if ( ( checkVersion = ( QT_VERSION < QT_VERSION_CHECK ( this->settings->value ( "app/mayorversion" ).toInt (), this->settings->value ( "app/minorversion" ).toInt (), this->settings->value ( "app/pathversion" ).toInt () ) ) ) ) {
 
-    QMessageBox msgBox ( QMessageBox::Warning, this->settings->value ( "app/applicationdisplayname" ).toString (), "Debe tener instalada una versión de Qt igual o superior " + this->settings->value ( "app/mayorversion" ).toString () + "." + this->settings->value ( "app/minorversion" ).toString () + "." + this->settings->value ( "app/pathversion" ).toString () + ".", 0 );
+    QMessageBox msgBox (
+          QMessageBox::Warning,
+          this->settings->value ( "app/applicationdisplayname" ).toString (),
+          "Debe tener instalada una versión de Qt igual o superior " + this->settings->value ( "app/mayorversion" ).toString () + "." + this->settings->value ( "app/minorversion" ).toString () + "." + this->settings->value ( "app/pathversion" ).toString () + ".",
+          QMessageBox::Ok );
     msgBox.exec ();
   }
   return checkVersion;

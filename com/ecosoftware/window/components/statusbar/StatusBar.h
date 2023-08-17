@@ -20,7 +20,7 @@ namespace Com {
 
           class STATUSBARSHARED_EXPORT StatusBar : public QStatusBar {
 
-            public:
+            public :
               explicit StatusBar ( QWidget *parent = 0 );
               ~StatusBar ();
 

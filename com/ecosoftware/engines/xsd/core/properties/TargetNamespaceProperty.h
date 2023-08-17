@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             TargetNamespaceProperty ( bool value = false );
             TargetNamespaceProperty ( const TargetNamespaceProperty& );
             ~TargetNamespaceProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

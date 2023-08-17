@@ -26,7 +26,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( elements )
 
-          public:
+          public :
             Q_INVOKABLE ElementAbs ();
             Q_INVOKABLE ElementAbs ( const ElementAbs& );
             Q_INVOKABLE ~ElementAbs ();

@@ -26,7 +26,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( indicatorEnum levelEnum )
 
-          public:
+          public :
             Xsd ();
 
             enum indicatorEnum {

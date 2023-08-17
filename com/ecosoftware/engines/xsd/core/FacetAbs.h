@@ -24,7 +24,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( content facets properties )
 
-          public:
+          public :
             Q_INVOKABLE FacetAbs ( QString value = "" );
             FacetAbs ( const FacetAbs& );
             ~FacetAbs ();
@@ -86,7 +86,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          protected:
+          protected :
             QString value;
         };
       }

@@ -36,7 +36,7 @@ namespace Com {
             // TODO: para sequence
             // maxOccurs = (nonNegativeInteger | unbounded)  : 1
 
-          public:
+          public :
             MaxOccursProperty ( bool value = false );
             MaxOccursProperty ( const MaxOccursProperty& );
             ~MaxOccursProperty ();
@@ -44,7 +44,7 @@ namespace Com {
             bool getValue () const;
             void setValue ( bool value );
 
-          private:
+          private :
             bool value;
         };
       }

@@ -6,7 +6,7 @@
 class UTILSSHARED_EXPORT Utils
 {
 
-  public:
+  public :
     Utils();
 };
 

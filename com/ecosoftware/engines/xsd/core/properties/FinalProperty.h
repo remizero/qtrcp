@@ -32,7 +32,7 @@ namespace Com {
             // TODO: para simpletype
             // final = (#all | List of (list | union | restriction | extension))
 
-          public:
+          public :
             FinalProperty ( QString value = "" );
             FinalProperty ( const FinalProperty& );
             ~FinalProperty ();
@@ -40,7 +40,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

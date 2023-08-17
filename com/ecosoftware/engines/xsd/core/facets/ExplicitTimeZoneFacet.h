@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( properties )
 
-          public:
+          public :
             Q_INVOKABLE ExplicitTimeZoneFacet ( QString value = "" );
             ExplicitTimeZoneFacet ( const ExplicitTimeZoneFacet& );
             ~ExplicitTimeZoneFacet ();

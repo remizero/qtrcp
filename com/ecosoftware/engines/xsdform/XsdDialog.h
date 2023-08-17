@@ -43,16 +43,16 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             XsdDialog ( QWidget *parent );
 
             QDialog *getFormDialog () const;
 
-          public slots:
+          public slots :
             void acceptSlot ();
             void applySlot ();
 
-          private:
+          private :
             QDialogButtonBox *buttonBox;
                 QDomDocument domDocument;
                      QDialog *formDialog;

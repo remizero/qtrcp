@@ -17,12 +17,12 @@ namespace Com {
 
           Q_OBJECT
 
-        public:
+        public :
           explicit AppInfo ( QObject *parent = 0 );
 
         signals:
 
-        public slots:
+        public slots :
       };
     }
   }

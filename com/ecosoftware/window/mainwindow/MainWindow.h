@@ -34,7 +34,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             explicit MainWindow ( QSettings *settings, QWidget *parent = 0 );
             ~MainWindow ();
 
@@ -44,10 +44,10 @@ namespace Com {
             QSystemTrayIcon *getSysTrayIcon () const;
             void setVisible ( bool visible ) override;
 
-          public slots:
+          public slots :
             void iconActivated ( QSystemTrayIcon::ActivationReason reason );
 
-          protected:
+          protected :
             void centerWindow ();
             virtual void changeEvent( QEvent *event ) override;
             void closeEvent ( QCloseEvent *event ) override;
@@ -59,7 +59,7 @@ namespace Com {
             void saveSettings ();
             void setMinimunWindowSize ();
 
-          private:
+          private :
              MainWindowEvents *mainWindowEvents;
             MainWindowSignals *mainWindowSignals;
               MainWindowSlots *mainWindowSlots;

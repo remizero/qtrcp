@@ -25,13 +25,13 @@ namespace Com {
 
               Q_OBJECT
 
-            public:
-              explicit ActionAbs ( QString title, QWidget *parent = 0 );
+            public :
+              explicit ActionAbs ( QString title, QWidget *parent = nullptr );
 
-            public slots:
+            public slots :
               virtual void execAct () = 0;
 
-            protected:
+            protected :
               QWidget *myParent;
           };
         }

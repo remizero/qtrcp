@@ -19,12 +19,12 @@ namespace Com {
 
         class MAINWINDOWSHARED_EXPORT MainWindowSlots {
 
-          public:
+          public :
             MainWindowSlots ( QMainWindow *parent );
 
             void slotReboot ();
 
-          private:
+          private :
             QMainWindow *parent;
         };
       }

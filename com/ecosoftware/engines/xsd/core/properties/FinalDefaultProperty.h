@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             // TODO: finalDefault = (#all | List of (extension | restriction | list | union))  : ''
 
-          public:
+          public :
             FinalDefaultProperty ( QString value = "" );
             FinalDefaultProperty ( const FinalDefaultProperty& );
             ~FinalDefaultProperty ();
@@ -33,7 +33,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

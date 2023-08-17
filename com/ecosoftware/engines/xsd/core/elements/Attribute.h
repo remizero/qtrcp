@@ -26,7 +26,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( content properties )
 
-          public:
+          public :
             Q_INVOKABLE Attribute ();
             Attribute ( const Attribute& );
             ~Attribute ();

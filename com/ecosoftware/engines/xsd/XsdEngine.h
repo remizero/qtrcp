@@ -158,12 +158,13 @@
 #include <QDomDocument>
 #include <QDomElement>
 #include <QFile>
+#include <QFileInfo>
 #include <QList>
 #include <QListIterator>
 #include <QMetaType>
 #include <QObject>
 #include <QUrl>
-#include <QXmlSchema>
+///#include <QXmlSchema>
 
 namespace Com {
 
@@ -177,7 +178,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             XsdEngine ();
 
             XsdElement *getXsdElementModel () const;
@@ -190,7 +191,7 @@ namespace Com {
             QString toXml ();
             void listarElementos ( XsdElement *XsdElement = nullptr );
 
-          private:
+          private :
             ElementAbs::elements currentElement;
             QDomDocument *doc;
             //XsdFormCreator *formDialog;

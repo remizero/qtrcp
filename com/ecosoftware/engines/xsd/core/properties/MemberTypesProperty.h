@@ -24,7 +24,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             MemberTypesProperty ( QString value = "" );
             MemberTypesProperty ( const MemberTypesProperty& );
             ~MemberTypesProperty ();
@@ -32,7 +32,7 @@ namespace Com {
             QString getValue () const;
             void setValue ( const QString &value );
 
-          private:
+          private :
             QString value;
         };
       }

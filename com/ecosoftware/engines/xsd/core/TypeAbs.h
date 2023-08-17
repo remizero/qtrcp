@@ -26,7 +26,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( types )
 
-          public:
+          public :
             Q_INVOKABLE TypeAbs ();
             TypeAbs ( const TypeAbs& );
             ~TypeAbs ();

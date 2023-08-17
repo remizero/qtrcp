@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( facets )
 
-          public:
+          public :
             UnsignedIntType ();
             UnsignedIntType ( const UnsignedIntType& );
             ~UnsignedIntType ();

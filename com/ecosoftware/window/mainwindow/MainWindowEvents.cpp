@@ -1,7 +1,7 @@
 #include "MainWindowEvents.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
+// #include <QDesktopWidget>
 #include <QDockWidget>
 
 using namespace Com::Ecosoftware::Window::MainWindow;
@@ -14,6 +14,7 @@ MainWindowEvents::MainWindowEvents ( QMainWindow *parent ) {
 void MainWindowEvents::adjustMaximizedSize ( QMainWindow *parent ) {
 
     /**
+     * TODO
      * Para probar si se puede evitar que el centralWidget no se expanda :)
      * http://stackoverflow.com/questions/2722939/c-resize-a-docked-qt-qdockwidget-programmatically?rq=1
      * http://qt-project.org/doc/qt-4.8/widgets-scribble.html
@@ -35,7 +36,7 @@ void MainWindowEvents::adjustMaximizedSize ( QMainWindow *parent ) {
 
         QDockWidget *dockWidget = dockWidgetIterator.next ();
         //dockWidget->setFixedHeight ( QApplication::desktop ()->screen ()->height () - 100 );
-        dockWidget->setFixedHeight ( QApplication::desktop ()->screen ()->height () - 200 );
+        dockWidget->setFixedHeight ( this->parent->screen ()->availableGeometry ().height () - 200 );
     }
 }
 

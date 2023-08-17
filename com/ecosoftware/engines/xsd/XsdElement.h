@@ -42,7 +42,7 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             XsdElement ();
 
             //QList<XsdAttribute *> getAttributes () const;
@@ -71,7 +71,7 @@ namespace Com {
             void setRestriction ( bool value );
             void setSimpleType ( bool value );
 
-          private:
+          private :
             //QList<XsdAttribute *> attributes;
             Xsd::indicatorEnum elementIndicator; // DEFINITIVO // Representa la forma como seran creados, el orden y la cantidad de elementos que contendrá un elemento XML.
             QList<XsdElement *> elementsList;

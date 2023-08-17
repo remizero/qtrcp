@@ -24,7 +24,7 @@ namespace Com {
 
       class APPSHARED_EXPORT AppInit {
 
-        public:
+        public :
           static AppInit &getInstance ();
 
           bool checkVersion ();
@@ -36,7 +36,7 @@ namespace Com {
           static void saveSettings ();
           static void saveState ( QMainWindow *parent );
 
-        private:
+        private :
           AppInit ();
           ~AppInit ();
           static AppInit instance;

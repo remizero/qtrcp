@@ -11,6 +11,7 @@
 #include <QIODevice>
 #include <QSettings>
 #include <QString>
+#include <QStringView>
 #include <QStringList>
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
@@ -23,7 +24,7 @@ namespace Com {
 
       class APPSHARED_EXPORT AppSettings {
 
-        public:
+        public :
           //static QSettings loadSettingsXML ( QString fileName );
           static QSettings::Format getXmlFormat ();
           static bool readXmlFile ( QIODevice &device, QSettings::SettingsMap &map );
@@ -31,7 +32,7 @@ namespace Com {
           static void saveRecentProject ( const QString &value );
           static bool writeXmlFile ( QIODevice &device, const QSettings::SettingsMap &map );
 
-        private:
+        private :
           static void saveRecent ( const QString &recentGroup, int maxItemsRecentGroup, const QString &key, const QString &value );
       };
     }

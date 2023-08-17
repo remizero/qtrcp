@@ -1,6 +1,16 @@
 #include "XsdEngine.h"
 #include <QDebug>
 
+#include <xercesc/framework/LocalFileInputSource.hpp>
+#include <xercesc/framework/StdOutFormatTarget.hpp>
+#include <xercesc/parsers/XercesDOMParser.hpp>
+#include <xercesc/sax/SAXParseException.hpp>
+#include <xercesc/util/PlatformUtils.hpp>
+#include <xercesc/util/XMLUni.hpp>
+#include <xercesc/util/XMLUniDefs.hpp>
+#include <xercesc/validators/schema/SchemaValidator.hpp>
+
+
 using namespace Com::Ecosoftware::Engines::Xsd;
 
 XsdEngine::XsdEngine () {
@@ -646,33 +656,134 @@ XsdElement *XsdEngine::getXsdElementModel () const {
 
 void XsdEngine::load ( QString xsdFile ) {
 
-  QFile file ( xsdFile );
-  if ( file.open ( QIODevice::ReadOnly ) ) {
+  try {
 
-    QXmlSchema schema;
-    schema.load ( &file, QUrl::fromLocalFile ( file.fileName () ) );
-    if ( schema.isValid () ) {
+    QFile file ( xsdFile );
+    if ( file.open ( QIODevice::ReadOnly ) ) {
 
-      this->doc = new QDomDocument ( "xsdDocument" );
-      this->xsdElementModel = new XsdElement ();
-      this->xsdElementModel->setElementLevel ( Xsd::levelEnum::ROOTFORM );
-      QFile auxFile ( xsdFile );
-      if ( !this->doc->setContent ( &auxFile ) ) {
+      qDebug () << "Abriendo el archivo XSD";
+      // Inicializar Xerces-C++
+      XERCES_CPP_NAMESPACE::XMLPlatformUtils::Initialize ();
+      qDebug () << "Inicializando la librería Xerces";
 
+      // Crear un analizador DOM de Xerces-C++
+      XERCES_CPP_NAMESPACE::XercesDOMParser parser;
+      qDebug () << "Creando el analizador";
+
+      // Cargar el archivo XSD
+      QFileInfo fileInfo ( file.filesystemFileName () );
+      qDebug () << "Obteniendo información del archivo XSD abierto";
+      if ( fileInfo.suffix ().compare ( QChar ( 'xsd' ), Qt::CaseInsensitive ) == 0 ) {
+
+        qDebug () << "Es un archivo archivo XSD";
+        parser.setValidationScheme ( XERCES_CPP_NAMESPACE::XercesDOMParser::Val_Auto );
+        parser.setDoSchema ( true );
+        parser.setDoNamespaces ( true );
+        parser.loadGrammar ( file.fileName ().toLatin1 (), XERCES_CPP_NAMESPACE::Grammar::SchemaGrammarType, true );
+
+      } else if ( fileInfo.suffix ().compare ( QChar ( 'dtd' ), Qt::CaseInsensitive ) == 0 ) {
+
+        qDebug () << "Es un archivo DTD";
+        parser.loadGrammar ( file.fileName ().toLatin1 (), XERCES_CPP_NAMESPACE::Grammar::DTDGrammarType, true );
+      }
+      // Enable grammar caching
+      parser.cacheGrammarFromParse ( true );
+
+      // Manejar las excepciones de SAXParseException
+      // parser.setErrorHandler ( new ErrorHandler );
+      qDebug () << "Se asigna un nuevo manejador de errores";
+
+      // Cargar el archivo XSD a validar
+      parser.parse ( xsdFile.toLatin1 () );
+      qDebug () << "Se valida el archivo XSD";
+
+      if ( parser.getErrorCount () <= 0 ) {
+
+        qDebug () << "El archivo XSD es válido";
+        this->doc = new QDomDocument ( "xsdDocument" );
+        this->xsdElementModel = new XsdElement ();
+        this->xsdElementModel->setElementLevel ( Xsd::levelEnum::ROOTFORM );
+        QFile auxFile ( xsdFile );
+        if ( !this->doc->setContent ( &auxFile ) ) {
+
+          file.close ();
+          auxFile.close ();
+          return;
+        }
+
+      } else {
+
+        qDebug () << "El archivo XSD no es válido";
         file.close ();
-        auxFile.close ();
+        XERCES_CPP_NAMESPACE::XMLPlatformUtils::Terminate ();
         return;
       }
+
+//      // Crear un validador de esquema
+//      XERCES_CPP_NAMESPACE::SchemaValidator *validator = parser.getValidator ();
+
+//      // Realizar la validación
+//      if ( validator->validate () ) {
+
+//        std::cout << "El archivo XML es válido según el esquema XSD." << std::endl;
+
+//      } else {
+
+//        std::cout << "El archivo XML no es válido según el esquema XSD." << std::endl;
+//      }
+      // Finalizar Xerces-C++
+      XERCES_CPP_NAMESPACE::XMLPlatformUtils::Terminate ();
+
     } else {
 
-      file.close ();
       return;
     }
-  } else {
+    file.close ();
 
-    return;
+  } catch ( const XERCES_CPP_NAMESPACE::XMLException &e ) {
+
+    qDebug () << "Error: " << XERCES_CPP_NAMESPACE::XMLString::transcode ( e.getMessage () );
+    // TODO Guardar en un archivo log de errores.
+
+  } catch ( const XERCES_CPP_NAMESPACE::SAXParseException &e ) {
+
+    qDebug () << "Error SAXParseException: " << XERCES_CPP_NAMESPACE::XMLString::transcode ( e.getMessage () );
+    // TODO Guardar en un archivo log de errores.
+
+  } catch ( const std::exception &e ) {
+
+    qDebug () << "Error std::exception: " << e.what ();
+    // TODO Guardar en un archivo log de errores.
   }
-  file.close ();
+
+//  QFile file ( xsdFile );
+//  if ( file.open ( QIODevice::ReadOnly ) ) {
+
+//    QXmlSchema schema;
+//    schema.load ( &file, QUrl::fromLocalFile ( file.fileName () ) );
+//    if ( schema.isValid () ) {
+
+//      this->doc = new QDomDocument ( "xsdDocument" );
+//      this->xsdElementModel = new XsdElement ();
+//      this->xsdElementModel->setElementLevel ( Xsd::levelEnum::ROOTFORM );
+//      QFile auxFile ( xsdFile );
+//      if ( !this->doc->setContent ( &auxFile ) ) {
+
+//        file.close ();
+//        auxFile.close ();
+//        return;
+//      }
+//    } else {
+
+//      file.close ();
+//      return;
+//    }
+//  } else {
+
+//    return;
+//  }
+//  file.close ();
+
 }
 
 void XsdEngine::parse () {

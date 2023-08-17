@@ -26,10 +26,10 @@ namespace Com {
 
               Q_OBJECT
 
-            public:
+            public :
               Q_INVOKABLE StatusBarShowHideAct ( QString title, QWidget *parent );
 
-            public slots:
+            public slots :
               void execAct ();
           };
         }

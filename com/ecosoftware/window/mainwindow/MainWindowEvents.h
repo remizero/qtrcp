@@ -25,7 +25,7 @@ namespace Com {
 
         class MAINWINDOWSHARED_EXPORT MainWindowEvents {
 
-          public:
+          public :
             MainWindowEvents ( QMainWindow *parent );
 
             void adjustMaximizedSize ( QMainWindow *parent );
@@ -34,7 +34,7 @@ namespace Com {
             void closeEvent ( QCloseEvent *event );
             void resizeEvent ( QResizeEvent *event );
 
-          private:
+          private :
             QMainWindow *parent;
         };
       }

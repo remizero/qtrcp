@@ -6,7 +6,7 @@
 class RESOURCESSHARED_EXPORT Resources
 {
 
-  public:
+  public :
     Resources();
 };
 

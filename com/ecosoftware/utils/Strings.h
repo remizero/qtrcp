@@ -16,7 +16,7 @@ namespace Com {
 
       class UTILSSHARED_EXPORT Strings {
 
-        public:
+        public :
           static QString capitalize ( QString string );
           static QString normalizeClassName ( QString string );
           //static

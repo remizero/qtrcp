@@ -2,7 +2,7 @@
 
 using namespace Com::Ecosoftware::Window::Components::Actions;
 
-ActionAbs::ActionAbs ( QString title , QWidget *parent ) : QAction ( parent ) {
+ActionAbs::ActionAbs ( QString title , QWidget *parent ) : QAction ( ( QObject * ) parent ) {
 
   this->setText ( "&" + title );
   this->setToolTip ( title );

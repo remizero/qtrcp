@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( facets )
 
-          public:
+          public :
             NormalizedStringType ();
             NormalizedStringType ( const NormalizedStringType& );
             ~NormalizedStringType ();

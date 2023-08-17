@@ -17,7 +17,7 @@ namespace Com {
 
       class APPSHARED_EXPORT AppPaths {
 
-        public:
+        public :
           static AppPaths &getInstance ();
 
           QString getApplicationConfigPath () const;
@@ -32,7 +32,7 @@ namespace Com {
           QString getApplicationWorkspacePath () const;
           QString getXsdPath () const;
 
-        private:
+        private :
           AppPaths ();
           ~AppPaths ();
           static AppPaths instance;

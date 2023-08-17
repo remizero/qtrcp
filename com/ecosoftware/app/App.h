@@ -17,14 +17,14 @@ namespace Com {
 
           Q_OBJECT
 
-        public:
+        public :
           App ( int &argc, char **argv );
           virtual ~App ();
 
           QCoreApplication *getApplication ();
           bool notify ( QObject* receiver, QEvent* event ) Q_DECL_OVERRIDE;
 
-        private:
+        private :
           QCoreApplication *application = nullptr;
       };
     }

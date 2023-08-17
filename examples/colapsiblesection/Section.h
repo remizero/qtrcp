@@ -12,7 +12,7 @@ class Section : public QWidget {
 
     Q_OBJECT
 
-  private:
+  private :
     QGridLayout *mainLayout;
     QToolButton *toggleButton;
     QFrame *headerLine;
@@ -20,7 +20,7 @@ class Section : public QWidget {
     QScrollArea *contentArea;
     int animationDuration;
 
-  public:
+  public :
     explicit Section ( const QString &title = "", const int animationDuration = 100, QWidget *parent = 0 );
 
     void setContentLayout ( QLayout &contentLayout );

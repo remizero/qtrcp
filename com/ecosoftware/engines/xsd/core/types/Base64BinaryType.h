@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( facets )
 
-          public:
+          public :
             Base64BinaryType ();
             Base64BinaryType ( const Base64BinaryType& );
             ~Base64BinaryType ();

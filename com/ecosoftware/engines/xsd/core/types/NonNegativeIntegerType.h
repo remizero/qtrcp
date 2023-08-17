@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( facets )
 
-          public:
+          public :
             NonNegativeIntegerType ();
             NonNegativeIntegerType ( const NonNegativeIntegerType& );
             ~NonNegativeIntegerType ();

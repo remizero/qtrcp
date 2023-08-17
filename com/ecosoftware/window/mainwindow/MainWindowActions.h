@@ -16,7 +16,7 @@ namespace Com {
 
         class MAINWINDOWSHARED_EXPORT MainWindowActions {
 
-          public:
+          public :
             MainWindowActions ();
             ~MainWindowActions ();
 
@@ -27,7 +27,7 @@ namespace Com {
             void loadPluginActions ();
             void setPluginAction ();
 
-          private:
+          private :
             QMainWindow *parent;
         };
       }

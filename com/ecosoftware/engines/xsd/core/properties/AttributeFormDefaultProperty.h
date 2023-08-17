@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( values )
 
-          public:
+          public :
             AttributeFormDefaultProperty ( QString value = "unqualified" );
             AttributeFormDefaultProperty ( const AttributeFormDefaultProperty& );
             ~AttributeFormDefaultProperty ();
@@ -43,7 +43,7 @@ namespace Com {
             void setValue ( QString value );
             static QString valuesEnumToString ( values enumValue );
 
-          private:
+          private :
             QString value;
         };
       }

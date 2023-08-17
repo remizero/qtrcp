@@ -16,13 +16,13 @@ namespace Com {
 
       class UTILSSHARED_EXPORT Enumeration {
 
-        public:
+        public :
           static int indexOf ( const QMetaObject staticMetaObject, QString enumerate, QString enumKey );// LISTO
           static bool inEnum ( const QMetaObject staticMetaObject, QString enumerate, QString enumKey );
           static bool inEnum ( const QMetaObject staticMetaObject, QString enumerate, int enumValue );
           static QString normalizeEnumValue ( QString enumKey );
 
-        private:
+        private :
           static const QMetaEnum getMetaEnum ( const QMetaObject staticMetaObject, QString enumerate );
       };
     }

@@ -10,13 +10,13 @@ class NewInstantiationMainWindow : public Com::Ecosoftware::Window::MainWindow::
 
     Q_OBJECT
 
-  public:
+  public :
     NewInstantiationMainWindow ( QSettings *settings, QWidget *parent = 0 );
     ~NewInstantiationMainWindow ();
 
   signals:
 
-  public slots:
+  public slots :
 };
 
 #endif // NEWINSTANTIATIONMAINWINDOW_H

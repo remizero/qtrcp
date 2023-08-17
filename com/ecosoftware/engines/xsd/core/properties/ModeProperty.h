@@ -28,7 +28,7 @@ namespace Com {
             // mode = (interleave | suffix) : interleave
             // TODO: para opencontent
             // mode = (none | interleave | suffix) : interleave
-          public:
+          public :
             ModeProperty ( QString value = "interleave" );
             ModeProperty ( const ModeProperty& );
             ~ModeProperty ();
@@ -46,7 +46,7 @@ namespace Com {
             void setValue ( QString value );
             static QString valuesEnumToString ( values enumValue );
 
-          private:
+          private :
             QString value;
         };
       }

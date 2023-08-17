@@ -25,10 +25,10 @@ namespace Com {
 
               Q_OBJECT
 
-            public:
+            public :
               Q_INVOKABLE ExitAct ( QString title, QWidget *parent );
 
-            public slots:
+            public slots :
               void execAct ();
           };
         }

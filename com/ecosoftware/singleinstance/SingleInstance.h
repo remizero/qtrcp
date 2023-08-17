@@ -17,7 +17,7 @@ namespace Com {
 
       class SINGLEINSTANCESHARED_EXPORT SingleInstance {
 
-        public:
+        public :
           SingleInstance ( const QString& key );
           ~SingleInstance ();
 
@@ -25,7 +25,7 @@ namespace Com {
           bool tryToRun ();
           void release ();
 
-        private:
+        private :
             const QString key;
             const QString memLockKey;
             const QString sharedmemKey;

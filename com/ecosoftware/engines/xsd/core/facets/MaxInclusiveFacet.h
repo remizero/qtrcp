@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( properties )
 
-          public:
+          public :
             Q_INVOKABLE MaxInclusiveFacet ( QString value = "" );
             MaxInclusiveFacet ( const MaxInclusiveFacet& );
             ~MaxInclusiveFacet ();

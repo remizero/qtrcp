@@ -19,7 +19,7 @@ namespace Com {
 
       class UTILSSHARED_EXPORT Files {
 
-        public:
+        public :
           static QFile *load ( QString fileName, bool readOnly = false );
       };
     }

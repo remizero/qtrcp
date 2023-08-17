@@ -14,12 +14,12 @@ class VentanaPrincipal : public Com::Ecosoftware::Window::MainWindow::MainWindow
 
     Q_OBJECT
 
-  public:
+  public :
     explicit VentanaPrincipal ( QSettings *settings, QWidget *parent = 0 );
 
   signals:
 
-  public slots:
+  public slots :
 };
 
 #endif // VENTANAPRINCIPAL_H

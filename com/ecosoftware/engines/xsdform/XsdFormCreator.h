@@ -48,13 +48,13 @@ namespace Com {
 
         class XSDFORMSHARED_EXPORT XsdFormCreator {
 
-          public:
+          public :
             XsdFormCreator ();
 
             void createForm ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement, QWidget *parent );
             QTabWidget *getForm () const;
 
-          private:
+          private :
             QTabWidget *tabsDialog;
 
             void createGroup ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );

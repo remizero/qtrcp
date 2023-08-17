@@ -1,7 +1,7 @@
 #include "MainWindow.h"
 
 #include <QApplication>
-#include <QDesktopWidget>
+// #include <QDesktopWidget>
 #include <QEvent>
 #include <QResizeEvent>
 
@@ -25,7 +25,8 @@ MainWindow::~MainWindow () {}
 void MainWindow::centerWindow () {
 
   this->adjustSize ();
-  this->move ( QApplication::desktop ()->screen ()->rect ().center () - this->rect ().center () );
+  // this->move ( QApplication::desktop ()->screen ()->rect ().center () - this->rect ().center () );
+  this->move ( this->screen ()->availableGeometry ().center () - this->rect ().center () );
 }
 
 void MainWindow::changeEvent ( QEvent *event ) {
@@ -157,19 +158,22 @@ void MainWindow::saveSettings () {}
 
 void MainWindow::setMinimunWindowSize () {
 
-  /**
-   * Que hacer si las dimenciones de la pantalla son menores a 800x600?
-   */
-  if ( QApplication::desktop ()->screen ()->width () > 800 ) {
+  // if ( QApplication::desktop ()->screen ()->width () > 800 ) {
+  if ( this->screen ()->availableGeometry ().width () > 800 ) {
 
     this->setMinimumWidth ( 800 );
 
   } else {
 
-
+    /**
+     * TODO
+     * Si las medidas son menores a 800x600, mostrar un mensaje que no se puede
+     * ejecutar la aplicación en una resolución menor y cerrar la aplicación.
+     */
   }
 
-  if ( QApplication::desktop ()->screen ()->height () > 600 ) {
+  // if ( QApplication::desktop ()->screen ()->height () > 600 ) {
+  if ( this->screen ()->availableGeometry ().height () > 600 ) {
 
     this->setMinimumHeight ( 600 );
 

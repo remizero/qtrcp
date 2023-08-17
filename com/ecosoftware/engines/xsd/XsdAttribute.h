@@ -21,10 +21,10 @@ namespace Com {
 
             Q_OBJECT
 
-          public:
+          public :
             XsdAttribute ();
 
-          private:
+          private :
             QString name;
             QList<FacetAbs *> facetsList;
         };

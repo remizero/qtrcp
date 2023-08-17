@@ -17,15 +17,15 @@ class SysTrayIconMainWindow : public Com::Ecosoftware::Window::MainWindow::MainW
 
     Q_OBJECT
 
-  public:
+  public :
     explicit SysTrayIconMainWindow ( QSettings *settings, QWidget *parent = 0 );
     ~SysTrayIconMainWindow ();
 
   signals:
 
-  public slots:
+  public slots :
 
-  protected:
+  protected :
       /**
        * Virtual function of the parent class in our class
        * Overridden to change the behavior of the application,
@@ -40,7 +40,7 @@ class SysTrayIconMainWindow : public Com::Ecosoftware::Window::MainWindow::MainW
      */
     //void iconActivated ( QSystemTrayIcon::ActivationReason reason );
 
-  private:
+  private :
     /**
      * Declare the object of future applications for the tray icon
      */

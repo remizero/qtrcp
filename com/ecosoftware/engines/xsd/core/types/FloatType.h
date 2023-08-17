@@ -25,7 +25,7 @@ namespace Com {
             Q_OBJECT
             Q_ENUMS ( facets )
 
-          public:
+          public :
             FloatType ();
             FloatType ( const FloatType& );
             ~FloatType ();

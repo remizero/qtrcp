@@ -30,12 +30,12 @@ namespace Com {
 
               Q_OBJECT
 
-            public:
+            public :
               explicit SystemTrayIcon ( QObject *parent = 0 );
 
               void setVisible ( bool visible );
 
-            private:
+            private :
                   QAction *maximizeAction;
                   QAction *minimizeAction;
               QMainWindow *parent;
