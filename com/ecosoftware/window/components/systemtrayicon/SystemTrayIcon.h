@@ -31,7 +31,7 @@ namespace Com {
               Q_OBJECT
 
             public :
-              explicit SystemTrayIcon ( QObject *parent = 0 );
+              explicit SystemTrayIcon ( QObject *parent = nullptr );
 
               void setVisible ( bool visible );
 

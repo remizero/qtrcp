@@ -43,6 +43,7 @@ void MainWindowEvents::adjustMaximizedSize ( QMainWindow *parent ) {
 void MainWindowEvents::adjustMinimizedSize ( QMainWindow *parent ) {
 
     /**
+     * TODO
      * TOMAR LA LISTA DE DOCKEDWINDOWS Y HACER LO SIGUIENTE
      *
      * dock1->setFixedHeight ( 150 );
@@ -120,6 +121,7 @@ void MainWindowEvents::closeEvent ( QCloseEvent *event ) {
   }
 
   /*
+   * TODO
    * Aquí código para hacer lo que se vaya a hacer al cerrar la ventana
    * principal de la aplicación.
    */
@@ -142,6 +144,7 @@ void MainWindowEvents::closeEvent ( QCloseEvent *event ) {
 void MainWindowEvents::resizeEvent ( QResizeEvent *event ) {
 
   /**
+   * TODO
    * Para probar si se puede evitar que el centralWidget no se expanda :)
    * http://stackoverflow.com/questions/2722939/c-resize-a-docked-qt-qdockwidget-programmatically?rq=1
    * http://qt-project.org/doc/qt-4.8/widgets-scribble.html

@@ -18,7 +18,7 @@ class SysTrayIconMainWindow : public Com::Ecosoftware::Window::MainWindow::MainW
     Q_OBJECT
 
   public :
-    explicit SysTrayIconMainWindow ( QSettings *settings, QWidget *parent = 0 );
+    explicit SysTrayIconMainWindow ( QSettings *settings, QWidget *parent = nullptr );
     ~SysTrayIconMainWindow ();
 
   signals:

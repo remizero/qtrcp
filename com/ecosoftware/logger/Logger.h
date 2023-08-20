@@ -22,6 +22,7 @@ Q_DECLARE_LOGGING_CATEGORY ( logWarning )
 Q_DECLARE_LOGGING_CATEGORY ( logCritical )
 
 /**
+ * TODO
  * ESTE ES MUY IMPORTANTE, EMPEZAR POR AHÍ
  * https://stackoverflow.com/questions/4661883/qt-c-error-handling
  * https://stackoverflow.com/questions/576185/logging-best-practices?rq=1

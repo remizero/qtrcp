@@ -39,8 +39,9 @@ namespace Com {
         private :
           AppInit ();
           ~AppInit ();
+
           static AppInit instance;
-                QSettings *settings;
+               QSettings *settings;
 
       };
     }

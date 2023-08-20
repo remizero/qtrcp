@@ -1,7 +1,6 @@
 #include "MainWindow.h"
 
 #include <QApplication>
-// #include <QDesktopWidget>
 #include <QEvent>
 #include <QResizeEvent>
 
@@ -12,12 +11,11 @@ using namespace Com::Ecosoftware::Window::MainWindow;
 MainWindow::MainWindow ( QSettings *settings, QWidget *parent ) : QMainWindow ( parent ) {
 
   this->init ( settings );
-  /**
-   * PREGUNTAR PRIMERO SI ESTÁ MAXIMIZADA O EN PANTALLA COMPLETA, SI NO EJECUTAR
-   * ESTE MÉTODO
-   */
-  this->centerWindow ();
-  this->showMaximized ();
+  if ( ( this->windowState () != Qt::WindowMaximized ) || ( this->windowState () != Qt::WindowFullScreen ) ) {
+
+    this->centerWindow ();
+    // this->showMaximized ();
+  }
 }
 
 MainWindow::~MainWindow () {}
@@ -25,7 +23,6 @@ MainWindow::~MainWindow () {}
 void MainWindow::centerWindow () {
 
   this->adjustSize ();
-  // this->move ( QApplication::desktop ()->screen ()->rect ().center () - this->rect ().center () );
   this->move ( this->screen ()->availableGeometry ().center () - this->rect ().center () );
 }
 
@@ -51,6 +48,10 @@ void MainWindow::createStatusBar () {
 
 void MainWindow::createSysTrayIcon () {
 
+  /**
+   * TODO
+   * Leer del archivo cofig.xml si se ha de crear el systray
+   */
   if ( QSystemTrayIcon::isSystemTrayAvailable () ) {
 
     if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/showsystemtrayicon" ).toBool () ) {
@@ -122,6 +123,7 @@ void MainWindow::init ( QSettings *settings ) {
   this->setCorner ( Qt::BottomRightCorner, Qt::RightDockWidgetArea );
   */
   /**
+   * TODO
    * Revisar
    * http://qt-project.org/wiki/Saving_Window_Size_State
    * https://www.google.co.ve/webhp?sourceid=chrome-instant&ion=1&espv=2&es_th=1&ie=UTF-8#q=save+windowstate+in+qt
@@ -188,6 +190,10 @@ void MainWindow::setVisible ( bool visible ) {
   /*this->minimizeAction->setEnabled ( visible );
   this->maximizeAction->setEnabled ( !isMaximized () );
   this->restoreAction->setEnabled ( isMaximized() || !visible );*/
-  this->sysTrayIcon->setVisible ( visible );
+  /**
+   * TODO
+   * Esta línea está dando error.
+   */
+  // this->sysTrayIcon->setVisible ( visible );
   QMainWindow::setVisible ( visible );
 }

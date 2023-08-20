@@ -2,6 +2,7 @@
 #include "MainWindow.h"
 
 // Librerías Externas
+#include "AppInfo.h"
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
@@ -21,20 +22,13 @@ int main ( int argc, char *argv [] ) {
     return 0;
   }
 
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString ();
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString ();
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString ();
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString ();
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString ();
-  qDebug () << Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString ();
-
   Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
-  appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
-  appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
-  appInstance.setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
-  appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
-  appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
+  appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInfo::getOrganizationName () );
+  appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInfo::getOrganizationDomain () );
+  appInstance.setApplicationName ( Com::Ecosoftware::App::AppInfo::getApplicationName () );
+  appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInfo::getApplicationDisplayName () );
+  appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInfo::getApplicationVersion () );
 
   if ( !singleInstance.tryToRun () ) {
 

@@ -35,7 +35,7 @@ namespace Com {
             Q_OBJECT
 
           public :
-            explicit MainWindow ( QSettings *settings, QWidget *parent = 0 );
+            explicit MainWindow ( QSettings *settings, QWidget *parent = nullptr );
             ~MainWindow ();
 
             static int const EXIT_CODE_REBOOT = -123456789;
@@ -66,7 +66,7 @@ namespace Com {
 
               Components::SystemTrayIcon::SystemTrayIcon *sysTrayIcon;
 
-                void createSysTrayIcon ();
+            void createSysTrayIcon ();
         };
       }
     }

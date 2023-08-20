@@ -21,7 +21,7 @@ namespace Com {
           class STATUSBARSHARED_EXPORT StatusBar : public QStatusBar {
 
             public :
-              explicit StatusBar ( QWidget *parent = 0 );
+              explicit StatusBar ( QWidget *parent = nullptr );
               ~StatusBar ();
 
               void addNewSection ();

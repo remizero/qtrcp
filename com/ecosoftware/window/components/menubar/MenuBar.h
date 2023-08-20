@@ -32,7 +32,7 @@ namespace Com {
               Q_OBJECT
 
             public :
-              explicit MenuBar ( QWidget *parent = 0  );
+              explicit MenuBar ( QWidget *parent = nullptr  );
               ~MenuBar ();
           };
         }

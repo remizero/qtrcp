@@ -22,7 +22,7 @@ namespace Com {
           virtual ~App ();
 
           QCoreApplication *getApplication ();
-          bool notify ( QObject* receiver, QEvent* event ) Q_DECL_OVERRIDE;
+          bool notify ( QObject *receiver, QEvent *event ) Q_DECL_OVERRIDE;
 
         private :
           QCoreApplication *application = nullptr;

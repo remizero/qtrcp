@@ -1,9 +1,9 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
+  resources \
   app \
   logger \
-  resources \
   utils \
   console \
   singleinstance \

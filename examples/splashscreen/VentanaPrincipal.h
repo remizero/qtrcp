@@ -9,7 +9,7 @@ class VentanaPrincipal : public Com::Ecosoftware::Window::MainWindow::MainWindow
     Q_OBJECT
 
   public :
-    explicit VentanaPrincipal ( QSettings *settings, QWidget *parent = 0 );
+    explicit VentanaPrincipal ( QSettings *settings, QWidget *parent = nullptr );
     ~VentanaPrincipal ();
 };
 

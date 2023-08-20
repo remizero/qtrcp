@@ -154,7 +154,9 @@
 #include "Utils.h"
 
 // Librerías Qt
+#include <QByteArrayView>
 #include <QDialog>
+#include <QDirIterator>
 #include <QDomDocument>
 #include <QDomElement>
 #include <QFile>
@@ -164,6 +166,7 @@
 #include <QMetaType>
 #include <QObject>
 #include <QUrl>
+#include <QXmlStreamReader>
 ///#include <QXmlSchema>
 
 namespace Com {

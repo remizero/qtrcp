@@ -48,7 +48,6 @@ QSettings *AppInit::getSettings () const {
 void AppInit::loadSettings () {
 
   const QSettings::Format XmlFormat = AppSettings::getXmlFormat ();
-  //const QSettings::Format XmlFormat = QSettings::registerFormat ( "xml", ( QSettings::ReadFunc ) AppSettings::readXmlFile, ( QSettings::WriteFunc ) AppSettings::writeXmlFile );
   this->settings = new QSettings ( AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", XmlFormat );
 }
 

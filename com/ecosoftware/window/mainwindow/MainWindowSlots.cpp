@@ -11,5 +11,5 @@ MainWindowSlots::MainWindowSlots ( QMainWindow *parent ) {
 void MainWindowSlots::slotReboot () {
 
   qDebug () << "Performing application reboot...";
-  qApp->exit( MainWindow::EXIT_CODE_REBOOT );
+  qApp->exit ( MainWindow::EXIT_CODE_REBOOT );
 }

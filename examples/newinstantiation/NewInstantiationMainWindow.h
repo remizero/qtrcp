@@ -11,7 +11,7 @@ class NewInstantiationMainWindow : public Com::Ecosoftware::Window::MainWindow::
     Q_OBJECT
 
   public :
-    NewInstantiationMainWindow ( QSettings *settings, QWidget *parent = 0 );
+    NewInstantiationMainWindow ( QSettings *settings, QWidget *parent = nullptr );
     ~NewInstantiationMainWindow ();
 
   signals:

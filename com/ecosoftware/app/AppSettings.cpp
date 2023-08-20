@@ -16,6 +16,45 @@ QSettings::Format AppSettings::getXmlFormat () {
   return XmlFormat;
 }
 
+bool AppSettings::readXmlFile ( QIODevice &device, QSettings::SettingsMap &map ) {
+
+  QXmlStreamReader xmlReader ( &device );
+  QStringList elements;
+  while ( !xmlReader.isEndDocument () && !xmlReader.hasError () ) {
+
+    xmlReader.readNext ();
+    if ( xmlReader.isStartElement () && xmlReader.name ().compare ( QString::fromUtf8 ( "settings" )  ) != 0 ) {
+
+      elements.append ( xmlReader.name ().toString () );
+
+    } else if ( xmlReader.isEndElement () ) {
+
+      if ( !elements.isEmpty () ) {
+
+        elements.removeLast ();
+      }
+    } else if ( xmlReader.isCharacters () && !xmlReader.isWhitespace () ) {
+
+      QString key;
+      for ( int i = 0; i < elements.size (); i++ ) {
+
+        if ( i != 0 ) {
+
+          key += "/";
+        }
+        key += elements.at ( i ).toUtf8 ();
+      }
+      map [ key ] = xmlReader.text ().toString ();
+    }
+  }
+  if ( xmlReader.hasError () ) {
+
+    qWarning () << xmlReader.errorString ();
+    return false;
+  }
+  return true;
+}
+
 void AppSettings::saveRecent ( const QString &recentGroup, int maxItemsRecentGroup, const QString &key, const QString &value ) {
 
   const QSettings::Format XmlFormat = QSettings::registerFormat ( "xml", ( QSettings::ReadFunc ) AppSettings::readXmlFile, ( QSettings::WriteFunc ) AppSettings::writeXmlFile );
@@ -63,46 +102,6 @@ void AppSettings::saveRecentFile ( const QString &value ) {
 void AppSettings::saveRecentProject ( const QString &value ) {
 
   AppSettings::saveRecent ( "recentProjects", 10, "project", value );
-}
-
-bool AppSettings::readXmlFile ( QIODevice &device, QSettings::SettingsMap &map ) {
-
-  QXmlStreamReader xmlReader ( &device );
-  QStringList elements;
-
-  while ( !xmlReader.atEnd () && !xmlReader.hasError () ) {
-
-    xmlReader.readNext ();
-    if ( xmlReader.isStartElement () && xmlReader.name ().compare ( QString::fromUtf8 ( "settings" )  ) == 0 ) {
-
-      elements.append ( xmlReader.name ().toString () );
-
-    } else if ( xmlReader.isEndElement () ) {
-
-      if ( !elements.isEmpty () ) {
-
-        elements.removeLast ();
-      }
-    } else if ( xmlReader.isCharacters () && !xmlReader.isWhitespace () ) {
-
-      QString key;
-      for ( int i = 0; i < elements.size (); i++ ) {
-
-        if ( i != 0 ) {
-
-          key += "/";
-        }
-        key += elements.at ( i );
-      }
-      map [ key ] = xmlReader.text ().toString ();
-    }
-  }
-  if ( xmlReader.hasError () ) {
-
-    qWarning () << xmlReader.errorString ();
-    return false;
-  }
-  return true;
 }
 
 bool AppSettings::writeXmlFile ( QIODevice &device, const QSettings::SettingsMap &map ) {

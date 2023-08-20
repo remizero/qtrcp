@@ -19,7 +19,7 @@ namespace Com {
           Q_OBJECT
 
         public :
-          static Console *getInstance ( QObject *parent = 0 );
+          static Console *getInstance ( QObject *parent = nullptr );
           void execute ( QString command, QStringList arguments );
           QString getOutputShell () const;
           QString getOutputShellError () const;
@@ -29,7 +29,7 @@ namespace Com {
           void catchOutput ();
 
         private :
-          explicit Console ( QObject *parent = 0 );
+          explicit Console ( QObject *parent = nullptr );
           ~Console ();
           void clear ();
           static Console *instance;

@@ -3,7 +3,7 @@
 
 using namespace Com::Ecosoftware::App;
 
-App::App ( int &argc, char **argv ) :  QApplication ( argc, argv ) {
+App::App ( int &argc, char **argv ) : QApplication ( argc, argv ) {
 
   for ( int i = 1; i < argc; ++i ) {
 
@@ -32,7 +32,7 @@ bool App::notify ( QObject *receiver, QEvent *event ) {
 
     return QApplication::notify ( receiver, event );
 
-  } catch ( std::exception& e ) {
+  } catch ( std::exception &e ) {
 
     qCritical () << "Exception thrown:" << e.what ();
   }
