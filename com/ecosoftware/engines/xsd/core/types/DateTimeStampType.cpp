@@ -1,6 +1,6 @@
 #include "DateTimeStampType.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 DateTimeStampType::DateTimeStampType () {}
 

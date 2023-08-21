@@ -1,6 +1,6 @@
 #include "MinOccursProperty.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 MinOccursProperty::MinOccursProperty ( bool value ) {
 

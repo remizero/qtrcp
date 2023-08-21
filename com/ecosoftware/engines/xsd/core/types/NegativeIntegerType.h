@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "../../xsd_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "NonPositiveIntegerType.h"
 
 // Librerías Externas
@@ -12,13 +15,14 @@
 #include <QMetaEnum>
 #include <QObject>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Xsd {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSD {
 
         class XSDSHARED_EXPORT NegativeIntegerType : public NonPositiveIntegerType {
 
@@ -45,6 +49,6 @@ namespace Com {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Ecosoftware::Engines::Xsd::NegativeIntegerType )
+Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::NegativeIntegerType )
 
 #endif // NEGATIVEINTEGERTYPE_H

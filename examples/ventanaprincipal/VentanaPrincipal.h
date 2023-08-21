@@ -10,7 +10,7 @@
 #include <QMainWindow>
 
 
-class VentanaPrincipal : public Com::Ecosoftware::Window::MainWindow::MainWindow {
+class VentanaPrincipal : public Com::Vgvgs::Window::MainWindow::MainWindow {
 
     Q_OBJECT
 

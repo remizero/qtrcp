@@ -1,11 +1,11 @@
 #include "XsdFormCreator.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Engines::XsdForm;
+using namespace NAMESPACE_LIBRARY_XSDFORM;
 
 XsdFormCreator::XsdFormCreator () {}
 
-void XsdFormCreator::createForm ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement, QWidget *parent ) {
+void XsdFormCreator::createForm ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement, QWidget *parent ) {
 
   this->tabsDialog = new QTabWidget ( parent );
   this->tabsDialog->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
@@ -16,7 +16,7 @@ void XsdFormCreator::createForm ( Com::Ecosoftware::Engines::Xsd::XsdElement *xs
   }
 }
 
-void XsdFormCreator::createGroup ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createGroup ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   QGroupBox *groupBoxElement = new QGroupBox ( widget );
   groupBoxElement->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
@@ -34,7 +34,7 @@ void XsdFormCreator::createGroup ( QWidget *widget, Com::Ecosoftware::Engines::X
   }
 }
 
-void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
@@ -45,25 +45,25 @@ void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Ecosoftware::E
 
     } else {
 
-      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::AssertionsFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QSpinBox * ) widget )->
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::LengthFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MinLengthFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::PatternFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setInputMask ( ( ( Xsd::PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
 
@@ -72,7 +72,7 @@ void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Ecosoftware::E
   }
 }
 
-void XsdFormCreator::createInputType ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createInputType ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   // https://www.softzone.es/2015/11/26/como-aumentar-la-velocidad-de-arranque-de-windows-10-con-esta-configuracion/
   // https://www.softzone.es/2017/08/20/como-evitar-que-nos-cambien-la-imagen-de-usuario-en-windows-10/
@@ -320,7 +320,7 @@ void XsdFormCreator::createInputType ( QWidget *widget, Com::Ecosoftware::Engine
   }
 }
 
-void XsdFormCreator::createIntegerInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createIntegerInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
@@ -331,28 +331,28 @@ void XsdFormCreator::createIntegerInput ( QWidget *widget, Com::Ecosoftware::Eng
 
     } else {
 
-      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::AssertionsFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QSpinBox * ) widget )->
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MaxExclusiveFacet" ) == 0 ) {
 
         ( ( QSpinBox * ) widget )->setMaximum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () - 1 );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxInclusiveFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MaxInclusiveFacet" ) == 0 ) {
 
         ( ( QSpinBox * ) widget )->setMaximum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MinExclusiveFacet" ) == 0 ) {
 
         ( ( QSpinBox * ) widget )->setMinimum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () + 1 );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MinInclusiveFacet" ) == 0 ) {
 
         ( ( QSpinBox * ) widget )->setMinimum ( ( ( Xsd::MaxExclusiveFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt ()  );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::TotalDigitsFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QSpinBox * ) widget )->
@@ -361,7 +361,7 @@ void XsdFormCreator::createIntegerInput ( QWidget *widget, Com::Ecosoftware::Eng
   }
 }
 
-void XsdFormCreator::createParam ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   QLabel *paramLabel = new QLabel ( widget );
   paramLabel->setText ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
@@ -400,12 +400,12 @@ void XsdFormCreator::createParam ( QWidget *widget, Com::Ecosoftware::Engines::X
   }
 }
 
-void XsdFormCreator::createParams ( QWidget *widget, QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList ) {
+void XsdFormCreator::createParams ( QWidget *widget, QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList ) {
 
   const int paramsCount = xsdElementList.count ();
   for ( int i = 0; i < paramsCount; i++ ) {
 
-    Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement = xsdElementList.at ( i );
+    Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement = xsdElementList.at ( i );
     if ( xsdElement->getElementLevel () == Xsd::Xsd::GROUPFORM ) {
 
       this->createGroup ( widget, xsdElement );
@@ -418,7 +418,7 @@ void XsdFormCreator::createParams ( QWidget *widget, QList<Com::Ecosoftware::Eng
   }
 }
 
-void XsdFormCreator::createStringInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createStringInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   const int facetsCount = xsdElement->getFacets ().count ();
   for ( int i = 0; i < facetsCount; i++ ) {
@@ -429,25 +429,25 @@ void XsdFormCreator::createStringInput ( QWidget *widget, Com::Ecosoftware::Engi
 
     } else {
 
-      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::AssertionsFacet" ) == 0 ) {
+      if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::AssertionsFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QSpinBox * ) widget )->
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::LengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::LengthFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::LengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MaxLengthFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MaxLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::MinLengthFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::MinLengthFacet" ) == 0 ) {
 
         // TODO: No implementado aun
         //( ( QLineEdit * ) widget )->setMaxLength ( ( ( Xsd::MinLengthFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ().toInt () );
 
-      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Ecosoftware::Engines::Xsd::PatternFacet" ) == 0 ) {
+      } else if ( QString::compare ( xsdElement->getFacets ().at ( i )->metaObject ()->className (), "Com::Vgvgs::Engines::Xsd::PatternFacet" ) == 0 ) {
 
         ( ( QLineEdit * ) widget )->setInputMask ( ( ( Xsd::PatternFacet * ) xsdElement->getFacets ().at ( i ) )->getValue ()  );
 
@@ -456,7 +456,7 @@ void XsdFormCreator::createStringInput ( QWidget *widget, Com::Ecosoftware::Engi
   }
 }
 
-void XsdFormCreator::createTab ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+void XsdFormCreator::createTab ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   QWidget *tabWidget = new QWidget ( this->tabsDialog );
   tabWidget->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
@@ -480,7 +480,7 @@ void XsdFormCreator::createTab ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsd
   }
 }
 
-void XsdFormCreator::createTabs ( QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList ) {
+void XsdFormCreator::createTabs ( QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList ) {
 
   const int tabsCount = xsdElementList.count ();
   for ( int i = 0; i < tabsCount; i++ ) {
@@ -494,7 +494,7 @@ QTabWidget *XsdFormCreator::getForm () const {
   return this->tabsDialog;
 }
 
-QString XsdFormCreator::getNameInput ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+QString XsdFormCreator::getNameInput ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   QString nameInputAux = "";
   if ( xsdElement->getParent () != nullptr ) {

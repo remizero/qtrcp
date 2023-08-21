@@ -2,6 +2,7 @@
 #include "VentanaPrincipal.h"
 
 // Librerías Externas
+#include "App.h"
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
@@ -20,20 +21,20 @@ int main ( int argc, char *argv [] ) {
   do {
 
     QApplication appInstance ( argc, argv );
-    //Com::Ecosoftware::Logger::Logger *logger = new Com::Ecosoftware::Logger::Logger ();
+    //Com::Vgvgs::Logger::Logger *logger = new Com::Vgvgs::Logger::Logger ();
 
-    if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
+    if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
 
       return 0;
     }
 
-    Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
+    Com::Vgvgs::SingleInstance::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
-    appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
-    appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
-    appInstance.setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
-    appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
-    appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
+    appInstance.setOrganizationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
+    appInstance.setOrganizationDomain ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
+    appInstance.setApplicationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
+    appInstance.setApplicationDisplayName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
+    appInstance.setApplicationVersion ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
 
     if ( !singleInstance.tryToRun () ) {
 
@@ -41,11 +42,11 @@ int main ( int argc, char *argv [] ) {
       msgBox.exec ();
       return 0;
     }
-    VentanaPrincipal mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
+    VentanaPrincipal mainWindow ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
     currentExitCode = appInstance.exec ();
 
-  } while ( currentExitCode == VentanaPrincipal::EXIT_CODE_REBOOT );
+  } while ( currentExitCode == NAMESPACE_LIBRARY_APP::App::EXIT_CODE_REBOOT );
 
   return currentExitCode;
 }

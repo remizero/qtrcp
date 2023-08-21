@@ -1,6 +1,6 @@
 #include "Key.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 Key::Key () {}
 

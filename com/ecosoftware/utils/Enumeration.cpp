@@ -1,7 +1,7 @@
 #include "Enumeration.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Utils;
+using namespace NAMESPACE_LIBRARY_UTILS;
 
 const QMetaEnum Enumeration::getMetaEnum ( const QMetaObject staticMetaObject, QString enumerate ) {
 

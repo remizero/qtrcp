@@ -5,6 +5,9 @@
 #include "xsdform_global.h"
 
 // Librerías Externas
+#include "macros_global.h"
+
+// Librerías Externas
 #include "XsdElement.h"
 #include "core/FacetAbs.h"
 #include "core/PropertyAbs.h"
@@ -38,35 +41,36 @@
 #include <QTabWidget>
 #include <QVBoxLayout>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace XsdForm {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSDFORM {
 
         class XSDFORMSHARED_EXPORT XsdFormCreator {
 
           public :
             XsdFormCreator ();
 
-            void createForm ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement, QWidget *parent );
+            void createForm ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement, QWidget *parent );
             QTabWidget *getForm () const;
 
           private :
             QTabWidget *tabsDialog;
 
-            void createGroup ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createHexbinaryInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createInputType ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createIntegerInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createParam ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createParams ( QWidget *widget, QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList );
-            void createStringInput ( QWidget *widget, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
-            void createTab ( Com::Ecosoftware::Engines::Xsd::XsdElement *tabElement );
-            void createTabs ( QList<Com::Ecosoftware::Engines::Xsd::XsdElement *> xsdElementList );
-            QString getNameInput ( Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
+            void createGroup ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createHexbinaryInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createInputType ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createIntegerInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createParams ( QWidget *widget, QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList );
+            void createStringInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
+            void createTab ( Com::Vgvgs::Engines::Xsd::XsdElement *tabElement );
+            void createTabs ( QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList );
+            QString getNameInput ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
         };
       }
     }

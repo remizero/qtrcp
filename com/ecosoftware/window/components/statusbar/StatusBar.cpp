@@ -1,6 +1,6 @@
 #include "StatusBar.h"
 
-using namespace Com::Ecosoftware::Window::Components::Statusbar;
+using namespace NAMESPACE_LIBRARY_STATUSBAR;
 
 StatusBar::StatusBar ( QWidget *parent ) : QStatusBar ( parent ) {
 

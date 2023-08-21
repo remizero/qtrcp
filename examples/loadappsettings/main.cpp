@@ -17,18 +17,18 @@ int main ( int argc, char *argv [] ) {
 
   QApplication appInstance ( argc, argv );
 
-  if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
+  if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
 
     return 0;
   }
 
-  Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
+  Com::Vgvgs::SingleInstance::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
-  appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInfo::getOrganizationName () );
-  appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInfo::getOrganizationDomain () );
-  appInstance.setApplicationName ( Com::Ecosoftware::App::AppInfo::getApplicationName () );
-  appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInfo::getApplicationDisplayName () );
-  appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInfo::getApplicationVersion () );
+  appInstance.setOrganizationName ( NAMESPACE_LIBRARY_APP::AppInfo::getOrganizationName () );
+  appInstance.setOrganizationDomain ( NAMESPACE_LIBRARY_APP::AppInfo::getOrganizationDomain () );
+  appInstance.setApplicationName ( NAMESPACE_LIBRARY_APP::AppInfo::getApplicationName () );
+  appInstance.setApplicationDisplayName ( NAMESPACE_LIBRARY_APP::AppInfo::getApplicationDisplayName () );
+  appInstance.setApplicationVersion ( NAMESPACE_LIBRARY_APP::AppInfo::getApplicationVersion () );
 
   if ( !singleInstance.tryToRun () ) {
 

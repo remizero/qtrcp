@@ -1,6 +1,6 @@
 #include "MainWindowActions.h"
 
-using namespace Com::Ecosoftware::Window::MainWindow;
+using namespace NAMESPACE_LIBRARY_MAINWINDOW;
 
 MainWindowActions::MainWindowActions () {}
 

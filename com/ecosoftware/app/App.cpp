@@ -1,7 +1,8 @@
 #include "App.h"
-#include <QDebug>
 
-using namespace Com::Ecosoftware::App;
+
+using namespace NAMESPACE_LIBRARY_APP;
+
 
 App::App ( int &argc, char **argv ) : QApplication ( argc, argv ) {
 

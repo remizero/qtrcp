@@ -1,6 +1,6 @@
 #include "SettingsAct.h"
 
-using namespace Com::Ecosoftware::Window::Components::Actions;
+using namespace NAMESPACE_LIBRARY_ACTONS;
 
 SettingsAct::SettingsAct ( QString title , QWidget *parent ) : ActionAbs ( title, parent ) {
 
@@ -11,6 +11,6 @@ SettingsAct::SettingsAct ( QString title , QWidget *parent ) : ActionAbs ( title
 
 void SettingsAct::execAct () {
 
-  Com::Ecosoftware::Engines::XsdForm::XsdDialog *xsdDialog = new Com::Ecosoftware::Engines::XsdForm::XsdDialog ( this->myParent );
+  Com::Vgvgs::Engines::XsdForm::XsdDialog *xsdDialog = new Com::Vgvgs::Engines::XsdForm::XsdDialog ( this->myParent );
   xsdDialog->getFormDialog ()->show ();
 }

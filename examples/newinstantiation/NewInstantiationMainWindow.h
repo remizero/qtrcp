@@ -6,7 +6,7 @@
 // Librerías Externas
 #include "MainWindow.h"
 
-class NewInstantiationMainWindow : public Com::Ecosoftware::Window::MainWindow::MainWindow {
+class NewInstantiationMainWindow : public Com::Vgvgs::Window::MainWindow::MainWindow {
 
     Q_OBJECT
 

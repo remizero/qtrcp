@@ -5,6 +5,9 @@
 #include "systemtrayicon_global.h"
 
 // Librerías Externas
+#include "macros_global.h"
+
+// Librerías Externas
 #include "AppInit.h"
 #include "AppPaths.h"
 
@@ -16,15 +19,16 @@
 #include <QMenu>
 #include <QSystemTrayIcon>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Components {
+    namespace NAMESPACE_WINDOW {
 
-        namespace SystemTrayIcon {
+      namespace NAMESPACE_COMPONENTS {
+
+        namespace NAMESPACE_SYSTEMTRAYICON {
 
           class SYSTEMTRAYICONSHARED_EXPORT SystemTrayIcon : public QSystemTrayIcon {
 

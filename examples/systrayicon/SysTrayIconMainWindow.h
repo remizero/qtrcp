@@ -13,7 +13,7 @@
 #include <QMainWindow>
 #include <QSystemTrayIcon>
 
-class SysTrayIconMainWindow : public Com::Ecosoftware::Window::MainWindow::MainWindow {
+class SysTrayIconMainWindow : public Com::Vgvgs::Window::MainWindow::MainWindow {
 
     Q_OBJECT
 

@@ -3,15 +3,19 @@
 
 #include "mainwindow_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 #include <QMainWindow>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace MainWindow {
+    namespace NAMESPACE_WINDOW {
+
+      namespace NAMESPACE_MAINWINDOW {
 
         class MAINWINDOWSHARED_EXPORT MainWindowSignals {
 

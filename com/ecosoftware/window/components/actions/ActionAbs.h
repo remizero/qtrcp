@@ -4,6 +4,9 @@
 // Librerías Internas
 #include "actions_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 // Librerías Qt
 #include <QAction>
 #include <QDebug>
@@ -11,15 +14,16 @@
 #include <QKeySequence>
 #include <QMetaType>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Components {
+    namespace NAMESPACE_WINDOW {
 
-        namespace Actions {
+      namespace NAMESPACE_COMPONENTS {
+
+        namespace NAMESPACE_ACTIONS {
 
           class ACTIONSSHARED_EXPORT ActionAbs : public QAction {
 
@@ -40,6 +44,6 @@ namespace Com {
   }
 }
 
-Q_DECLARE_METATYPE ( Com::Ecosoftware::Window::Components::Actions::ActionAbs * )
+Q_DECLARE_METATYPE ( Com::Vgvgs::Window::Components::Actions::ActionAbs * )
 
 #endif // ACTIONABS_H

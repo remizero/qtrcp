@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QStatusBar>
 
-using namespace Com::Ecosoftware::Engines::XsdForm;
+using namespace NAMESPACE_LIBRARY_XSDFORM;
 
 XsdDialog::XsdDialog ( QWidget *parent ) {
 
@@ -92,7 +92,7 @@ QWidget *XsdDialog::getWidget ( QString objectName, QWidget *widget ) {
   return objectReturn;
 }
 
-Com::Ecosoftware::Engines::Xsd::XsdElement *XsdDialog::getXsdElement ( QDomElement element, Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement ) {
+Com::Vgvgs::Engines::Xsd::XsdElement *XsdDialog::getXsdElement ( QDomElement element, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
   Xsd::XsdElement *xsdElementReturn = nullptr;
   if ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ().compare ( element.nodeName () ) == 0 ) {

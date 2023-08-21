@@ -1,6 +1,8 @@
 #include "AppSettings.h"
 
-using namespace Com::Ecosoftware::App;
+
+using namespace NAMESPACE_LIBRARY_APP;
+
 
 /*QSettings AppSettings::loadSettingsXML ( QString fileName ) {
   
@@ -58,7 +60,7 @@ bool AppSettings::readXmlFile ( QIODevice &device, QSettings::SettingsMap &map )
 void AppSettings::saveRecent ( const QString &recentGroup, int maxItemsRecentGroup, const QString &key, const QString &value ) {
 
   const QSettings::Format XmlFormat = QSettings::registerFormat ( "xml", ( QSettings::ReadFunc ) AppSettings::readXmlFile, ( QSettings::WriteFunc ) AppSettings::writeXmlFile );
-  QSettings settings ( Com::Ecosoftware::App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", XmlFormat );
+  QSettings settings ( NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", XmlFormat );
 
   settings.beginGroup ( recentGroup );
   QStringList recentListKeys = settings.childKeys ();

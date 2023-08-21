@@ -5,6 +5,9 @@
 #include "menubar_global.h"
 
 // Librerías Externas
+#include "macros_global.h"
+
+// Librerías Externas
 #include "ExitAct.h"
 #include "FullScreenAct.h"
 #include "HelpTopicsAct.h"
@@ -17,15 +20,16 @@
 // Librerías Qt
 #include <QMenuBar>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Components {
+    namespace NAMESPACE_WINDOW {
 
-        namespace Menubar {
+      namespace NAMESPACE_COMPONENTS {
+
+        namespace NAMESPACE_MENUBAR {
 
           class MENUBARSHARED_EXPORT MenuBar : public QMenuBar {
 

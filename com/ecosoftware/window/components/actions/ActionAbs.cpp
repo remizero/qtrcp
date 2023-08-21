@@ -1,6 +1,6 @@
 #include "ActionAbs.h"
 
-using namespace Com::Ecosoftware::Window::Components::Actions;
+using namespace NAMESPACE_LIBRARY_ACTONS;
 
 ActionAbs::ActionAbs ( QString title , QWidget *parent ) : QAction ( ( QObject * ) parent ) {
 

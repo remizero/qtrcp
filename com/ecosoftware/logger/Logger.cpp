@@ -6,7 +6,7 @@ Q_LOGGING_CATEGORY ( logInfo,     "Info" )
 Q_LOGGING_CATEGORY ( logWarning,  "Warning" )
 Q_LOGGING_CATEGORY ( logCritical, "Critical" )
 
-using namespace Com::Ecosoftware::Logger;
+using namespace NAMESPACE_LIBRARY_LOGGER;
 
 Logger::Logger ( QFile logFile ) {
 

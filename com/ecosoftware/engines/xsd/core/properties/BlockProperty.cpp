@@ -1,6 +1,6 @@
 #include "BlockProperty.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 BlockProperty::BlockProperty ( QString value ) {
 

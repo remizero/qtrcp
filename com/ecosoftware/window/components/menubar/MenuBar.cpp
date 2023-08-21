@@ -1,6 +1,6 @@
 #include "MenuBar.h"
 
-using namespace Com::Ecosoftware::Window::Components::Menubar;
+using namespace NAMESPACE_LIBRARY_MENUBAR;
 
 MenuBar::MenuBar ( QWidget *parent ) : QMenuBar ( parent ) {
 

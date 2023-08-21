@@ -2,7 +2,7 @@
 
 #include <QCryptographicHash>
 
-using namespace Com::Ecosoftware::SingleInstance;
+using namespace NAMESPACE_LIBRARY_SINGLEINSTANCE;
 
 namespace {
 
@@ -25,8 +25,8 @@ SingleInstance::SingleInstance ( const QString& key )
 
     memLock.acquire ();
     {
-        QSharedMemory fix ( sharedmemKey );    // Fix for *nix: http://habrahabr.ru/post/173281/
-        fix.attach ();
+      QSharedMemory fix ( sharedmemKey );    // Fix for *nix: http://habrahabr.ru/post/173281/
+      fix.attach ();
     }
     memLock.release ();
 }
@@ -63,8 +63,8 @@ bool SingleInstance::tryToRun () {
   memLock.release ();
   if ( !result ) {
 
-      this->release ();
-      return false;
+    this->release ();
+    return false;
   }
   return true;
 }

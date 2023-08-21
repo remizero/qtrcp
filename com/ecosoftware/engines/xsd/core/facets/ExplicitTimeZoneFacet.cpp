@@ -1,6 +1,6 @@
 #include "ExplicitTimeZoneFacet.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 ExplicitTimeZoneFacet::ExplicitTimeZoneFacet ( QString value ) : FacetAbs ( value ) {}
 

@@ -1,9 +1,11 @@
 #ifndef APPSETTINGS_H
 #define APPSETTINGS_H
 
-//http://blog.openshots.de/2011/03/qsettings-mit-xml-format/
 // Librerías internas
 #include "app_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "AppPaths.h"
 
 // Librerías Qt
@@ -16,11 +18,12 @@
 #include <QXmlStreamReader>
 #include <QXmlStreamWriter>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace App {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_APP {
 
       class APPSHARED_EXPORT AppSettings {
 

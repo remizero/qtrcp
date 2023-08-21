@@ -1,6 +1,6 @@
 #include "MixedProperty.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 MixedProperty::MixedProperty ( bool value ) {
 

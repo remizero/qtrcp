@@ -21,18 +21,18 @@ int main ( int argc, char *argv [] ) {
 
     QApplication appInstance ( argc, argv );
 
-    if ( Com::Ecosoftware::App::AppInit::getInstance ().checkVersion () ) {
+    if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
 
       return 0;
     }
 
-    Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
+    Com::Vgvgs::SingleInstance::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
-    appInstance.setOrganizationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
-    appInstance.setOrganizationDomain ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
-    appInstance.setApplicationName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
-    appInstance.setApplicationDisplayName ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
-    appInstance.setApplicationVersion ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
+    appInstance.setOrganizationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
+    appInstance.setOrganizationDomain ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
+    appInstance.setApplicationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
+    appInstance.setApplicationDisplayName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString () );
+    appInstance.setApplicationVersion ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationversion" ).toString () );
 
     if ( !singleInstance.tryToRun () ) {
 
@@ -40,7 +40,7 @@ int main ( int argc, char *argv [] ) {
       msgBox.exec ();
       return 0;
     }
-    SysTrayIconMainWindow mainWindow ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings () );
+    SysTrayIconMainWindow mainWindow ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
     currentExitCode = appInstance.exec ();
 

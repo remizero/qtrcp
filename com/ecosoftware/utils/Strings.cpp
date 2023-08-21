@@ -1,6 +1,6 @@
 #include "Strings.h"
 
-using namespace Com::Ecosoftware::Utils;
+using namespace NAMESPACE_LIBRARY_UTILS;
 
 QString Strings::capitalize ( QString string ) {
 

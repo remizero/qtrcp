@@ -1,13 +1,13 @@
 #include "SystemTrayIcon.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Window::Components::SystemTrayIcon;
+using namespace NAMESPACE_LIBRARY_SYSTEMTRAYICON;
 
 SystemTrayIcon::SystemTrayIcon ( QObject *parent ) : QSystemTrayIcon ( parent ) {
 
   this->parent = ( QMainWindow * ) parent;
-  this->setIcon ( QIcon ( Com::Ecosoftware::App::AppPaths::getInstance ().getApplicationImagePath () + Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systrayicon" ).toString () ) );
-  this->setToolTip ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systrayicon" ).toString () );
+  this->setIcon ( QIcon ( NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationImagePath () + NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systrayicon" ).toString () ) );
+  this->setToolTip ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systrayicon" ).toString () );
   this->createActions ();
   this->createMenu ();
 }

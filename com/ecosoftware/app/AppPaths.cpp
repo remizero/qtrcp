@@ -1,7 +1,8 @@
 #include "AppPaths.h"
-#include <QDebug>
 
-using namespace Com::Ecosoftware::App;
+
+using namespace NAMESPACE_LIBRARY_APP;
+
 
 AppPaths::AppPaths () {
 

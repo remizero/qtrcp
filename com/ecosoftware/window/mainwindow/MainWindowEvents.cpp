@@ -4,7 +4,7 @@
 // #include <QDesktopWidget>
 #include <QDockWidget>
 
-using namespace Com::Ecosoftware::Window::MainWindow;
+using namespace NAMESPACE_LIBRARY_MAINWINDOW;
 
 MainWindowEvents::MainWindowEvents ( QMainWindow *parent ) {
 
@@ -100,20 +100,20 @@ void MainWindowEvents::closeEvent ( QCloseEvent *event ) {
   //this->parent->sy
   if ( ( ( MainWindow * ) this->parent )->getSysTrayIcon ()->isVisible () ) {
 
-    if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Information" ) == 0 ) {
+    if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Information" ) == 0 ) {
 
-      QMessageBox::information ( this->parent, Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
-                                 Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
+      QMessageBox::information ( this->parent, NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
+                                 NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
 
-    } else if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Warning" ) == 0 ) {
+    } else if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Warning" ) == 0 ) {
 
-      QMessageBox::warning ( this->parent, Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
-                                 Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
+      QMessageBox::warning ( this->parent, NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
+                                 NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
 
-    } else if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Critical" ) == 0 ) {
+    } else if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraydefaultmessagetype" ).toString ().compare ( "Critical" ) == 0 ) {
 
-      QMessageBox::critical ( this->parent, Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
-                                 Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
+      QMessageBox::critical ( this->parent, NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationdisplayname" ).toString (),
+                                 NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/systraymessagebody" ).toString () );
     }
 
     this->parent->hide ();

@@ -1,17 +1,8 @@
 #include "XsdEngine.h"
 #include <QDebug>
 
-#include <xercesc/framework/LocalFileInputSource.hpp>
-#include <xercesc/framework/StdOutFormatTarget.hpp>
-#include <xercesc/parsers/XercesDOMParser.hpp>
-#include <xercesc/sax/SAXParseException.hpp>
-#include <xercesc/util/PlatformUtils.hpp>
-#include <xercesc/util/XMLUni.hpp>
-#include <xercesc/util/XMLUniDefs.hpp>
-#include <xercesc/validators/schema/SchemaValidator.hpp>
 
-
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 XsdEngine::XsdEngine () {
 

@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "xsd_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "core/ElementAbs.h"
 
 
@@ -13,13 +16,14 @@
 #include <QMetaEnum>
 #include <QObject>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Xsd {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSD {
 
         class XSDSHARED_EXPORT DefaultOpenContent : public ElementAbs {
 
@@ -57,6 +61,6 @@ namespace Com {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Ecosoftware::Engines::Xsd::DefaultOpenContent )
+Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::DefaultOpenContent )
 
 #endif // DEFAULTOPENCONTENT_H

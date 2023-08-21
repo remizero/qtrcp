@@ -4,15 +4,19 @@
 // Librerías internas
 #include "console_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 // Librerías Qt
 #include <QObject>
 #include <QProcess>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Console {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_CONSOLE {
 
       class CONSOLESHARED_EXPORT Console : public QObject {
 

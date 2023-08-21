@@ -5,6 +5,9 @@
 #include "logger_global.h"
 
 // Librerías Externas
+#include "macros_global.h"
+
+// Librerías Externas
 #include "AppPaths.h"
 
 // Librerías Qt
@@ -45,11 +48,12 @@ Q_DECLARE_LOGGING_CATEGORY ( logCritical )
  * https://github.com/dept2/CuteLogger/blob/master/include/Logger.h
  */
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Logger {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_LOGGER {
 
       class LOGGERSHARED_EXPORT Logger {
 

@@ -4,16 +4,21 @@
 // Librerías internas
 #include "app_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 // Librerías Qt
 #include <QCoreApplication>
+#include <QDebug>
 #include <QDir>
 #include <QString>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace App {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_APP {
 
       class APPSHARED_EXPORT AppPaths {
 

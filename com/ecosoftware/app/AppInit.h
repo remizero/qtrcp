@@ -3,6 +3,9 @@
 
 // Librerías internas
 #include "app_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
 
@@ -16,11 +19,12 @@
 #include <QString>
 #include <QVariant>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace App {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_APP {
 
       class APPSHARED_EXPORT AppInit {
 

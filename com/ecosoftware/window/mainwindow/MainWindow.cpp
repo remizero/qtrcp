@@ -1,12 +1,8 @@
 #include "MainWindow.h"
 
-#include <QApplication>
-#include <QEvent>
-#include <QResizeEvent>
 
-#include <QDebug>
+using namespace NAMESPACE_LIBRARY_MAINWINDOW;
 
-using namespace Com::Ecosoftware::Window::MainWindow;
 
 MainWindow::MainWindow ( QSettings *settings, QWidget *parent ) : QMainWindow ( parent ) {
 
@@ -38,12 +34,12 @@ void MainWindow::closeEvent ( QCloseEvent *event ) {
 
 void MainWindow::createMenuBar () {
 
-  this->setMenuBar ( new Components::Menubar::MenuBar ( this ) );
+  this->setMenuBar ( new Components::MenuBar::MenuBar ( this ) );
 }
 
 void MainWindow::createStatusBar () {
 
-  this->setStatusBar ( new Components::Statusbar::StatusBar ( this ) );
+  this->setStatusBar ( new Components::StatusBar::StatusBar ( this ) );
 }
 
 void MainWindow::createSysTrayIcon () {
@@ -54,7 +50,7 @@ void MainWindow::createSysTrayIcon () {
    */
   if ( QSystemTrayIcon::isSystemTrayAvailable () ) {
 
-    if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/showsystemtrayicon" ).toBool () ) {
+    if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/showsystemtrayicon" ).toBool () ) {
 
       this->sysTrayIcon = new Components::SystemTrayIcon::SystemTrayIcon ( this );
       connect ( this->sysTrayIcon, SIGNAL ( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT ( iconActivated ( QSystemTrayIcon::ActivationReason ) ) );
@@ -88,7 +84,7 @@ void MainWindow::iconActivated ( QSystemTrayIcon::ActivationReason reason ) {
 
     case QSystemTrayIcon::Trigger:
 
-      if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool () ) {
+      if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool () ) {
 
         if ( !this->isVisible () ) {
 

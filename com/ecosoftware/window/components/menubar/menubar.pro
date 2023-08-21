@@ -40,6 +40,7 @@ DESTDIR = ../
 UI_DIR = ../../../../../ui
 
 win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../../../ -lmacros \
   -L$$OUT_PWD/../../../ -lapp \
   -L$$OUT_PWD/../../../ -lutils \
   -L$$OUT_PWD/../../../engines/ -lxsd \
@@ -47,6 +48,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../ -lactions
   #-L$$OUT_PWD/../../ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../../../ -lmacros \
   -L$$OUT_PWD/../../../ -lapp \
   -L$$OUT_PWD/../../../ -lutils \
   -L$$OUT_PWD/../../../engines/ -lxsd \
@@ -54,6 +56,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../ -lactions
   #-L$$OUT_PWD/../../ -lmainwindow
 else:unix: LIBS += \
+  -L$$OUT_PWD/../../../ -lmacros \
   -L$$OUT_PWD/../../../ -lapp \
   -L$$OUT_PWD/../../../ -lutils \
   -L$$OUT_PWD/../../../engines/ -lxsd \
@@ -62,6 +65,7 @@ else:unix: LIBS += \
   #-L$$OUT_PWD/../../ -lmainwindow
 
 INCLUDEPATH += \
+  $$PWD/../../../macros \
   $$PWD/../../../app \
   $$PWD/../../../utils \
   $$PWD/../../../engines/xsd \
@@ -70,6 +74,7 @@ INCLUDEPATH += \
   #$$PWD/../../mainwindow
 
 DEPENDPATH += \
+  $$PWD/../../../macros \
   $$PWD/../../../app \
   $$PWD/../../../utils \
   $$PWD/../../../engines/xsd \

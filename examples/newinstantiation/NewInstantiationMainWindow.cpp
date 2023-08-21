@@ -2,7 +2,7 @@
 
 #include <QDebug>
 
-NewInstantiationMainWindow::NewInstantiationMainWindow ( QSettings *settings, QWidget *parent ) : Com::Ecosoftware::Window::MainWindow::MainWindow ( settings, parent ) {
+NewInstantiationMainWindow::NewInstantiationMainWindow ( QSettings *settings, QWidget *parent ) : Com::Vgvgs::Window::MainWindow::MainWindow ( settings, parent ) {
 
   Q_INIT_RESOURCE ( xsdresources );
 }

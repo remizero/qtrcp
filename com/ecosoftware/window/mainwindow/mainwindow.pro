@@ -46,6 +46,7 @@ DESTDIR = ../
 UI_DIR = ../../../../ui
 
 win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../../ -lmacros \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
@@ -55,6 +56,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../components/ -lstatusbar \
   -L$$OUT_PWD/../components/ -lsystemtrayicon
 else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../../ -lmacros \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
@@ -64,6 +66,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../components/ -lstatusbar \
   -L$$OUT_PWD/../components/ -lsystemtrayicon
 else:unix: LIBS += \
+  -L$$OUT_PWD/../../ -lmacros \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lutils \
   -L$$OUT_PWD/../../engines/ -lxsd \
@@ -74,6 +77,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../components/ -lsystemtrayicon
 
 INCLUDEPATH += \
+  $$PWD/../../macros \
   $$PWD/../../app \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
@@ -84,6 +88,7 @@ INCLUDEPATH += \
   $$PWD/../components/systemtrayicon
 
 DEPENDPATH += \
+  $$PWD/../../macros \
   $$PWD/../../app \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \

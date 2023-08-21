@@ -9,20 +9,23 @@
 #include "splashscreen_global.h"
 
 // Librerías Externas
+#include "macros_global.h"
 #include "AppPaths.h"
 
 // Librerías Qt
+#include <QDebug>
 #include <QDir>
 #include <QPainter>
 #include <QProgressBar>
 #include <QSettings>
 #include <QSplashScreen>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace SplashScreen {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_SPLASHSCREEN {
 
       class SPLASHSCREENSHARED_EXPORT SplashScreen : public QSplashScreen {
 

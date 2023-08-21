@@ -4,19 +4,23 @@
 // Librerías internas
 #include "statusbar_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 // Librerías Qt
 #include <QStatusBar>
 #include <QLabel>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Components {
+    namespace NAMESPACE_WINDOW {
 
-        namespace Statusbar {
+      namespace NAMESPACE_COMPONENTS {
+
+        namespace NAMESPACE_STATUSBAR {
 
           class STATUSBARSHARED_EXPORT StatusBar : public QStatusBar {
 

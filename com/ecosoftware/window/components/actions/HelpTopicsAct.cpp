@@ -2,7 +2,7 @@
 #include <QDesktopServices>
 #include <QUrl>
 
-using namespace Com::Ecosoftware::Window::Components::Actions;
+using namespace NAMESPACE_LIBRARY_ACTONS;
 
 HelpTopicsAct::HelpTopicsAct ( QString title , QWidget *parent ) : ActionAbs ( title, parent ) {
 

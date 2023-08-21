@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "xsd_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "core/ElementAbs.h"
 #include "core/PropertyAbs.h"
 
@@ -13,13 +16,14 @@
 #include <QMetaEnum>
 #include <QObject>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Xsd {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSD {
 
         class XSDSHARED_EXPORT Xsd: public QObject {
 

@@ -34,6 +34,7 @@ HEADERS  += \
 DESTDIR = ../
 
 win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
   #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
@@ -47,6 +48,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
   #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
@@ -60,6 +62,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 else:unix: LIBS += \
+  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
   #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
   -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
@@ -74,6 +77,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
 
 INCLUDEPATH += \
+  $$PWD/../../com/ecosoftware/macros \
   $$PWD/../../com/ecosoftware/app \
   #$$PWD/../../com/ecosoftware/logger \
   $$PWD/../../com/ecosoftware/utils \
@@ -88,6 +92,7 @@ INCLUDEPATH += \
   $$PWD/../../com/ecosoftware/window/mainwindow
 
 DEPENDPATH += \
+  $$PWD/../../com/ecosoftware/macros \
   $$PWD/../../com/ecosoftware/app \
   #$$PWD/../../com/ecosoftware/logger \
   $$PWD/../../com/ecosoftware/utils \

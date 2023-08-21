@@ -1,6 +1,6 @@
 #include "PropertyAbs.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 PropertyAbs::PropertyAbs ( QObject *parent ) : QObject ( parent ) {}
 

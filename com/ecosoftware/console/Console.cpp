@@ -1,6 +1,6 @@
 #include "Console.h"
 
-using namespace Com::Ecosoftware::Console;
+using namespace NAMESPACE_LIBRARY_CONSOLE;
 
 Console *Console::instance = nullptr;
 

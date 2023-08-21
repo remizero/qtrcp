@@ -1,7 +1,7 @@
 #include "TypeProperty.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 TypeProperty::TypeProperty ( QString value ) {
 

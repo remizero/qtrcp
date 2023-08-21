@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "mainwindow_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "MainWindowEvents.h"
 #include "MainWindowSignals.h"
 #include "MainWindowSlots.h"
@@ -15,17 +18,22 @@
 #include "SystemTrayIcon.h"
 
 // Librerías Qt
+#include <QApplication>
+#include <QDebug>
+#include <QEvent>
 #include <QMainWindow>
+#include <QResizeEvent>
 #include <QSettings>
 #include <QSystemTrayIcon>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace MainWindow {
+    namespace NAMESPACE_WINDOW {
+
+      namespace NAMESPACE_MAINWINDOW {
 
         class MainWindowEvents;
         class MainWindowSlots;
@@ -38,7 +46,7 @@ namespace Com {
             explicit MainWindow ( QSettings *settings, QWidget *parent = nullptr );
             ~MainWindow ();
 
-            static int const EXIT_CODE_REBOOT = -123456789;
+            // static int const EXIT_CODE_REBOOT = -123456789;
 
             MainWindowSlots *getMainWindowSlots () const;
             QSystemTrayIcon *getSysTrayIcon () const;

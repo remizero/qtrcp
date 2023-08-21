@@ -1,6 +1,6 @@
 #include "MinLengthFacet.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 MinLengthFacet::MinLengthFacet ( QString value ) : FacetAbs ( value ) {}
 

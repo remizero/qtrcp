@@ -37,6 +37,19 @@ DESTDIR = ../
 
 UI_DIR = ../../../ui
 
+win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+else:unix: LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+
+INCLUDEPATH += \
+  $$PWD/../macros
+
+DEPENDPATH += \
+  $$PWD/../macros
+
 unix {
     target.path = /usr/lib
     INSTALLS += target

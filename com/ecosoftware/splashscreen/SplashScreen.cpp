@@ -1,7 +1,8 @@
 #include "SplashScreen.h"
-#include <QDebug>
 
-using namespace Com::Ecosoftware::SplashScreen;
+
+using namespace NAMESPACE_LIBRARY_SPLASHSCREEN;
+
 
 SplashScreen::SplashScreen ( QSettings *settings ) {
 

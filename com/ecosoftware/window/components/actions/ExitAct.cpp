@@ -1,6 +1,6 @@
 #include "ExitAct.h"
 
-using namespace Com::Ecosoftware::Window::Components::Actions;
+using namespace NAMESPACE_LIBRARY_ACTONS;
 
 ExitAct::ExitAct ( QString title , QWidget *parent ) : ActionAbs ( title, parent ) {
 

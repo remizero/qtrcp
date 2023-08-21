@@ -1,16 +1,8 @@
 #include "AppInit.h"
-#include "AppSettings.h"
 
-#include <QIODevice>
-#include <QSettings>
-#include <QtXml>
-#include <QXmlStreamReader>
-#include <QXmlStreamWriter>
-#include <stdlib.h>
 
-#include <QDebug>
+using namespace NAMESPACE_LIBRARY_APP;
 
-using namespace Com::Ecosoftware::App;
 
 AppInit::AppInit () {
 
@@ -53,24 +45,28 @@ void AppInit::loadSettings () {
 
 bool AppInit::restoreDockWidget ( QMainWindow *parent , QDockWidget *dockWidget ) {
 
-    //QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
-    return parent->restoreDockWidget ( dockWidget );
+  //QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
+  return parent->restoreDockWidget ( dockWidget );
 }
 
 bool AppInit::restoreGeometry ( QMainWindow *parent ) {
 
-    QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
-    return parent->restoreGeometry ( settings.value ( "geometry" ).toByteArray () );
+  QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
+  return parent->restoreGeometry ( settings.value ( "geometry" ).toByteArray () );
 }
 
 bool AppInit::restoreState ( QMainWindow *parent ) {
 
-    QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
-    return parent->restoreState ( settings.value ( "windowState" ).toByteArray () );
+  QSettings settings ( "./ecosoftware/ecomodeditor/data/rockolaSettings.ini", QSettings::IniFormat );
+  return parent->restoreState ( settings.value ( "windowState" ).toByteArray () );
 }
 
 void AppInit::saveSettings () {
 
+  /**
+   * TODO
+   * Qué hacer aquí?
+   */
 }
 
 void AppInit::saveState ( QMainWindow *parent ) {

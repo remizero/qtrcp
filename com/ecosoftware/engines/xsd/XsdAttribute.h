@@ -3,19 +3,23 @@
 
 // Librerías Internas
 #include "xsd_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "core/FacetAbs.h"
 
 // Librerías Qt
 #include <QList>
 #include <QObject>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Xsd {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSD {
 
         class XSDSHARED_EXPORT XsdAttribute : public QObject {
 

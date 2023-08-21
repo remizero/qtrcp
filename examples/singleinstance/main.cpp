@@ -12,7 +12,7 @@ int main ( int argc, char *argv [] ) {
 
   QApplication appInstance ( argc, argv );
 
-  Com::Ecosoftware::SingleInstance::SingleInstance singleInstance ( "ecomoditor" );
+  Com::Vgvgs::SingleInstance::SingleInstance singleInstance ( "ecomoditor" );
 
   if ( !singleInstance.tryToRun () ) {
 

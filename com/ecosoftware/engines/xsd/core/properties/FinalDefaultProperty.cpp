@@ -1,6 +1,6 @@
 #include "FinalDefaultProperty.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 FinalDefaultProperty::FinalDefaultProperty ( QString value ) {
 

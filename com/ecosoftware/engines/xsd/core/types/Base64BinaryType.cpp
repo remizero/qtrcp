@@ -1,6 +1,6 @@
 #include "Base64BinaryType.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 Base64BinaryType::Base64BinaryType () {}
 

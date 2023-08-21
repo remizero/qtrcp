@@ -1,8 +1,8 @@
 #include "AppUtils.h"
 
-#include <QDebug>
 
-using namespace Com::Ecosoftware::App;
+using namespace NAMESPACE_LIBRARY_APP;
+
 
 QString AppUtils::normalizePath ( QString path ) {
 

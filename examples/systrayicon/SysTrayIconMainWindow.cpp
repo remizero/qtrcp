@@ -4,7 +4,7 @@
 #include <QDomDocument>
 #include <QPlainTextEdit>
 
-SysTrayIconMainWindow::SysTrayIconMainWindow ( QSettings *settings, QWidget *parent ) : Com::Ecosoftware::Window::MainWindow::MainWindow ( settings, parent ) {
+SysTrayIconMainWindow::SysTrayIconMainWindow ( QSettings *settings, QWidget *parent ) : Com::Vgvgs::Window::MainWindow::MainWindow ( settings, parent ) {
 
   Q_INIT_RESOURCE ( xsdresources );
   this->setCentralWidget ( new QPlainTextEdit ( this ) );
@@ -58,7 +58,7 @@ SysTrayIconMainWindow::~SysTrayIconMainWindow () {}
    * Ignored, and the window simply hides that accompanied
    * The corresponding pop-up message
    */
-  /*if ( this->isVisible () && Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool ()  ) {
+  /*if ( this->isVisible () && NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool ()  ) {
 
     event->ignore ();
     this->hide ();
@@ -83,7 +83,7 @@ SysTrayIconMainWindow::~SysTrayIconMainWindow () {}
       /**
        * The event is ignored if the checkbox is not checked
        */
-      /*if ( Com::Ecosoftware::App::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool () ) {
+      /*if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/showsystemtrayicon" ).toBool () ) {
 
         /**
          *  otherwise, if the window is visible, it is hidden,

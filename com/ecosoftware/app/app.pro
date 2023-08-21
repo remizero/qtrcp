@@ -32,7 +32,7 @@ SOURCES += \
   AppSettings.cpp \
   AppUtils.cpp \
   AppPaths.cpp \
-    App.cpp
+  App.cpp
 
 HEADERS += \
   app_global.h \
@@ -41,7 +41,7 @@ HEADERS += \
   AppSettings.h \
   AppUtils.h \
   AppPaths.h \
-    App.h
+  App.h
 
 DESTDIR = ../
 
@@ -49,6 +49,19 @@ UI_DIR = ../../../ui
 MOC_DIR = ../../../moc
 OBJECTS_DIR = ../../../obj
 RCC_DIR = ../../../rcc
+
+win32:CONFIG(release, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+else:win32:CONFIG(debug, debug|release): LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+else:unix: LIBS += \
+  -L$$OUT_PWD/../ -lmacros
+
+INCLUDEPATH += \
+  $$PWD/../macros
+
+DEPENDPATH += \
+  $$PWD/../macros
 
 unix {
   target.path = /usr/lib

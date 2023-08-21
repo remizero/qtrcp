@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "actions_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "ActionAbs.h"
 
 // Librerías Externas
@@ -11,15 +14,16 @@
 // Librerías Qt
 #include <QMainWindow>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Window {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace Components {
+    namespace NAMESPACE_WINDOW {
 
-        namespace Actions {
+      namespace NAMESPACE_COMPONENTS {
+
+        namespace NAMESPACE_ACTIONS {
 
           class ACTIONSSHARED_EXPORT SettingsAct: public ActionAbs {
 

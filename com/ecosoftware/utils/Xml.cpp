@@ -1,7 +1,7 @@
 #include "Xml.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Utils;
+using namespace NAMESPACE_LIBRARY_UTILS;
 
 QDomDocument Xml::load ( QString fileName, bool readOnly ) {
 

@@ -3,6 +3,9 @@
 
 // Librerías Internas
 #include "xsdform_global.h"
+
+// Librerías Externas
+#include "macros_global.h"
 #include "XsdFormCreator.h"
 
 // Librerías Externas
@@ -31,13 +34,14 @@
 #include <QSpinBox>
 #include <QVBoxLayout>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Engines {
+  namespace NAMESPACE_LEVEL_2 {
 
-      namespace XsdForm {
+    namespace NAMESPACE_ENGINES {
+
+      namespace NAMESPACE_XSDFORM {
 
         class XSDFORMSHARED_EXPORT XsdDialog : public QObject {
 
@@ -63,7 +67,7 @@ namespace Com {
 
             QString getNameInput ( QDomElement element );
             QWidget *getWidget ( QString objectName, QWidget *widget );
-            Com::Ecosoftware::Engines::Xsd::XsdElement *getXsdElement ( QDomElement element , Com::Ecosoftware::Engines::Xsd::XsdElement *xsdElement );
+            Com::Vgvgs::Engines::Xsd::XsdElement *getXsdElement ( QDomElement element , Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
             void loadData ( QDomNode element, QWidget *widget );
             QDomDocument loadXml ();
             void saveData ( QDomNode element, QWidget *widget );

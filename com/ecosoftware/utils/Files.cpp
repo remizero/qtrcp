@@ -1,7 +1,7 @@
 #include "Files.h"
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Utils;
+using namespace NAMESPACE_LIBRARY_UTILS;
 
 QFile *Files::load ( QString fileName, bool readOnly ) {
 

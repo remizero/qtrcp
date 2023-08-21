@@ -1,6 +1,6 @@
 #include "ToolBarShowHideAct.h"
 
-using namespace Com::Ecosoftware::Window::Components::Actions;
+using namespace NAMESPACE_LIBRARY_ACTONS;
 
 ToolBarShowHideAct::ToolBarShowHideAct ( QString title , QWidget *parent ) : ActionAbs ( title, parent ) {
 

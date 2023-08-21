@@ -1,6 +1,6 @@
 #include "XsdElement.h"
 
-using namespace Com::Ecosoftware::Engines::Xsd;
+using namespace NAMESPACE_LIBRARY_XSD;
 
 XsdElement::XsdElement () {
 
@@ -49,7 +49,7 @@ PropertyAbs *XsdElement::getProperty ( QString property ) const {
   const int propertiesCount = this->properties.count ();
   for ( int i = 0; i < propertiesCount; i++ ) {
 
-    QString propertyNameAux = "Com::Ecosoftware::Engines::Xsd::" + property;
+    QString propertyNameAux = "Com::Vgvgs::Engines::Xsd::" + property;
     if ( propertyNameAux.compare ( this->properties.at ( i )->metaObject ()->className () ) == 0 ) {
 
       propertyObj = this->properties.at ( i );

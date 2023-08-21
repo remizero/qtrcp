@@ -4,15 +4,19 @@
 // Librerías Internas
 #include "utils_global.h"
 
+// Librerías Externas
+#include "macros_global.h"
+
 // Librerías Qt
 #include <QMetaEnum>
 #include <QMetaObject>
 
-namespace Com {
 
-  namespace Ecosoftware {
+namespace NAMESPACE_LEVEL_1 {
 
-    namespace Utils {
+  namespace NAMESPACE_LEVEL_2 {
+
+    namespace NAMESPACE_UTILS {
 
       class UTILSSHARED_EXPORT Strings {
 

@@ -1,7 +1,8 @@
 #include "MainWindowSlots.h"
+
 #include <QDebug>
 
-using namespace Com::Ecosoftware::Window::MainWindow;
+using namespace NAMESPACE_LIBRARY_MAINWINDOW;
 
 MainWindowSlots::MainWindowSlots ( QMainWindow *parent ) {
 
@@ -11,5 +12,5 @@ MainWindowSlots::MainWindowSlots ( QMainWindow *parent ) {
 void MainWindowSlots::slotReboot () {
 
   qDebug () << "Performing application reboot...";
-  qApp->exit ( MainWindow::EXIT_CODE_REBOOT );
+  qApp->exit ( NAMESPACE_LIBRARY_APP::App::EXIT_CODE_REBOOT );
 }
