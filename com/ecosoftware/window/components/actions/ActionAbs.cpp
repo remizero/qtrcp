@@ -2,6 +2,7 @@
 
 using namespace NAMESPACE_LIBRARY_ACTONS;
 
+
 ActionAbs::ActionAbs ( QString title , QWidget *parent ) : QAction ( ( QObject * ) parent ) {
 
   this->setText ( "&" + title );

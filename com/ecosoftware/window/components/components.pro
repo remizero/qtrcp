@@ -2,6 +2,7 @@ TEMPLATE = subdirs
 
 SUBDIRS += \
   actions \
+  colorpicker \
   menubar \
   statusbar \
   systemtrayicon

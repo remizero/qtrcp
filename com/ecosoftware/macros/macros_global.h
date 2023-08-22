@@ -33,6 +33,7 @@
 #define NAMESPACE_WINDOW         Window
 #define NAMESPACE_COMPONENTS     Components
 #define NAMESPACE_ACTIONS        Actions
+#define NAMESPACE_COLORPICKER    ColorPicker
 #define NAMESPACE_MENUBAR        MenuBar
 #define NAMESPACE_STATUSBAR      StatusBar
 #define NAMESPACE_SYSTEMTRAYICON SystemTrayIcon
@@ -52,6 +53,7 @@
 #define NAMESPACE_LIBRARY_SPLASHSCREEN   Com::Vgvgs::SplashScreen
 #define NAMESPACE_LIBRARY_UTILS          Com::Vgvgs::Utils
 #define NAMESPACE_LIBRARY_ACTONS         Com::Vgvgs::Window::Components::Actions
+#define NAMESPACE_LIBRARY_COLORPICKER    Com::Vgvgs::Window::Components::ColorPicker
 #define NAMESPACE_LIBRARY_MENUBAR        Com::Vgvgs::Window::Components::MenuBar
 #define NAMESPACE_LIBRARY_STATUSBAR      Com::Vgvgs::Window::Components::StatusBar
 #define NAMESPACE_LIBRARY_SYSTEMTRAYICON Com::Vgvgs::Window::Components::SystemTrayIcon

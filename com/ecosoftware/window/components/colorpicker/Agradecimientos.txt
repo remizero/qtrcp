@@ -1,0 +1,4 @@
+ColorPicker
+Abderrahmene Rayene Mihoub
+https://medium.com/@abderrahmene_mhb/how-to-make-a-color-picker-using-qt-7c037839ad5f
+https://bitbucket.org/rayenemhb/color-picker-widget/src/master/
