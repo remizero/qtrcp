@@ -42,9 +42,7 @@ void XsdDialog::applySlot () {
 
   this->saveData ( this->domDocument.firstChild (), this->xsdFormCreator->getForm () );
   // TODO: Como hacer para que se actualice toda la información que se haya modificado.
-  qDebug () << qApp->applicationDisplayName ();
   qApp->setApplicationDisplayName ( "esta es una modificación por aplicación" );
-  qDebug () << qApp->applicationDisplayName ();
   //( ( QWidget * ) this->formDialog->parent () )->setWindowTitle ( "Titulo modificado" );
   ( ( QWidget * ) this->formDialog->parent () )->update ();
 
@@ -239,8 +237,8 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
 
               case Xsd::TypeAbs::HEXBINARY: {
 
-                QLineEdit *lineEditHex = ( QLineEdit * ) inputWidget;
-                lineEditHex->setText ( nodeElement.text () );
+                NAMESPACE_LIBRARY_COLORBOX::ColorBox *lineEditHex = ( NAMESPACE_LIBRARY_COLORBOX::ColorBox * ) inputWidget;
+                lineEditHex->setColor ( QColor ( "#" + nodeElement.text () ) );
                 break;
               }
               case Xsd::TypeAbs::IDREFS:

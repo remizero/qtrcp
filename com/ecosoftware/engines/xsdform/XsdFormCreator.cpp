@@ -74,8 +74,6 @@ void XsdFormCreator::createHexbinaryInput ( QWidget *widget, Com::Vgvgs::Engines
 
 void XsdFormCreator::createInputType ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
 
-  // https://www.softzone.es/2015/11/26/como-aumentar-la-velocidad-de-arranque-de-windows-10-con-esta-configuracion/
-  // https://www.softzone.es/2017/08/20/como-evitar-que-nos-cambien-la-imagen-de-usuario-en-windows-10/
   Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
   switch ( objTypeProperty->getValue () ) {
 
@@ -366,6 +364,7 @@ void XsdFormCreator::createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::Xs
   QLabel *paramLabel = new QLabel ( widget );
   paramLabel->setText ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue () );
   ( ( QGridLayout * ) widget->layout () )->addWidget ( paramLabel, ( ( QGridLayout * ) widget->layout () )->rowCount (), 0, 1, 1, Qt::AlignRight );
+  Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
 
   if ( xsdElement->isEnumerate () ) {
 
@@ -377,7 +376,6 @@ void XsdFormCreator::createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::Xs
 
   } else {
 
-    Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElement->getProperty ( "TypeProperty" );
     if ( objTypeProperty->getValue () == Xsd::TypeAbs::INTEGER ) {
 
       QSpinBox *spinBox = new QSpinBox ( widget );
@@ -388,14 +386,23 @@ void XsdFormCreator::createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::Xs
 
     } else {
 
-      QLineEdit *lineEdit = new QLineEdit ();
-      lineEdit->setMaximumHeight ( 18 );
-      lineEdit->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
-      this->createInputType ( lineEdit, xsdElement );
-      //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
-      // TODO: Aquí asignar una acción que al hacer click, llame al colorPicker QColorDialog
-      // TODO: Como saber cuando es hexbinary y cuando string para saber cuando colocar el color picker
-      ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+      if ( objTypeProperty->getValue () == Xsd::TypeAbs::HEXBINARY ) {
+
+        NAMESPACE_LIBRARY_COLORBOX::ColorBox *colorBox = new NAMESPACE_LIBRARY_COLORBOX::ColorBox ();
+        colorBox->setMaximumHeight ( 18 );
+        colorBox->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
+        this->createInputType ( colorBox, xsdElement );
+        ( ( QGridLayout * ) widget->layout () )->addWidget ( colorBox, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+
+      } else {
+
+        QLineEdit *lineEdit = new QLineEdit ();
+        lineEdit->setMaximumHeight ( 18 );
+        lineEdit->setObjectName ( this->getNameInput ( xsdElement ) + "Input" );
+        this->createInputType ( lineEdit, xsdElement );
+        //connect ( lineEdit, SIGNAL (  ), this, SLOT (  ) );
+        ( ( QGridLayout * ) widget->layout () )->addWidget ( lineEdit, ( ( QGridLayout * ) widget->layout () )->rowCount () - 1, 1, 1, 1, Qt::AlignLeft );
+      }
     }
   }
 }

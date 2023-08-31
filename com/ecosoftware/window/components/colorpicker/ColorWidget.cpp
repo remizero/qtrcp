@@ -30,12 +30,12 @@ void ColorWidget::drawCircle ( QPainter &p ) {
   p.drawEllipse ( QPoint ( this->pointerX, this->pointerY ), this->pointerR, this->pointerR );
 }
 
-void ColorWidget::hideCursor ( QMouseEvent *e ) {
+void ColorWidget::hideCursor ( QMouseEvent *event ) {
 
-  int x = e->position ().x ();
-  int y = e->position ().y ();
+  int x = event->position ().x ();
+  int y = event->position ().y ();
 
-  if ( !this->geometry ().contains ( e->position ().toPoint () ) ) {
+  if ( !this->geometry ().contains ( event->position ().toPoint () ) ) {
 
     this->restoreCursor ();
     return;

@@ -47,7 +47,7 @@ namespace NAMESPACE_LEVEL_1 {
 
             protected :
               void paintEvent ( QPaintEvent *event );
-              void mousePressEvent ( QMouseEvent *ev ) override;
+              void mousePressEvent ( QMouseEvent *event ) override;
           };
         }
       }

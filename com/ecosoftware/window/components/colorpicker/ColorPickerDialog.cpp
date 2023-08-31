@@ -422,7 +422,6 @@ void ColorPickerDialog::on_saveNewColorBtn_clicked () {
   close ();
 }
 
-
 void ColorPickerDialog::on_pickScreenColorBtn_clicked () {
 
   this->dummyWidget->setFixedSize ( QGuiApplication::screenAt ( QCursor::pos () )->size () );
@@ -473,7 +472,6 @@ void ColorPickerDialog::on_cancelBtn_clicked () {
 
   this->close ();
 }
-
 
 void ColorPickerDialog::on_currentColorLabel_clicked () {
 

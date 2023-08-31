@@ -49,11 +49,11 @@ namespace NAMESPACE_LEVEL_1 {
 
             protected :
               void drawCircle ( QPainter &p );
-              void hideCursor ( QMouseEvent *e );
+              void hideCursor ( QMouseEvent *event );
               void restoreCursor ();
 
             signals :
-              void middlePressedSignal ( QMouseEvent *e );
+              void middlePressedSignal ( QMouseEvent *event );
 
             public slots :
               void shiftPressed ();

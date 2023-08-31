@@ -33,33 +33,38 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../ -lxsd \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
-  -L$$OUT_PWD/../../ -lutils
+  -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorbox
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lmacros \
   -L$$OUT_PWD/../ -lxsd \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
-  -L$$OUT_PWD/../../ -lutils
+  -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorbox
 else:unix: LIBS += \
   -L$$OUT_PWD/../../ -lmacros \
   -L$$OUT_PWD/../ -lxsd \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
-  -L$$OUT_PWD/../../ -lutils
+  -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorbox
 
 INCLUDEPATH += \
   $$PWD/../../macros \
   $$PWD/../xsd \
   $$PWD/../../app \
   $$PWD/../../resources \
-  $$PWD/../../utils
+  $$PWD/../../utils \
+  $$PWD/../../window/components/colorbox/
 
 DEPENDPATH += \
   $$PWD/../../macros \
   $$PWD/../xsd \
   $$PWD/../../app \
   $$PWD/../../resources \
-  $$PWD/../../utils
+  $$PWD/../../utils \
+  $$PWD/../../window/components/colorbox/
 
 unix {
     target.path = /usr/lib

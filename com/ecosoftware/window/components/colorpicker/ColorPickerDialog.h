@@ -48,7 +48,7 @@ namespace NAMESPACE_LEVEL_1 {
               void setNewColor ( QColor color );
               void setColorUnderCursor ( QColor color );
               void on_cancelBtn_clicked ();
-              void on_currentColorLabel_clicked();
+              void on_currentColorLabel_clicked ();
 
             signals :
               void saveNewColor ( QColor color );

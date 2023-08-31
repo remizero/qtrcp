@@ -52,22 +52,22 @@ void ColorSelector::paintEvent ( QPaintEvent *event ) {
   painter.drawPolygon ( leftTriangle );
 }
 
-void ColorSelector::mousePressEvent ( QMouseEvent *ev ) {
+void ColorSelector::mousePressEvent ( QMouseEvent *event ) {
 
   QRect r ( this->currentColorPosition - QPoint ( this->currentColorPosition.x (), 5 ),
             this->currentColorPosition + QPoint ( +this->currentColorPosition.x (), 5 ) );
-  if ( !r.contains ( ev->position ().toPoint () ) ) {
+  if ( !r.contains ( event->position ().toPoint () ) ) {
 
     if ( this->invertedAppearance () ) {
 
-      this->setValue ( this->maximum () - ( this->minimum () + ( ( this->maximum () - this->minimum () ) * ( this->height () - ev->position ().toPoint ().y () ) ) / this->height () ) );
+      this->setValue ( this->maximum () - ( this->minimum () + ( ( this->maximum () - this->minimum () ) * ( this->height () - event->position ().toPoint ().y () ) ) / this->height () ) );
 
     } else {
 
-      this->setValue ( this->minimum () + ( ( this->maximum ()-this->minimum () ) * ( this->height ()-ev->position ().toPoint ().y () ) ) / this->height () ) ;
+      this->setValue ( this->minimum () + ( ( this->maximum ()-this->minimum () ) * ( this->height ()-event->position ().toPoint ().y () ) ) / this->height () ) ;
     }
   } else {
 
-    QSlider::mousePressEvent ( ev );
+    QSlider::mousePressEvent ( event );
   }
 }

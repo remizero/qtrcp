@@ -50,45 +50,45 @@ void SVSelector::drawPointer ( QPainter &p ) {
   p.drawEllipse ( QPoint ( this->pointerX, this->pointerY ), this->pointerR, this->pointerR );
 }
 
-void SVSelector::mousePressEvent ( QMouseEvent *e ) {
+void SVSelector::mousePressEvent ( QMouseEvent *event ) {
 
-  if ( e->button () == Qt::MiddleButton ) {
+  if ( event->button () == Qt::MiddleButton ) {
 
     this->middlePresed = true;
-    e->ignore ();
+    event->ignore ();
 
   } else {
 
     this->middlePresed = false;
-    this->hideCursor ( e );
-    this->movePointer( e->position ().x (), e->position ().y () );
+    this->hideCursor ( event );
+    this->movePointer( event->position ().x (), event->position ().y () );
     this->updateColor ();
   }
 }
 
-void SVSelector::mouseMoveEvent ( QMouseEvent *e ) {
+void SVSelector::mouseMoveEvent ( QMouseEvent *event ) {
 
   if ( this->middlePresed ) {
 
-    e->ignore ();
+    event->ignore ();
 
   } else {
 
-    this->hideCursor ( e );
-    this->movePointer ( e->position ().x (), e->position ().y () );
+    this->hideCursor ( event );
+    this->movePointer ( event->position ().x (), event->position ().y () );
     this->updateColor ();
   }
 }
 
-void SVSelector::mouseReleaseEvent ( QMouseEvent *e ) {
+void SVSelector::mouseReleaseEvent ( QMouseEvent *event ) {
 
   this->restoreCursor ();
-  e->ignore ();
+  event->ignore ();
 }
 
-void SVSelector::wheelEvent ( QWheelEvent *e ) {
+void SVSelector::wheelEvent ( QWheelEvent *event ) {
 
-  QPoint p = e->angleDelta ();
+  QPoint p = event->angleDelta ();
   int y = p.y ();
   int val = 1;
   if ( this->ctrlHeld ) {
@@ -117,7 +117,7 @@ void SVSelector::wheelEvent ( QWheelEvent *e ) {
     }
   }
   this->updateColor ();
-  e->accept ();
+  event->accept ();
 }
 
 void SVSelector::incPointerX ( int val ) {

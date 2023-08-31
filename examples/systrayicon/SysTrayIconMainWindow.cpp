@@ -51,7 +51,7 @@ SysTrayIconMainWindow::~SysTrayIconMainWindow () {}
 /**
  * The method that handles the closing event of the application window
  */
-/*void SysTrayIconMainWindow::closeEvent ( QCloseEvent * event ) {
+/*void SysTrayIconMainWindow::closeEvent ( QCloseEvent *event ) {
 
   /**
    * If the window is visible, and the checkbox is checked, then the completion of the application

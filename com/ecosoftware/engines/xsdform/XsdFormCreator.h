@@ -6,6 +6,7 @@
 
 // Librerías Externas
 #include "macros_global.h"
+#include "ColorBox.h"
 
 // Librerías Externas
 #include "XsdElement.h"
@@ -30,6 +31,7 @@
 #include "core/properties/TypeProperty.h"
 
 // Librerías Qt
+#include <QColor>
 #include <QComboBox>
 #include <QGridLayout>
 #include <QGroupBox>

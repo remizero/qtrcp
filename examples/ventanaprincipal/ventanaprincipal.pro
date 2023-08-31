@@ -41,6 +41,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
@@ -55,6 +56,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
@@ -69,6 +71,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
   -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
+  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
   -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
   -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
@@ -86,6 +89,7 @@ INCLUDEPATH += \
   $$PWD/../../com/ecosoftware/engines/xsd \
   $$PWD/../../com/ecosoftware/engines/xsdform \
   $$PWD/../../com/ecosoftware/window/components/actions \
+  $$PWD/../../com/ecosoftware/window/components/colorbox \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \
   $$PWD/../../com/ecosoftware/window/components/systemtrayicon \
@@ -101,6 +105,7 @@ DEPENDPATH += \
   $$PWD/../../com/ecosoftware/engines/xsd \
   $$PWD/../../com/ecosoftware/engines/xsdform \
   $$PWD/../../com/ecosoftware/window/components/actions \
+  $$PWD/../../com/ecosoftware/window/components/colorbox \
   $$PWD/../../com/ecosoftware/window/components/menubar \
   $$PWD/../../com/ecosoftware/window/components/statusbar \
   $$PWD/../../com/ecosoftware/window/components/systemtrayicon \

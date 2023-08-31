@@ -33,11 +33,11 @@ namespace NAMESPACE_LEVEL_1 {
               void setSV ( int s, int v );
 
             protected :
-              void paintEvent ( QPaintEvent *e );
-              void mousePressEvent ( QMouseEvent *e );
-              void mouseMoveEvent ( QMouseEvent *e );
-              void mouseReleaseEvent ( QMouseEvent *e );
-              void wheelEvent ( QWheelEvent *e );
+              void paintEvent ( QPaintEvent *event );
+              void mousePressEvent ( QMouseEvent *event );
+              void mouseMoveEvent ( QMouseEvent *event );
+              void mouseReleaseEvent ( QMouseEvent *event );
+              void wheelEvent ( QWheelEvent *event );
 
             private :
               void updateColor ();

@@ -37,7 +37,7 @@
       <bold>1</bold>
       <size>9</size>
       <stretch>125</stretch>
-      <color>000000</color>
+      <color>2a5c7e</color>
     </font>
     <progressbar>
       <textvisible>0</textvisible><!-- Indica si el texto interno de la barra de progreso será visible -->
@@ -52,7 +52,7 @@
       <format>%p%</format><!-- %p% - is replaced by the percentage completed. %v% - is replaced by the current value. %m% - is replaced by the total number of steps. -->
       <max>100</max><!-- Valor máximo que puede aceptar la barra de progreso -->
       <min>0</min><!-- Valor mínimo que puede aceptar la barra de progreso -->
-      <backgroundcolor>FF0000</backgroundcolor><!-- Color a ser mostrado en la barra de progreso -->
+      <backgroundcolor>2a5c7e</backgroundcolor><!-- Color a ser mostrado en la barra de progreso -->
     </progressbar>
   </splashscreen>
 </settings>
