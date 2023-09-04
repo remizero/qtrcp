@@ -9,6 +9,8 @@ SUBDIRS += \
   console \
   singleinstance \
   splashscreen \
+  window/components/colorpicker \
+  window/components/colorbox \
   engines \
   window
 

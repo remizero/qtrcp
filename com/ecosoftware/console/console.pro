@@ -51,6 +51,6 @@ DEPENDPATH += \
   $$PWD/../macros
 
 unix {
-    target.path = /usr/lib
+  target.path = /usr/lib
     INSTALLS += target
 }

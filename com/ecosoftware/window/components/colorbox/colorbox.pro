@@ -39,6 +39,6 @@ DEPENDPATH += \
 
 # Default rules for deployment.
 unix {
-    target.path = /usr/lib
+  target.path = /usr/lib
 }
 !isEmpty(target.path): INSTALLS += target

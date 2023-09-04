@@ -34,12 +34,18 @@ void MainWindow::closeEvent ( QCloseEvent *event ) {
 
 void MainWindow::createMenuBar () {
 
-  this->setMenuBar ( new Components::MenuBar::MenuBar ( this ) );
+  // TODO Aquí, se necesita leer desde el archivo de configuración, que tipo de
+  // de menú se ha de crear, si el clásico "Barra de Menú" o el "menú tipo Cintillo"
+  // Adicional, se requiere implementar una opción para intercambiar entre uno y
+  // otro, si se desea cambiar en un momento determinado, es decir, como promover
+  // de un tipo a otro, sin necesidad de crear nuevamente las acciones.
+  this->setMenuBar ( new NAMESPACE_LIBRARY_MENUBAR::MenuBar ( this ) );
 }
 
 void MainWindow::createStatusBar () {
 
-  this->setStatusBar ( new Components::StatusBar::StatusBar ( this ) );
+  // TODO Basicamente aquí se haría lo mismo que en MainWindow::createMenuBar ()
+  this->setStatusBar ( new NAMESPACE_LIBRARY_STATUSBAR::StatusBar ( this ) );
 }
 
 void MainWindow::createSysTrayIcon () {
@@ -52,7 +58,7 @@ void MainWindow::createSysTrayIcon () {
 
     if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "systemtrayicon/showsystemtrayicon" ).toBool () ) {
 
-      this->sysTrayIcon = new Components::SystemTrayIcon::SystemTrayIcon ( this );
+      this->sysTrayIcon = new NAMESPACE_LIBRARY_SYSTEMTRAYICON::SystemTrayIcon ( this );
       connect ( this->sysTrayIcon, SIGNAL ( activated ( QSystemTrayIcon::ActivationReason ) ), this, SLOT ( iconActivated ( QSystemTrayIcon::ActivationReason ) ) );
       this->sysTrayIcon->show ();
     }

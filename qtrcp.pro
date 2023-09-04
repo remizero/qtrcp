@@ -1,12 +1,24 @@
 TEMPLATE = subdirs
 
 SUBDIRS += \
-    com \
-    examples
+  com \
+  examples
 
 CONFIG += ordered
 
-UI_DIR = ui
+DISTFILES += \
+  qmakeSupportFiles/buildConfiguration.prf \
+  qmakeSupportFiles/buildPaths.prf \
+  qmakeSupportFiles/copyBinaries.prf \
+  qmakeSupportFiles/copyConfigFiles.prf \
+  qmakeSupportFiles/copyDataFiles.prf \
+  qmakeSupportFiles/copyExternLibraries.prf \
+  qmakeSupportFiles/copyIncludeFiles.prf \
+  qmakeSupportFiles/copyLibraries.prf \
+  qmakeSupportFiles/copyMediaFiles.prf \
+  qmakeSupportFiles/copyResourcesFiles.prf \
+  qmakeSupportFiles/copyTranslatioFiles.prf \
+  qmakeSupportFiles/createDirectoryStructure.prf
 
 # LISTA DE ARTICULOS INTERESANTES PARA IMPLEMENTAR EN QTRCP
 #

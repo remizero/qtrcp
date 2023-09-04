@@ -34,7 +34,8 @@ void ColorBox::setColor ( const QColor &color ) {
 void ColorBox::launchColorDialog () {
 
   QColor color = QColorDialog::getColor ( this->m_color, this, tr ( "Select color" ) );
-  NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this->m_color, this, tr ( "Select color" ) );
+  // NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this->m_color, this, tr ( "Select color" ) );
+  NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this, this->m_color );
   if ( color.isValid () ) {
 
     this->setColor ( color );

@@ -20,7 +20,8 @@ int main ( int argc, char *argv [] ) {
 
   do {
 
-    QApplication appInstance ( argc, argv );
+    NAMESPACE_LIBRARY_APP::App appInstance ( argc, argv );
+    // QApplication appInstance ( argc, argv );
     //Com::Vgvgs::Logger::Logger *logger = new Com::Vgvgs::Logger::Logger ();
 
     if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
@@ -28,7 +29,7 @@ int main ( int argc, char *argv [] ) {
       return 0;
     }
 
-    Com::Vgvgs::SingleInstance::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
+    NAMESPACE_LIBRARY_SINGLEINSTANCE::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
     appInstance.setOrganizationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
     appInstance.setOrganizationDomain ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );

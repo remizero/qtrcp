@@ -1,0 +1,32 @@
+# createDirectoryStructure.prf
+
+
+# Lista de directorios del proyecto.
+# Project Directory List.
+DIRS = \
+  bin \
+  config \
+  data \
+  include \
+  lib \
+  media \
+  plugins \
+  resources \
+  translations
+
+# Se generan las rutas absolutas para los directorios del proyecto.
+# Absolute paths for the project directories are generated.
+for(DIR, DIRS) ABS_DIRS += $$OUT_PWD/$$DIR
+
+# Se definen las reglas para crear los directorios antes de la construcción.
+# The rules for creating the directories are defined before construction.
+create.commands = $(MKDIR) $$ABS_DIRS
+
+# Se agregan las reglas a PRE_TARGETDEPS y PRE_TARGET.
+# Rules are added to PRE_TARGETDEPS and PRE_TARGET.
+PRE_TARGETDEPS += create
+PRE_TARGET += create
+
+# Se agregan las acciones personalizadas para que se ejecuten como parte de tu proceso de construcción.
+# Custom actions are added to run as part of your build process.
+QMAKE_EXTRA_TARGETS += create

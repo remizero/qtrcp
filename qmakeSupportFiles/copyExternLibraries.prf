@@ -1,0 +1,6 @@
+# copyExternLibraries.prf
+
+
+# Se copia el ejecutable en la ruta final para el directorio "bin/".
+# Copy the executable to the final path to the "bin/" directory.
+QMAKE_POST_LINK += $$QMAKE_COPY $$DESTDIR/$$TARGET $$BIN_DIR/$$TARGET

@@ -83,6 +83,6 @@ DEPENDPATH += \
   #$$PWD/../../mainwindow
 
 unix {
-    target.path = /usr/lib
+  target.path = /usr/lib
     INSTALLS += target
 }

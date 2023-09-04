@@ -99,6 +99,6 @@ DEPENDPATH += \
   $$PWD/../components/systemtrayicon
 
 unix {
-    target.path = /usr/lib
+  target.path = /usr/lib
     INSTALLS += target
 }

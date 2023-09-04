@@ -26,10 +26,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
   main.cpp \
-    VentanaPrincipal.cpp
+  VentanaPrincipal.cpp
 
 HEADERS  += \
-    VentanaPrincipal.h
+  VentanaPrincipal.h
 
 DESTDIR = ../
 

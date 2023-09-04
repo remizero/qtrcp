@@ -8,6 +8,8 @@
     <organizationname>Eco Software, C.A.</organizationname>
     <organizationdomain>https://www.ecosoftware.com.ve</organizationdomain>
     <showsplash>1</showsplash>
+    <showtryicon>0</showtryicon>
+    <standalone>0</standalone>
     <iconimage>icono.png</iconimage>
     <mayorversion>5</mayorversion>
     <minorversion>0</minorversion>

@@ -1,0 +1,6 @@
+# buildConfiguration.prf
+
+
+# Se habilita la compilación paralela con qmake.
+# Parallel compilation with qmake is enabled.
+QMAKE_CXXFLAGS += -j4

@@ -1,0 +1,17 @@
+# copyIncludeFiles.prf
+
+
+# Se copian los archivos del directorio include.
+# Copy the files from the include directory.
+include.path     = $$INCLUDE_PATH
+include.files    = $$files(include/*)
+for(FILE, include.files) CP_INCLUDE_FILES += $$quote(cp $${PWD}/$${FILE} $${include.path}$$escape_expand(\\n\\t))
+include.commands = $$CP_INCLUDE_FILES
+
+# Se agregan las reglas a POST_TARGETDEPS para ejecutarlas posterior a la construcción del proyecto.
+# Rules are added to POST_TARGETDEPS to be executed after the project is built.
+POST_TARGETDEPS += include
+
+# Se agregan las acciones personalizadas para que se ejecuten como parte de tu proceso de construcción.
+# Custom actions are added to run as part of your build process.
+QMAKE_EXTRA_TARGETS += include

@@ -68,11 +68,10 @@ namespace NAMESPACE_LEVEL_1 {
             void setMinimunWindowSize ();
 
           private :
-             MainWindowEvents *mainWindowEvents;
-            MainWindowSignals *mainWindowSignals;
-              MainWindowSlots *mainWindowSlots;
-
-              Components::SystemTrayIcon::SystemTrayIcon *sysTrayIcon;
+                                            MainWindowEvents *mainWindowEvents;
+                                           MainWindowSignals *mainWindowSignals;
+                                             MainWindowSlots *mainWindowSlots;
+            NAMESPACE_LIBRARY_SYSTEMTRAYICON::SystemTrayIcon *sysTrayIcon;
 
             void createSysTrayIcon ();
         };

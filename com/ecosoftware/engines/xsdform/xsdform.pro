@@ -34,6 +34,7 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorpicker \
   -L$$OUT_PWD/../../window/components/ -lcolorbox
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lmacros \
@@ -41,6 +42,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorpicker \
   -L$$OUT_PWD/../../window/components/ -lcolorbox
 else:unix: LIBS += \
   -L$$OUT_PWD/../../ -lmacros \
@@ -48,6 +50,7 @@ else:unix: LIBS += \
   -L$$OUT_PWD/../../ -lapp \
   -L$$OUT_PWD/../../ -lresources \
   -L$$OUT_PWD/../../ -lutils \
+  -L$$OUT_PWD/../../window/components/ -lcolorpicker \
   -L$$OUT_PWD/../../window/components/ -lcolorbox
 
 INCLUDEPATH += \
@@ -56,6 +59,7 @@ INCLUDEPATH += \
   $$PWD/../../app \
   $$PWD/../../resources \
   $$PWD/../../utils \
+  $$PWD/../../window/components/colorpicker/ \
   $$PWD/../../window/components/colorbox/
 
 DEPENDPATH += \
@@ -64,9 +68,10 @@ DEPENDPATH += \
   $$PWD/../../app \
   $$PWD/../../resources \
   $$PWD/../../utils \
+  $$PWD/../../window/components/colorpicker/ \
   $$PWD/../../window/components/colorbox/
 
 unix {
-    target.path = /usr/lib
+  target.path = /usr/lib
     INSTALLS += target
 }
