@@ -1,0 +1,6 @@
+# projectExeConfiguration.prf
+
+
+# Se define el tipo de proyecto.
+# The project type is defined.
+TEMPLATE = app

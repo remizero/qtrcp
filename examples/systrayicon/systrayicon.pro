@@ -32,7 +32,7 @@ SOURCES += \
 HEADERS  += \
   SysTrayIconMainWindow.h
 
-DESTDIR = ../
+#DESTDIR = ../
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lapp \

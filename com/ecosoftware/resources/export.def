@@ -1,5 +1,0 @@
-LIBRARY
-EXPORTS
-  qInitResources_iconsresource
-  qInitResources_xmlresources
-  qInitResources_xsdresources

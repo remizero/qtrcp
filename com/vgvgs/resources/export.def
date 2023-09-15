@@ -1,0 +1,5 @@
+LIBRARY
+EXPORTS
+  qInitResources_iconsresource
+  qInitResources_xmlResources
+  qInitResources_xsdresources

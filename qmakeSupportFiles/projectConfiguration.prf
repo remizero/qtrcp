@@ -1,36 +1,31 @@
 # createDirectoryStructure.prf
 
 
+message ("IMPRIMIENDO DESDE createDirectoryStructure.prf")
+message (DESTDIR)
+message ($$DESTDIR)
+
+
 # Lista de directorios del proyecto.
 # Project Directory List.
 DIRS = \
-  $$BIN_PATH \
-  $$CONFIG_PATH \
-  $$DATA_PATH \
-  $$INCLUDE_PATH \
-  $$LIB_PATH \
-  $$MEDIA_PATH \
-  $$PLUGING_PATH \
-  $$RESOURCES_PATH \
-  $$TRANSLATION_PATH
-#  bin \
-#  config \
-#  data \
-#  include \
-#  lib \
-#  media \
-#  plugins \
-#  resources \
-#  translations
+  bin \
+  config \
+  data \
+  include \
+  lib \
+  media \
+  plugins \
+  resources \
+  translations
 
 # Se generan las rutas absolutas para los directorios del proyecto.
 # Absolute paths for the project directories are generated.
-# for(DIR, DIRS) ABS_DIRS += $$MAIN_PROJECT_OUTPUT_PATH/$$DIR
+for(DIR, DIRS) ABS_DIRS += $$OUT_PWD/$$DIR
 
 # Se definen las reglas para crear los directorios antes de la construcción.
 # The rules for creating the directories are defined before construction.
-# create.commands = $$QMAKE_MKDIR $$ABS_DIRS
-create.commands = $$QMAKE_MKDIR $$DIRS
+create.commands = $(MKDIR) $$ABS_DIRS
 
 # Se agregan las reglas a PRE_TARGETDEPS y PRE_TARGET.
 # Rules are added to PRE_TARGETDEPS and PRE_TARGET.

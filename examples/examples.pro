@@ -5,10 +5,10 @@ SUBDIRS += \
   loadappsettings \
   splashscreen \
   ventanaprincipal \
-    newinstantiation \
-    systrayicon \
-    todo \
-    colapsiblesection \
-    collapsabledockwidget
+  newinstantiation \
+  systrayicon \
+  todo \
+  colapsiblesection \
+  collapsabledockwidget
 
 CONFIG += ordered

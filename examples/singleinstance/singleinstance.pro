@@ -32,7 +32,7 @@ SOURCES += \
 HEADERS  += \
   MainWindow.h
 
-DESTDIR = ../
+#DESTDIR = ../
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance

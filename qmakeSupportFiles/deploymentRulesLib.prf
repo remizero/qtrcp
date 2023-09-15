@@ -1,0 +1,9 @@
+# deploymentRulesLib.prf
+
+
+# Reglas predeterminadas para la implementación.
+# Default rules for deployment.
+unix {
+  target.path = /usr/lib
+}
+!isEmpty(target.path): INSTALLS += target

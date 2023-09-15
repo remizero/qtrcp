@@ -1,0 +1,12 @@
+# normalizeProjectName.prf
+
+
+defineReplace(normalizeProjectName) {
+
+  len = $$str_size($$1)
+  primer_caracter = $$str_member($$1, 0 )
+  resto = $$str_member($$1, 1, $$num_add($$len, -1 ) )
+  reformulado = $$upper($$primer_caracter)$$resto
+  return ($$reformulado)
+}
+PROJECT_NAME = $$normalizeProjectName($$TARGET)

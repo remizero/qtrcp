@@ -1,0 +1,84 @@
+# buildPaths.prf
+
+
+# Se establece DESTDIR de manera condicional según la plataforma y configuración.
+# DESTDIR is set conditionally depending on the platform and configuration.
+unix: {
+  # Plataforma Unix (Linux y macOS).
+  # Unix platform (Linux and macOS).
+  debug: {
+    # Configuración para Linux y macOS en modo depuración.
+    # Configuration for Linux and macOS in debug mode.
+    DESTDIR = $$OUT_PWD/build/debug
+    message ("ENTRANDO POR EL DEBUG DE LINUX")
+  } else {
+    # Configuración para Linux y macOS en modo release.
+    # Configuration for Linux and macOS in release mode.
+    DESTDIR = $$OUT_PWD/build/release
+    message ("ENTRANDO POR EL RELEASE DE LINUX")
+  }
+
+  # Verificar si es macOS
+  # Check if it is macOS
+  macx: {
+    debug: {
+      # Configuración para macOS en modo depuración.
+      # Configuration for macOS in debug mode.
+      DESTDIR = $$OUT_PWD/build/debug
+      message ("ENTRANDO POR EL DEBUG DE MACX")
+    } else {
+      # Configuración para macOS en modo release.
+      # Configuration for macOS in release mode.
+      DESTDIR = $$OUT_PWD/build/release
+      message ("ENTRANDO POR EL RELESAE DE MACX")
+    }
+  }
+}
+
+win32: {
+  # Plataforma Windows (Win32).
+  # Windows platform (Win32).
+  debug: {
+    # Configuración para Windows en modo depuración.
+    # Configuration for Windows in debug mode.
+    DESTDIR = $$OUT_PWD/build/debug
+  } else {
+    # Configuración para Windows en modo release.
+    # Configuration for Windows in release mode.
+    DESTDIR = $$OUT_PWD/build/release
+  }
+}
+
+android: {
+  # Plataforma Android.
+  # Android platform.
+  debug: {
+    # Configuración para Android en modo depuración.
+    # Configuration for Android in debug mode.
+    DESTDIR = $$OUT_PWD/build/debug
+  } else {
+    # Configuración para Android en modo release.
+    # Configuration for Android in release mode.
+    DESTDIR = $$OUT_PWD/build/release
+  }
+}
+
+# Se establecen los directorios de compilacion del proyecto.
+# The project build directories are set.
+MOC_DIR          = $$DESTDIR/moc
+OBJECTS_DIR      = $$DESTDIR/obj
+RCC_DIR          = $$DESTDIR/rcc
+UI_DIR           = $$DESTDIR/ui
+
+# Se establecen las rutas absolutas a los directorios del proyecto final.
+# The absolute paths to the final project directories are set.
+BIN_PATH         = $$OUT_PWD/bin
+CONFIG_PATH      = $$OUT_PWD/config
+DATA_PATH        = $$OUT_PWD/data
+INCLUDE_PATH     = $$OUT_PWD/include
+LIB_PATH         = $$OUT_PWD/lib
+MEDIA_PATH       = $$OUT_PWD/media
+RESOURCES_PATH   = $$OUT_PWD/resources
+TRANSLATION_PATH = $$OUT_PWD/translations
+
+export (DESTDIR)

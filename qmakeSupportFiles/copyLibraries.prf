@@ -19,7 +19,7 @@ win32: {
 
 # Se define el nombre de la librería de forma dinámica.
 # The name of the library is defined dynamically.
-LIB_NAME = $$TEMPLATE$$TARGET.$$LIB_EXT
+LIB_NAME = $$TEMPLATE$$TARGET$$DOT$$LIB_EXT
 
 # Se copia el ejecutable en la ruta final para el directorio "lib/" según la plataforma.
 # The executable is copied to the final path to the "lib/" directory depending on the platform.

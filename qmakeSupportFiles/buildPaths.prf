@@ -1,6 +1,30 @@
 # buildPaths.prf
 
 
+# Se obtiene la ruta de salida del proyecto actual.
+# Get the output path of the current project.
+CURRENT_PROJECT_PATH = $$OUT_PWD
+
+# Se obtiene la ruta de origen del proyecto principal contenedor de todos los subproyectos.
+# Get the source path of the main project containing all subprojects.
+MAIN_PROJECT_ROOT_PATH = $$replace(PWD, /qmakeSupportFiles, )
+
+# Se elimina la ruta de origen del proyecto principal de la ruta de salida del proyecto actual.
+# The parent project's source path is removed from the current project's output path.
+SPLIT_PATH = $$replace(CURRENT_PROJECT_PATH, $$MAIN_PROJECT_ROOT_PATH, )
+
+# Se obtiene el complemento de ruta de la ruta de salida del proyecto principal.
+# The path complement is obtained from the output path of the main project.
+PATH_COMPLEMENT = $$system(echo $$SPLIT_PATH | cut -d'/' -f1)
+
+# Se obtiene la ruta relativa de salida del proyecto actual.
+# Get the relative output path of the current project.
+RELATIVE_PATH_CURRENT_PROJECT = $$replace(SPLIT_PATH, $$PATH_COMPLEMENT, )
+
+# Se obtiene la ruta de salida del proyecto principal contenedor de todos los subproyectos.
+# Get the output path of the main project containing all subprojects.
+MAIN_PROJECT_OUTPUT_PATH = $$MAIN_PROJECT_ROOT_PATH$$PATH_COMPLEMENT
+
 # Se establece DESTDIR de manera condicional según la plataforma y configuración.
 # DESTDIR is set conditionally depending on the platform and configuration.
 unix: {
@@ -9,11 +33,11 @@ unix: {
   debug: {
     # Configuración para Linux y macOS en modo depuración.
     # Configuration for Linux and macOS in debug mode.
-    DESTDIR = $$OUT_PWD/build/debug
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/debug
   } else {
     # Configuración para Linux y macOS en modo release.
     # Configuration for Linux and macOS in release mode.
-    DESTDIR = $$OUT_PWD/build/release
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/release
   }
 
   # Verificar si es macOS
@@ -22,11 +46,11 @@ unix: {
     debug: {
       # Configuración para macOS en modo depuración.
       # Configuration for macOS in debug mode.
-      DESTDIR = $$OUT_PWD/build/debug
+      DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/debug
     } else {
       # Configuración para macOS en modo release.
       # Configuration for macOS in release mode.
-      DESTDIR = $$OUT_PWD/build/release
+      DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/release
     }
   }
 }
@@ -37,11 +61,11 @@ win32: {
   debug: {
     # Configuración para Windows en modo depuración.
     # Configuration for Windows in debug mode.
-    DESTDIR = $$OUT_PWD/build/debug
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/debug
   } else {
     # Configuración para Windows en modo release.
     # Configuration for Windows in release mode.
-    DESTDIR = $$OUT_PWD/build/release
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/release
   }
 }
 
@@ -51,11 +75,11 @@ android: {
   debug: {
     # Configuración para Android en modo depuración.
     # Configuration for Android in debug mode.
-    DESTDIR = $$OUT_PWD/build/debug
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/debug
   } else {
     # Configuración para Android en modo release.
     # Configuration for Android in release mode.
-    DESTDIR = $$OUT_PWD/build/release
+    DESTDIR = $$MAIN_PROJECT_OUTPUT_PATH/build/release
   }
 }
 
@@ -68,11 +92,16 @@ UI_DIR           = $$DESTDIR/ui
 
 # Se establecen las rutas absolutas a los directorios del proyecto final.
 # The absolute paths to the final project directories are set.
-BIN_PATH         = $$OUT_PWD/bin
-CONFIG_PATH      = $$OUT_PWD/config
-DATA_PATH        = $$OUT_PWD/data
-INCLUDE_PATH     = $$OUT_PWD/include
-LIB_PATH         = $$OUT_PWD/lib
-MEDIA_PATH       = $$OUT_PWD/media
-RESOURCES_PATH   = $$OUT_PWD/resources
-TRANSLATION_PATH = $$OUT_PWD/translations
+BIN_PATH         = $$MAIN_PROJECT_OUTPUT_PATH/bin
+CONFIG_PATH      = $$MAIN_PROJECT_OUTPUT_PATH/config
+DATA_PATH        = $$MAIN_PROJECT_OUTPUT_PATH/data
+INCLUDE_PATH     = $$MAIN_PROJECT_OUTPUT_PATH/include
+LIB_PATH         = $$MAIN_PROJECT_OUTPUT_PATH/lib
+MEDIA_PATH       = $$MAIN_PROJECT_OUTPUT_PATH/media
+PLUGING_PATH     = $$MAIN_PROJECT_OUTPUT_PATH/plugins
+RESOURCES_PATH   = $$MAIN_PROJECT_OUTPUT_PATH/resources
+TRANSLATION_PATH = $$MAIN_PROJECT_OUTPUT_PATH/translations
+
+# Definiciones convenientes.
+# Convenient definitions.
+DOT = .

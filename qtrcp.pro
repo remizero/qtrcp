@@ -1,10 +1,32 @@
+# Se definen las rutas de construcción del proyecto.
+# The project construction routes are defined.
+include(qmakeSupportFiles/buildPaths.prf)
+
+# Se define la estructura de directorios del proyecto final compilado.
+# The directory structure of the final compiled project is defined.
+include(qmakeSupportFiles/createDirectoryStructure.prf)
+
+# Se definen los parámetros de configuración del compilador.
+# Compiler configuration parameters are defined.
+include(qmakeSupportFiles/buildConfiguration.prf)
+
 TEMPLATE = subdirs
 
 SUBDIRS += \
   com \
   examples
 
-CONFIG += ordered
+# Se definen las rutas, archivos pro y dependencias de los subproyectos.
+# The paths, pro files and dependencies of the subprojects are defined.
+com.subdir = com
+examples.subdir = examples
+examples.depends = com
+
+# CONFIG += ordered
+
+# Se definen las reglas y rutas de instalación del proyecto para las diferentes plataformas.
+# The rules and installation paths of the project are defined for the different platforms.
+include (qmakeSupportFiles/deploymentRulesBin.prf)
 
 DISTFILES += \
   qmakeSupportFiles/buildConfiguration.prf \
@@ -18,7 +40,12 @@ DISTFILES += \
   qmakeSupportFiles/copyMediaFiles.prf \
   qmakeSupportFiles/copyResourcesFiles.prf \
   qmakeSupportFiles/copyTranslatioFiles.prf \
-  qmakeSupportFiles/createDirectoryStructure.prf
+  qmakeSupportFiles/createDirectoryStructure.prf \
+  qmakeSupportFiles/deploymentRulesBin.prf \
+  qmakeSupportFiles/deploymentRulesLib.prf \
+  qmakeSupportFiles/normalizeProjectName.prf \
+  qmakeSupportFiles/projectExeConfiguration.prf \
+  qmakeSupportFiles/projectLibConfiguration.prf
 
 # LISTA DE ARTICULOS INTERESANTES PARA IMPLEMENTAR EN QTRCP
 #
@@ -58,8 +85,6 @@ DISTFILES += \
 # https://wiki.qt.io/Color_palette_generator
 # https://wiki.qt.io/PySide_Collapsable_Dock_Windows
 # https://wiki.qt.io/Clickable_QLabel
-# https://wiki.qt.io/Early_Warning_System
-# https://wiki.qt.io/Exception_Handling/de
 # https://wiki.qt.io/Custom_splashscreen_with_text
 # https://wiki.qt.io/Custom_TabBar
 # https://wiki.qt.io/Date_in_File_Name

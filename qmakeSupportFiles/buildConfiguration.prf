@@ -1,6 +1,97 @@
 # buildConfiguration.prf
 
 
+# Se deshabilitan todas las advertencias para API obsoletas.
+DEFINES += QT_DEPRECATED_WARNINGS
+
+# Se deshabilitan todas las API obsoletas antes de Qt 6.0.0.
+# All APIs deprecated before Qt 6.0.0 are disabled.
+DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000
+
+# Se define las reglas del estándar de C++XX.
+# Defines the rules of the C++XX standard.
+CONFIG += c++20
+
 # Se habilita la compilación paralela con qmake.
 # Parallel compilation with qmake is enabled.
-QMAKE_CXXFLAGS += -j4
+QMAKE_CXXFLAGS += -J4
+
+# Se habilita el estandard para C++ a utilizar por qmake.
+# The C++ standard to be used by qmake is enabled.
+win32: {
+  # Configuración específica para Windows.
+  # Windows-specific settings.
+
+  # Configuración para MSVC.
+  # Configuration for MSVC.
+  contains(QMAKE_CXX, cl.exe): {
+    QMAKE_CXXFLAGS += /std:c++20
+  }
+  # Configuración para MinGW.
+  # Configuration for MinGW.
+  contains(QMAKE_CXX, g++.exe): {
+    QMAKE_CXXFLAGS += -std=c++20
+  }
+}
+
+unix: {
+  linux: {
+    # Configuración específica para Linux.
+    # Linux-specific configuration.
+    QMAKE_CXXFLAGS += -std=c++20
+  }
+  macx: {
+    # Configuración específica para macOS.
+    # macOS-specific settings.
+    QMAKE_CXXFLAGS += -std=c++20
+  }
+}
+
+android: {
+  # Configuración específica para Android.
+  # Android specific configuration.
+  QMAKE_CXXFLAGS += -std=c++17
+}
+
+# Se habilita la versión de compilador a utilizar por qmake.
+# The compiler version to be used by qmake is enabled.
+win32: {
+  # Configuración específica para Windows
+  # Windows-specific settings.
+
+  # Configuración para MSVC.
+  # Configuration for MSVC.
+  contains(QMAKE_CXX, cl.exe): {
+    QMAKE_CXX = cl.exe
+  }
+  # Configuración para MinGW.
+  # Configuration for MinGW.
+  contains(QMAKE_CXX, g++.exe): {
+    QMAKE_CXX = g++.exe
+  }
+}
+
+unix: {
+  linux: {
+    # Configuración específica para Linux.
+    # Linux-specific configuration.
+    QMAKE_CXX = g++-12
+  }
+  macx: {
+    # Configuración específica para macOS.
+    # macOS-specific settings.
+    QMAKE_CXX = g++-12
+  }
+}
+
+android: {
+  # Configuración específica para Android.
+  # Android specific configuration.
+  QMAKE_CXX = clang++
+}
+
+# Otras plataformas no soportadas
+# Other unsupported platforms
+!win32:!unix:!android {
+  error("Plataforma no soportada")
+}
