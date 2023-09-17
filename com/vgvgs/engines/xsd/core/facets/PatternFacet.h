@@ -49,6 +49,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::PatternFacet )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::PatternFacet )
 
 #endif // PATTERNFACET_H

@@ -48,6 +48,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::EntitiesType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::EntitiesType )
 
 #endif // ENTITIESTYPE_H

@@ -60,6 +60,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Import )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Import )
 
 #endif // IMPORT_H

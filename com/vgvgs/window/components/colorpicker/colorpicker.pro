@@ -38,7 +38,6 @@ HEADERS += \
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros
-  #-L$$LIB_PATH/ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros
 else:unix: LIBS += \
@@ -49,7 +48,8 @@ INCLUDEPATH += \
   $$UI_DIR
 
 DEPENDPATH += \
-  $$PWD/../../../macros
+  $$PWD/../../../macros \
+  $$UI_DIR
 
 DISTFILES += \
   Agradecimientos.txt

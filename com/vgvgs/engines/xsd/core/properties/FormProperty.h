@@ -54,6 +54,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::FormProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::FormProperty )
 
 #endif // FORMPROPERTY_H

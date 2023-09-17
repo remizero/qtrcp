@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::NillableProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::NillableProperty )
 
 #endif // NILLABLEPROPERTY_H

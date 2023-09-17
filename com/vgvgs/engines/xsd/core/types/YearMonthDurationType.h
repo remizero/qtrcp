@@ -49,6 +49,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::YearMonthDurationType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::YearMonthDurationType )
 
 #endif // YEARMONTHDURATIONTYPE_H

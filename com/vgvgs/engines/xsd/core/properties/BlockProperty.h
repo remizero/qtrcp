@@ -47,6 +47,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::BlockProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::BlockProperty )
 
 #endif // BLOCKPROPERTY_H

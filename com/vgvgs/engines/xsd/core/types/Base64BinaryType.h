@@ -49,6 +49,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Base64BinaryType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Base64BinaryType )
 
 #endif // BASE64BINARYTYPE_H

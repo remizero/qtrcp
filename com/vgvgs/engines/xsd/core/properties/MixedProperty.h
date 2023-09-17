@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::MixedProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::MixedProperty )
 
 #endif // MIXEDPROPERTY_H

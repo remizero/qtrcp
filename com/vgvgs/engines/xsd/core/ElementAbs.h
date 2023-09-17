@@ -83,6 +83,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::ElementAbs )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::ElementAbs )
 
 #endif // ELEMENTABS_H

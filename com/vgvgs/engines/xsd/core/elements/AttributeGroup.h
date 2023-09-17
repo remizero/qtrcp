@@ -63,6 +63,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::AttributeGroup )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::AttributeGroup )
 
 #endif // ATTRIBUTEGROUP_H

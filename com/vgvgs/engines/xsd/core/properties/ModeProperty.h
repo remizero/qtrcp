@@ -57,6 +57,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::ModeProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::ModeProperty )
 
 #endif // MODEPROPERTY_H

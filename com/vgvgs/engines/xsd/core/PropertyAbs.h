@@ -92,6 +92,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::PropertyAbs )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::PropertyAbs )
 
 #endif // PROPERTYABS_H

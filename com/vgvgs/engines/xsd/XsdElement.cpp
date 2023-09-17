@@ -49,7 +49,7 @@ PropertyAbs *XsdElement::getProperty ( QString property ) const {
   const int propertiesCount = this->properties.count ();
   for ( int i = 0; i < propertiesCount; i++ ) {
 
-    QString propertyNameAux = "Com::Vgvgs::Engines::Xsd::" + property;
+    QString propertyNameAux = "NAMESPACE_LIBRARY_XSD::" + property;
     if ( propertyNameAux.compare ( this->properties.at ( i )->metaObject ()->className () ) == 0 ) {
 
       propertyObj = this->properties.at ( i );

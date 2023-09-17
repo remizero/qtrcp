@@ -65,6 +65,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Choice )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Choice )
 
 #endif // CHOICE_H

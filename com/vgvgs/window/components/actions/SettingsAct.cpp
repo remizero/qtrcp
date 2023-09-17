@@ -11,6 +11,6 @@ SettingsAct::SettingsAct ( QString title , QWidget *parent ) : ActionAbs ( title
 
 void SettingsAct::execAct () {
 
-  Com::Vgvgs::Engines::XsdForm::XsdDialog *xsdDialog = new Com::Vgvgs::Engines::XsdForm::XsdDialog ( this->myParent );
+  NAMESPACE_LIBRARY_XSDFORM::XsdDialog *xsdDialog = new NAMESPACE_LIBRARY_XSDFORM::XsdDialog ( this->myParent );
   xsdDialog->getFormDialog ()->show ();
 }

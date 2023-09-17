@@ -48,6 +48,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::ByteType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::ByteType )
 
 #endif // BYTETYPE_H

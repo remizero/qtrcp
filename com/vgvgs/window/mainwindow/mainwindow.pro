@@ -41,6 +41,8 @@ win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions \
   -L$$LIB_PATH/ -lMenubar \
@@ -51,6 +53,8 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions \
   -L$$LIB_PATH/ -lMenubar \
@@ -61,6 +65,8 @@ else:unix: LIBS += \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions \
   -L$$LIB_PATH/ -lMenubar \
@@ -86,6 +92,9 @@ DEPENDPATH += \
   $$PWD/../../app \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
+  $$UI_DIR \
+  $$PWD/../components/colorpicker \
+  $$PWD/../components/colorbox \
   $$PWD/../components/xsdform \
   $$PWD/../components/actions \
   $$PWD/../components/menubar \

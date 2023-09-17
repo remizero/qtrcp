@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::SourceProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::SourceProperty )
 
 #endif // SOURCEPROPERTY_H

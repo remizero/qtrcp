@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::IdProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::IdProperty )
 
 #endif // IDPROPERTY_H

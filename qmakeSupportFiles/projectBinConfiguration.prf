@@ -1,0 +1,10 @@
+# projectBinConfiguration.prf
+
+
+# Se define el tipo de proyecto.
+# The project type is defined.
+TEMPLATE = app
+
+# Se define la macro para el proyecto actual.
+# The macro is defined for the current project.
+DEFINES += $$upper($$TARGET)_APP

@@ -50,6 +50,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::DateTimeType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::DateTimeType )
 
 #endif // DATETIMETYPE_H

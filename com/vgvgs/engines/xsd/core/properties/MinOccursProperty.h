@@ -55,6 +55,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::MinOccursProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::MinOccursProperty )
 
 #endif // MINOCCURSPROPERTY_H

@@ -79,6 +79,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Schema )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Schema )
 
 #endif // SCHEMA_H

@@ -78,6 +78,9 @@ DEPENDPATH += \
   $$PWD/../../../app \
   $$PWD/../../../utils \
   $$PWD/../../../engines/xsd \
+  $$UI_DIR \
+  $$PWD/../colorpicker \
+  $$PWD/../colorbox \
   $$PWD/../xsdform \
   $$PWD/../actions
   #$$PWD/../../mainwindow

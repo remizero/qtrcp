@@ -55,6 +55,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::MaxOccursProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::MaxOccursProperty )
 
 #endif // MAXOCCURSPROPERTY_H

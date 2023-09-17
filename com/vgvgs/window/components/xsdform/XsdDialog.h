@@ -40,39 +40,42 @@ namespace NAMESPACE_LEVEL_1 {
 
   namespace NAMESPACE_LEVEL_2 {
 
-    namespace NAMESPACE_ENGINES {
+    namespace NAMESPACE_WINDOW {
 
-      namespace NAMESPACE_XSDFORM {
+      namespace NAMESPACE_COMPONENTS {
 
-        class XSDFORMSHARED_EXPORT XsdDialog : public QObject {
+        namespace NAMESPACE_XSDFORM {
 
-            Q_OBJECT
+          class XSDFORMSHARED_EXPORT XsdDialog : public QObject {
 
-          public :
-            XsdDialog ( QWidget *parent );
+              Q_OBJECT
 
-            QDialog *getFormDialog () const;
+            public :
+              XsdDialog ( QWidget *parent );
 
-          public slots :
-            void acceptSlot ();
-            void applySlot ();
+              QDialog *getFormDialog () const;
 
-          private :
-            QDialogButtonBox *buttonBox;
-                QDomDocument domDocument;
-                     QDialog *formDialog;
-                 QVBoxLayout *formDialogLayout;
-                 QGridLayout *mainLayout;
-             Xsd::XsdElement *xsdElement;
-              XsdFormCreator *xsdFormCreator;
+            public slots :
+              void acceptSlot ();
+              void applySlot ();
 
-            QString getNameInput ( QDomElement element );
-            QWidget *getWidget ( QString objectName, QWidget *widget );
-            Com::Vgvgs::Engines::Xsd::XsdElement *getXsdElement ( QDomElement element , Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void loadData ( QDomNode element, QWidget *widget );
-            QDomDocument loadXml ();
-            void saveData ( QDomNode element, QWidget *widget );
-        };
+            private :
+                               QDialogButtonBox *buttonBox;
+                                   QDomDocument domDocument;
+                                        QDialog *formDialog;
+                                    QVBoxLayout *formDialogLayout;
+                                    QGridLayout *mainLayout;
+              NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement;
+                                 XsdFormCreator *xsdFormCreator;
+
+              QString getNameInput ( QDomElement element );
+              QWidget *getWidget ( QString objectName, QWidget *widget );
+              NAMESPACE_LIBRARY_XSD::XsdElement *getXsdElement ( QDomElement element , NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void loadData ( QDomNode element, QWidget *widget );
+              QDomDocument loadXml ();
+              void saveData ( QDomNode element, QWidget *widget );
+          };
+        }
       }
     }
   }

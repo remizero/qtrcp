@@ -63,6 +63,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Extension )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Extension )
 
 #endif // EXTENSION_H

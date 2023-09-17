@@ -62,6 +62,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Key )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Key )
 
 #endif // KEY_H

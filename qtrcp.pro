@@ -44,7 +44,7 @@ DISTFILES += \
   qmakeSupportFiles/deploymentRulesBin.prf \
   qmakeSupportFiles/deploymentRulesLib.prf \
   qmakeSupportFiles/normalizeProjectName.prf \
-  qmakeSupportFiles/projectExeConfiguration.prf \
+  qmakeSupportFiles/projectBinConfiguration.prf \
   qmakeSupportFiles/projectLibConfiguration.prf
 
 # LISTA DE ARTICULOS INTERESANTES PARA IMPLEMENTAR EN QTRCP

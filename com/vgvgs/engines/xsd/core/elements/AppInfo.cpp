@@ -2,7 +2,7 @@
 
 using namespace NAMESPACE_LIBRARY_XSD;
 
-AppInfo::AppInfo () {}
+AppInfo::AppInfo () : ElementAbs () {}
 
 AppInfo::AppInfo ( const AppInfo & ) : ElementAbs () {}
 

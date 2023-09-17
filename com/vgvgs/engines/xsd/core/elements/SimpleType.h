@@ -63,6 +63,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::SimpleType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::SimpleType )
 
 #endif // SIMPLETYPE_H

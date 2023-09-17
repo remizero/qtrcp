@@ -48,6 +48,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::UnsignedByteType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::UnsignedByteType )
 
 #endif // UNSIGNEDBYTETYPE_H

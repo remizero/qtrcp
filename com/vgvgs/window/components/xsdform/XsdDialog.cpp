@@ -8,28 +8,58 @@ using namespace NAMESPACE_LIBRARY_XSDFORM;
 
 XsdDialog::XsdDialog ( QWidget *parent ) {
 
-  Xsd::XsdEngine *xsdEngine = new Xsd::XsdEngine ();
+  qDebug () << "ENTRANDO EN EL GENERADOR DE DIALOGO";
+  NAMESPACE_LIBRARY_XSD::XsdEngine *xsdEngine = new NAMESPACE_LIBRARY_XSD::XsdEngine ();
+  qDebug () << "LÍNEA 13";
   xsdEngine->load ( ":/xsdresources/xsd/config.xsd" );
+  qDebug () << "LÍNEA 15";
   xsdEngine->parse ();
+  qDebug () << "LÍNEA 17";
   this->xsdElement = xsdEngine->getXsdElementModel ();
+  qDebug () << "LÍNEA 19";
   this->formDialog = new QDialog ( parent );
+  qDebug () << "LÍNEA 21";
   this->formDialog->setObjectName ( "settingsDialog" );
+  qDebug () << "LÍNEA 23";
   this->formDialog->setMinimumSize ( 800, 600 );
-  this->formDialog->setWindowTitle ( ( ( Xsd::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue () );
+  qDebug () << "LÍNEA 25";
+  qDebug () << "this->xsdElement->getElementsList ()" << this->xsdElement->getElementsList ();
+  qDebug () << "this->xsdElement->getFacets ()" << this->xsdElement->getFacets ();
+  qDebug () << "this->xsdElement->getProperties ()" << this->xsdElement->getProperties ();
+  qDebug () << "this->xsdElement->getParent ()" << this->xsdElement->getParent ();
+  qDebug () << "this->xsdElement->getElementLevel ()" << this->xsdElement->getElementLevel ();
+  qDebug () << "this->xsdElement->getElementIndicator ()" << this->xsdElement->getElementIndicator ();
+  qDebug () << ( ( NAMESPACE_LIBRARY_XSD::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue ();
+  this->formDialog->setWindowTitle ( ( ( NAMESPACE_LIBRARY_XSD::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue () );
+  qDebug () << "LÍNEA 27";
   this->formDialogLayout = new QVBoxLayout ( this->formDialog );
+  qDebug () << "LÍNEA 29";
   this->formDialog->setLayout ( this->formDialogLayout );
+  qDebug () << "LÍNEA 31";
   this->buttonBox = new QDialogButtonBox ( this->formDialog );
+  qDebug () << "LÍNEA 33";
   this->buttonBox->setStandardButtons ( QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel );
+  qDebug () << "LÍNEA 35";
   this->xsdFormCreator = new XsdFormCreator ();
+  qDebug () << "LÍNEA 37";
   this->xsdFormCreator->createForm ( this->xsdElement, this->formDialog );
+  qDebug () << "LÍNEA 39";
   this->formDialogLayout->addWidget ( this->xsdFormCreator->getForm () );
+  qDebug () << "LÍNEA 41";
   this->formDialogLayout->addWidget ( this->buttonBox );
+  qDebug () << "LÍNEA 43";
   this->formDialog->connect ( this->buttonBox, SIGNAL ( accepted () ), this, SLOT ( acceptSlot () ) );
+  qDebug () << "LÍNEA 45";
   this->formDialog->connect ( this->buttonBox, SIGNAL ( rejected () ), this->formDialog, SLOT ( reject () ) );
+  qDebug () << "LÍNEA 47";
   QPushButton *applyButton = this->buttonBox->button ( QDialogButtonBox::Apply );
+  qDebug () << "LÍNEA 49";
   this->formDialog->connect ( applyButton, SIGNAL ( clicked () ), this, SLOT ( applySlot () ) );
+  qDebug () << "LÍNEA 51";
   this->domDocument = Utils::Xml::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", true );
+  qDebug () << "LÍNEA 53";
   this->loadData ( this->domDocument.firstChild (), this->xsdFormCreator->getForm () );
+  qDebug () << "LLEGÓ AL FINAL DEL CONSTRUCTOR";
 }
 
 void XsdDialog::acceptSlot () {
@@ -90,10 +120,10 @@ QWidget *XsdDialog::getWidget ( QString objectName, QWidget *widget ) {
   return objectReturn;
 }
 
-Com::Vgvgs::Engines::Xsd::XsdElement *XsdDialog::getXsdElement ( QDomElement element, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement ) {
+NAMESPACE_LIBRARY_XSD::XsdElement *XsdDialog::getXsdElement ( QDomElement element, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement ) {
 
-  Xsd::XsdElement *xsdElementReturn = nullptr;
-  if ( ( ( Xsd::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ().compare ( element.nodeName () ) == 0 ) {
+  NAMESPACE_LIBRARY_XSD::XsdElement *xsdElementReturn = nullptr;
+  if ( ( ( NAMESPACE_LIBRARY_XSD::NameProperty * ) xsdElement->getProperty ( "NameProperty" ) )->getValue ().compare ( element.nodeName () ) == 0 ) {
 
     xsdElementReturn = xsdElement;
 
@@ -131,133 +161,133 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
 
         QDomElement nodeElement = element.parentNode ().toElement ();
         QWidget *inputWidget = this->getWidget ( this->getNameInput ( nodeElement ) + "Input", widget );
-        Xsd::XsdElement *xsdElementType = nullptr;
+        NAMESPACE_LIBRARY_XSD::XsdElement *xsdElementType = nullptr;
         if ( inputWidget != nullptr ) {
 
           xsdElementType = this->getXsdElement ( nodeElement, this->xsdElement );
           if ( xsdElementType != nullptr ) {
 
-            Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
+            NAMESPACE_LIBRARY_XSD::TypeProperty *objTypeProperty = ( NAMESPACE_LIBRARY_XSD::TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
             switch ( objTypeProperty->getValue () ) {
 
-              case Xsd::TypeAbs::ANYURI:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ANYURI:
 
 
                 break;
 
-              case Xsd::TypeAbs::BASE64BINARY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BASE64BINARY:
 
 
                 break;
 
-              case Xsd::TypeAbs::BOOLEAN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BOOLEAN:
 
 
                 break;
 
-              case Xsd::TypeAbs::BYTE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BYTE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATETIMESTAMP:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATETIMESTAMP:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATETIME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATETIME:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DAYTIMEDURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DAYTIMEDURATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::DECIMAL:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DECIMAL:
 
 
                 break;
 
-              case Xsd::TypeAbs::DOUBLE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DOUBLE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DURATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::ENTITIES:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ENTITIES:
 
 
                 break;
 
-              case Xsd::TypeAbs::ENTITY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ENTITY:
 
 
                 break;
 
-              case Xsd::TypeAbs::FLOAT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::FLOAT:
 
 
                 break;
 
-              case Xsd::TypeAbs::GDAY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GDAY:
 
 
                 break;
 
-              case Xsd::TypeAbs::GMONTHDAY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GMONTHDAY:
 
 
                 break;
 
-              case Xsd::TypeAbs::GMONTH:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GMONTH:
 
 
                 break;
 
-              case Xsd::TypeAbs::GYEARMONTH:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GYEARMONTH:
 
 
                 break;
 
-              case Xsd::TypeAbs::GYEAR:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GYEAR:
 
 
                 break;
 
-              case Xsd::TypeAbs::HEXBINARY: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::HEXBINARY: {
 
                 NAMESPACE_LIBRARY_COLORBOX::ColorBox *lineEditHex = ( NAMESPACE_LIBRARY_COLORBOX::ColorBox * ) inputWidget;
                 lineEditHex->setColor ( QColor ( "#" + nodeElement.text () ) );
                 break;
               }
-              case Xsd::TypeAbs::IDREFS:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::IDREFS:
 
 
 
                 break;
 
-              case Xsd::TypeAbs::IDREF:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::IDREF:
 
 
                 break;
 
-              case Xsd::TypeAbs::ID:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ID:
 
 
                 break;
 
-              case Xsd::TypeAbs::INTEGER: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::INTEGER: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -271,7 +301,7 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::INT: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::INT: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -285,77 +315,77 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::LANGUAGE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::LANGUAGE:
 
 
                 break;
 
-              case Xsd::TypeAbs::LONG:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::LONG:
 
 
                 break;
 
-              case Xsd::TypeAbs::NAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::NCNAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NCNAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::NEGATIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NEGATIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NMTOKENS:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NMTOKENS:
 
 
                 break;
 
-              case Xsd::TypeAbs::NMTOKEN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NMTOKEN:
 
 
                 break;
 
-              case Xsd::TypeAbs::NONNEGATIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NONNEGATIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NONPOSITIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NONPOSITIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NORMALIZEDSTRING:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NORMALIZEDSTRING:
 
 
                 break;
 
-              case Xsd::TypeAbs::NOTATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NOTATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::POSITIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::POSITIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::QNAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::QNAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::SHORT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::SHORT:
 
 
                 break;
 
-              case Xsd::TypeAbs::STRING: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::STRING: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -369,37 +399,37 @@ void XsdDialog::loadData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::TIME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::TIME:
 
 
                 break;
 
-              case Xsd::TypeAbs::TOKEN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::TOKEN:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDBYTE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDBYTE:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDINT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDINT:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDLONG:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDLONG:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDSHORT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDSHORT:
 
 
                 break;
 
-              case Xsd::TypeAbs::YEARMONTHDURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::YEARMONTHDURATION:
 
 
                 break;
@@ -450,111 +480,111 @@ void XsdDialog::saveData ( QDomNode element, QWidget *widget ) {
 
         QDomElement nodeElement = element.parentNode ().toElement ();
         QWidget *inputWidget = this->getWidget ( this->getNameInput ( nodeElement ) + "Input", widget );
-        Xsd::XsdElement *xsdElementType = nullptr;
+        NAMESPACE_LIBRARY_XSD::XsdElement *xsdElementType = nullptr;
         if ( inputWidget != nullptr ) {
 
           xsdElementType = this->getXsdElement ( nodeElement, this->xsdElement );
           if ( xsdElementType != nullptr ) {
 
-            Xsd::TypeProperty *objTypeProperty = ( Xsd::TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
+            NAMESPACE_LIBRARY_XSD::TypeProperty *objTypeProperty = ( NAMESPACE_LIBRARY_XSD::TypeProperty * ) xsdElementType->getProperty ( "TypeProperty" );
             switch ( objTypeProperty->getValue () ) {
 
-              case Xsd::TypeAbs::ANYURI:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ANYURI:
 
 
                 break;
 
-              case Xsd::TypeAbs::BASE64BINARY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BASE64BINARY:
 
 
                 break;
 
-              case Xsd::TypeAbs::BOOLEAN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BOOLEAN:
 
 
                 break;
 
-              case Xsd::TypeAbs::BYTE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::BYTE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATETIMESTAMP:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATETIMESTAMP:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATETIME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATETIME:
 
 
                 break;
 
-              case Xsd::TypeAbs::DATE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DATE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DAYTIMEDURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DAYTIMEDURATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::DECIMAL:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DECIMAL:
 
 
                 break;
 
-              case Xsd::TypeAbs::DOUBLE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DOUBLE:
 
 
                 break;
 
-              case Xsd::TypeAbs::DURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::DURATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::ENTITIES:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ENTITIES:
 
 
                 break;
 
-              case Xsd::TypeAbs::ENTITY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ENTITY:
 
 
                 break;
 
-              case Xsd::TypeAbs::FLOAT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::FLOAT:
 
 
                 break;
 
-              case Xsd::TypeAbs::GDAY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GDAY:
 
 
                 break;
 
-              case Xsd::TypeAbs::GMONTHDAY:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GMONTHDAY:
 
 
                 break;
 
-              case Xsd::TypeAbs::GMONTH:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GMONTH:
 
 
                 break;
 
-              case Xsd::TypeAbs::GYEARMONTH:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GYEARMONTH:
 
 
                 break;
 
-              case Xsd::TypeAbs::GYEAR:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::GYEAR:
 
 
                 break;
 
-              case Xsd::TypeAbs::HEXBINARY: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::HEXBINARY: {
 
                 QLineEdit *lineEditHex = ( QLineEdit * ) inputWidget;
                 if ( lineEditHex->text ().compare ( nodeElement.text () ) != 0 ) {
@@ -563,23 +593,23 @@ void XsdDialog::saveData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::IDREFS:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::IDREFS:
 
 
 
                 break;
 
-              case Xsd::TypeAbs::IDREF:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::IDREF:
 
 
                 break;
 
-              case Xsd::TypeAbs::ID:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::ID:
 
 
                 break;
 
-              case Xsd::TypeAbs::INTEGER: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::INTEGER: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -598,7 +628,7 @@ void XsdDialog::saveData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::INT: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::INT: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -617,77 +647,77 @@ void XsdDialog::saveData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::LANGUAGE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::LANGUAGE:
 
 
                 break;
 
-              case Xsd::TypeAbs::LONG:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::LONG:
 
 
                 break;
 
-              case Xsd::TypeAbs::NAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::NCNAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NCNAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::NEGATIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NEGATIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NMTOKENS:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NMTOKENS:
 
 
                 break;
 
-              case Xsd::TypeAbs::NMTOKEN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NMTOKEN:
 
 
                 break;
 
-              case Xsd::TypeAbs::NONNEGATIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NONNEGATIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NONPOSITIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NONPOSITIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::NORMALIZEDSTRING:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NORMALIZEDSTRING:
 
 
                 break;
 
-              case Xsd::TypeAbs::NOTATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::NOTATION:
 
 
                 break;
 
-              case Xsd::TypeAbs::POSITIVEINTEGER:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::POSITIVEINTEGER:
 
 
                 break;
 
-              case Xsd::TypeAbs::QNAME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::QNAME:
 
 
                 break;
 
-              case Xsd::TypeAbs::SHORT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::SHORT:
 
 
                 break;
 
-              case Xsd::TypeAbs::STRING: {
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::STRING: {
 
                 if ( xsdElementType->isEnumerate () ) {
 
@@ -706,37 +736,37 @@ void XsdDialog::saveData ( QDomNode element, QWidget *widget ) {
                 }
                 break;
               }
-              case Xsd::TypeAbs::TIME:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::TIME:
 
 
                 break;
 
-              case Xsd::TypeAbs::TOKEN:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::TOKEN:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDBYTE:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDBYTE:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDINT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDINT:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDLONG:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDLONG:
 
 
                 break;
 
-              case Xsd::TypeAbs::UNSIGNEDSHORT:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::UNSIGNEDSHORT:
 
 
                 break;
 
-              case Xsd::TypeAbs::YEARMONTHDURATION:
+              case NAMESPACE_LIBRARY_XSD::TypeAbs::YEARMONTHDURATION:
 
 
                 break;

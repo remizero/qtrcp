@@ -33,12 +33,18 @@ void ColorBox::setColor ( const QColor &color ) {
 
 void ColorBox::launchColorDialog () {
 
-  QColor color = QColorDialog::getColor ( this->m_color, this, tr ( "Select color" ) );
-  // NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this->m_color, this, tr ( "Select color" ) );
-  NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this, this->m_color );
-  if ( color.isValid () ) {
+//  QColor color = QColorDialog::getColor ( this->m_color, this, tr ( "Select color" ) );
+//  if ( color.isValid () ) {
 
-    this->setColor ( color );
+//    this->setColor ( color );
+//  }
+  // NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog ( this->m_color, this, tr ( "Select color" ) );
+  NAMESPACE_LIBRARY_COLORPICKER::ColorPickerDialog colorPickerDialog ( this, this->m_color );
+  if ( colorPickerDialog.exec () == QDialog::Accepted ) {
+
+    //int value = dialog.getValue ();
+    this->setColor ( colorPickerDialog.getColor () );
+      // Haz algo con el valor retornado
   }
 }
 

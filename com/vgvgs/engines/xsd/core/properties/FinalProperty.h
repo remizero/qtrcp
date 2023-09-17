@@ -51,6 +51,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::FinalProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::FinalProperty )
 
 #endif // FINALPROPERTY_H

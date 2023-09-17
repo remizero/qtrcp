@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::XmlLangProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::XmlLangProperty )
 
 #endif // XMLLANGPROPERTY_H

@@ -32,7 +32,7 @@ namespace NAMESPACE_LEVEL_1 {
 
           public :
             Q_INVOKABLE AppInfo ();
-            AppInfo ( const AppInfo& );
+            Q_INVOKABLE AppInfo ( const AppInfo & );
             ~AppInfo ();
 
             enum content {
@@ -58,6 +58,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::AppInfo )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::AppInfo )
 
 #endif // APPINFO_H

@@ -1,28 +1,25 @@
-#-------------------------------------------------
-#
-# Project created by QtCreator 2017-10-06T09:12:28
-#
-#-------------------------------------------------
+# Se definen las rutas de construcción del proyecto.
+# The project construction routes are defined.
+include(../../qmakeSupportFiles/buildPaths.prf)
 
 QT       += core gui
-
-CONFIG += c++17
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets xml
 
 TARGET = appventanaprincipal
-TEMPLATE = app
 
-# The following define makes your compiler emit warnings if you use
-# any feature of Qt which as been marked as deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+# Normalización del nombre de proyecto.
+# Project name normalization.
+include (../../qmakeSupportFiles/normalizeProjectName.prf)
+TARGET = $$PROJECT_NAME
 
-# You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+# Definiciones particulares del tipo de proyecto.
+# Particular definitions of the project type.
+include (../../qmakeSupportFiles/projectBinConfiguration.prf)
+
+# Se definen los parámetros de configuración del compilador.
+# Compiler configuration parameters are defined.
+include(../../qmakeSupportFiles/buildConfiguration.prf)
 
 SOURCES += \
   main.cpp \
@@ -31,84 +28,98 @@ SOURCES += \
 HEADERS  += \
   VentanaPrincipal.h
 
-#DESTDIR = ../
-
 win32:CONFIG(release, debug|release): LIBS += \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
-  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
-  -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lApp \
+  #-L$$LIB_PATH/ -lLogger \
+  -L$$LIB_PATH/ -lResources \
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lSingleinstance \
+  -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
+  -L$$LIB_PATH/ -lXsdform \
+  -L$$LIB_PATH/ -lActions \
+  -L$$LIB_PATH/ -lMenubar \
+  -L$$LIB_PATH/ -lStatusbar \
+  -L$$LIB_PATH/ -lSystemtrayicon \
+  -L$$LIB_PATH/ -lMainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
-  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
-  -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lApp \
+  #-L$$LIB_PATH/ -lLogger \
+  -L$$LIB_PATH/ -lResources \
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lSingleinstance \
+  -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
+  -L$$LIB_PATH/ -lXsdform \
+  -L$$LIB_PATH/ -lActions \
+  -L$$LIB_PATH/ -lMenubar \
+  -L$$LIB_PATH/ -lStatusbar \
+  -L$$LIB_PATH/ -lSystemtrayicon \
+  -L$$LIB_PATH/ -lMainwindow
 else:unix: LIBS += \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lmacros \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lapp \
-  #-L$$OUT_PWD/../../com/ecosoftware/ -llogger \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lutils \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lsingleinstance \
-  -L$$OUT_PWD/../../com/ecosoftware/ -lresources \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsd \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lcolorbox \
-  -L$$OUT_PWD/../../com/ecosoftware/engines/ -lxsdform \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lactions \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lmenubar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lstatusbar \
-  -L$$OUT_PWD/../../com/ecosoftware/window/components/ -lsystemtrayicon \
-  -L$$OUT_PWD/../../com/ecosoftware/window/ -lmainwindow
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lApp \
+  #-L$$LIB_PATH/ -lLogger \
+  -L$$LIB_PATH/ -lResources \
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lSingleinstance \
+  -L$$LIB_PATH/ -lXsd \
+  -L$$LIB_PATH/ -lColorpicker \
+  -L$$LIB_PATH/ -lColorbox \
+  -L$$LIB_PATH/ -lXsdform \
+  -L$$LIB_PATH/ -lActions \
+  -L$$LIB_PATH/ -lMenubar \
+  -L$$LIB_PATH/ -lStatusbar \
+  -L$$LIB_PATH/ -lSystemtrayicon \
+  -L$$LIB_PATH/ -lMainwindow
 
 INCLUDEPATH += \
-  $$PWD/../../com/ecosoftware/macros \
-  $$PWD/../../com/ecosoftware/app \
-  #$$PWD/../../com/ecosoftware/logger \
-  $$PWD/../../com/ecosoftware/utils \
-  $$PWD/../../com/ecosoftware/singleinstance \
-  $$PWD/../../com/ecosoftware/resources \
-  $$PWD/../../com/ecosoftware/engines/xsd \
-  $$PWD/../../com/ecosoftware/engines/xsdform \
-  $$PWD/../../com/ecosoftware/window/components/actions \
-  $$PWD/../../com/ecosoftware/window/components/colorbox \
-  $$PWD/../../com/ecosoftware/window/components/menubar \
-  $$PWD/../../com/ecosoftware/window/components/statusbar \
-  $$PWD/../../com/ecosoftware/window/components/systemtrayicon \
-  $$PWD/../../com/ecosoftware/window/mainwindow
+  $$PWD/../../com/vgvgs/macros \
+  $$PWD/../../com/vgvgs/app \
+  #$$PWD/../../com/vgvgs/logger \
+  $$PWD/../../com/vgvgs/resources \
+  $$PWD/../../com/vgvgs/utils \
+  $$PWD/../../com/vgvgs/singleinstance \
+  $$PWD/../../com/vgvgs/engines/xsd \
+  $$UI_DIR \
+  $$PWD/../../com/vgvgs/window/components/colorpicker \
+  $$PWD/../../com/vgvgs/window/components/colorbox \
+  $$PWD/../../com/vgvgs/window/components/xsdform \
+  $$PWD/../../com/vgvgs/window/components/actions \
+  $$PWD/../../com/vgvgs/window/components/menubar \
+  $$PWD/../../com/vgvgs/window/components/statusbar \
+  $$PWD/../../com/vgvgs/window/components/systemtrayicon \
+  $$PWD/../../com/vgvgs/window/mainwindow
 
 DEPENDPATH += \
-  $$PWD/../../com/ecosoftware/macros \
-  $$PWD/../../com/ecosoftware/app \
-  #$$PWD/../../com/ecosoftware/logger \
-  $$PWD/../../com/ecosoftware/utils \
-  $$PWD/../../com/ecosoftware/singleinstance \
-  $$PWD/../../com/ecosoftware/resources \
-  $$PWD/../../com/ecosoftware/engines/xsd \
-  $$PWD/../../com/ecosoftware/engines/xsdform \
-  $$PWD/../../com/ecosoftware/window/components/actions \
-  $$PWD/../../com/ecosoftware/window/components/colorbox \
-  $$PWD/../../com/ecosoftware/window/components/menubar \
-  $$PWD/../../com/ecosoftware/window/components/statusbar \
-  $$PWD/../../com/ecosoftware/window/components/systemtrayicon \
-  $$PWD/../../com/ecosoftware/window/mainwindow
+  $$PWD/../../com/vgvgs/macros \
+  $$PWD/../../com/vgvgs/app \
+  #$$PWD/../../com/vgvgs/logger \
+  $$PWD/../../com/vgvgs/resources \
+  $$PWD/../../com/vgvgs/utils \
+  $$PWD/../../com/vgvgs/singleinstance \
+  $$PWD/../../com/vgvgs/engines/xsd \
+  $$UI_DIR \
+  $$PWD/../../com/vgvgs/window/components/colorpicker \
+  $$PWD/../../com/vgvgs/window/components/colorbox \
+  $$PWD/../../com/vgvgs/window/components/xsdform \
+  $$PWD/../../com/vgvgs/window/components/actions \
+  $$PWD/../../com/vgvgs/window/components/colorbox \
+  $$PWD/../../com/vgvgs/window/components/menubar \
+  $$PWD/../../com/vgvgs/window/components/statusbar \
+  $$PWD/../../com/vgvgs/window/components/systemtrayicon \
+  $$PWD/../../com/vgvgs/window/mainwindow
 
 FORMS +=
+
+# Se copia la librería en la ruta destino del proyecto final.
+# The library is copied to the destination path of the final project.
+include (../../qmakeSupportFiles/copyBinaries.prf)
+
+# Se definen las reglas y rutas de instalación del proyecto para las diferentes plataformas.
+# The rules and installation paths of the project are defined for the different platforms.
+include (../../qmakeSupportFiles/deploymentRulesLib.prf)

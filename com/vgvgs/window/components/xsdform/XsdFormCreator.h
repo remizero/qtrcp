@@ -7,8 +7,6 @@
 // Librerías Externas
 #include "macros_global.h"
 #include "ColorBox.h"
-
-// Librerías Externas
 #include "XsdElement.h"
 #include "core/FacetAbs.h"
 #include "core/PropertyAbs.h"
@@ -48,32 +46,35 @@ namespace NAMESPACE_LEVEL_1 {
 
   namespace NAMESPACE_LEVEL_2 {
 
-    namespace NAMESPACE_ENGINES {
+    namespace NAMESPACE_WINDOW {
 
-      namespace NAMESPACE_XSDFORM {
+      namespace NAMESPACE_COMPONENTS {
 
-        class XSDFORMSHARED_EXPORT XsdFormCreator {
+        namespace NAMESPACE_XSDFORM {
 
-          public :
-            XsdFormCreator ();
+          class XSDFORMSHARED_EXPORT XsdFormCreator {
 
-            void createForm ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement, QWidget *parent );
-            QTabWidget *getForm () const;
+            public :
+              XsdFormCreator ();
 
-          private :
-            QTabWidget *tabsDialog;
+              void createForm ( NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement, QWidget *parent );
+              QTabWidget *getForm () const;
 
-            void createGroup ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createHexbinaryInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createInputType ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createIntegerInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createParam ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createParams ( QWidget *widget, QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList );
-            void createStringInput ( QWidget *widget, Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-            void createTab ( Com::Vgvgs::Engines::Xsd::XsdElement *tabElement );
-            void createTabs ( QList<Com::Vgvgs::Engines::Xsd::XsdElement *> xsdElementList );
-            QString getNameInput ( Com::Vgvgs::Engines::Xsd::XsdElement *xsdElement );
-        };
+            private :
+              QTabWidget *tabsDialog;
+
+              void createGroup ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createHexbinaryInput ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createInputType ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createIntegerInput ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createParam ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createParams ( QWidget *widget, QList<NAMESPACE_LIBRARY_XSD::XsdElement *> xsdElementList );
+              void createStringInput ( QWidget *widget, NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+              void createTab ( NAMESPACE_LIBRARY_XSD::XsdElement *tabElement );
+              void createTabs ( QList<NAMESPACE_LIBRARY_XSD::XsdElement *> xsdElementList );
+              QString getNameInput ( NAMESPACE_LIBRARY_XSD::XsdElement *xsdElement );
+          };
+        }
       }
     }
   }

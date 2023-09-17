@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::XPathDefaultNamespaceProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::XPathDefaultNamespaceProperty )
 
 #endif // XPATHDEFAULTNAMESPACEPROPERTY_H

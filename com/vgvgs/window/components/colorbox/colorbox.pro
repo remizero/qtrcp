@@ -43,6 +43,7 @@ INCLUDEPATH += \
 
 DEPENDPATH += \
   $$PWD/../../../macros \
+  $$UI_DIR \
   $$PWD/../colorpicker
 
 # Se copia la librería en la ruta destino del proyecto final.

@@ -46,7 +46,6 @@
 #define NAMESPACE_LIBRARY_APP            Com::Vgvgs::App
 #define NAMESPACE_LIBRARY_CONSOLE        Com::Vgvgs::Console
 #define NAMESPACE_LIBRARY_XSD            Com::Vgvgs::Engines::Xsd
-#define NAMESPACE_LIBRARY_XSDFORM        Com::Vgvgs::Engines::XsdForm
 #define NAMESPACE_LIBRARY_LOGGER         Com::Vgvgs::Logger
 #define NAMESPACE_LIBRARY_MACROS         Com::Vgvgs::Macros
 #define NAMESPACE_LIBRARY_RESOURCES      Com::Vgvgs::Resources
@@ -54,11 +53,12 @@
 #define NAMESPACE_LIBRARY_SPLASHSCREEN   Com::Vgvgs::SplashScreen
 #define NAMESPACE_LIBRARY_UTILS          Com::Vgvgs::Utils
 #define NAMESPACE_LIBRARY_ACTONS         Com::Vgvgs::Window::Components::Actions
-#define NAMESPACE_LIBRARY_COLORBOX    Com::Vgvgs::Window::Components::ColorBox
+#define NAMESPACE_LIBRARY_COLORBOX       Com::Vgvgs::Window::Components::ColorBox
 #define NAMESPACE_LIBRARY_COLORPICKER    Com::Vgvgs::Window::Components::ColorPicker
 #define NAMESPACE_LIBRARY_MENUBAR        Com::Vgvgs::Window::Components::MenuBar
 #define NAMESPACE_LIBRARY_STATUSBAR      Com::Vgvgs::Window::Components::StatusBar
 #define NAMESPACE_LIBRARY_SYSTEMTRAYICON Com::Vgvgs::Window::Components::SystemTrayIcon
+#define NAMESPACE_LIBRARY_XSDFORM        Com::Vgvgs::Window::Components::XsdForm
 #define NAMESPACE_LIBRARY_MAINWINDOW     Com::Vgvgs::Window::MainWindow
 
 

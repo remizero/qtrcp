@@ -48,6 +48,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::IdType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::IdType )
 
 #endif // IDTYPE_H

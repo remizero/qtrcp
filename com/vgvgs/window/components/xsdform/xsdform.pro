@@ -71,6 +71,7 @@ DEPENDPATH += \
   $$PWD/../../../app \
   $$PWD/../../../resources \
   $$PWD/../../../utils \
+  $$UI_DIR \
   $$PWD/../colorpicker \
   $$PWD/../colorbox
 

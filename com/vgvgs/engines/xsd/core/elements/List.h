@@ -60,6 +60,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::List )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::List )
 
 #endif // LIST_H

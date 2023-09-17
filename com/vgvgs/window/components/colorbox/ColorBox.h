@@ -29,7 +29,7 @@ namespace NAMESPACE_LEVEL_1 {
           class COLORBOX_EXPORT ColorBox : public QLineEdit {
 
               Q_OBJECT
-              Q_PROPERTY ( QColor color READ getColor WRITE setColor USER true )
+              Q_PROPERTY ( QColor color READ getColor WRITE setColor USER true NOTIFY colorChanged )
 
             public :
               ColorBox ( QWidget *parent = nullptr );
@@ -40,6 +40,9 @@ namespace NAMESPACE_LEVEL_1 {
 
             public slots :
               void launchColorDialog ();
+
+            signals :
+              bool colorChanged ();
 
             protected :
               void keyPressEvent ( QKeyEvent *event ) override;

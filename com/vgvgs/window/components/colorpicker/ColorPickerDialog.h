@@ -40,15 +40,16 @@ namespace NAMESPACE_LEVEL_1 {
               void updateCMY ( QColor color );
               void updateHexLabel ( QColor color );
               void CMYKUpdatesColor ( QColor color );
+              QColor getColor ();
 
             private slots :
-              void on_hexLineEdit_textEdited ( const QString &arg1 );
-              void on_saveNewColorBtn_clicked ();
-              void on_pickScreenColorBtn_clicked ();
+              void onHexLineEditTextEdited ( const QString &arg1 );
+              void onSaveNewColorBtnClicked ();
+              void onPickScreenColorBtnClicked ();
               void setNewColor ( QColor color );
               void setColorUnderCursor ( QColor color );
-              void on_cancelBtn_clicked ();
-              void on_currentColorLabel_clicked ();
+              void onCancelBtnClicked ();
+              void onCurrentColorLabelClicked ();
 
             signals :
               void saveNewColor ( QColor color );

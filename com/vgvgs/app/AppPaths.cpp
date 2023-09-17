@@ -12,6 +12,7 @@ AppPaths::AppPaths () {
   this->applicationDirPath->cdUp ();
   this->applicationPathRoot = QDir::toNativeSeparators ( this->applicationDirPath->absolutePath () + QDir::separator () );
   this->applicationConfigPath = QDir::toNativeSeparators ( userPathApp + "config" + QDir::separator () );
+  qDebug () << this->applicationConfigPath;
   this->applicationDataPath = QDir::toNativeSeparators ( userPathApp + "data" + QDir::separator () );
   this->applicationImagePath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "images" + QDir::separator () );
   this->applicationLanguagePath = QDir::toNativeSeparators ( userPathApp + "language" + QDir::separator () );

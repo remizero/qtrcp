@@ -48,6 +48,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::LongType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::LongType )
 
 #endif // LONGTYPE_H

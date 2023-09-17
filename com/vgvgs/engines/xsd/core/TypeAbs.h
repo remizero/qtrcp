@@ -96,6 +96,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::TypeAbs )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::TypeAbs )
 
 #endif // TYPEABS_H

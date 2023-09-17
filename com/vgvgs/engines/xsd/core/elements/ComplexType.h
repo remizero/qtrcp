@@ -75,6 +75,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::ComplexType )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::ComplexType )
 
 #endif // COMPLEXTYPE_H

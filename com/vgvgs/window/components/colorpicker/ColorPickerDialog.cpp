@@ -358,7 +358,7 @@ void ColorPickerDialog::updateCMY ( QColor color ) {
   this->ui->ySpinBox->blockSignals ( false );
 }
 
-void ColorPickerDialog::on_hexLineEdit_textEdited ( const QString &arg1 ) {
+void ColorPickerDialog::onHexLineEditTextEdited ( const QString &arg1 ) {
 
   QColor color ( "#" + arg1 );
   if ( color.isValid () ) {
@@ -413,16 +413,21 @@ void ColorPickerDialog::CMYKUpdatesColor ( QColor color ) {
   this->ui->colorSelector->setValue ( color.hue () );
   this->ui->colorSelector->blockSignals ( false );
   this->ui->colorsShades->setSV ( color.toHsv ().saturation (), color.toHsv ().value () );
+  }
+
+QColor ColorPickerDialog::getColor () {
+
+  return this->currentColor;
 }
 
-void ColorPickerDialog::on_saveNewColorBtn_clicked () {
+void ColorPickerDialog::onSaveNewColorBtnClicked () {
 
   QColor color ( "#" + this->ui->hexLineEdit->text () );
   emit this->saveNewColor ( color );
-  close ();
+  this->close ();
 }
 
-void ColorPickerDialog::on_pickScreenColorBtn_clicked () {
+void ColorPickerDialog::onPickScreenColorBtnClicked () {
 
   this->dummyWidget->setFixedSize ( QGuiApplication::screenAt ( QCursor::pos () )->size () );
   this->dummyWidget->setCursor ( Qt::CrossCursor );
@@ -468,12 +473,12 @@ void ColorPickerDialog::setColorUnderCursor ( QColor color ) {
   this->ui->colorsShades->setSV ( color.toHsv ().saturation (), color.toHsv ().value () );
 }
 
-void ColorPickerDialog::on_cancelBtn_clicked () {
+void ColorPickerDialog::onCancelBtnClicked () {
 
   this->close ();
 }
 
-void ColorPickerDialog::on_currentColorLabel_clicked () {
+void ColorPickerDialog::onCurrentColorLabelClicked () {
 
   if ( this->currentColor.black () == 255 || this->currentColor.name () == "#ffffff" ) {
 

@@ -59,6 +59,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::Documentation )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::Documentation )
 
 #endif // DOCUMENTATION_H

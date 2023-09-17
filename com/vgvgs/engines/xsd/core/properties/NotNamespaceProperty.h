@@ -43,6 +43,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::NotNamespaceProperty )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::NotNamespaceProperty )
 
 #endif // NOTNAMESPACEPROPERTY_H

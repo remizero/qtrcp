@@ -50,6 +50,6 @@ namespace NAMESPACE_LEVEL_1 {
     }
   }
 }
-Q_DECLARE_METATYPE ( Com::Vgvgs::Engines::Xsd::AssertionsFacet )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_XSD::AssertionsFacet )
 
 #endif // ASSERTIONSFACET_H
