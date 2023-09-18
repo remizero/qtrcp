@@ -8,58 +8,28 @@ using namespace NAMESPACE_LIBRARY_XSDFORM;
 
 XsdDialog::XsdDialog ( QWidget *parent ) {
 
-  qDebug () << "ENTRANDO EN EL GENERADOR DE DIALOGO";
   NAMESPACE_LIBRARY_XSD::XsdEngine *xsdEngine = new NAMESPACE_LIBRARY_XSD::XsdEngine ();
-  qDebug () << "LÍNEA 13";
   xsdEngine->load ( ":/xsdresources/xsd/config.xsd" );
-  qDebug () << "LÍNEA 15";
   xsdEngine->parse ();
-  qDebug () << "LÍNEA 17";
   this->xsdElement = xsdEngine->getXsdElementModel ();
-  qDebug () << "LÍNEA 19";
   this->formDialog = new QDialog ( parent );
-  qDebug () << "LÍNEA 21";
   this->formDialog->setObjectName ( "settingsDialog" );
-  qDebug () << "LÍNEA 23";
   this->formDialog->setMinimumSize ( 800, 600 );
-  qDebug () << "LÍNEA 25";
-  qDebug () << "this->xsdElement->getElementsList ()" << this->xsdElement->getElementsList ();
-  qDebug () << "this->xsdElement->getFacets ()" << this->xsdElement->getFacets ();
-  qDebug () << "this->xsdElement->getProperties ()" << this->xsdElement->getProperties ();
-  qDebug () << "this->xsdElement->getParent ()" << this->xsdElement->getParent ();
-  qDebug () << "this->xsdElement->getElementLevel ()" << this->xsdElement->getElementLevel ();
-  qDebug () << "this->xsdElement->getElementIndicator ()" << this->xsdElement->getElementIndicator ();
-  qDebug () << ( ( NAMESPACE_LIBRARY_XSD::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue ();
   this->formDialog->setWindowTitle ( ( ( NAMESPACE_LIBRARY_XSD::NameProperty * ) this->xsdElement->getProperty ( "NameProperty" ) )->getValue () );
-  qDebug () << "LÍNEA 27";
   this->formDialogLayout = new QVBoxLayout ( this->formDialog );
-  qDebug () << "LÍNEA 29";
   this->formDialog->setLayout ( this->formDialogLayout );
-  qDebug () << "LÍNEA 31";
   this->buttonBox = new QDialogButtonBox ( this->formDialog );
-  qDebug () << "LÍNEA 33";
   this->buttonBox->setStandardButtons ( QDialogButtonBox::Ok | QDialogButtonBox::Apply | QDialogButtonBox::Cancel );
-  qDebug () << "LÍNEA 35";
   this->xsdFormCreator = new XsdFormCreator ();
-  qDebug () << "LÍNEA 37";
   this->xsdFormCreator->createForm ( this->xsdElement, this->formDialog );
-  qDebug () << "LÍNEA 39";
   this->formDialogLayout->addWidget ( this->xsdFormCreator->getForm () );
-  qDebug () << "LÍNEA 41";
   this->formDialogLayout->addWidget ( this->buttonBox );
-  qDebug () << "LÍNEA 43";
   this->formDialog->connect ( this->buttonBox, SIGNAL ( accepted () ), this, SLOT ( acceptSlot () ) );
-  qDebug () << "LÍNEA 45";
   this->formDialog->connect ( this->buttonBox, SIGNAL ( rejected () ), this->formDialog, SLOT ( reject () ) );
-  qDebug () << "LÍNEA 47";
   QPushButton *applyButton = this->buttonBox->button ( QDialogButtonBox::Apply );
-  qDebug () << "LÍNEA 49";
   this->formDialog->connect ( applyButton, SIGNAL ( clicked () ), this, SLOT ( applySlot () ) );
-  qDebug () << "LÍNEA 51";
   this->domDocument = Utils::Xml::load ( App::AppPaths::getInstance ().getApplicationConfigPath () + "config.xml", true );
-  qDebug () << "LÍNEA 53";
   this->loadData ( this->domDocument.firstChild (), this->xsdFormCreator->getForm () );
-  qDebug () << "LLEGÓ AL FINAL DEL CONSTRUCTOR";
 }
 
 void XsdDialog::acceptSlot () {

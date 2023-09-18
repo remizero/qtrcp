@@ -33,37 +33,38 @@ HEADERS += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions
-  #-L$$LIB_PATH/ -lmainwindow
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions
-  #-L$$LIB_PATH/ -lmainwindow
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox \
   -L$$LIB_PATH/ -lXsdform \
   -L$$LIB_PATH/ -lActions
-  #-L$$LIB_PATH/ -lmainwindow
 
 INCLUDEPATH += \
   $$PWD/../../../macros \
   $$PWD/../../../app \
+  $$PWD/../../../resources \
   $$PWD/../../../utils \
   $$PWD/../../../engines/xsd \
   $$UI_DIR \
@@ -71,11 +72,11 @@ INCLUDEPATH += \
   $$PWD/../colorbox \
   $$PWD/../xsdform \
   $$PWD/../actions
-  #$$PWD/../../mainwindow
 
 DEPENDPATH += \
   $$PWD/../../../macros \
   $$PWD/../../../app \
+  $$PWD/../../../resources \
   $$PWD/../../../utils \
   $$PWD/../../../engines/xsd \
   $$UI_DIR \
@@ -83,7 +84,6 @@ DEPENDPATH += \
   $$PWD/../colorbox \
   $$PWD/../xsdform \
   $$PWD/../actions
-  #$$PWD/../../mainwindow
 
 # Se copia la librería en la ruta destino del proyecto final.
 # The library is copied to the destination path of the final project.

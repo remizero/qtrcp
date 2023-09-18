@@ -39,6 +39,7 @@ HEADERS += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -51,6 +52,7 @@ win32:CONFIG(release, debug|release): LIBS += \
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -63,6 +65,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -76,6 +79,7 @@ else:unix: LIBS += \
 INCLUDEPATH += \
   $$PWD/../../macros \
   $$PWD/../../app \
+  $$PWD/../../resources \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
   $$UI_DIR \
@@ -90,6 +94,7 @@ INCLUDEPATH += \
 DEPENDPATH += \
   $$PWD/../../macros \
   $$PWD/../../app \
+  $$PWD/../../resources \
   $$PWD/../../utils \
   $$PWD/../../engines/xsd \
   $$UI_DIR \

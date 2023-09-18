@@ -108,7 +108,6 @@ DEPENDPATH += \
   $$PWD/../../com/vgvgs/window/components/colorbox \
   $$PWD/../../com/vgvgs/window/components/xsdform \
   $$PWD/../../com/vgvgs/window/components/actions \
-  $$PWD/../../com/vgvgs/window/components/colorbox \
   $$PWD/../../com/vgvgs/window/components/menubar \
   $$PWD/../../com/vgvgs/window/components/statusbar \
   $$PWD/../../com/vgvgs/window/components/systemtrayicon \

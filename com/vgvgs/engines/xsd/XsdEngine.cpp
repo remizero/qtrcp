@@ -650,18 +650,11 @@ void XsdEngine::load ( QString xsdFile ) {
   QFile file ( xsdFile );
   if ( file.open ( QIODevice::ReadOnly ) ) {
 
-    qDebug () << "SE HA ABIERTO EL ARCHIVO XSD.";
     this->doc = new QDomDocument ( "xsdDocument" );
-    qDebug () << "SE CREA EL QDOMDOCUMENT";
     this->xsdElementModel = new XsdElement ();
-    qDebug () << "SE CREA EL XSDDOCUMENT";
     this->xsdElementModel->setElementLevel ( Xsd::levelEnum::ROOTFORM );
-    qDebug () << "SE CREA EL XSDDOCUMENT";
-    //QXmlStreamReader xmlStreamReader ( &file );
-    qDebug () << file.readAll ();
     if ( !this->doc->setContent ( file.readAll () ) ) {
 
-      qDebug () << "ESTÁ ENTRANDO Y CARGANDO LOS DATOS DEL ARCHIVO XSD.";
       file.close ();
       return;
     }
@@ -669,9 +662,6 @@ void XsdEngine::load ( QString xsdFile ) {
 
     return;
   }
-  qDebug () << "this->doc->toString ()" << this->doc->toString ();
-  qDebug () << "this->toString ()" << this->toString ();
-  qDebug () << "this->toXml ()" << this->toXml ();
   file.close ();
 }
 

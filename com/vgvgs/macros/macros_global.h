@@ -10,15 +10,19 @@
 #  define MACROS_EXPORT Q_DECL_IMPORT
 #endif
 
+#define BASIC_STR(x) #x
+#define STR(x) BASIC_STR(x)
+
 
 // Se definen las macros comunes para todos los espacios de nombre de las librerías.
+// Common macros are defined for all library namespaces.
 #define TOKEN_SEPARATOR   ::
 #define NAMESPACE_LEVEL_1 Com
 #define NAMESPACE_LEVEL_2 Vgvgs
 
 
-// Se definen las macros particulares para todos los espacios de nombre de las
-// librerías.
+// Se definen las macros particulares para todos los espacios de nombre de las librerías.
+// Particular macros are defined for all library namespaces.
 #define NAMESPACE_APP            App
 #define NAMESPACE_CONSOLE        Console
 #define NAMESPACE_ENGINES        Engines
@@ -41,8 +45,8 @@
 #define NAMESPACE_MAINWINDOW     MainWindow
 
 
-// Se definen las macros con los nombres completos para todos los espacios de
-// nombre de las librerías.
+// Se definen las macros con los nombres completos para todos los espacios de nombre de las librerías.
+// Macros with fully qualified names are defined for all library namespaces.
 #define NAMESPACE_LIBRARY_APP            Com::Vgvgs::App
 #define NAMESPACE_LIBRARY_CONSOLE        Com::Vgvgs::Console
 #define NAMESPACE_LIBRARY_XSD            Com::Vgvgs::Engines::Xsd

@@ -32,45 +32,45 @@ HEADERS += \
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
   -L$$LIB_PATH/ -lColorbox
 
 INCLUDEPATH += \
   $$PWD/../../../macros \
-  $$PWD/../../../engines/xsd \
   $$PWD/../../../app \
   $$PWD/../../../resources \
   $$PWD/../../../utils \
+  $$PWD/../../../engines/xsd \
   $$UI_DIR \
   $$PWD/../colorpicker \
   $$PWD/../colorbox
 
 DEPENDPATH += \
   $$PWD/../../../macros \
-  $$PWD/../../../engines/xsd \
   $$PWD/../../../app \
   $$PWD/../../../resources \
   $$PWD/../../../utils \
+  $$PWD/../../../engines/xsd \
   $$UI_DIR \
   $$PWD/../colorpicker \
   $$PWD/../colorbox
