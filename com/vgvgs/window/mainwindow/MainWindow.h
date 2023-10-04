@@ -50,20 +50,20 @@ namespace NAMESPACE_LEVEL_1 {
 
             MainWindowSlots *getMainWindowSlots () const;
             QSystemTrayIcon *getSysTrayIcon () const;
-            void setVisible ( bool visible ) override;
+            void setVisible ( bool visible ) Q_DECL_OVERRIDE;
 
           public slots :
             void iconActivated ( QSystemTrayIcon::ActivationReason reason );
 
           protected :
             void centerWindow ();
-            virtual void changeEvent( QEvent *event ) override;
-            void closeEvent ( QCloseEvent *event ) override;
+            virtual void changeEvent( QEvent *event ) Q_DECL_OVERRIDE;
+            void closeEvent ( QCloseEvent *event ) Q_DECL_OVERRIDE;
             void createMenuBar ();
             void createStatusBar ();
             void init ( QSettings *settings );
             void loadSettins ();
-            void resizeEvent ( QResizeEvent *event ) override;
+            void resizeEvent ( QResizeEvent *event ) Q_DECL_OVERRIDE;
             void saveSettings ();
             void setMinimunWindowSize ();
 

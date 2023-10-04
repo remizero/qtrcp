@@ -116,6 +116,7 @@ void MainWindow::init ( QSettings *settings ) {
   this->mainWindowSlots = new MainWindowSlots ( this );
 
   this->setWindowTitle ( settings->value ( "app/applicationdisplayname" ).toString () );
+  // TODO https://amin-ahmadi.com/2016/08/05/how-to-update-your-qt-applications-taskbar-icon-at-runtime/
   this->setWindowIcon ( QIcon ( App::AppPaths::getInstance ().getApplicationImagePath () + settings->value ( "app/iconimage" ).toString () ) );
   this->setMinimunWindowSize ();
   /*

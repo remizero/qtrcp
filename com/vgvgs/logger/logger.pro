@@ -4,7 +4,7 @@ include(../../../qmakeSupportFiles/buildPaths.prf)
 
 QT       -= gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += core
+greaterThan(QT_MAJOR_VERSION, 4): QT += core widgets xml
 
 TARGET = logger
 
@@ -22,29 +22,41 @@ include (../../../qmakeSupportFiles/projectLibConfiguration.prf)
 include(../../../qmakeSupportFiles/buildConfiguration.prf)
 
 SOURCES += \
-  Logger.cpp
+  Logger.cpp \
+  MyException.cpp
 
 HEADERS += \
-  logger_global.h \
-  Logger.h
+  Logger.h \
+  MyException.h \
+  logger_global.h
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime
 
 INCLUDEPATH += \
   $$PWD/../macros \
-  $$PWD/../app
+  $$PWD/../app \
+  $$PWD/../patternify \
+  $$PWD/../../../third-party/SMTPEmail
 
 DEPENDPATH += \
   $$PWD/../macros \
-  $$PWD/../app
+  $$PWD/../app \
+  $$PWD/../patternify \
+  $$PWD/../../../third-party/SMTPEmail
 
 # Se copia la librería en la ruta destino del proyecto final.
 # The library is copied to the destination path of the final project.

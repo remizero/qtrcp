@@ -1287,12 +1287,12 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
       case ElementAbs::elements::OVERRIDE:
 
 /*
-<override
+<Q_DECL_OVERRIDE
   id = ID
   schemaLocation = anyURI
   {any attributes with non-schema namespace . . .}>
   Content: (annotation | (simpleType | complexType | group | attributeGroup | element | attribute | notation))*
-</override>
+</Q_DECL_OVERRIDE>
 */
         qDebug () << "Es un elemento tipo xs:overryde";
         if ( nodeName.isEmpty () ^ this->isElementToFind ( docElement, nodeName ) ) {
@@ -1366,7 +1366,7 @@ void XsdEngine::parse ( QDomElement docElement, XsdElement *xsdElement, QString 
   version = token
   xml:lang = language
   {any attributes with non-schema namespace . . .}>
-  Content: ((include | import | redefine | override | annotation)*, (defaultOpenContent, annotation*)?, ((simpleType | complexType | group | attributeGroup | element | attribute | notation), annotation*)*)
+  Content: ((include | import | redefine | Q_DECL_OVERRIDE | annotation)*, (defaultOpenContent, annotation*)?, ((simpleType | complexType | group | attributeGroup | element | attribute | notation), annotation*)*)
 </schema>
 */
         qDebug () << "Es un elemento tipo xs:schema";

@@ -1,0 +1,12 @@
+#ifndef PATTERNIFY_GLOBAL_H
+#define PATTERNIFY_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(PATTERNIFY_LIBRARY)
+#  define PATTERNIFY_EXPORT Q_DECL_EXPORT
+#else
+#  define PATTERNIFY_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // PATTERNIFY_GLOBAL_H

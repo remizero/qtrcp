@@ -101,6 +101,7 @@ MEDIA_PATH       = $$MAIN_PROJECT_OUTPUT_PATH/media
 PLUGING_PATH     = $$MAIN_PROJECT_OUTPUT_PATH/plugins
 RESOURCES_PATH   = $$MAIN_PROJECT_OUTPUT_PATH/resources
 TRANSLATION_PATH = $$MAIN_PROJECT_OUTPUT_PATH/translations
+VENDORS_PATH     = $$MAIN_PROJECT_OUTPUT_PATH/vendors
 
 # Definiciones convenientes.
 # Convenient definitions.

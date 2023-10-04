@@ -31,9 +31,11 @@ HEADERS  += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  #-L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime \
+  -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -47,9 +49,11 @@ win32:CONFIG(release, debug|release): LIBS += \
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  #-L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime \
+  -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -63,9 +67,11 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  #-L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lPatternify \
+  -L$$VENDORS_PATH/ -lSmtpMime \
+  -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
   -L$$LIB_PATH/ -lXsd \
   -L$$LIB_PATH/ -lColorpicker \
@@ -80,9 +86,11 @@ else:unix: LIBS += \
 INCLUDEPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
-  #$$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
+  $$PWD/../../com/vgvgs/patternify \
+  $$PWD/../../third-party/SMTPEmail \
+  $$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/singleinstance \
   $$PWD/../../com/vgvgs/engines/xsd \
   $$UI_DIR \
@@ -98,9 +106,11 @@ INCLUDEPATH += \
 DEPENDPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
-  #$$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
+  $$PWD/../../com/vgvgs/patternify \
+  $$PWD/../../third-party/SMTPEmail \
+  $$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/singleinstance \
   $$PWD/../../com/vgvgs/engines/xsd \
   $$UI_DIR \

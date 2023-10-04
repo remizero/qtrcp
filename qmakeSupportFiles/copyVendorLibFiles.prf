@@ -1,0 +1,26 @@
+# copyVendorLibFiles.prf
+
+
+# Se define la extensión según la plataforma.
+# The extension is defined according to the platform.
+win32: {
+  LIB_EXT = dll
+} else: unix {
+  LIB_EXT = so
+} else: macx {
+  LIB_EXT = dylib
+} else: android {
+  LIB_EXT = so
+} else {
+  # Otras plataformas no soportadas
+  # Other platforms not supported
+  error("Plataforma no soportada")
+}
+
+# Se define el nombre de la librería de forma dinámica.
+# The name of the library is defined dynamically.
+LIB_NAME = $$TEMPLATE$$TARGET$$DOT$$LIB_EXT
+
+# Se copia el ejecutable en la ruta final para el directorio "lib/" según la plataforma.
+# The executable is copied to the final path to the "lib/" directory depending on the platform.
+QMAKE_POST_LINK += $$quote(cp $$DESTDIR/$$LIB_NAME* $$VENDORS_PATH/)

@@ -10,6 +10,7 @@
 // Librerías Qt
 #include <QApplication>
 #include <QDebug>
+#include <QMessageLogger>
 
 
 namespace NAMESPACE_LEVEL_1 {

@@ -1,51 +1,273 @@
 #include "Logger.h"
-#include <QDebug>
 
-Q_LOGGING_CATEGORY ( logDebug,    "Debug" )
-Q_LOGGING_CATEGORY ( logInfo,     "Info" )
-Q_LOGGING_CATEGORY ( logWarning,  "Warning" )
-Q_LOGGING_CATEGORY ( logCritical, "Critical" )
+const qint64 MAX_LOG_SIZE = 1024 * 1024;  // 1MB
+
 
 using namespace NAMESPACE_LIBRARY_LOGGER;
 
-Logger::Logger ( QFile logFile ) {
 
-  //logger = this;
-  // TODO: Cambiar la dirección del log de errores
-  // TODO: Verificar el tamaño del archivo que no sea mayor a 1MB, sino,
-  // renombrar con el nombre del archivo y la fecha del día, y crear uno nuevo
-  // y comenzar a escribir en el archivo nuevo.
-  //QFile logFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" );
-  //this->logFile = &logFile;
-  //this->logFile.reset ( new QFile ( App::AppPaths::getInstance ().getApplicationLogPath () + "logger.log" ) );
-  // Open the file logging
-  //this->logFile.data ()->open ( QFile::Append | QFile::Text );
-/*
-#if QT_VERSION >= QT_VERSION_CHECK ( 5, 0, 0 )
-  //#pragma comment(lib, "logger.lib")
-  qInstallMessageHandler ( loggerOutput );
-#else
-  qInstallMsgHandler ( loggerOutput );
-#endif*/
+Logger::Logger () {
+
+  this->openMode = QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text;
+  this->filePath = NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationLogPath () + NAMESPACE_LIBRARY_APP::AppInfo::getApplicationName () + "_error.log";
+  this->init ();
 }
 
-void Logger::loggerOutput ( QtMsgType type, const QMessageLogContext &context, const QString &msg ) {
-/*
-  // Open stream file writes
-  //QTextStream out ( logFile.data () );
-  QTextStream out ( logFile );
-  // Write the date of recording
-  out << QDateTime::currentDateTime ().toString ( "yyyy-MM-dd hh:mm:ss.zzz " );
-  // By type determine to what level belongs message
+Logger::~Logger () {
+
+  if ( logFile.data ()->isOpen () ) {
+
+    logFile.data ()->close ();
+    logFile.reset ( nullptr );
+  }
+}
+
+void Logger::checkAndRotateLog () {
+
+  if ( this->logFile.data ()->size () >= MAX_LOG_SIZE ) {
+
+    QDateTime currentDateTime = QDateTime::currentDateTime ();
+    QFileInfo fileInfo ( this->logFile.data ()->filesystemFileName () );
+    QString newFileName = NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationLogPath () + fileInfo.baseName () + "_" + currentDateTime.toString ( "yyyy-MM-dd hh:mm:ss" ) + ".log";
+    this->logFile.data ()->rename ( newFileName );
+    this->logFile.data ()->close ();
+    this->logFile.reset ( nullptr );
+    this->open ();
+  }
+}
+
+void Logger::close () {
+
+  if ( this->logFile.data ()->isOpen () ) {
+
+    this->logFile.data ()->close ();
+    this->logFile.reset ( nullptr );
+  }
+  qInstallMessageHandler ( 0 );
+}
+
+void Logger::configMessagePatternOutput () {
+
+  if ( this->outputFormat.isEmpty () ) {
+
+    #ifdef QT_DEBUG
+      this->outputFormat = QStringLiteral ( STR(DEFAULT_QT_MESSAGE_PATTERN) );
+    #else
+      this->outputFormat = QStringLiteral ( STR(FILE_OUTPUT_QT_MESSAGE_PATTERN) );
+    #endif
+
+  }
+  qSetMessagePattern ( this->outputFormat );
+}
+
+void Logger::handleMessage ( QtMsgType type, const QMessageLogContext &context, const QString &msg ) {
+
+  QString msgFormat = qFormatLogMessage ( type, context, msg );
+
   switch ( type ) {
 
-    case QtInfoMsg:     out << "INF "; break;
-    case QtDebugMsg:    out << "DBG "; break;
-    case QtWarningMsg:  out << "WRN "; break;
-    case QtCriticalMsg: out << "CRT "; break;
-    case QtFatalMsg:    out << "FTL "; break;
+    case QtDebugMsg :
+
+      QMessageBox::warning ( nullptr, "Mensaje de Depuración del Sistema.", msgFormat );
+      break;
+
+    case QtInfoMsg :
+
+      QMessageBox::information ( nullptr, "Mensaje de Información del Sistema.", msgFormat );
+      break;
+
+    case QtWarningMsg :
+
+      QMessageBox::warning ( nullptr, "Mensaje de Advertencia del Sistema.", msgFormat );
+      break;
+
+    case QtCriticalMsg :
+
+      QMessageBox::critical ( nullptr, "Mensaje de Acción Crítica del Sistema.", msgFormat );
+      break;
+
+    case QtFatalMsg :
+
+      QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", msgFormat );
+      break;
   }
-  // Write to the output category of the message and the message itself
-  out << context.category << ": " << __FILE__ << " " << __LINE__ << " " << Q_FUNC_INFO << " " << msg << endl;
-  out.flush (); // Clear the buffered data , ,*/
+  // this->sendEmail ();
+  this->writeToLog ( msgFormat + "\n" );
+}
+
+void Logger::init ( Logger::LogOutput output, QString outputFormat ) {
+
+  this->output = output;
+  this->outputFormat = outputFormat;
+  switch ( this->output ) {
+
+    case Standard :
+
+      this->close ();
+      break;
+
+    case File :
+
+      this->configMessagePatternOutput ();
+      this->open ();
+      this->installMessageHandler ();
+      break;
+  }
+}
+
+void Logger::installMessageHandler () {
+
+  #ifdef QT_DEBUG
+    // Modo de depuración, no hagas nada especial.
+    qInstallMessageHandler ( Logger::messageHandler ); // TODO Esto se debe quitar.
+  #else
+    // Modo de lanzamiento, instala un manejador de mensajes personalizado.
+    qInstallMessageHandler ( Logger::messageHandler );
+  #endif
+}
+
+void Logger::messageHandler ( QtMsgType type, const QMessageLogContext &context, const QString &msg ) {
+
+  Logger::getInstance ()->handleMessage ( type, context, msg );
+}
+
+void Logger::open () {
+
+  if ( QFile::exists ( this->filePath ) ) {
+
+    if ( this->logFile.isNull () ) {
+
+      this->logFile.reset ( new QFile ( this->filePath ) );
+      if ( this->logFile.data ()->open ( this->openMode ) ) {
+
+        this->checkAndRotateLog ();
+
+      } else {
+
+        QString message ( "No se pudo cargar el archivo de registro de la aplicación." );
+        qWarning () << message;
+        QMessageBox::warning ( nullptr, "Error de registro", message );
+      }
+    } else {
+
+      if ( !this->logFile.data ()->isOpen () ) {
+
+        if ( this->logFile.data ()->open ( this->openMode ) ) {
+
+          this->checkAndRotateLog ();
+
+        } else {
+
+          QString message ( "No se pudo abrir el archivo de registro de la aplicación." );
+          qWarning () << message;
+          QMessageBox::warning ( nullptr, "Error de registro", message );
+        }
+      } else {
+
+        this->checkAndRotateLog ();
+      }
+    }
+  } else {
+
+    if ( this->logFile.isNull () ) {
+
+      this->logFile.reset ( new QFile ( this->filePath ) );
+      if ( this->logFile.data ()->open ( this->openMode ) ) {
+
+        this->checkAndRotateLog ();
+
+      } else {
+
+        QString message ( "No se pudo crear un nuevo archivo de registro de la aplicación." );
+        qWarning () << message;
+        QMessageBox::warning ( nullptr, "Error de registro", message );
+      }
+    } else {
+
+      if ( !this->logFile.data ()->isOpen () ) {
+
+        if ( this->logFile.data ()->open ( this->openMode ) ) {
+
+          this->checkAndRotateLog ();
+
+        } else {
+
+          QString message ( "No se pudo abrir el archivo de registro de la aplicación." );
+          qWarning () << message;
+          QMessageBox::warning ( nullptr, "Error de registro", message );
+        }
+      } else {
+
+        this->checkAndRotateLog ();
+      }
+    }
+  }
+}
+
+void Logger::sendEmail () {
+
+  MimeMessage message;
+
+  EmailAddress sender ( "filzaa@hotmail.com", "Filiberto Zaá Avila" );
+  message.setSender ( sender );
+
+  EmailAddress to ( "filizaa@gmail.com", "Filiberto Zaá Avila" );
+  message.addRecipient ( to );
+
+  message.setSubject ( "SmtpClient for Qt - Demo" );
+
+  // Now add some text to the email.
+  // First we create a MimeText object.
+
+  MimeText text;
+
+  text.setText ( "Hi,\nThis is a simple email message.\n" );
+
+  // Now add it to the mail
+
+  message.addPart ( &text );
+
+  // Now we can send the mail
+  //SmtpClient smtp ( "smtp.office365.com", 465, SmtpClient::SslConnection );
+  SmtpClient smtp ( "smtp.office365.com", 587, SmtpClient::TlsConnection );
+
+  smtp.connectToHost ();
+  if ( !smtp.waitForReadyConnected () ) {
+
+    qDebug () << "Failed to connect to host!";
+    //return -1;
+  }
+
+  smtp.login ( "filzaa@hotmail.com", "JahGuiaYo666" );
+  //smtp.login ( "filizaa", "Gm13557244.*", SmtpClient::AuthPlain );
+  if ( !smtp.waitForAuthenticated () ) {
+
+    qDebug () << "Failed to login!";
+    //return -2;
+  }
+
+  smtp.sendMail ( message );
+  if ( !smtp.waitForMailSent () ) {
+
+    qDebug () << "Failed to send mail!";
+    //return -3;
+  }
+
+  smtp.quit();
+}
+
+void Logger::writeToLog ( const QString &message ) {
+
+  QMutexLocker lock ( this->mutex );
+  if ( this->logFile.data ()->isOpen () ) {
+
+    QTextStream textStream ( this->logFile.data () );
+    QString logMessage = QString ( "%1 - %2" ).arg ( message, "\n" );
+    textStream << logMessage;
+    this->checkAndRotateLog ();
+
+  } else {
+
+    QMessageBox::critical ( nullptr, "Error de registro", "No se pudo abrir el archivo de registro." );
+  }
 }

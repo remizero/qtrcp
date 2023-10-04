@@ -13,14 +13,17 @@ include(qmakeSupportFiles/buildConfiguration.prf)
 TEMPLATE = subdirs
 
 SUBDIRS += \
+  third-party \
   com \
-  examples
+  examples \
 
 # Se definen las rutas, archivos pro y dependencias de los subproyectos.
 # The paths, pro files and dependencies of the subprojects are defined.
+third-party.subdir = third-party
 com.subdir = com
+com.depends = third-party
 examples.subdir = examples
-examples.depends = com
+examples.depends = third-party com
 
 # CONFIG += ordered
 
@@ -29,6 +32,7 @@ examples.depends = com
 include (qmakeSupportFiles/deploymentRulesBin.prf)
 
 DISTFILES += \
+  Agradecimientos.txt \
   qmakeSupportFiles/buildConfiguration.prf \
   qmakeSupportFiles/buildPaths.prf \
   qmakeSupportFiles/copyBinaries.prf \
@@ -40,6 +44,7 @@ DISTFILES += \
   qmakeSupportFiles/copyMediaFiles.prf \
   qmakeSupportFiles/copyResourcesFiles.prf \
   qmakeSupportFiles/copyTranslatioFiles.prf \
+  qmakeSupportFiles/copyVendorLibFiles.prf \
   qmakeSupportFiles/createDirectoryStructure.prf \
   qmakeSupportFiles/deploymentRulesBin.prf \
   qmakeSupportFiles/deploymentRulesLib.prf \

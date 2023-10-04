@@ -6,13 +6,20 @@
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
-//#include "Logger.h"
+#include "Logger.h"
 #include "SingleInstance.h"
 
 // Librerías Qt
 #include <QApplication>
 #include <QDebug>
+#include <QException>
 #include <QMessageBox>
+#include <QMessageLogContext>
+#include <QFile>
+#include <QFileInfo>
+#include <exception>
+#include <QException>
+
 
 int main ( int argc, char *argv [] ) {
 
@@ -21,8 +28,18 @@ int main ( int argc, char *argv [] ) {
   do {
 
     NAMESPACE_LIBRARY_APP::App appInstance ( argc, argv );
-    // QApplication appInstance ( argc, argv );
-    //Com::Vgvgs::Logger::Logger *logger = new Com::Vgvgs::Logger::Logger ();
+    try {
+
+      NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ();
+      throw QException ();
+
+    } catch ( const QException &e ) {
+
+      qDebug () << e.what ();
+      // qDebug () << __FILE__; // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
+      // qDebug () << Q_FUNC_INFO; // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
+      // qDebug () << QString::number ( __LINE__ ); // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
+    }
 
     if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
 
@@ -45,8 +62,19 @@ int main ( int argc, char *argv [] ) {
     }
     VentanaPrincipal mainWindow ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
-    currentExitCode = appInstance.exec ();
+    try {
 
+      currentExitCode = appInstance.exec ();
+
+    } catch ( const std::bad_alloc & ) {
+
+      // clean up here, e.g. save the session
+      // and close all config files.
+      // currentExitCode = QCoreApplication::exit ( EXIT_FAILURE );
+      currentExitCode = EXIT_FAILURE;
+      break;
+      // return EXIT_FAILURE; // exit the application
+    }
   } while ( currentExitCode == NAMESPACE_LIBRARY_APP::App::EXIT_CODE_REBOOT );
 
   return currentExitCode;

@@ -6,50 +6,28 @@
 
 // Librerías Externas
 #include "macros_global.h"
-
-// Librerías Externas
+#include "AppInfo.h"
 #include "AppPaths.h"
+#include "creational/Singleton.h"
+
+// Librerías de terceros
+// third-party Library
+#include "SmtpMime"
 
 // Librerías Qt
 #include <QDateTime>
+#include <QDebug>
 #include <QFile>
-#include <QLoggingCategory>
+#include <QFileInfo>
+#include <QIODeviceBase>
+#include <QMessageBox>
 #include <QMessageLogContext>
 #include <QScopedPointer>
 #include <QString>
+#include <QStringLiteral>
 #include <QTextStream>
 
-Q_DECLARE_LOGGING_CATEGORY ( logDebug )
-Q_DECLARE_LOGGING_CATEGORY ( logInfo )
-Q_DECLARE_LOGGING_CATEGORY ( logWarning )
-Q_DECLARE_LOGGING_CATEGORY ( logCritical )
-
-/**
- * TODO
- * ESTE ES MUY IMPORTANTE, EMPEZAR POR AHÍ
- * https://stackoverflow.com/questions/4661883/qt-c-error-handling
- * https://stackoverflow.com/questions/576185/logging-best-practices?rq=1
- * https://jpnaude.github.io/Qtilities/page_logging.html
- * https://evileg.com/en/post/154/
- * https://github.com/Speedy37/QtLog/blob/master/qtlog.h
- *
- * https://wiki.qt.io/Early_Warning_System
- * https://wiki.qt.io/Exception_Handling/de
- *
- * ESTE ESTÁ INTERESANTE PARA MOSTRAR LA TRAZA DEL ERROR
- * https://woboq.com/blog/nice-debug-output-with-qt.html
- *
- * OTROS EJEMPLOS A REVISAR, PUEDE HABER ALGO IMPORTANTE QUE SE PUEDA AÑADIR AL
- * SISTEMA DE LOGGER
- * http://doc.qt.io/qt-5/qmessagelogcontext.html
- * http://doc.qt.io/qt-5/qtglobal.html#QtMessageHandler-typedef
- * http://doc.qt.io/qt-5/qtglobal.html#qInstallMessageHandler
- * http://doc.qt.io/qt-5/qmessagelogger.html
- * http://doc.qt.io/qt-5/qloggingcategory.html#Q_DECLARE_LOGGING_CATEGORY
- * http://doc.qt.io/qt-5/qloggingcategory.html#Q_LOGGING_CATEGORY
- * http://www.kdab.com/wp-content/uploads/stories/slides/Day2/KaiKoehne_Qt%20Logging%20Framework%2016_9_0.pdf
- * https://github.com/dept2/CuteLogger/blob/master/include/Logger.h
- */
+// Librerías C++
 
 
 namespace NAMESPACE_LEVEL_1 {
@@ -58,16 +36,39 @@ namespace NAMESPACE_LEVEL_1 {
 
     namespace NAMESPACE_LOGGER {
 
-      class LOGGERSHARED_EXPORT Logger {
+      class LOGGERSHARED_EXPORT Logger : public NAMESPACE_LIBRARY_PATTERNIFY::Singleton<Logger> {
 
         public :
-          Logger ( QFile logFile );
 
-          static void loggerOutput ( QtMsgType type, const QMessageLogContext &context, const QString &msg );
+          enum LogOutput {
+
+            Standard,
+            File
+          };
+
+          virtual ~Logger ();
+
+          void exception ();
+          void init ( Logger::LogOutput output = File, QString outputFormat = STR(FILE_OUTPUT_QT_MESSAGE_PATTERN) );
+          void sendEmail ();
 
         private :
+                           QString filePath;
+                           QString outputFormat;
+           QIODeviceBase::OpenMode openMode;
+                 Logger::LogOutput output;
           QScopedPointer < QFile > logFile;
-          static Logger *logger;
+
+          Logger ();
+          friend class NAMESPACE_LIBRARY_PATTERNIFY::Singleton<Logger>;
+          void checkAndRotateLog ();
+          void close ();
+          void configMessagePatternOutput ();
+          void handleMessage ( QtMsgType type, const QMessageLogContext &context, const QString &msg );
+          void installMessageHandler ();
+          static void messageHandler ( QtMsgType type, const QMessageLogContext &context, const QString &msg );
+          void open ();
+          void writeToLog ( const QString &message );
       };
     }
   }

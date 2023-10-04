@@ -63,7 +63,13 @@ bool App::notify ( QObject *receiver, QEvent *event ) {
 
   } catch ( std::exception &e ) {
 
-    qCritical () << "Exception thrown:" << e.what ();
+    qFatal (  "Exception thrown: %s", e.what () );
+    qFatal ( "Exception thrown: Error %s sending event %s to object %s (%s)", e.what (), typeid ( *event ).name (), qPrintable ( receiver->objectName () ), typeid ( *receiver ).name () );
+
+  } catch ( ... ) {
+
+    qCritical () << "KERNEL PANIC...";
+    qCritical ( "KERNEL PANIC...: Error <unknown> sending event %s to object %s (%s)", typeid ( *event ).name (), qPrintable ( receiver->objectName () ), typeid ( *receiver ).name () );
   }
   return false;
 }

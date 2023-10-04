@@ -16,6 +16,16 @@ CONFIG += c++20
 # Parallel compilation with qmake is enabled.
 QMAKE_CXXFLAGS += -J4
 
+# Indicar al vinculador incluir la función de exportación para cada función.
+# Tell the linker to include the export function for each function.
+QMAKE_LFLAGS += -rdynamic
+
+# Permite obtener información mas precisa del error y excepción generados.
+# Allows obtaining more precise information about the error and exception generated.
+DEFINES += QT_MESSAGELOGCONTEXT
+
+QT_MESSAGE_PATTERN = "\033[0;34m[ %{time yyyy-MM-ddThh:mm:ss t} ] \033[1;31m[ %{if-critical}CRITICAL%{endif}%{if-debug}DEBUG%{endif}%{if-fatal}FATAL%{endif}%{if-info}INFO%{endif}%{if-warning}WARNING%{endif} ] \033[1;36m[ PID - %{pid} ] [ THREAD_ID - %{threadid} ] [ QT_THREAD_PTR - %{qthreadptr} ] \033[1;33m[ APPNAME - %{appname} ] [ FILE - %{file} ] [ FUNCTION - %{function} ] [ LINE - %{line} ] [ MESSAGE_ERROR - %{message} ] \033[1;37m[ BACKTRACE - %{backtrace depth=10} ] \033[0m"
+
 # Se habilita el estandard para C++ a utilizar por qmake.
 # The C++ standard to be used by qmake is enabled.
 win32: {

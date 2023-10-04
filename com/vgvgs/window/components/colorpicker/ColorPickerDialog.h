@@ -61,8 +61,8 @@ namespace NAMESPACE_LEVEL_1 {
               QColor currentColor;
 
             protected :
-              bool eventFilter ( QObject *obj, QEvent *event ) override;
-              void resizeEvent ( QResizeEvent *event ) override;
+              bool eventFilter ( QObject *obj, QEvent *event ) Q_DECL_OVERRIDE;
+              void resizeEvent ( QResizeEvent *event ) Q_DECL_OVERRIDE;
           };
         }
       }
