@@ -2,9 +2,11 @@
 #define XSDELEMENT_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsd_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "XsdAttribute.h"
 #include "core/FacetAbs.h"
@@ -29,6 +31,7 @@
 #include "Xsd.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QList>
 #include <QObject>
 #include <QDebug>

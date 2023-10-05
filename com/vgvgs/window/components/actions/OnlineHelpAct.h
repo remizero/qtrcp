@@ -2,16 +2,20 @@
 #define ONLINEHELPACT_H
 
 // Librerías Internas
+// Internal Libraries
 #include "actions_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "ActionAbs.h"
 
 // Librerías Externas
+// External Libraries
 
 
 // Librerías Qt
+// Qt Libraries
 #include <QDesktopServices>
 #include <QUrl>
 

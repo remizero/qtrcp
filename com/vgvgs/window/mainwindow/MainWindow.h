@@ -2,15 +2,18 @@
 #define MAINWINDOW_H
 
 // Librerías Internas
+// Internal Libraries
 #include "mainwindow_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "MainWindowEvents.h"
 #include "MainWindowSignals.h"
 #include "MainWindowSlots.h"
 
 // Librerías Externas
+// External Libraries
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "MenuBar.h"
@@ -18,6 +21,7 @@
 #include "SystemTrayIcon.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QApplication>
 #include <QDebug>
 #include <QEvent>

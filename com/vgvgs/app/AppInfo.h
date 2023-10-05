@@ -2,14 +2,17 @@
 #define APPINFO_H
 
 // Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 #include "AppInit.h"
 #include "AppSettings.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 #include <QIODevice>
 #include <QObject>
@@ -17,6 +20,7 @@
 #include <QtXml>
 
 // Librerías C++
+// C++ Libraries
 #include <stdlib.h>
 
 

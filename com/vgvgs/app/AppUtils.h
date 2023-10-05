@@ -1,13 +1,16 @@
 #ifndef APPUTILS_H
 #define APPUTILS_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 #include <QDir>
 #include <QObject>

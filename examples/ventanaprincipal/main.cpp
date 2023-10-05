@@ -1,15 +1,19 @@
 // Librerías Internas
+// Internal Libraries
 #include "VentanaPrincipal.h"
 
 // Librerías Externas
+// External Libraries
 #include "App.h"
 #include "AppInit.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
 #include "Logger.h"
 #include "SingleInstance.h"
+#include "Exception.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QApplication>
 #include <QDebug>
 #include <QException>
@@ -31,14 +35,11 @@ int main ( int argc, char *argv [] ) {
     try {
 
       NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ();
-      throw QException ();
+      throw NAMESPACE_LIBRARY_CORE::Exception ( "Mensaje de prueba", __FILE__, __LINE__, Q_FUNC_INFO );
 
-    } catch ( const QException &e ) {
+    } catch ( const NAMESPACE_LIBRARY_CORE::Exception &exception ) {
 
-      qDebug () << e.what ();
-      // qDebug () << __FILE__; // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
-      // qDebug () << Q_FUNC_INFO; // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
-      // qDebug () << QString::number ( __LINE__ ); // TODO Este debe ser un valor que se debe pasar como parámetro en la excepción
+      NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ()->exception ( exception );
     }
 
     if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {

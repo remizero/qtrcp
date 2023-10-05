@@ -2,11 +2,14 @@
 #define VENTANAPRINCIPAL_H
 
 // Librerías Internas
+// Internal Libraries
 
 // Librerías Externas
+// External Libraries
 #include "MainWindow.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QMainWindow>
 
 

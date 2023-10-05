@@ -1,13 +1,16 @@
 #ifndef SINGLEINSTANCE_H
 #define SINGLEINSTANCE_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "singleinstance_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QObject>
 #include <QSharedMemory>
 #include <QSystemSemaphore>

@@ -2,16 +2,20 @@
 #define SYSTEMTRAYICON_H
 
 // Librerías Internas
+// Internal Libraries
 #include "systemtrayicon_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "AppInit.h"
 #include "AppPaths.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QAction>
 #include <QCoreApplication>
 #include <QIcon>

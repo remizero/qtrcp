@@ -1,14 +1,17 @@
 #ifndef COLORBOX_H
 #define COLORBOX_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "colorbox_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "ColorPickerDialog.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QColor>
 #include <QColorDialog>
 #include <QEvent>

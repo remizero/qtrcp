@@ -2,16 +2,20 @@
 #define MAINWINDOWEVENTS_H
 
 // Librerías Internas
+// Internal Libraries
 #include "mainwindow_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "MainWindow.h"
 
 // Librerías Externas
+// External Libraries
 #include "AppInit.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QCloseEvent>
 #include <QEvent>
 #include <QMainWindow>

@@ -48,6 +48,7 @@ DISTFILES += \
   qmakeSupportFiles/createDirectoryStructure.prf \
   qmakeSupportFiles/deploymentRulesBin.prf \
   qmakeSupportFiles/deploymentRulesLib.prf \
+  qmakeSupportFiles/frameworkVersion.prf \
   qmakeSupportFiles/normalizeProjectName.prf \
   qmakeSupportFiles/projectBinConfiguration.prf \
   qmakeSupportFiles/projectLibConfiguration.prf

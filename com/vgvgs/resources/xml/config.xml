@@ -15,6 +15,17 @@
     <minorversion>0</minorversion>
     <pathversion>0</pathversion>
   </app>
+  <logger>
+    <sender></sender>
+    <sendername></sendername>
+    <addressee></addressee>
+    <addresseename></addresseename>
+    <subject></subject>
+    <smtpserver></smtpserver>
+    <port></port>
+    <user></user>
+    <password></password>
+  </logger>
   <systemtrayicon>
     <systrayicon>icono.png</systrayicon>
     <systraytooltip>Ecomoditor</systraytooltip>

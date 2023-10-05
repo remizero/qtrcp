@@ -1,10 +1,12 @@
 #ifndef COLORSELECTOR_H
 #define COLORSELECTOR_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "colorpicker_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 /*
@@ -14,6 +16,7 @@
  */
 
 // Librerías Qt
+// Qt Libraries
 #include <QMouseEvent>
 #include <QPainter>
 #include <QSlider>

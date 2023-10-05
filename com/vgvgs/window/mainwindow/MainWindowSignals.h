@@ -4,6 +4,7 @@
 #include "mainwindow_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 #include <QMainWindow>

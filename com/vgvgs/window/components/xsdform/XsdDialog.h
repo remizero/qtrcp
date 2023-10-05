@@ -2,14 +2,17 @@
 #define XSDDIALOG_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsdform_global.h"
 #include "XsdFormCreator.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "ColorBox.h"
 
 // Librerías Externas
+// External Libraries
 #include "AppPaths.h"
 #include "Files.h"
 #include "Xml.h"
@@ -21,6 +24,7 @@
 #include "core/properties/TypeProperty.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QComboBox>
 #include <QDialog>
 #include <QDialogButtonBox>

@@ -60,6 +60,18 @@ void Logger::configMessagePatternOutput () {
   qSetMessagePattern ( this->outputFormat );
 }
 
+void Logger::exception ( const NAMESPACE_LIBRARY_CORE::Exception &exception ) {
+
+  QString customFormat = this->outputFormat;
+  customFormat.replace ( "%{file}", exception.file );
+  customFormat.replace ( "%{line}", QString::number ( exception.line ) );
+  customFormat.replace ( "%{function}", exception.function );
+  customFormat.replace ( "%{message}", exception.what () );
+  // this->sendEmail (); TODO descomentar esta línea.
+  QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", exception.what () );
+  this->writeToLog ( customFormat + "\n" );
+}
+
 void Logger::handleMessage ( QtMsgType type, const QMessageLogContext &context, const QString &msg ) {
 
   QString msgFormat = qFormatLogMessage ( type, context, msg );
@@ -83,15 +95,16 @@ void Logger::handleMessage ( QtMsgType type, const QMessageLogContext &context, 
 
     case QtCriticalMsg :
 
+      // this->sendEmail (); TODO descomentar esta línea.
       QMessageBox::critical ( nullptr, "Mensaje de Acción Crítica del Sistema.", msgFormat );
       break;
 
     case QtFatalMsg :
 
+      // this->sendEmail (); TODO descomentar esta línea.
       QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", msgFormat );
       break;
   }
-  // this->sendEmail ();
   this->writeToLog ( msgFormat + "\n" );
 }
 
@@ -204,7 +217,7 @@ void Logger::open () {
   }
 }
 
-void Logger::sendEmail () {
+void Logger::sendEmail ( QString message ) {
 
   MimeMessage message;
 
@@ -221,36 +234,31 @@ void Logger::sendEmail () {
 
   MimeText text;
 
-  text.setText ( "Hi,\nThis is a simple email message.\n" );
+  text.setText ( message + "\n" );
 
   // Now add it to the mail
 
   message.addPart ( &text );
 
   // Now we can send the mail
-  //SmtpClient smtp ( "smtp.office365.com", 465, SmtpClient::SslConnection );
   SmtpClient smtp ( "smtp.office365.com", 587, SmtpClient::TlsConnection );
 
   smtp.connectToHost ();
   if ( !smtp.waitForReadyConnected () ) {
 
     qDebug () << "Failed to connect to host!";
-    //return -1;
   }
 
   smtp.login ( "filzaa@hotmail.com", "JahGuiaYo666" );
-  //smtp.login ( "filizaa", "Gm13557244.*", SmtpClient::AuthPlain );
   if ( !smtp.waitForAuthenticated () ) {
 
     qDebug () << "Failed to login!";
-    //return -2;
   }
 
   smtp.sendMail ( message );
   if ( !smtp.waitForMailSent () ) {
 
     qDebug () << "Failed to send mail!";
-    //return -3;
   }
 
   smtp.quit();

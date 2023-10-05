@@ -2,13 +2,16 @@
 #define XML_H
 
 // Librerías Internas
+// Internal Libraries
 #include "utils_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "Files.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDomDocument>
 #include <QFile>
 #include <QString>

@@ -2,15 +2,19 @@
 #define PATTERNIFY_H
 
 // Librerías Internas
+// Internal Libraries
 #include "patternify_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 
 // Librerías C++
+// C++ Libraries
 
 
 namespace NAMESPACE_LEVEL_1 {

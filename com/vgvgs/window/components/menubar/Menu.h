@@ -2,12 +2,15 @@
 #define MENU_H
 
 // Librerías Internas
+// Internal Libraries
 #include "menubar_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QMenu>
 
 

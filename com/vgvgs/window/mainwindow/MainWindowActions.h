@@ -1,10 +1,12 @@
 #ifndef MAINWINDOWACTIONS_H
 #define MAINWINDOWACTIONS_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "mainwindow_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 #include <QMainWindow>

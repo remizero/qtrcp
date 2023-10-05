@@ -4,6 +4,7 @@
 #include "resources_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 class RESOURCESSHARED_EXPORT Resources

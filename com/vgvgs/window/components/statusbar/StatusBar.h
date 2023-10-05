@@ -1,13 +1,16 @@
 #ifndef STATUSBAR_H
 #define STATUSBAR_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "statusbar_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QStatusBar>
 #include <QLabel>
 

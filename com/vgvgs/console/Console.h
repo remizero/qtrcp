@@ -1,13 +1,16 @@
 #ifndef CONSOLE_H
 #define CONSOLE_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "console_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QObject>
 #include <QProcess>
 

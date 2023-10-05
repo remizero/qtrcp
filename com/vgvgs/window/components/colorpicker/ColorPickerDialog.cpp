@@ -1,6 +1,7 @@
 #include "ColorPickerDialog.h"
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "ui_ColorPickerDialog.h"
 
 using namespace NAMESPACE_LIBRARY_COLORPICKER;

@@ -2,9 +2,11 @@
 #define XSDENGINE_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsd_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "XsdEngine.h"
 #include "XsdElement.h"
@@ -153,10 +155,12 @@
 #include "core/types/YearMonthDurationType.h"
 
 // Librerías Externas
+// External Libraries
 #include "Strings.h"
 #include "Utils.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QByteArrayView>
 #include <QDialog>
 #include <QDirIterator>

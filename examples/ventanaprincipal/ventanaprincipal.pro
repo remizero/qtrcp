@@ -31,6 +31,7 @@ HEADERS  += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lPatternify \
@@ -49,6 +50,7 @@ win32:CONFIG(release, debug|release): LIBS += \
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lPatternify \
@@ -67,6 +69,7 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
   -L$$LIB_PATH/ -lPatternify \
@@ -86,6 +89,7 @@ else:unix: LIBS += \
 INCLUDEPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
+  $$PWD/../../com/vgvgs/core \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
   $$PWD/../../com/vgvgs/patternify \
@@ -106,6 +110,7 @@ INCLUDEPATH += \
 DEPENDPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
+  $$PWD/../../com/vgvgs/core \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
   $$PWD/../../com/vgvgs/patternify \

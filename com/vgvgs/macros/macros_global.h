@@ -28,6 +28,7 @@
 // Particular macros are defined for all library namespaces.
 #define NAMESPACE_APP            App
 #define NAMESPACE_CONSOLE        Console
+#define NAMESPACE_CORE           Core
 #define NAMESPACE_ENGINES        Engines
 #define NAMESPACE_XSD            Xsd
 #define NAMESPACE_XSDFORM        XsdForm
@@ -53,6 +54,7 @@
 // Macros with fully qualified names are defined for all library namespaces.
 #define NAMESPACE_LIBRARY_APP            Com::Vgvgs::App
 #define NAMESPACE_LIBRARY_CONSOLE        Com::Vgvgs::Console
+#define NAMESPACE_LIBRARY_CORE           Com::Vgvgs::Core
 #define NAMESPACE_LIBRARY_XSD            Com::Vgvgs::Engines::Xsd
 #define NAMESPACE_LIBRARY_LOGGER         Com::Vgvgs::Logger
 #define NAMESPACE_LIBRARY_MACROS         Com::Vgvgs::Macros

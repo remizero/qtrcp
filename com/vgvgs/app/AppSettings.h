@@ -1,14 +1,17 @@
 #ifndef APPSETTINGS_H
 #define APPSETTINGS_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "AppPaths.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 #include <QIODevice>
 #include <QSettings>

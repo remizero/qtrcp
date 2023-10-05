@@ -2,9 +2,11 @@
 #define XSDFORMCREATOR_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsdform_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "ColorBox.h"
 #include "XsdElement.h"
@@ -29,6 +31,7 @@
 #include "core/properties/TypeProperty.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QColor>
 #include <QComboBox>
 #include <QGridLayout>

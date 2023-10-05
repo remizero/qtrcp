@@ -6,13 +6,16 @@
 #define SPLASHSCREEN_H
 
 // Librerías Internas
+// Internal Libraries
 #include "splashscreen_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "AppPaths.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 #include <QDir>
 #include <QPainter>

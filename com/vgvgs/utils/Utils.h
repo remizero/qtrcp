@@ -4,6 +4,7 @@
 #include "utils_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 class UTILSSHARED_EXPORT Utils

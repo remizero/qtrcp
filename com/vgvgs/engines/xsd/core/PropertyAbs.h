@@ -2,16 +2,20 @@
 #define PROPERTYABS_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsd_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "FacetAbs.h"
 
 // Librerías Externas
+// External Libraries
 #include "Enumeration.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QMetaObject>
 #include <QMetaType>
 #include <QMetaEnum>

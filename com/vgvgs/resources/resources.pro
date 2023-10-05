@@ -41,7 +41,7 @@ DEPENDPATH += \
 
 RESOURCES += \
   iconsresource.qrc \
-  xmlResources.qrc \
+  xmlresources.qrc \
   xsdresources.qrc
 
 DEF_FILE += \

@@ -2,12 +2,15 @@
 #define APP_H
 
 // Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QApplication>
 #include <QDebug>
 #include <QMessageLogger>

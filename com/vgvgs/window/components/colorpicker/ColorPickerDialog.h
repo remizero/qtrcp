@@ -1,15 +1,18 @@
 #ifndef COLORPICKERDIALOG_H
 #define COLORPICKERDIALOG_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "colorpicker_global.h"
 #include "ui_ColorPickerDialog.h"
 #include "SVSelector.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDialog>
 #include <QtWidgets>
 

@@ -2,12 +2,15 @@
 #define FILES_H
 
 // Librerías Internas
+// Internal Libraries
 #include "utils_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QCoreApplication>
 #include <QFile>
 #include <QMessageBox>

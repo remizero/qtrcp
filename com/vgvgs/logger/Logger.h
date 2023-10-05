@@ -2,19 +2,23 @@
 #define LOGGER_H
 
 // Librerías Internas
+// Internal Libraries
 #include "logger_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "AppInfo.h"
 #include "AppPaths.h"
 #include "creational/Singleton.h"
+#include "Exception.h"
 
 // Librerías de terceros
 // third-party Library
 #include "SmtpMime"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDateTime>
 #include <QDebug>
 #include <QFile>
@@ -28,6 +32,7 @@
 #include <QTextStream>
 
 // Librerías C++
+// C++ Libraries
 
 
 namespace NAMESPACE_LEVEL_1 {
@@ -48,9 +53,9 @@ namespace NAMESPACE_LEVEL_1 {
 
           virtual ~Logger ();
 
-          void exception ();
+          void exception ( const NAMESPACE_LIBRARY_CORE::Exception &exception );
           void init ( Logger::LogOutput output = File, QString outputFormat = STR(FILE_OUTPUT_QT_MESSAGE_PATTERN) );
-          void sendEmail ();
+          void sendEmail ( QString message );
 
         private :
                            QString filePath;

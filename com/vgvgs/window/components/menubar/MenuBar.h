@@ -2,12 +2,15 @@
 #define MENUBAR_H
 
 // Librerías Internas
+// Internal Libraries
 #include "menubar_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "ExitAct.h"
 #include "FullScreenAct.h"
 #include "HelpTopicsAct.h"
@@ -18,6 +21,7 @@
 #include "ToolBarShowHideAct.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QMenuBar>
 
 

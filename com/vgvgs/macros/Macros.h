@@ -4,6 +4,7 @@
 #include "macros_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 class MACROS_EXPORT Macros

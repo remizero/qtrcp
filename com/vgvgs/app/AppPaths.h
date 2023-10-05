@@ -1,13 +1,16 @@
 #ifndef APPPATHS_H
 #define APPPATHS_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QCoreApplication>
 #include <QDebug>
 #include <QDir>

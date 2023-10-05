@@ -2,18 +2,22 @@
 #define RESTRICTION_H
 
 // Librerías Internas
+// Internal Libraries
 #include "xsd_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "core/ElementAbs.h"
 #include "core/FacetAbs.h"
 
 
 // Librerías Externas
+// External Libraries
 #include "Enumeration.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QMetaEnum>
 #include <QObject>
 

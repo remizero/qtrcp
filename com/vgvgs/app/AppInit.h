@@ -1,15 +1,18 @@
 #ifndef APPINIT_H
 #define APPINIT_H
 
-// Librerías internas
+// Librerías Internas
+// Internal Libraries
 #include "app_global.h"
 
 // Librerías Externas
+// External Libraries
 #include "macros_global.h"
 #include "AppPaths.h"
 #include "AppSettings.h"
 
 // Librerías Qt
+// Qt Libraries
 #include <QDebug>
 #include <QDockWidget>
 #include <QMainWindow>

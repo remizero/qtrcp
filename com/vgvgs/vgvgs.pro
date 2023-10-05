@@ -15,6 +15,7 @@ TEMPLATE = subdirs
 SUBDIRS += \
   macros \
   app \
+  core \
   resources \
   utils \
   console \
@@ -28,6 +29,8 @@ SUBDIRS += \
 macros.subdir = macros
 app.subdir = app
 app.depends = macros
+core.subdir = core
+core.depends = macros
 resources.subdir = resources
 resources.depends = macros
 utils.subdir = utils
@@ -39,7 +42,7 @@ singleinstance.depends = macros
 patternify.subdir = patternify
 patternify.depends = macros app
 logger.subdir = logger
-logger.depends = macros app patternify
+logger.depends = macros app patternify core
 splashscreen.subdir = splashscreen
 splashscreen.depends = macros app
 engines.subdir = engines

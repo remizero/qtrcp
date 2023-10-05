@@ -22,39 +22,42 @@ include (../../../qmakeSupportFiles/projectLibConfiguration.prf)
 include(../../../qmakeSupportFiles/buildConfiguration.prf)
 
 SOURCES += \
-  Logger.cpp \
-  MyException.cpp
+  Logger.cpp
 
 HEADERS += \
   Logger.h \
-  MyException.h \
   logger_global.h
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lPatternify \
   -L$$VENDORS_PATH/ -lSmtpMime
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lPatternify \
   -L$$VENDORS_PATH/ -lSmtpMime
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lCore \
   -L$$LIB_PATH/ -lPatternify \
   -L$$VENDORS_PATH/ -lSmtpMime
 
 INCLUDEPATH += \
   $$PWD/../macros \
   $$PWD/../app \
+  $$PWD/../core \
   $$PWD/../patternify \
   $$PWD/../../../third-party/SMTPEmail
 
 DEPENDPATH += \
   $$PWD/../macros \
   $$PWD/../app \
+  $$PWD/../core \
   $$PWD/../patternify \
   $$PWD/../../../third-party/SMTPEmail
 
