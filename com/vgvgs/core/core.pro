@@ -21,10 +21,12 @@ include(../../../qmakeSupportFiles/buildConfiguration.prf)
 
 SOURCES += \
   Core.cpp \
-  Exception.cpp
+  Exception.cpp \
+  PluginsManager.cpp
 
 HEADERS += \
   Exception.h \
+  PluginsManager.h \
   core_global.h \
   Core.h
 

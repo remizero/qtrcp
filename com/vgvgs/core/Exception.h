@@ -30,20 +30,22 @@ namespace NAMESPACE_LEVEL_1 {
       class CORE_EXPORT Exception : public QException {
 
         public :
+          Exception ( QString const &text, const QString &file, int line, const QString &function ) noexcept;
+          Exception ( const Exception &exception );
+          ~Exception () override;
+
+          Exception *clone () const override;
+          QString getFile ();
+          int getLine ();
+          QString getFunction ();
+          void raise () const override;
+          const char *what () const noexcept override;
+
+        private :
           QString message;
           QString file;
           int line;
           QString function;
-          Exception ( QString const &text, const QString &file, int line, const QString &function ) noexcept : message ( text ), file ( file ), line ( line ), function ( function ) {}
-          Exception ( const Exception &re ) { this->message = re.message; }
-          ~Exception () override {}
-
-          void raise () const override { throw *this; }
-          Exception *clone () const override { return new Exception ( *this ); }
-          // const char *what () const noexcept override { return this->message.toStdString ().c_str (); }
-          const char *what () const noexcept override { return this->message.toUtf8().constData(); }
-
-        private :
       };
     }
   }

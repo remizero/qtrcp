@@ -4,6 +4,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element ref="app"/>
+        <xs:element ref="logger"/>
         <xs:element ref="systemtrayicon"/>
         <xs:element ref="splashscreen"/>
       </xs:sequence>
@@ -19,6 +20,8 @@
         <xs:element ref="organizationname"/>
         <xs:element ref="organizationdomain"/>
         <xs:element ref="showsplash"/>
+        <xs:element ref="showtryicon"/>
+        <xs:element ref="standalone"/>
         <xs:element ref="iconimage"/>
         <xs:element ref="mayorversion"/>
         <xs:element ref="minorversion"/>
@@ -33,6 +36,22 @@
   <xs:element name="organizationname" type="xs:string"/>
   <xs:element name="organizationdomain" type="xs:string"/>
   <xs:element name="showsplash">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="showtryicon">
+    <xs:simpleType>
+      <xs:restriction base="xs:integer">
+        <xs:enumeration value="0"/>
+        <xs:enumeration value="1"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="standalone">
     <xs:simpleType>
       <xs:restriction base="xs:integer">
         <xs:enumeration value="0"/>
@@ -62,6 +81,37 @@
       </xs:restriction>
     </xs:simpleType>
   </xs:element>
+
+  <xs:element name="logger">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="sender"/>
+        <xs:element ref="sendername"/>
+        <xs:element ref="addressee"/>
+        <xs:element ref="addresseename"/>
+        <xs:element ref="subject"/>
+        <xs:element ref="smtpserver"/>
+        <xs:element ref="port"/>
+        <xs:element ref="user"/>
+        <xs:element ref="password"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="sender" type="xs:string"/>
+  <xs:element name="sendername" type="xs:string"/>
+  <xs:element name="addressee" type="xs:string"/>
+  <xs:element name="addresseename" type="xs:string"/>
+  <xs:element name="subject" type="xs:string"/>
+  <xs:element name="smtpserver" type="xs:string"/>
+  <xs:element name="port">
+    <xs:simpleType>
+      <xs:restriction base='xs:integer'>
+        <xs:minInclusive value='1'/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:element>
+  <xs:element name="user" type="xs:string"/>
+  <xs:element name="password" type="xs:string"/>
   <xs:element name="systemtrayicon">
     <xs:complexType>
       <xs:sequence>

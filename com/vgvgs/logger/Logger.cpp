@@ -63,9 +63,9 @@ void Logger::configMessagePatternOutput () {
 void Logger::exception ( const NAMESPACE_LIBRARY_CORE::Exception &exception ) {
 
   QString customFormat = this->outputFormat;
-  customFormat.replace ( "%{file}", exception.file );
-  customFormat.replace ( "%{line}", QString::number ( exception.line ) );
-  customFormat.replace ( "%{function}", exception.function );
+  customFormat.replace ( "%{file}", exception.getFile () );
+  customFormat.replace ( "%{line}", QString::number ( exception.getLine () ) );
+  customFormat.replace ( "%{function}", exception.getFunction () );
   customFormat.replace ( "%{message}", exception.what () );
   // this->sendEmail (); TODO descomentar esta línea.
   QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", exception.what () );
@@ -219,15 +219,15 @@ void Logger::open () {
 
 void Logger::sendEmail ( QString message ) {
 
-  MimeMessage message;
+  MimeMessage mimeMessage;
 
-  EmailAddress sender ( "filzaa@hotmail.com", "Filiberto Zaá Avila" );
-  message.setSender ( sender );
+  EmailAddress sender ( "", "" );
+  mimeMessage.setSender ( sender );
 
-  EmailAddress to ( "filizaa@gmail.com", "Filiberto Zaá Avila" );
-  message.addRecipient ( to );
+  EmailAddress to ( "", "" );
+  mimeMessage.addRecipient ( to );
 
-  message.setSubject ( "SmtpClient for Qt - Demo" );
+  mimeMessage.setSubject ( "" );
 
   // Now add some text to the email.
   // First we create a MimeText object.
@@ -238,7 +238,7 @@ void Logger::sendEmail ( QString message ) {
 
   // Now add it to the mail
 
-  message.addPart ( &text );
+  mimeMessage.addPart ( &text );
 
   // Now we can send the mail
   SmtpClient smtp ( "smtp.office365.com", 587, SmtpClient::TlsConnection );
@@ -249,13 +249,13 @@ void Logger::sendEmail ( QString message ) {
     qDebug () << "Failed to connect to host!";
   }
 
-  smtp.login ( "filzaa@hotmail.com", "JahGuiaYo666" );
+  smtp.login ( "", "" );
   if ( !smtp.waitForAuthenticated () ) {
 
     qDebug () << "Failed to login!";
   }
 
-  smtp.sendMail ( message );
+  smtp.sendMail ( mimeMessage );
   if ( !smtp.waitForMailSent () ) {
 
     qDebug () << "Failed to send mail!";
