@@ -8,6 +8,7 @@
 // Librerías Externas
 // External Libraries
 #include "macros_global.h"
+#include "ActionInterface.h"
 
 // Librerías Qt
 // Qt Libraries
@@ -28,9 +29,11 @@ namespace NAMESPACE_LEVEL_1 {
 
         namespace NAMESPACE_ACTIONS {
 
-          class ACTIONSSHARED_EXPORT ActionAbs : public QAction {
+          class ACTIONSSHARED_EXPORT ActionAbs : public QAction, public NAMESPACE_LIBRARY_CORE::ActionInterface {
 
               Q_OBJECT
+              Q_INTERFACES ( NAMESPACE_LIBRARY_CORE::ActionInterface )
+
 
             public :
               explicit ActionAbs ( QString title, QWidget *parent = nullptr );
@@ -47,6 +50,6 @@ namespace NAMESPACE_LEVEL_1 {
   }
 }
 
-Q_DECLARE_METATYPE ( Com::Vgvgs::Window::Components::Actions::ActionAbs * )
+Q_DECLARE_METATYPE ( NAMESPACE_LIBRARY_ACTONS::ActionAbs * )
 
 #endif // ACTIONABS_H

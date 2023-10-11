@@ -13,6 +13,7 @@ SVSelector::SVSelector ( QWidget *parent ) : ColorWidget ( parent ) {
 
 void SVSelector::paintEvent ( QPaintEvent *event ) {
 
+  Q_UNUSED ( event )
   QColor color;
   QPainter p ( this );
   p.setRenderHint ( QPainter::Antialiasing );
@@ -177,6 +178,7 @@ void SVSelector::updateColor () {
 
 void SVSelector::changeHue ( QColor color ) {
 
+  Q_UNUSED ( color )
   //This gets also called when RGB values change
   //so it should change saturation and value as well
   this->selectorDrawn = false;
@@ -196,6 +198,7 @@ void SVSelector::changeHue ( QColor color ) {
 //it should go up not down
 void SVSelector::setS ( QColor color ) {
 
+  Q_UNUSED ( color )
   this->s = this->color.saturation ();
   this->movePointer ( this->s * this->width () / 255, ( 255 - this->v ) * this->height () / 255 );
   this->correctPointer ();
@@ -204,6 +207,7 @@ void SVSelector::setS ( QColor color ) {
 
 void SVSelector::setV ( QColor color ) {
 
+  Q_UNUSED ( color )
   this->v = this->color.value ();
   this->movePointer ( this->s * this->width () / 255, ( 255 - this->v ) * this->height () / 255 );
   this->correctPointer ();

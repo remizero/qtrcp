@@ -2,9 +2,11 @@
 # The project construction routes are defined.
 include(../../../qmakeSupportFiles/buildPaths.prf)
 
-QT -= gui
+# QT -= gui
 
-TEMPLATE = lib
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets core
+
+TARGET = core
 
 # Normalización del nombre de proyecto.
 # Project name normalization.
@@ -22,26 +24,35 @@ include(../../../qmakeSupportFiles/buildConfiguration.prf)
 SOURCES += \
   Core.cpp \
   Exception.cpp \
-  PluginsManager.cpp
+  PluginData.cpp \
+  PluginManager.cpp
 
 HEADERS += \
+  ActionInterface.h \
   Exception.h \
-  PluginsManager.h \
+  PluginData.h \
+  PluginInterface.h \
+  PluginManager.h \
   core_global.h \
   Core.h
 
 win32:CONFIG(release, debug|release): LIBS += \
-  -L$$LIB_PATH/ -lMacros
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lPatternify
 else:win32:CONFIG(debug, debug|release): LIBS += \
-  -L$$LIB_PATH/ -lMacros
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lPatternify
 else:unix: LIBS += \
-  -L$$LIB_PATH/ -lMacros
+  -L$$LIB_PATH/ -lMacros \
+  -L$$LIB_PATH/ -lPatternify
 
 INCLUDEPATH += \
-  $$PWD/../macros
+  $$PWD/../macros \
+  $$PWD/../patternify
 
 DEPENDPATH += \
-  $$PWD/../macros
+  $$PWD/../macros \
+  $$PWD/../patternify
 
 # Se copia la librería en la ruta destino del proyecto final.
 # The library is copied to the destination path of the final project.

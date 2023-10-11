@@ -32,8 +32,8 @@ void ColorWidget::drawCircle ( QPainter &p ) {
 
 void ColorWidget::hideCursor ( QMouseEvent *event ) {
 
-  int x = event->position ().x ();
-  int y = event->position ().y ();
+  // int x = event->position ().x ();
+  // int y = event->position ().y ();
 
   if ( !this->geometry ().contains ( event->position ().toPoint () ) ) {
 

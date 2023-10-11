@@ -13,17 +13,20 @@ include(qmakeSupportFiles/buildConfiguration.prf)
 TEMPLATE = subdirs
 
 SUBDIRS += \
+  shadow \
   third-party \
   com \
   examples \
 
 # Se definen las rutas, archivos pro y dependencias de los subproyectos.
 # The paths, pro files and dependencies of the subprojects are defined.
+shadow.subdir = shadow
 third-party.subdir = third-party
+third-party.depends = shadow
 com.subdir = com
-com.depends = third-party
+com.depends = shadow third-party
 examples.subdir = examples
-examples.depends = third-party com
+examples.depends = shadow com third-party
 
 # CONFIG += ordered
 

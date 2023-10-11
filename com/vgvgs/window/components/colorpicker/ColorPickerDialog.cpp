@@ -301,6 +301,7 @@ bool ColorPickerDialog::eventFilter ( QObject *obj, QEvent *event ) {
 
 void ColorPickerDialog::resizeEvent ( QResizeEvent *event ) {
 
+  Q_UNUSED ( event )
   //when resizing the pointer should stay above the same color
   //meaning it has to be moved
   //comment the following if block to understand what that means
@@ -308,8 +309,8 @@ void ColorPickerDialog::resizeEvent ( QResizeEvent *event ) {
 
     int s = this->ui->sSpinBox->value () * 255 / 100 ;
     int v = this->ui->vSpinBox->value () * 255 / 100 ;
-    int x = s * event->size ().width () / 255 ;
-    int y = ( 255 - v ) * event->size ().height () / 255;
+    // int x = s * event->size ().width () / 255 ;
+    // int y = ( 255 - v ) * event->size ().height () / 255;
     this->ui->colorsShades->setSV ( s, v );
   }
 }

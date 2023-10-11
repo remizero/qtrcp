@@ -30,22 +30,17 @@ HEADERS += \
   Patternify.h
 
 win32:CONFIG(release, debug|release): LIBS += \
-  -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lMacros
 else:win32:CONFIG(debug, debug|release): LIBS += \
-  -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lMacros
 else:unix: LIBS += \
-  -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp
+  -L$$LIB_PATH/ -lMacros
 
 INCLUDEPATH += \
-  $$PWD/../macros \
-  $$PWD/../app
+  $$PWD/../macros
 
 DEPENDPATH += \
-  $$PWD/../macros \
-  $$PWD/../app
+  $$PWD/../macros
 
 # Se copia la librería en la ruta destino del proyecto final.
 # The library is copied to the destination path of the final project.

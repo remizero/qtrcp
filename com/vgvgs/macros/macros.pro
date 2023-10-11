@@ -19,7 +19,7 @@ include (../../../qmakeSupportFiles/projectLibConfiguration.prf)
 
 # Se define la estructura de directorios del proyecto final compilado.
 # The directory structure of the final compiled project is defined.
-include(../../../qmakeSupportFiles/createDirectoryStructure.prf)
+#include(../../../qmakeSupportFiles/createDirectoryStructure.prf)
 
 # Se definen los parámetros de configuración del compilador.
 # Compiler configuration parameters are defined.

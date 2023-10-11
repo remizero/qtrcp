@@ -31,10 +31,10 @@ HEADERS  += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  -L$$LIB_PATH/ -lCore \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
-  -L$$LIB_PATH/ -lPatternify \
+  -L$$LIB_PATH/ -lCore \
   -L$$VENDORS_PATH/ -lSmtpMime \
   -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
@@ -50,10 +50,10 @@ win32:CONFIG(release, debug|release): LIBS += \
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  -L$$LIB_PATH/ -lCore \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
-  -L$$LIB_PATH/ -lPatternify \
+  -L$$LIB_PATH/ -lCore \
   -L$$VENDORS_PATH/ -lSmtpMime \
   -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
@@ -69,10 +69,10 @@ else:win32:CONFIG(debug, debug|release): LIBS += \
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
-  -L$$LIB_PATH/ -lCore \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
   -L$$LIB_PATH/ -lUtils \
-  -L$$LIB_PATH/ -lPatternify \
+  -L$$LIB_PATH/ -lCore \
   -L$$VENDORS_PATH/ -lSmtpMime \
   -L$$LIB_PATH/ -lLogger \
   -L$$LIB_PATH/ -lSingleinstance \
@@ -89,10 +89,10 @@ else:unix: LIBS += \
 INCLUDEPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
-  $$PWD/../../com/vgvgs/core \
+  $$PWD/../../com/vgvgs/patternify \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
-  $$PWD/../../com/vgvgs/patternify \
+  $$PWD/../../com/vgvgs/core \
   $$PWD/../../third-party/SMTPEmail \
   $$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/singleinstance \
@@ -110,10 +110,10 @@ INCLUDEPATH += \
 DEPENDPATH += \
   $$PWD/../../com/vgvgs/macros \
   $$PWD/../../com/vgvgs/app \
-  $$PWD/../../com/vgvgs/core \
+  $$PWD/../../com/vgvgs/patternify \
   $$PWD/../../com/vgvgs/resources \
   $$PWD/../../com/vgvgs/utils \
-  $$PWD/../../com/vgvgs/patternify \
+  $$PWD/../../com/vgvgs/core \
   $$PWD/../../third-party/SMTPEmail \
   $$PWD/../../com/vgvgs/logger \
   $$PWD/../../com/vgvgs/singleinstance \

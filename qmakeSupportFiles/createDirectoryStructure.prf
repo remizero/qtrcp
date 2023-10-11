@@ -12,7 +12,8 @@ DIRS = \
   $$MEDIA_PATH \
   $$PLUGING_PATH \
   $$RESOURCES_PATH \
-  $$TRANSLATION_PATH
+  $$TRANSLATION_PATH \
+  $$VENDORS_PATH
 
 # Se generan las rutas absolutas para los directorios del proyecto.
 # Absolute paths for the project directories are generated.

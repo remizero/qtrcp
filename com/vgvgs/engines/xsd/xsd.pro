@@ -323,30 +323,40 @@ HEADERS += \
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
-  -L$$LIB_PATH/ -lUtils
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lCore
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
-  -L$$LIB_PATH/ -lUtils
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lCore
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
   -L$$LIB_PATH/ -lApp \
+  -L$$LIB_PATH/ -lPatternify \
   -L$$LIB_PATH/ -lResources \
-  -L$$LIB_PATH/ -lUtils
+  -L$$LIB_PATH/ -lUtils \
+  -L$$LIB_PATH/ -lCore
 
 INCLUDEPATH += \
   $$PWD/../../macros \
   $$PWD/../../app \
+  $$PWD/../../../patternify \
   $$PWD/../../resources \
-  $$PWD/../../utils
+  $$PWD/../../utils \
+  $$PWD/../../../core
 
 DEPENDPATH += \
   $$PWD/../../macros \
   $$PWD/../../app \
+  $$PWD/../../../patternify \
   $$PWD/../../resources \
-  $$PWD/../../utils
+  $$PWD/../../utils \
+  $$PWD/../../../core
 
 DISTFILES += \
   DEFINICIONES_DE_ELEMENTOS.txt \

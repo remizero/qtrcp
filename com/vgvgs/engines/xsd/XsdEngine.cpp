@@ -1948,6 +1948,8 @@ QString XsdEngine::toXml () {
 }
 
 void XsdEngine::listarElementos ( XsdElement *XsdElement ) {
+
+    Q_UNUSED ( XsdElement )
 /*
   if ( XsdElement == nullptr ) {
 
