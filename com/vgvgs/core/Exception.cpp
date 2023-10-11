@@ -21,17 +21,17 @@ Exception *Exception::clone () const {
   return new Exception ( *this );
 }
 
-QString Exception::getFile () {
+QString Exception::getFile () const {
 
   return this->file;
 }
 
-int Exception::getLine () {
+int Exception::getLine () const {
 
   return this->line;
 }
 
-QString Exception::getFunction () {
+QString Exception::getFunction () const {
 
   return this->function;
 }

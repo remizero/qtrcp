@@ -35,9 +35,9 @@ namespace NAMESPACE_LEVEL_1 {
           ~Exception () override;
 
           Exception *clone () const override;
-          QString getFile ();
-          int getLine ();
-          QString getFunction ();
+          QString getFile () const;
+          int getLine () const;
+          QString getFunction () const;
           void raise () const override;
           const char *what () const noexcept override;
 
