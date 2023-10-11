@@ -62,13 +62,13 @@ void Logger::configMessagePatternOutput () {
 
 void Logger::exception ( const NAMESPACE_LIBRARY_CORE::Exception &exception ) {
 
-  QString customFormat = this->outputFormat;
-  customFormat.replace ( "%{file}", exception.getFile () );
-  customFormat.replace ( "%{line}", QString::number ( exception.getLine () ) );
-  customFormat.replace ( "%{function}", exception.getFunction () );
-  customFormat.replace ( "%{message}", exception.what () );
-  // this->sendEmail (); TODO descomentar esta línea.
-  QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", exception.what () );
+  QString customFormat = qFormatLogMessage ( QtCriticalMsg, QMessageLogContext (
+                                               exception.getFile ().toUtf8 ().constData (),
+                                               exception.getLine (),
+                                               exception.getFunction ().toUtf8 ().constData (),
+                                               "Critical" ), exception.what () );
+  // this->sendEmail ( customFormat ); // TODO descomentar esta línea.
+  QMessageBox::critical ( nullptr, "Mensaje de Error Crítico del Sistema.", customFormat );
   this->writeToLog ( customFormat + "\n" );
 }
 
@@ -80,29 +80,29 @@ void Logger::handleMessage ( QtMsgType type, const QMessageLogContext &context, 
 
     case QtDebugMsg :
 
-      QMessageBox::warning ( nullptr, "Mensaje de Depuración del Sistema.", msgFormat );
+      // QMessageBox::warning ( nullptr, "Mensaje de Depuración del Sistema.", msgFormat );
       break;
 
     case QtInfoMsg :
 
-      QMessageBox::information ( nullptr, "Mensaje de Información del Sistema.", msgFormat );
+      // QMessageBox::information ( nullptr, "Mensaje de Información del Sistema.", msgFormat );
       break;
 
     case QtWarningMsg :
 
-      QMessageBox::warning ( nullptr, "Mensaje de Advertencia del Sistema.", msgFormat );
+      // QMessageBox::warning ( nullptr, "Mensaje de Advertencia del Sistema.", msgFormat );
       break;
 
     case QtCriticalMsg :
 
-      // this->sendEmail (); TODO descomentar esta línea.
+      // this->sendEmail ( msgFormat ); // TODO descomentar esta línea.
       QMessageBox::critical ( nullptr, "Mensaje de Acción Crítica del Sistema.", msgFormat );
       break;
 
     case QtFatalMsg :
 
-      // this->sendEmail (); TODO descomentar esta línea.
-      QMessageBox::critical ( nullptr, "Mensaje de Fatal del Sistema.", msgFormat );
+      // this->sendEmail ( msgFormat ); // TODO descomentar esta línea.
+      QMessageBox::critical ( nullptr, "Mensaje Fatal del Sistema.", msgFormat );
       break;
   }
   this->writeToLog ( msgFormat + "\n" );
@@ -221,27 +221,30 @@ void Logger::sendEmail ( QString message ) {
 
   MimeMessage mimeMessage;
 
-  EmailAddress sender ( "", "" );
+  EmailAddress sender (
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/sender" ).toString (),
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/sendername" ).toString () );
   mimeMessage.setSender ( sender );
 
-  EmailAddress to ( "", "" );
+  EmailAddress to (
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/addressee" ).toString (),
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/addresseename" ).toString () );
   mimeMessage.addRecipient ( to );
 
-  mimeMessage.setSubject ( "" );
+  mimeMessage.setSubject ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/subject" ).toString () );
 
   // Now add some text to the email.
   // First we create a MimeText object.
-
-  MimeText text;
-
-  text.setText ( message + "\n" );
+  MimeText *text = new MimeText ( message + "\n" );
 
   // Now add it to the mail
-
-  mimeMessage.addPart ( &text );
+  mimeMessage.addPart ( text );
 
   // Now we can send the mail
-  SmtpClient smtp ( "smtp.office365.com", 587, SmtpClient::TlsConnection );
+  SmtpClient smtp (
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/smtpserver" ).toString (),
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/port" ).toInt (),
+    SmtpClient::TlsConnection );
 
   smtp.connectToHost ();
   if ( !smtp.waitForReadyConnected () ) {
@@ -249,7 +252,9 @@ void Logger::sendEmail ( QString message ) {
     qDebug () << "Failed to connect to host!";
   }
 
-  smtp.login ( "", "" );
+  smtp.login (
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/user" ).toString (),
+    NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "logger/password" ).toString () );
   if ( !smtp.waitForAuthenticated () ) {
 
     qDebug () << "Failed to login!";
