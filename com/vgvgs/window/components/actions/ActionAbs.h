@@ -8,7 +8,7 @@
 // Librerías Externas
 // External Libraries
 #include "macros_global.h"
-#include "ActionInterface.h"
+#include "actionmanager/ActionInterface.h"
 
 // Librerías Qt
 // Qt Libraries

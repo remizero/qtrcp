@@ -16,6 +16,7 @@
 // Qt Libraries
 #include <QAction>
 #include <QDebug>
+#include <QList>
 #include <QObject>
 
 // Librerías C++
@@ -39,6 +40,7 @@ namespace NAMESPACE_LEVEL_1 {
           virtual void initialize () = 0;
           virtual void finalize () = 0;
           virtual QAction menuAction () const = 0;
+          virtual QList<QAction *> actions () const = 0;
 
         signals :
 

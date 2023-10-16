@@ -5,10 +5,12 @@
 // Internal Libraries
 #include "core_global.h"
 #include "PluginData.h"
+#include "PluginInterface.h"
 
 // Librerías Externas
 // External Libraries
 #include "macros_global.h"
+#include "AppPaths.h"
 #include "creational/Singleton.h"
 
 // Librerías de terceros
@@ -39,6 +41,7 @@ namespace NAMESPACE_LEVEL_1 {
 
         public :
           void initialize ();
+          static void initializeStaticPlugins ( const QStringList &staticPlugins );
           void uninitialize ();
           void scan ( const QString &path );
           void load ( const QString &path );

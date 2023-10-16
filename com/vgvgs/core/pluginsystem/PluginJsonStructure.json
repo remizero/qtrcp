@@ -1,0 +1,73 @@
+{
+  \"nameToShow\" : \"Plugin 1\",
+  \"logicalName\" : \"Plugin_1\",
+  \"Version\" : \"0.0.1\",
+  \"CompatVersion\" : \"0.0.1\",
+  \"Vendor\" : \"MyCompany\",
+  \"Copyright\" : \"(C) MyCompany\",
+  \"License\" : \"Put short license information here\",
+  \"Description\" : \"Put a short description of your plugin here\",
+  \"Url\" : \"https://www.mycompany.com\",
+  \"lib_dependencies\" : [
+    { \"name\" : \"libNombreLibreria\", \"version\" : \"0.0.2\" },
+    { \"name\" : \"OtraLibreria\", \"version\" : \"2.1.0\" }
+  ],
+  \"plugin_dependencies\" : [
+    { \"name\" : \"Plugin_2\", \"version\" : \"0.0.2\" },
+    { \"name\" : \"OtroPlugin\", \"version\" : \"1.0.0\" }
+  ],
+  \"actions\" : [
+    {
+      \"name\" : \"ActionName1\",
+      \"description\" : \"Description of ActionName1\",
+      \"menu\" : \"MainMenu/File\",  // Ruta del menú para colocar la acción
+      \"location\" : [
+        { \"menu\" : \"Plugins\" },
+        { \"toolbar\" : \"OtroPlugin\" },
+        { \"contextual\" : \"OtroPlugin\" }
+      ],
+      \"autoRepeat\" : \"bool\",
+      \"checkable\" : \"bool\",
+      \"checked\" : \"bool\",
+      \"enabled\" : \"bool\",
+      \"font\" : \"QFont\",
+      \"icon\" : \"QIcon\",
+      \"iconText\" : \"QString\",
+      \"iconVisibleInMenu\" : \"bool\",
+      \"menuRole\" : \"MenuRole\",
+      \"priority\" : \"Priority\",
+      \"shortcut\" : \"QKeySequence\",
+      \"shortcutContext\" : \"Qt::ShortcutContext\",
+      \"shortcutVisibleInContextMenu\" : \"bool\",
+      \"statusTip\" : \"QString\",
+      \"text\" : \"QString\",
+      \"toolTip\" : \"QString\",
+      \"visible\" : \"bool\",
+      \"whatsThis\" : \"QString\"
+    },
+    {
+      \"name\" : \"ActionName2\",
+      \"description\" : \"Description of ActionName2\",
+      \"menu\" : \"MainMenu/Edit\",
+      \"autoRepeat\" : \"bool\",
+      \"checkable\" : \"bool\",
+      \"checked\" : \"bool\",
+      \"enabled\" : \"bool\",
+      \"font\" : \"QFont\",
+      \"icon\" : \"QIcon\",
+      \"iconText\" : \"QString\",
+      \"iconVisibleInMenu\" : \"bool\",
+      \"menuRole\" : \"MenuRole\",
+      \"priority\" : \"Priority\",
+      \"shortcut\" : \"QKeySequence\",
+      \"shortcutContext\" : \"Qt::ShortcutContext\",
+      \"shortcutVisibleInContextMenu\" : \"bool\",
+      \"statusTip\" : \"QString\",
+      \"text\" : \"QString\",
+      \"toolTip\" : \"QString\",
+      \"visible\" : \"bool\",
+      \"whatsThis\" : \"QString\"
+    }
+    // Puedes definir más acciones aquí
+  ]
+}

@@ -16,6 +16,7 @@ SUBDIRS += \
   macros \
   app \
   core \
+  plugins \
   resources \
   utils \
   console \
@@ -50,6 +51,8 @@ engines.subdir = engines
 engines.depends = macros app resources utils 
 window.subdir = window
 window.depends = macros app resources utils engines
+plugins.subdir = plugins
+plugins.depends = macros app core resources utils engines
 
 # Se definen las reglas y rutas de instalación del proyecto para las diferentes plataformas.
 # The rules and installation paths of the project are defined for the different platforms.

@@ -8,17 +8,27 @@ PluginManager::PluginManager ( QObject *parent )
 
 void PluginManager::initialize () {
     // Puedes realizar cualquier inicialización necesaria aquí
-//  QDir path = QDir ( qApp->applicationDirPath () );
-//  path.cdUp ();
-//  path.cd ( "plugins" );
+  QDir path = QDir ( NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationPluginsPath () );
 //  foreach ( QFileInfo info, path.entryInfoList ( QDir::Files | QDir::NoDotAndDotDot ) ) {
 
-//    this→scan ( info.absoluteFilePath () );
+//    this->scan ( info.absoluteFilePath () );
 //  }
-//  foreach ( QFileInfo info, path.entryInfoList ( QDir::Files | QDir::NoDotAndDotDot ) ) {
+  foreach ( QFileInfo info, path.entryInfoList ( QDir::Files | QDir::NoDotAndDotDot ) ) {
 
-//    this->load ( info.absoluteFilePath () );
-//  }
+    this->load ( info.absoluteFilePath () );
+  }
+}
+
+void PluginManager::initializeStaticPlugins (const QStringList &staticPlugins ) {
+
+  if ( !initialized ) {
+
+    for ( const QString &pluginName : staticPlugins ) {
+
+      Q_IMPORT_PLUGIN ( pluginName );
+    }
+    initialized = true;
+  }
 }
 
 void PluginManager::uninitialize () {
@@ -41,7 +51,7 @@ void PluginManager::scan ( const QString &path ) {
 
   foreach ( const QString &fileName, pluginFiles ) {
 
-    load ( path + "/" + fileName );
+    this->load ( path + "/" + fileName );
   }
 }
 
@@ -51,18 +61,19 @@ void PluginManager::load ( const QString &path ) {
 
     return;
   }
-  if ( !d->check ( path ) ) {
+  if ( !this->d->check ( path ) ) {
 
     return;
   }
-  // QPluginLoader *loader = new QPluginLoader ( path );
-//  if ( tstPlugin *plugin = qobject_cast<tstPlugin *> ( loader->instance () ) ) {
+  QPluginLoader *loader = new QPluginLoader ( path );
+  if ( PluginInterface *plugin = qobject_cast<PluginInterface *> ( loader->instance () ) ) {
 
-//    d->loaders.insert ( path, loader );
-//  } else {
+    this->d->loaders.insert ( path, plugin );
 
-//    delete loader;
-//  }
+  } else {
+
+    delete plugin;
+  }
 
 
 //  QPluginLoader loader ( path );
@@ -83,12 +94,12 @@ void PluginManager::load ( const QString &path ) {
 
 void PluginManager::unload ( const QString &path ) {
 
-  for ( int i = 0; i < loadedPlugins.size (); ++i ) {
+  for ( int i = 0; i < this->loadedPlugins.size (); ++i ) {
 
-    if ( loadedPlugins [ i ]->objectName () == path ) {
+    if ( this->loadedPlugins [ i ]->objectName () == path ) {
 
-      loadedPlugins [ i ]->deleteLater ();
-      loadedPlugins.removeAt ( i );
+      this->loadedPlugins [ i ]->deleteLater ();
+      this->loadedPlugins.removeAt ( i );
       qDebug () << "Plugin unloaded: " << path;
       return;
     }
@@ -99,7 +110,7 @@ void PluginManager::unload ( const QString &path ) {
 QStringList PluginManager::plugins () const {
 
   QStringList pluginNames;
-  foreach ( QObject *plugin, loadedPlugins ) {
+  foreach ( QObject *plugin, this->loadedPlugins ) {
 
     pluginNames << plugin->objectName ();
   }

@@ -11,6 +11,7 @@ AppPaths::AppPaths () {
   this->applicationPath = QDir::toNativeSeparators ( this->applicationDirPath->absolutePath () + QDir::separator () );
   this->applicationDirPath->cdUp ();
   this->applicationPathRoot = QDir::toNativeSeparators ( this->applicationDirPath->absolutePath () + QDir::separator () );
+  this->applicationPluginsPath = QDir::toNativeSeparators ( userPathApp + "plugins" + QDir::separator () );
   this->applicationConfigPath = QDir::toNativeSeparators ( userPathApp + "config" + QDir::separator () );
   this->applicationDataPath = QDir::toNativeSeparators ( userPathApp + "data" + QDir::separator () );
   this->applicationImagePath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "images" + QDir::separator () );
@@ -67,6 +68,11 @@ QString AppPaths::getApplicationPath () const {
 QString AppPaths::getApplicationPathRoot () const {
 
   return this->applicationPathRoot;
+}
+
+QString AppPaths::getApplicationPluginsPath () const {
+
+  return this->applicationPluginsPath;
 }
 
 QString AppPaths::getApplicationResourcesPath () const {
