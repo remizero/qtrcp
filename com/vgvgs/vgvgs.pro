@@ -42,7 +42,7 @@ singleinstance.depends = macros
 utils.subdir = utils
 utils.depends = macros
 core.subdir = core
-core.depends = macros patternify
+core.depends = macros app patternify
 splashscreen.subdir = splashscreen
 splashscreen.depends = macros app
 logger.subdir = logger
@@ -52,7 +52,7 @@ engines.depends = macros app resources utils
 window.subdir = window
 window.depends = macros app resources utils engines
 plugins.subdir = plugins
-plugins.depends = macros app core resources utils engines
+plugins.depends = macros app patternify resources utils core engines
 
 # Se definen las reglas y rutas de instalación del proyecto para las diferentes plataformas.
 # The rules and installation paths of the project are defined for the different platforms.

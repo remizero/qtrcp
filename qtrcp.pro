@@ -45,6 +45,7 @@ DISTFILES += \
   qmakeSupportFiles/copyIncludeFiles.prf \
   qmakeSupportFiles/copyLibraries.prf \
   qmakeSupportFiles/copyMediaFiles.prf \
+  qmakeSupportFiles/copyPlugins.prf \
   qmakeSupportFiles/copyResourcesFiles.prf \
   qmakeSupportFiles/copyTranslatioFiles.prf \
   qmakeSupportFiles/copyVendorLibFiles.prf \

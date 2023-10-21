@@ -1,5 +1,5 @@
-#ifndef PLUGINDATA_H
-#define PLUGINDATA_H
+#ifndef PLUGINDEPENDENCIESINFO_H
+#define PLUGINDEPENDENCIESINFO_H
 
 // Librerías Internas
 // Internal Libraries
@@ -15,10 +15,7 @@
 // Librerías Qt
 // Qt Libraries
 #include <QDebug>
-#include <QHash>
-#include <QPluginLoader>
 #include <QString>
-#include <QVariant>
 
 // Librerías C++
 // C++ Libraries
@@ -30,17 +27,23 @@ namespace NAMESPACE_LEVEL_1 {
 
     namespace NAMESPACE_CORE {
 
-      class CORE_EXPORT PluginData {
+      class CORE_EXPORT PluginDependenciesInfo {
 
         public :
-          bool check ( const QString &path );
-          QHash<QString, QVariant> names;
-          QHash<QString, QVariant> versions;
-          QHash<QString, QVariantList> dependencies;
-          QHash<QString, QPluginLoader *> loaders;
+
+          const QString &getName () const;
+          void setName ( const QString &newName );
+
+          const QString &getVersion () const;
+          void setVersion ( const QString &newVersion );
+
+        private :
+          QString name;
+          QString version;
+
       };
     }
   }
 }
 
-#endif // PLUGINDATA_H
+#endif // PLUGINDEPENDENCIESINFO_H

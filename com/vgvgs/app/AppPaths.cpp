@@ -10,8 +10,10 @@ AppPaths::AppPaths () {
   this->applicationDirPath = new QDir ( QCoreApplication::applicationDirPath () );
   this->applicationPath = QDir::toNativeSeparators ( this->applicationDirPath->absolutePath () + QDir::separator () );
   this->applicationDirPath->cdUp ();
+  this->applicationDirPath->cdUp ();
   this->applicationPathRoot = QDir::toNativeSeparators ( this->applicationDirPath->absolutePath () + QDir::separator () );
-  this->applicationPluginsPath = QDir::toNativeSeparators ( userPathApp + "plugins" + QDir::separator () );
+  this->applicationPluginsPath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "plugins" + QDir::separator () );
+  this->applicationLibrariesPath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "lib" + QDir::separator () );
   this->applicationConfigPath = QDir::toNativeSeparators ( userPathApp + "config" + QDir::separator () );
   this->applicationDataPath = QDir::toNativeSeparators ( userPathApp + "data" + QDir::separator () );
   this->applicationImagePath = QDir::toNativeSeparators ( this->getApplicationPathRoot () + "images" + QDir::separator () );
@@ -53,6 +55,11 @@ QString AppPaths::getApplicationImagePath () const {
 QString AppPaths::getApplicationLanguagePath () const {
 
   return this->applicationLanguagePath;
+}
+
+QString AppPaths::getApplicationLibrariesPath () const {
+
+  return this->applicationLibrariesPath;
 }
 
 QString AppPaths::getApplicationLogPath () const {

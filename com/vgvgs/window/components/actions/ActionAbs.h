@@ -34,12 +34,11 @@ namespace NAMESPACE_LEVEL_1 {
               Q_OBJECT
               Q_INTERFACES ( NAMESPACE_LIBRARY_CORE::ActionInterface )
 
-
             public :
               explicit ActionAbs ( QString title, QWidget *parent = nullptr );
 
             public slots :
-              virtual void execAct () = 0;
+              virtual void execAct () override = 0;
 
             protected :
               QWidget *myParent;

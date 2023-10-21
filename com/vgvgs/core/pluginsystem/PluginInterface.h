@@ -8,6 +8,7 @@
 // Librerías Externas
 // External Libraries
 #include "macros_global.h"
+#include "PluginInfo.h"
 
 // Librerías de terceros
 // third-party Library
@@ -34,13 +35,15 @@ namespace NAMESPACE_LEVEL_1 {
           Q_OBJECT
 
         public :
-          explicit PluginInterface ( QObject *parent = nullptr );
+          // explicit PluginInterface ( QObject *parent = nullptr ) {}
+          PluginInterface () {}
           virtual ~PluginInterface () {}
 
-          virtual void initialize () = 0;
+          virtual void initialize ( QJsonObject object ) = 0;
           virtual void finalize () = 0;
           virtual QAction menuAction () const = 0;
           virtual QList<QAction *> actions () const = 0;
+          virtual PluginInfo *getPluginInfo () = 0;
 
         signals :
 

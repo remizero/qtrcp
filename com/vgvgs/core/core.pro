@@ -24,17 +24,31 @@ include(../../../qmakeSupportFiles/buildConfiguration.prf)
 SOURCES += \
   Core.cpp \
   Exception.cpp \
-  actionmanager/ActionManager.cpp \
+  actionsystem/ActionAbs.cpp \
+  actionsystem/ActionManager.cpp \
+  app/appasdf.cpp \
+  menusystem/MenuManager.cpp \
+  pluginsystem/PluginAbs.cpp \
+  pluginsystem/PluginActionInfo.cpp \
+  pluginsystem/PluginActionLocationInfo.cpp \
   pluginsystem/PluginCreator.cpp \
-  pluginsystem/PluginData.cpp \
+  pluginsystem/PluginDependenciesInfo.cpp \
+  pluginsystem/PluginInfo.cpp \
   pluginsystem/PluginManager.cpp
 
 HEADERS += \
   Exception.h \
-  actionmanager/ActionInterface.h \
-  actionmanager/ActionManager.h \
+  actionsystem/ActionAbs.h \
+  actionsystem/ActionInterface.h \
+  actionsystem/ActionManager.h \
+  app/appasdf.h \
+  menusystem/MenuManager.h \
+  pluginsystem/PluginAbs.h \
+  pluginsystem/PluginActionInfo.h \
+  pluginsystem/PluginActionLocationInfo.h \
   pluginsystem/PluginCreator.h \
-  pluginsystem/PluginData.h \
+  pluginsystem/PluginDependenciesInfo.h \
+  pluginsystem/PluginInfo.h \
   pluginsystem/PluginInterface.h \
   pluginsystem/PluginManager.h \
   core_global.h \

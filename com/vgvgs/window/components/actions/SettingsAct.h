@@ -37,7 +37,7 @@ namespace NAMESPACE_LEVEL_1 {
               Q_INVOKABLE SettingsAct ( QString title, QWidget *parent );
 
             public slots :
-              void execAct ();
+              void execAct () override;
           };
         }
       }

@@ -38,7 +38,7 @@ namespace NAMESPACE_LEVEL_1 {
               Q_INVOKABLE ToolBarShowHideAct ( QString title, QWidget *parent );
 
             public slots :
-              void execAct ();
+              void execAct () override;
           };
         }
       }

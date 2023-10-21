@@ -27,9 +27,11 @@ SOURCES += \
   AppSettings.cpp \
   AppUtils.cpp \
   AppPaths.cpp \
-  App.cpp
+  App.cpp \
+  Version.cpp
 
 HEADERS += \
+  Version.h \
   app_global.h \
   AppInfo.h \
   AppInit.h \

@@ -17,6 +17,7 @@ App::App ( int &argc, char **argv ) : QApplication ( argc, argv ) {
   if ( this->application == nullptr ) {
 
     this->application = new QApplication ( argc, argv );
+    qDebug () << "LIBRARY PATHS" << this->application->libraryPaths ();
   }
 }
 

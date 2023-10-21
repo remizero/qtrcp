@@ -11,6 +11,7 @@
 #include "Logger.h"
 #include "SingleInstance.h"
 #include "Exception.h"
+#include "pluginsystem/PluginManager.h"
 
 // Librerías Qt
 // Qt Libraries
@@ -32,6 +33,8 @@ int main ( int argc, char *argv [] ) {
   do {
 
     NAMESPACE_LIBRARY_APP::App appInstance ( argc, argv );
+    appInstance.addLibraryPath ( NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationPluginsPath () );
+    qDebug () << "LIBRARY PATHS" << appInstance.libraryPaths ();
     try {
 
       NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ();
@@ -61,6 +64,7 @@ int main ( int argc, char *argv [] ) {
       msgBox.exec ();
       return 0;
     }
+    NAMESPACE_LIBRARY_CORE::PluginManager::getInstance ()->initialize ();
     VentanaPrincipal mainWindow ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
     try {
@@ -77,6 +81,6 @@ int main ( int argc, char *argv [] ) {
       // return EXIT_FAILURE; // exit the application
     }
   } while ( currentExitCode == NAMESPACE_LIBRARY_APP::App::EXIT_CODE_REBOOT );
-
+  NAMESPACE_LIBRARY_CORE::PluginManager::getInstance ()->uninitialize ();
   return currentExitCode;
 }

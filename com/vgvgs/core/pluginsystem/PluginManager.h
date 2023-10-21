@@ -4,8 +4,13 @@
 // Librerías Internas
 // Internal Libraries
 #include "core_global.h"
-#include "PluginData.h"
-#include "PluginInterface.h"
+#include "actionsystem/ActionManager.h"
+#include "pluginsystem/PluginAbs.h"
+#include "pluginsystem/PluginActionInfo.h"
+#include "pluginsystem/PluginActionLocationInfo.h"
+#include "pluginsystem/PluginDependenciesInfo.h"
+#include "pluginsystem/PluginInfo.h"
+#include "pluginsystem/PluginInterface.h"
 
 // Librerías Externas
 // External Libraries
@@ -20,13 +25,20 @@
 // Qt Libraries
 #include <QDebug>
 #include <QDir>
+#include <QFile>
+#include <QJsonArray>
+#include <QJsonObject>
+#include <QJsonValue>
 #include <QLibrary>
+#include <QMetaObject>
+#include <QMetaMethod>
 #include <QObject>
 #include <QPluginLoader>
 #include <QStringList>
 
 // Librerías C++
 // C++ Libraries
+#include <exception>
 
 
 namespace NAMESPACE_LEVEL_1 {
@@ -41,18 +53,23 @@ namespace NAMESPACE_LEVEL_1 {
 
         public :
           void initialize ();
-          static void initializeStaticPlugins ( const QStringList &staticPlugins );
+          //static void initializeStaticPlugins ( const QStringList &staticPlugins );
           void uninitialize ();
           void scan ( const QString &path );
           void load ( const QString &path );
           void unload ( const QString &path );
           QStringList plugins () const;
+          void populateMenus ( PluginInterface *plugin );
+          // void addToMenu ( QObject *plugin, const QStringList &texts, QMenu *menu, Member member, QActionGroup *actionGroup = nullptr );
+          bool validateLibraryDependencies ( QJsonObject object );
+          bool validatePluginDependencies ( QJsonObject object );
 
         signals :
 
         private :
           QList<QObject *> loadedPlugins;
-          PluginData *d;
+          QHash<QString, QPluginLoader *> loaders;
+          //static bool initialized;
           PluginManager ( QObject *parent = nullptr );
           friend class NAMESPACE_LIBRARY_PATTERNIFY::Singleton<PluginManager>;
       };

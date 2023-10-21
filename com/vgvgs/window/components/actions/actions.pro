@@ -42,7 +42,8 @@ HEADERS +=\
   SettingsAct.h \
   StatusBarShowHideAct.h \
   ToolBarShowHideAct.h \
-  FullScreenAct.h
+  FullScreenAct.h \
+  version.h
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \

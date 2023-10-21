@@ -9,8 +9,8 @@
   "description" : "Put a short description of your plugin here",
   "url" : "https://www.mycompany.com",
   "lib_dependencies" : [
-    { "name" : "libNombreLibreria", "version" : "0.0.2" },
-    { "name" : "OtraLibreria", "version" : "2.1.0" }
+    { "name" : "libApp.so", "version" : "0.0.2" },
+    { "name" : "libActions.so", "version" : "2.1.0" }
   ],
   "plugin_dependencies" : [
     { "name" : "Plugin_2", "version" : "0.0.2" },
@@ -21,7 +21,6 @@
       "name" : "ActionName1",
       "description" : "Description of ActionName1",
       "menu" : "MainMenu/File",
-      "slot" : "slotToConnect",
       "location" : [
         { "menu" : "Plugins" },
         { "toolbar" : "OtroPlugin" },
@@ -69,6 +68,5 @@
       "visible" : "bool",
       "whatsThis" : "QString"
     }
-    // Puedes definir más acciones aquí
   ]
 }

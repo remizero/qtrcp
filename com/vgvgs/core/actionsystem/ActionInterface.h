@@ -30,9 +30,6 @@ namespace NAMESPACE_LEVEL_1 {
 
         public slots :
           virtual void execAct () = 0;
-
-        protected :
-          QWidget *myParent;
       };
     }
   }

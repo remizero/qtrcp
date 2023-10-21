@@ -32,6 +32,7 @@ namespace NAMESPACE_LEVEL_1 {
           QString getApplicationDataPath () const;
           QString getApplicationImagePath () const;
           QString getApplicationLanguagePath () const;
+          QString getApplicationLibrariesPath () const;
           QString getApplicationLogPath () const;
           QString getApplicationPath () const;
           QString getApplicationPathRoot () const;
@@ -50,6 +51,7 @@ namespace NAMESPACE_LEVEL_1 {
                      QDir *applicationDirPath;
                   QString applicationImagePath;
                   QString applicationLanguagePath;
+                  QString applicationLibrariesPath;
                   QString applicationLogPath;
                   QString applicationPath;
                   QString applicationPathRoot;

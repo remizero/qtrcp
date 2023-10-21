@@ -1,0 +1,36 @@
+# copyPlugins.prf
+
+
+# Se define la extensión según la plataforma.
+# The extension is defined according to the platform.
+win32: {
+  LIB_EXT = dll
+} else: unix {
+  LIB_EXT = so
+} else: macx {
+  LIB_EXT = dylib
+} else: android {
+  LIB_EXT = so
+} else {
+  # Otras plataformas no soportadas
+  # Other platforms not supported
+  error("Plataforma no soportada")
+}
+
+# Se define el nombre de la librería de forma dinámica.
+# The name of the library is defined dynamically.
+LIB_NAME = $$TEMPLATE$$TARGET$$DOT$$LIB_EXT
+
+# Se copia el ejecutable en la ruta final para el directorio "lib/" según la plataforma.
+# The executable is copied to the final path to the "lib/" directory depending on the platform.
+QMAKE_POST_LINK += $$quote(cp $$DESTDIR/$$LIB_NAME* $$PLUGING_PATH/)
+#win32:CONFIG(release, debug|release): {
+#  QMAKE_POST_LINK += $$quote(copy /Y $$OUT_PWD\libapp.dll $$OUT_PWD\lib\libapp.dll)
+#  QMAKE_POST_LINK += $$quote(copy /Y $$OUT_PWD\libapp.lib $$OUT_PWD\lib\libapp.lib)
+#  QMAKE_POST_LINK += $$quote(copy /Y $$OUT_PWD\libapp.exp $$OUT_PWD\lib\libapp.exp)
+#  QMAKE_POST_LINK += $$quote(copy /Y $$OUT_PWD\libapp.lib $$OUT_PWD\lib\libapp.dll.lib)
+#}
+#else:unix: {
+#  # QMAKE_POST_LINK += $$quote(cp $$DESTDIR/libapp.so* $$LIB_DIR/lib/)
+#  QMAKE_POST_LINK += $$quote(cp $$DESTDIR/$$LIB_NAME* $$LIB_DIR/)
+#}
