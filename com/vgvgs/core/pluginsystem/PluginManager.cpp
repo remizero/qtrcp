@@ -62,12 +62,6 @@ void PluginManager::load ( const QString &path ) {
 
     return;
   }
-//  if ( !this->d->check ( path ) ) {
-
-//    qDebug () << "POR LO VISTO NO PASÓ EL CHEQUEO";
-//    return;
-//  }
-//  qDebug () << "POR LO VISTO SI PASÓ EL CHEQUEO";
   QPluginLoader *loader = new QPluginLoader ( path );
   QJsonObject object { loader->metaData ().value ( "MetaData" ).toObject () };
   if ( this->validateLibraryDependencies ( object ) ) {
@@ -77,9 +71,7 @@ void PluginManager::load ( const QString &path ) {
       if ( PluginInterface *plugin = qobject_cast<PluginInterface *> ( loader->instance () ) ) {
 
         plugin->initialize ( object );
-        this->populateMenus ( plugin );
         ActionManager::getInstance ()->createDynamicActions ( plugin );
-        // this->d->loaders.insert ( path, loader );
 
       } else {
 
@@ -113,17 +105,6 @@ QStringList PluginManager::plugins () const {
   }
   return pluginNames;
   }
-
-void PluginManager::populateMenus ( PluginInterface *plugin ) {
-
-  // TODO AQUÍ HACER LA CREACIÓN DE LAS ACCIONES
-  int countActions = plugin->getPluginInfo ()->getActions ().count ();
-  for ( int i = 0; i < countActions; i++ ) {
-
-    PluginActionInfo *actionInfo = plugin->getPluginInfo ()->getActions ().at ( i );
-
-  }
-}
 
 bool PluginManager::validateLibraryDependencies ( QJsonObject object ) {
 

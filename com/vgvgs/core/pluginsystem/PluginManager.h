@@ -59,8 +59,6 @@ namespace NAMESPACE_LEVEL_1 {
           void load ( const QString &path );
           void unload ( const QString &path );
           QStringList plugins () const;
-          void populateMenus ( PluginInterface *plugin );
-          // void addToMenu ( QObject *plugin, const QStringList &texts, QMenu *menu, Member member, QActionGroup *actionGroup = nullptr );
           bool validateLibraryDependencies ( QJsonObject object );
           bool validatePluginDependencies ( QJsonObject object );
 
