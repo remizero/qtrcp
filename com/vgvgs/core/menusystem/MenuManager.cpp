@@ -4,7 +4,7 @@
 using namespace NAMESPACE_LIBRARY_CORE;
 
 
-MenuManager::MenuManager () {
+MenuManager::MenuManager ( QObject *parent ) : QObject ( parent ) {
 
   this->menuBarType = MenuBarType::Standard;
   this->createMenuBar ( this->menuBarType );

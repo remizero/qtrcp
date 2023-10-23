@@ -35,6 +35,7 @@ examples.depends = shadow com third-party
 include (qmakeSupportFiles/deploymentRulesBin.prf)
 
 DISTFILES += \
+  Doxyfile \
   Agradecimientos.txt \
   qmakeSupportFiles/buildConfiguration.prf \
   qmakeSupportFiles/buildPaths.prf \

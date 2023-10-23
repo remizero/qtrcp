@@ -19,6 +19,11 @@ App::App ( int &argc, char **argv ) : QApplication ( argc, argv ) {
     this->application = new QApplication ( argc, argv );
     qDebug () << "LIBRARY PATHS" << this->application->libraryPaths ();
   }
+  this->setApplicationDisplayName ( AppInit::getInstance ()->getSettings ()->value ( "app/applicationdisplayname" ).toString () );
+  this->setApplicationName ( AppInit::getInstance ()->getSettings ()->value ( "app/applicationname" ).toString () );
+  this->setApplicationVersion ( AppInit::getInstance ()->getSettings ()->value ( "app/applicationversion" ).toString () );
+  this->setOrganizationDomain ( AppInit::getInstance ()->getSettings ()->value ( "app/organizationdomain" ).toString () );
+  this->setOrganizationName ( AppInit::getInstance ()->getSettings ()->value ( "app/organizationname" ).toString () );
 }
 
 App::~App () {}

@@ -67,7 +67,7 @@ namespace NAMESPACE_LEVEL_1 {
                            QMenuBar *menuBar;
                         MenuBarType menuBarType;
                            QVariant prueba;
-          MenuManager ();
+          MenuManager ( QObject *parent = nullptr );
           friend class NAMESPACE_LIBRARY_PATTERNIFY::Singleton<MenuManager>;
       };
     }

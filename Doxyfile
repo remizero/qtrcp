@@ -1,0 +1,11 @@
+# Nombre del proyecto
+PROJECT_NAME           = "QtRcp"
+
+# Directorio de entrada para los archivos de código
+INPUT                  = ./src
+
+# Directorio de salida para la documentación
+OUTPUT_DIRECTORY        = ./docs
+
+# Idioma de la documentación
+OUTPUT_LANGUAGE         = English

@@ -33,10 +33,13 @@ int main ( int argc, char *argv [] ) {
   do {
 
     NAMESPACE_LIBRARY_APP::App appInstance ( argc, argv );
+
+    // TODO Esta línea que sigue se pueden gestionar directamente en NAMESPACE_LIBRARY_APP::App
     appInstance.addLibraryPath ( NAMESPACE_LIBRARY_APP::AppPaths::getInstance ().getApplicationPluginsPath () );
     qDebug () << "LIBRARY PATHS" << appInstance.libraryPaths ();
     try {
 
+      // TODO Esta línea que sigue se pueden gestionar directamente en NAMESPACE_LIBRARY_APP::App
       NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ();
       throw NAMESPACE_LIBRARY_CORE::Exception ( "Mensaje de prueba", __FILE__, __LINE__, Q_FUNC_INFO );
 
@@ -45,6 +48,7 @@ int main ( int argc, char *argv [] ) {
       NAMESPACE_LIBRARY_LOGGER::Logger::getInstance ()->exception ( exception );
     }
 
+    // TODO Esta línea que sigue se pueden gestionar directamente en NAMESPACE_LIBRARY_APP::App
     if ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().checkVersion () ) {
 
       return 0;
@@ -52,6 +56,7 @@ int main ( int argc, char *argv [] ) {
 
     NAMESPACE_LIBRARY_SINGLEINSTANCE::SingleInstance singleInstance ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationhashkey" ).toString () );
 
+    // TODO Estas cinco líneas se pueden gestionar directamente en NAMESPACE_LIBRARY_APP::App
     appInstance.setOrganizationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationname" ).toString () );
     appInstance.setOrganizationDomain ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/organizationdomain" ).toString () );
     appInstance.setApplicationName ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings ()->value ( "app/applicationname" ).toString () );
@@ -64,7 +69,9 @@ int main ( int argc, char *argv [] ) {
       msgBox.exec ();
       return 0;
     }
+    // TODO Esta línea que sigue se pueden gestionar directamente en NAMESPACE_LIBRARY_APP::App
     NAMESPACE_LIBRARY_CORE::PluginManager::getInstance ()->initialize ();
+
     VentanaPrincipal mainWindow ( NAMESPACE_LIBRARY_APP::AppInit::getInstance ().getSettings () );
     mainWindow.show ();
     try {

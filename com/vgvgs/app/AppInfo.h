@@ -30,6 +30,7 @@ namespace NAMESPACE_LEVEL_1 {
 
     namespace NAMESPACE_APP {
 
+      // TODO Esta clase ya no es necesaria, se puede eliminar.
       class APPSHARED_EXPORT AppInfo : public QObject {
 
           Q_OBJECT

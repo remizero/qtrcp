@@ -4,9 +4,7 @@
 using namespace NAMESPACE_LIBRARY_CORE;
 
 
-PluginManager::PluginManager ( QObject *parent )
-  : QObject ( parent )
-{
+PluginManager::PluginManager ( QObject *parent ) : QObject ( parent ) {
 
   // this->d = new PluginData ();
 }

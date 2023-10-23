@@ -24,9 +24,14 @@ include(../../../qmakeSupportFiles/buildConfiguration.prf)
 SOURCES += \
   Core.cpp \
   Exception.cpp \
+  Version.cpp \
   actionsystem/ActionAbs.cpp \
   actionsystem/ActionManager.cpp \
-  app/appasdf.cpp \
+  app/App.cpp \
+  app/AppInit.cpp \
+  app/AppPaths.cpp \
+  app/AppSettings.cpp \
+  app/AppUtils.cpp \
   menusystem/MenuManager.cpp \
   pluginsystem/PluginAbs.cpp \
   pluginsystem/PluginActionInfo.cpp \
@@ -37,11 +42,18 @@ SOURCES += \
   pluginsystem/PluginManager.cpp
 
 HEADERS += \
+  core_global.h \
+  Core.h \
   Exception.h \
+  Version.h \
   actionsystem/ActionAbs.h \
   actionsystem/ActionInterface.h \
   actionsystem/ActionManager.h \
-  app/appasdf.h \
+  app/App.h \
+  app/AppInit.h \
+  app/AppPaths.h \
+  app/AppSettings.h \
+  app/AppUtils.h \
   menusystem/MenuManager.h \
   pluginsystem/PluginAbs.h \
   pluginsystem/PluginActionInfo.h \
@@ -50,31 +62,29 @@ HEADERS += \
   pluginsystem/PluginDependenciesInfo.h \
   pluginsystem/PluginInfo.h \
   pluginsystem/PluginInterface.h \
-  pluginsystem/PluginManager.h \
-  core_global.h \
-  Core.h
+  pluginsystem/PluginManager.h
 
 win32:CONFIG(release, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp \
+#  -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lPatternify
 else:win32:CONFIG(debug, debug|release): LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp \
+#  -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lPatternify
 else:unix: LIBS += \
   -L$$LIB_PATH/ -lMacros \
-  -L$$LIB_PATH/ -lApp \
+#  -L$$LIB_PATH/ -lApp \
   -L$$LIB_PATH/ -lPatternify
 
 INCLUDEPATH += \
   $$PWD/../macros \
-  $$PWD/../app \
+#  $$PWD/../app \
   $$PWD/../patternify
 
 DEPENDPATH += \
   $$PWD/../macros \
-  $$PWD/../app \
+#  $$PWD/../app \
   $$PWD/../patternify
 
 # Se copia la librería en la ruta destino del proyecto final.
